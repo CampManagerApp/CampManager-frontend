@@ -5,4 +5,5 @@
 
 .App {
   margin: auto;
+  overflow-y: hidden;
 }
