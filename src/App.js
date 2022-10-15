@@ -1,10 +1,13 @@
 import './App.css';
-import LoginForm from './components/autentication/LoginForm';
+import AdminPage from './components/pages/AdminPage';
+import LoginPage from './components/pages/LoginPage';
+
 
 function App() {
   return (
     <div className="App">
-     <LoginForm />  
+      {/* <LoginPage /> */}
+      <AdminPage />
     </div>
   );
 }
