@@ -26,46 +26,11 @@ function AdminNavbar() {
 
 function OrganizationTableList(){
     return(
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-12 mx-auto bg-white rounded shadow">
-                    <div class="table-responsive">
-                        <table class="table table-fixed">
-                            <thead>
-                                <tr class="text-center">
-                                    <th scope="col" class="col-3">Number</th>
-                                    <th scope="col" class="col-3">Organization Name</th>
-                                    <th scope="col" class="col-3">ID</th>
-                                    <th scope="col" class="col-3">Admin</th>
-                                    {/* <th scope="col" class="col-3">Actions</th> */}
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                {Array.from(Array(20)).map((x, i) => {
-                                    return(
-                                    <tr key={i}>
-                                        <th scope="row" class="col-3">{i}</th>
-                                        <td class="col-3"  >AMELL</td>
-                                        <td class="col-3"  >478900E</td>
-                                        <td class="col-3"  >Alejandro Clavera</td>
-                                        {/* <td class="col-3"  >Alejandro Clavera</td> */}
-                                    </tr>
-                                    )})}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-function Jordi(){
-    return(
-    <div class="table-jordi">
-        <table class="table table-hover" id="job-table">
+    <div className='container '>
+    <div className="table-jordi">
+        <table className="table table-hover" id="job-table">
             <thead>
-                <tr class="text-center">
+                <tr className="text-center">
                 <th scope="col"  >Number</th>
                 <th scope="col" >Organization Name</th>
                 <th scope="col" >ID</th>
@@ -73,8 +38,8 @@ function Jordi(){
                 <th scope="col" >Actions</th>
                 </tr>
             </thead>
-      <tbody class="text-center tableBody">
-        {Array.from(Array(20)).map((x, i) => {
+      <tbody className="text-center tableBody">
+        {Array.from(Array(50)).map((x, i) => {
             return(
             <tr key={i}>
                 <th scope="row">{i}</th>
@@ -82,15 +47,17 @@ function Jordi(){
                 <td>478900E</td>
                 <td>Alejandro Clavera</td>
                 <td>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                    <button type="button" class="btn btn-primary">View</button>
+                    <button type="button" className="btn btn-danger">Delete</button>
+                    <button type="button" className="btn btn-primary">View</button>
                 </td>
                 </tr>
                 )})}
       </tbody>
     </table>
   </div>
-
+  <button type="button" className="btn btn-primary">View</button>
+  </div>
+    
     );
 }
 
@@ -99,8 +66,6 @@ export default function AdminPage() {
         <div>
             <AdminNavbar />
             <OrganizationTableList />
-            <Jordi />
         </div>
-
     )
 } 
