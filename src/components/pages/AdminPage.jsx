@@ -32,7 +32,7 @@ function OrganizationTableList(){
                     <div class="table-responsive">
                         <table class="table table-fixed">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th scope="col" class="col-3">Number</th>
                                     <th scope="col" class="col-3">Organization Name</th>
                                     <th scope="col" class="col-3">ID</th>
@@ -40,7 +40,7 @@ function OrganizationTableList(){
                                     {/* <th scope="col" class="col-3">Actions</th> */}
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-center">
                                 {Array.from(Array(20)).map((x, i) => {
                                     return(
                                     <tr key={i}>
@@ -57,44 +57,49 @@ function OrganizationTableList(){
                 </div>
             </div>
         </div>
-        
-    
-    )
+    );
 }
 
-// function OrganizationTableList() {
-//     return (
-//         <div class="table-wrapper-scroll-y my-custom-scrollbar">
-//             <table className='table table-bordered mb-0'>
-//                 <thead >
-//                 <tr>
-//                     <th>#</th>
-//                     <th>Code</th>
-//                     <th>Name</th>
-//                 </tr>
-//                 </thead>
-//                 <tbody >
-//                     {Array.from(Array(50)).map((x, i) => {
-//                         return(
-//                             <tr key={i}>
-//                                 <td>{i}</td>
-//                                 <td>Mark</td>
-//                                 <td>Otto</td>
-//                             </tr>
-//                         )
-//                     })}
-//                 </tbody>
-//             </table>
-//         </div>
-//     );
-//  }
+function Jordi(){
+    return(
+    <div class="table-jordi">
+        <table class="table table-hover" id="job-table">
+            <thead>
+                <tr class="text-center">
+                <th scope="col"  >Number</th>
+                <th scope="col" >Organization Name</th>
+                <th scope="col" >ID</th>
+                <th scope="col" >Admin</th>
+                <th scope="col" >Actions</th>
+                </tr>
+            </thead>
+      <tbody class="text-center tableBody">
+        {Array.from(Array(20)).map((x, i) => {
+            return(
+            <tr key={i}>
+                <th scope="row">{i}</th>
+                <td>AMELL</td>
+                <td>478900E</td>
+                <td>Alejandro Clavera</td>
+                <td>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-primary">View</button>
+                </td>
+                </tr>
+                )})}
+      </tbody>
+    </table>
+  </div>
+
+    );
+}
 
 export default function AdminPage() {
     return (
         <div>
             <AdminNavbar />
-            {/* <OrganizationList /> */}
             <OrganizationTableList />
+            <Jordi />
         </div>
 
     )

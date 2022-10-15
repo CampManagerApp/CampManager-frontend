@@ -3,7 +3,6 @@
     overflow-y: auto;
     width: 100%;
 }
-
 .table-fixed thead,
 .table-fixed tbody,
 .table-fixed tr,
@@ -17,4 +16,14 @@
 .table-fixed thead > tr > th {
     float: left;
     position: relative;
+}
+
+.table-jordi{
+    height:400px;  
+    overflow:scroll;
+}
+thead tr:nth-child(1) th{
+    background: gray;
+    position: sticky;
+    top: 0;
 }
