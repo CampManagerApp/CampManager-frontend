@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import LoginForm from "../autentication/LoginForm"
 
 import './LoginPage.css'
@@ -11,9 +12,15 @@ const handle = (event) => {
   
 
 export default function LoginPage () {
+    const navigate = useNavigate();
+
+    function handleSubmit(event) {
+       navigate('/admin/panel')
+    }
+
     return (
         <div className="login-page-wrapper">
-            <LoginForm handleSubmit={handle}/>
+            <LoginForm handleSubmit={handleSubmit}/>
         </div>
     )
 }

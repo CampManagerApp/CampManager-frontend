@@ -2,18 +2,26 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 import './AdminPage.css'
 
 
 function AdminNavbar() {
+
+    const navigate = useNavigate()
+
+    function logout() {
+        navigate('/admin')
+    }
+
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
             <Navbar.Brand href="#home">Camp Manager</Navbar.Brand>
             <Nav className="container-fluid">
                 {/* <Nav.Link className='ms-auto' href="#pricing">Loggout</Nav.Link> */}
-                <Button  variant="dark" className="ms-auto">
+                <Button  variant="dark" className="ms-auto" onClick={logout}>
                 Logout
                 </Button>
             </Nav>

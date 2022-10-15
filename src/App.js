@@ -11,8 +11,6 @@ function App() {
         <Route path="/admin" element={<LoginPage />} />
         <Route path="/admin/panel" element={<AdminPage />} />
       </Routes>
-      
-      {/* <AdminPage /> */}
     </div>
   );
 }
