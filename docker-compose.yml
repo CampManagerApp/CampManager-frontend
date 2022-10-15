@@ -9,4 +9,4 @@ services:
         ports:
             - 3000:3000
         # command: npm start
-        entrypoint: /app/start.sh
+        command: npm start
