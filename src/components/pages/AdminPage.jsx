@@ -24,62 +24,70 @@ function AdminNavbar() {
     )
 }
 
-function OrganizationList() {
-    return (
-        <ListGroup>
-                <ListGroup.Item>No style</ListGroup.Item>
-                <ListGroup.Item variant="primary">Primary</ListGroup.Item>
-                <ListGroup.Item action variant="secondary">
-                    Secondary
-                </ListGroup.Item>
-                <ListGroup.Item action variant="success">
-                    Success
-                </ListGroup.Item>
-                <ListGroup.Item action variant="danger">
-                    Danger
-                </ListGroup.Item>
-                <ListGroup.Item action variant="warning">
-                    Warning
-                </ListGroup.Item>
-                <ListGroup.Item action variant="info">
-                    Info
-                </ListGroup.Item>
-                <ListGroup.Item action variant="light">
-                    Light
-                </ListGroup.Item>
-                <ListGroup.Item action variant="dark">
-                    Dark
-                </ListGroup.Item>
-        </ListGroup>
+function OrganizationTableList(){
+    return(
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12 mx-auto bg-white rounded shadow">
+                    <div class="table-responsive">
+                        <table class="table table-fixed">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="col-3">Number</th>
+                                    <th scope="col" class="col-3">Organization Name</th>
+                                    <th scope="col" class="col-3">ID</th>
+                                    <th scope="col" class="col-3">Admin</th>
+                                    {/* <th scope="col" class="col-3">Actions</th> */}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {Array.from(Array(20)).map((x, i) => {
+                                    return(
+                                    <tr key={i}>
+                                        <th scope="row" class="col-3">{i}</th>
+                                        <td class="col-3"  >AMELL</td>
+                                        <td class="col-3"  >478900E</td>
+                                        <td class="col-3"  >Alejandro Clavera</td>
+                                        {/* <td class="col-3"  >Alejandro Clavera</td> */}
+                                    </tr>
+                                    )})}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
     )
 }
 
-function OrganizationTableList() {
-    return (
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-            <table className='table table-bordered mb-0'>
-                <thead >
-                <tr>
-                    <th>#</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                </tr>
-                </thead>
-                <tbody >
-                    {Array.from(Array(50)).map((x, i) => {
-                        return(
-                            <tr key={i}>
-                                <td>{i}</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
-        </div>
-    );
-  }
+// function OrganizationTableList() {
+//     return (
+//         <div class="table-wrapper-scroll-y my-custom-scrollbar">
+//             <table className='table table-bordered mb-0'>
+//                 <thead >
+//                 <tr>
+//                     <th>#</th>
+//                     <th>Code</th>
+//                     <th>Name</th>
+//                 </tr>
+//                 </thead>
+//                 <tbody >
+//                     {Array.from(Array(50)).map((x, i) => {
+//                         return(
+//                             <tr key={i}>
+//                                 <td>{i}</td>
+//                                 <td>Mark</td>
+//                                 <td>Otto</td>
+//                             </tr>
+//                         )
+//                     })}
+//                 </tbody>
+//             </table>
+//         </div>
+//     );
+//  }
 
 export default function AdminPage() {
     return (
