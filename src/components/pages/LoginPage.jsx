@@ -5,10 +5,9 @@ import './LoginPage.css'
 
 
 const handle = (event) => {
-    console.log('hola')
     event.preventDefault();
     event.stopPropagation();
-  }
+}
   
 
 export default function LoginPage () {

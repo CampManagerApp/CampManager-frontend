@@ -53,15 +53,17 @@ function OrganizationTableList(){
                 <td>478900E</td>
                 <td>Alejandro Clavera</td>
                 <td>
-                    <button type="button" className="btn btn-danger">Delete</button>
-                    <button type="button" className="btn btn-primary">View</button>
+                    <Button type="button" className="btn btn-danger">Delete</Button>
+                    <Button type="button" className="btn btn-primary">Edit</Button>
                 </td>
                 </tr>
                 )})}
       </tbody>
     </table>
   </div>
-  <button type="button" className="btn btn-primary">View</button>
+    <div className="d-flex justify-content-end">
+        <button type="button" className="btn btn-primary">Add</button>
+    </div>
   </div>
     
     );
@@ -71,6 +73,10 @@ export default function AdminPage() {
     return (
         <div>
             <AdminNavbar />
+            <div className='container page-header'>
+                <h3>Organisations panel</h3>
+                <hr />
+            </div>
             <OrganizationTableList />
         </div>
     )
