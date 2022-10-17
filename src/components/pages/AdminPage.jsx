@@ -2,14 +2,17 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
-
-import './AdminPage.css'
+import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 import PageHeader from '../PageHeader';
 
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getOrganisationList, deleteOrganisation, addOrganisation } from '../../services/superadmin/getOrganisations';
+
+import './AdminPage.css'
 
 function AdminNavbar() {
-
     const navigate = useNavigate()
 
     function logout() {
@@ -31,14 +34,60 @@ function AdminNavbar() {
     )
 }
 
-function OrganizationTableList() {
+
+function OrganisationForm({onSubmit , onCancel}) {
+    const [form, setForm] = useState({})
+
+
+    function onUpdate(e) {
+        setForm({
+            ...form,
+            [e.target.id]: e.target.value
+        })
+    }
+
+    function cancel() {
+        setForm({})
+        onCancel()
+    }
+
+    return (
+        <div className='container'>
+            <Form onSubmit={(event) => {
+                event.preventDefault();
+                onSubmit(form)
+            }}>
+                <Form.Group className="mb-3" controlId="name">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control onChange={onUpdate} type="text" placeholder="Organisation Name" />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="admin">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control onChange={onUpdate} type="text" placeholder="Admin name" />
+                </Form.Group>
+                <div className="d-grid gap-2 ">
+                    <Button type="submit" className="btn btn-primary">
+                        Create
+                    </Button>
+                    <Button variant="danger" className="btn btn-primary" onClick={cancel}>
+                        Cancel
+                    </Button>
+                </div>
+            </Form>
+        </div>
+    )
+}
+
+
+function ListTable({ list, onDelete, onAdd }) {
     return (
         <div className='container '>
             <div className="scrollable-table">
                 <table className="table table-hover" id="job-table">
                     <thead>
                         <tr className="text-center">
-                            <th scope="col"  >Number</th>
+                            <th scope="col"  >Index</th>
                             <th scope="col" >Organization Name</th>
                             <th scope="col" >ID</th>
                             <th scope="col" >Admin</th>
@@ -46,15 +95,17 @@ function OrganizationTableList() {
                         </tr>
                     </thead>
                     <tbody className="text-center tableBody">
-                        {Array.from(Array(50)).map((x, i) => {
+                        {list.map((org, i) => {
                             return (
                                 <tr key={i}>
                                     <th scope="row">{i}</th>
-                                    <td>AMELL</td>
-                                    <td>478900E</td>
-                                    <td>-</td>
+                                    <td >{org.name}</td>
+                                    <td>{org.id}</td>
+                                    <td>{org.admin}</td>
                                     <td>
-                                        <Button type="button" className="btn btn-danger">Delete</Button>
+                                        <Button type="button" className="btn btn-danger" onClick={() => {
+                                            onDelete(org.id)
+                                        }}>Delete</Button>
                                         <Button type="button" className="btn btn-primary">Edit</Button>
                                     </td>
                                 </tr>
@@ -64,8 +115,54 @@ function OrganizationTableList() {
                 </table>
             </div>
             <div className="d-flex justify-content-end">
-                <button type="button" className="btn btn-primary">Add</button>
+                <button type="button" className="btn btn-primary" onClick={() => {
+                    onAdd()
+                }}>Add</button>
             </div>
+        </div>
+    )
+}
+
+function OrganizationTableList() {
+
+    const [organisations, setOrganisations] = useState([])
+    const [update, setUpdate] = useState(true)
+    const [showAlert, setShowAlert] = useState(false)
+
+
+    function onSubmit(form) {
+        //event.preventDefault();
+        addOrganisation(form).then(() => {
+            setShowAlert(false)
+        })
+    }
+
+    function onCancel(form) {
+        setShowAlert(false)
+    }
+
+
+    function showAddAlert() {
+        setShowAlert(true)
+    }
+
+    useEffect(() => {
+        if (!showAlert) {
+            getOrganisationList()
+                .then(orgs_list => setOrganisations(orgs_list))
+                .catch(err => Alert('Error'))
+        }
+        setUpdate(false)
+    }, [update, showAlert])
+
+    return (
+        <div>
+            {!showAlert ?
+                <ListTable list={organisations} onAdd={showAddAlert} onDelete={(id) => {
+                    deleteOrganisation(id)
+                    setUpdate(true)
+                }} /> 
+                : <OrganisationForm onSubmit={onSubmit} onCancel={onCancel} />}
         </div>
     );
 }
@@ -74,7 +171,7 @@ export default function AdminPage() {
     return (
         <div>
             <AdminNavbar />
-            <PageHeader title="Organisation panel"/>
+            <PageHeader title="Organisation panel" />
             <OrganizationTableList />
         </div>
     )
