@@ -19,7 +19,7 @@ export default function RegisterForm ({handleSubmit}) {
     return (
         <div className='register-form'>
             <h3 className='register-form-title'>Register</h3>
-            <Form className='p-5 p-sm-3 rounded' noValidate onSubmit={onSubmit} >
+            <Form className='p-5 p-sm-3 rounded' noValidate onSubmit={handleSubmit} >
 
                 <Form.Group className="mb-3" controlId="formName">
                     <Form.Label>Name</Form.Label>

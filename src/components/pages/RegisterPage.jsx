@@ -10,6 +10,8 @@ export default function RegisterPage () {
     function handleSubmit(event) {
         event.preventDefault();
         event.stopPropagation();
+        console.log(event.target[5].value);
+        console.log(event);
        navigate('/admin')
     }
     
