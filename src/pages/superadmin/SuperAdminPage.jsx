@@ -10,8 +10,10 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getOrganisationList, deleteOrganisation, addOrganisation } from '../../services/superadmin/getOrganisations';
 import * as Icons from '../../design/icons.js'
+import logoImg from '../../design/campmanager.png';
 
 import './SuperAdminPage.css'
+import { IconContext } from 'react-icons';
 
 function AdminNavbar() {
     const navigate = useNavigate()
@@ -23,7 +25,7 @@ function AdminNavbar() {
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand><img src={require('../../design/campmanager.png')} />{' '}
+                <Navbar.Brand><img src={logoImg} />{' '}
                     Camp Manager
                 </Navbar.Brand>
                 <Nav className="container-fluid">
@@ -108,8 +110,8 @@ function ListTable({ list, onDelete, onAdd }) {
                                     <td>
                                         <Button type="button" className="btn btn-danger" onClick={() => {
                                             onDelete(org.id)
-                                        }}>Delete</Button>
-                                        <Button type="button" className="btn btn-primary">Edit</Button>
+                                        }}>Delete <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Delete/></IconContext.Provider></Button>{' '}
+                                        <Button type="button" className="btn btn-primary">Edit <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Edit /></IconContext.Provider></Button>
                                     </td>
                                 </tr>
                             )
