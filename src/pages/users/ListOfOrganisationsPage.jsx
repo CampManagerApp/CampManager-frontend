@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import PageHeader from '../../components/common/PageHeader';
-import OrganisationInfo from "../../components/organisation/OrganisationInfo"
+import ListOfOrganisations from "../../components/lists/ListOfOrganisations"
 
-import './OrganisationInfoPage.css'
+import './ListOfOrganisationsPage.css'
 
 
 const handle = (event) => {
@@ -21,8 +21,8 @@ export default function OrganisationInfoPage () {
     return (
         <div>
             <PageHeader title="Organisation panel" />
-            <div className="organisationInfo-page-wrapper">
-                <OrganisationInfo handleSubmit={handleSubmit}/>
+            <div className="container">
+                <ListOfOrganisations handleSubmit={handleSubmit}/>
                 </div>
         </div>
     )

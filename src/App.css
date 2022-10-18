@@ -8,3 +8,9 @@
   overflow-y: hidden;
   overflow-x: hidden;
 }
+
+.react-icons{
+  vertical-align: middle;
+  height: 1em;
+  width: 1em;
+}

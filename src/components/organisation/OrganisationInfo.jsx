@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import './OrganisationInfo.css'
 
 
-export default function LoginForm ({handleSubmit}) {
+export default function OrganisationInfo ({handleSubmit}) {
     return (
         <div className="container-organisationInfo">
             <h3 className='organisationInfo-title'>Organisation details</h3>
