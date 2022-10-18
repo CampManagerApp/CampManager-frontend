@@ -4,10 +4,6 @@ import LoginForm from "../../components/authentication/LoginForm"
 import './LoginPage.css'
 
 
-const handle = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-}
   
 
 export default function LoginPage () {
