@@ -172,7 +172,6 @@ function OrganizationTableList() {
 export default function SuperAdminPage() {
     return (
         <div>
-            <AdminNavbar />
             <PageHeader title="Organisation panel" />
             <OrganizationTableList />
         </div>
