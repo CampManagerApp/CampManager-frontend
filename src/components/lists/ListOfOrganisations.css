@@ -1,0 +1,19 @@
+.container-organisationInfo {
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    border-radius: 8px;
+    background-color: white;
+    width: 0%;
+    padding: 25px;
+}
+
+.organisationInfo-title {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.test-page-wrapper {
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 100vh;
+}
