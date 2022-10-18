@@ -1,7 +1,7 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import './ListOfOrganisations.css'
 
-export default function StyleActionsExample() {
+export default function ListOfOrganisations() {
   return (
     <div className='test-page-wrapper'>
     <ListGroup>
@@ -9,6 +9,21 @@ export default function StyleActionsExample() {
         Organiation 1
       </ListGroup.Item>
       <ListGroup.Item action variant="success">
+        Organiation 1
+      </ListGroup.Item>
+      <ListGroup.Item action variant="danger">
+        Organiation 1
+      </ListGroup.Item>
+      <ListGroup.Item action variant="danger">
+        Organiation 1
+      </ListGroup.Item>
+      <ListGroup.Item action variant="danger">
+        Organiation 1
+      </ListGroup.Item>
+      <ListGroup.Item action variant="danger">
+        Organiation 1
+      </ListGroup.Item>
+      <ListGroup.Item action variant="danger">
         Organiation 1
       </ListGroup.Item>
       <ListGroup.Item action variant="danger">

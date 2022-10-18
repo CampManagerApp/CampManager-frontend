@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import RegisterPage from './pages/authentication/RegisterPage';
 import OrganisationInfoPage from './pages/organisation/OrganisationInfoPage';
 import ApplicationNavbar from './components/common/ApplicationNavbar';
+import ListOfOrganisationsPage from './pages/users/ListOfOrganisationsPage';
 
 
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/admin/panel" element={<SuperAdminPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/organisationinfo" element={<OrganisationInfoPage />} />
+        <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
       </Routes>
     </div>
   );
