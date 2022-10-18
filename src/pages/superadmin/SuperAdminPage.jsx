@@ -9,6 +9,7 @@ import OrganistationCreateForm from '../../components/organisation/Organistation
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getOrganisationList, deleteOrganisation, addOrganisation } from '../../services/superadmin/getOrganisations';
+import * as Icons from '../../design/icons.js'
 
 import './SuperAdminPage.css'
 
@@ -22,11 +23,13 @@ function AdminNavbar() {
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">Camp Manager</Navbar.Brand>
+                <Navbar.Brand><img src={require('../../design/campmanager.png')} />{' '}
+                    Camp Manager
+                </Navbar.Brand>
                 <Nav className="container-fluid">
                     {/* <Nav.Link className='ms-auto' href="#pricing">Loggout</Nav.Link> */}
                     <Button variant="dark" className="ms-auto" onClick={logout}>
-                        Logout
+                        Logout <Icons.Logout/>
                     </Button>
                 </Nav>
             </Container>
@@ -117,7 +120,7 @@ function ListTable({ list, onDelete, onAdd }) {
             <div className="d-flex justify-content-end">
                 <button type="button" className="btn btn-primary" onClick={() => {
                     onAdd()
-                }}>Add</button>
+                }}>Add <Icons.AddOrganisation /></button>
             </div>
         </div>
     )

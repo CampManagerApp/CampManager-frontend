@@ -1,18 +1,20 @@
 import Form from 'react-bootstrap/Form';
+import '../../index.js'
+import './RegisterForm.css';
 
-import './RegisterForm.css'
+import * as Icons from '../../design/icons.js'
 
 const state = {
     contra: "",
     repContra: ""
 };
 
-function onSubmit  (event)  {
+/*function onSubmit  (event)  {
     event.preventDefault();
     event.stopPropagation();
     console.log(event.target[5].value);
     console.log(event);
-};
+};*/ 
 
 export default function RegisterForm ({handleSubmit}) {   
 
@@ -63,7 +65,7 @@ export default function RegisterForm ({handleSubmit}) {
 
                 <div className="d-grid gap-2 ">
                     <button type="submit" className="btn btn-primary">
-                    Submit
+                    Submit <Icons.Login/>
                     </button>
                 </div>
             </Form>
