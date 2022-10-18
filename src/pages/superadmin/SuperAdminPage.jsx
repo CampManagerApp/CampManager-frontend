@@ -3,12 +3,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import PageHeader from '../../PageHeader';
-import OrganistationCreateForm from '../../organisation/OrganistationCreateForm';
+import PageHeader from '../../components/PageHeader';
+import OrganistationCreateForm from '../../components/organisation/OrganistationCreateForm';
 
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getOrganisationList, deleteOrganisation, addOrganisation } from '../../../services/superadmin/getOrganisations';
+import { getOrganisationList, deleteOrganisation, addOrganisation } from '../../services/superadmin/getOrganisations';
 
 import './SuperAdminPage.css'
 

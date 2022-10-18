@@ -1,5 +1,5 @@
-import PageHeader from '../../PageHeader';
-import OrganistationCreateForm from '../../organisation/OrganistationCreateForm';
+import PageHeader from '../../components/PageHeader';
+import OrganistationCreateForm from '../../components/organisation/OrganistationCreateForm';
 
 
 

@@ -1,9 +1,9 @@
 import './App.css';
-import SuperAdminPage from './components/pages/superadmin/SuperAdminPage';
-import LoginPage from './components/pages/authentication/LoginPage';
+import SuperAdminPage from './pages/superadmin/SuperAdminPage';
+import LoginPage from './pages/authentication/LoginPage';
 import { Routes, Route } from "react-router-dom";
-import RegisterPage from './components/pages/authentication/RegisterPage';
-import OrganisationInfoPage from './components/pages/organisation/OrganisationInfoPage';
+import RegisterPage from './pages/authentication/RegisterPage';
+import OrganisationInfoPage from './pages/organisation/OrganisationInfoPage';
 
 
 function App() {

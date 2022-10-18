@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import OrganisationInfo from "../../organisation/OrganisationInfo"
-import PageHeader from '../../PageHeader';
+import OrganisationInfo from "../../components/organisation/OrganisationInfo"
+import PageHeader from '../../components/PageHeader';
 
 import './OrganisationInfoPage.css'
 
