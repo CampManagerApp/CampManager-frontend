@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-
+import * as Icons from '../../design/icons.js'
 import './LoginForm.css'
 
 export default function LoginForm ({handleSubmit}) {
@@ -20,7 +20,7 @@ export default function LoginForm ({handleSubmit}) {
                 </Form.Group>
                 <div className="d-grid gap-2 ">
                     <Button type="submit" className="btn btn-primary">
-                    Submit
+                    Submit <Icons.Login/>
                     </Button>
                 </div>
             </Form>
