@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import PageHeader from '../../components/common/PageHeader';
-import OrganistationCreateForm from '../../components/organisation/OrganistationCreateForm';
+import OrganistationForm from '../../components/organisation/OrganistationForm';
 
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -127,7 +127,7 @@ function ListTable({ list, onDelete, onAdd }) {
 }
 
 function OrganizationTableList() {
-
+    const navigate = useNavigate()
     const [organisations, setOrganisations] = useState([])
     const [update, setUpdate] = useState(true)
     const [showAlert, setShowAlert] = useState(false)
@@ -144,8 +144,8 @@ function OrganizationTableList() {
     }
 
 
-    function showAddAlert() {
-        setShowAlert(true)
+    function onAdd() {
+        navigate('/admin/organisation/create', {replace: true})
     }
 
     useEffect(() => {
@@ -159,12 +159,10 @@ function OrganizationTableList() {
 
     return (
         <div>
-            {!showAlert ?
-                <ListTable list={organisations} onAdd={showAddAlert} onDelete={(id) => {
+                <ListTable list={organisations} onAdd={onAdd} onDelete={(id) => {
                     deleteOrganisation(id)
                     setUpdate(true)
                 }} /> 
-                : <OrganistationCreateForm onSubmit={onSubmit} onCancel={onCancel} />}
         </div>
     );
 }
