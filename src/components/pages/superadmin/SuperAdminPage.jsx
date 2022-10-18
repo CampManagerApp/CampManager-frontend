@@ -3,14 +3,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
-import PageHeader from '../PageHeader';
+import PageHeader from '../../PageHeader';
+import OrganistationCreateForm from '../../organisation/OrganistationCreateForm';
 
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getOrganisationList, deleteOrganisation, addOrganisation } from '../../services/superadmin/getOrganisations';
+import { getOrganisationList, deleteOrganisation, addOrganisation } from '../../../services/superadmin/getOrganisations';
 
-import './AdminPage.css'
+import './SuperAdminPage.css'
 
 function AdminNavbar() {
     const navigate = useNavigate()
@@ -129,7 +129,6 @@ function OrganizationTableList() {
     const [update, setUpdate] = useState(true)
     const [showAlert, setShowAlert] = useState(false)
 
-
     function onSubmit(form) {
         //event.preventDefault();
         addOrganisation(form).then(() => {
@@ -147,10 +146,10 @@ function OrganizationTableList() {
     }
 
     useEffect(() => {
-        if (!showAlert) {
+        if (!showAlert || update) {
             getOrganisationList()
                 .then(orgs_list => setOrganisations(orgs_list))
-                .catch(err => Alert('Error'))
+                .catch(err => alert('Error'))
         }
         setUpdate(false)
     }, [update, showAlert])
@@ -162,12 +161,12 @@ function OrganizationTableList() {
                     deleteOrganisation(id)
                     setUpdate(true)
                 }} /> 
-                : <OrganisationForm onSubmit={onSubmit} onCancel={onCancel} />}
+                : <OrganistationCreateForm onSubmit={onSubmit} onCancel={onCancel} />}
         </div>
     );
 }
 
-export default function AdminPage() {
+export default function SuperAdminPage() {
     return (
         <div>
             <AdminNavbar />
