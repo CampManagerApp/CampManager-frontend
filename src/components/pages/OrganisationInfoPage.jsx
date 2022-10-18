@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import OrganisationInfo from "../organisation/OrganisationInfo"
+import PageHeader from '../PageHeader';
 
 import './OrganisationInfoPage.css'
 
@@ -10,7 +11,7 @@ const handle = (event) => {
 }
   
 
-export default function LoginPage () {
+export default function OrganisationInfoPage () {
     const navigate = useNavigate();
 
     function handleSubmit(event) {
@@ -18,8 +19,11 @@ export default function LoginPage () {
     }
 
     return (
-        <div className="login-page-wrapper">
-            <OrganisationInfo handleSubmit={handleSubmit}/>
+        <div>
+            <PageHeader title="Organisation panel" />
+            <div className="organisationInfo-page-wrapper">
+                <OrganisationInfo handleSubmit={handleSubmit}/>
+                </div>
         </div>
     )
 }
