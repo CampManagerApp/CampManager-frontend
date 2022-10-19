@@ -1,0 +1,11 @@
+.scrollable-table{
+    height:400px;  
+    width: 1;
+    overflow:scroll;
+    border: 1px solid black;
+}
+thead tr:nth-child(1) th{
+    background: gray;
+    position: sticky;
+    top: 0;
+}
