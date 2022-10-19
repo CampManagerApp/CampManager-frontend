@@ -24,8 +24,8 @@ export default function OrganistationForm({onSubmit, onCancel, form_values = {},
     }, [])
 
 
-    function put_placeholder(field, default_placeholder) {
-        return field in form ? form[field] : default_placeholder
+    function getValue(field) {
+        return field in form ? form[field] : ''
     }
 
     return (
@@ -36,12 +36,12 @@ export default function OrganistationForm({onSubmit, onCancel, form_values = {},
             }}>
                 <Form.Group className="mb-3" controlId="name">
                     <Form.Label>Organisation Name</Form.Label>
-                    <Form.Control onChange={onUpdate} type="text" placeholder={put_placeholder("name", "Organisation Name")} />
+                    <Form.Control onChange={onUpdate} type="text" value={getValue("name")} placeholder="Organisation Name" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="admin">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control onChange={onUpdate} type="text" placeholder={put_placeholder("admin", "Admin Name")} />
+                    <Form.Control onChange={onUpdate} type="text" value={getValue("admin")} placeholder="Admin Name" />
                 </Form.Group>
                 <div className="d-grid gap-2 ">
                     <Button type="submit" className="btn btn-primary">
