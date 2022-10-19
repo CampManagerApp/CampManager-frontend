@@ -12,3 +12,11 @@ export const deleteOrganisation = (id) => {
 export const addOrganisation = (form) => {
     return axios.post(`${API_URL}/organisation/`, form).then(res => res.data)
 }
+
+export const updateOrganisation = (id, form) => {
+    return axios.put(`${API_URL}/organisation/${id}`, form).then(res => res.data)
+}
+
+export const getOrganisation = (id) => {
+    return axios.get(`${API_URL}/organisation/${id}`).then(res => res.data)
+}

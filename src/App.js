@@ -7,6 +7,7 @@ import OrganisationInfoPage from './pages/organisation/OrganisationInfoPage';
 import ApplicationNavbar from './components/common/ApplicationNavbar';
 import CreateOrganisationPage from './pages/organisation/CreatreOrganisationPage';
 import ListOfOrganisationsPage from './pages/users/ListOfOrganisationsPage';
+import UpdateOrganisationPage from './pages/organisation/UpdateOrganisationPage';
 
 
 
@@ -20,6 +21,9 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/organisationinfo" element={<OrganisationInfoPage />} />
         <Route path="/admin/organisation/create" element={<CreateOrganisationPage />} />
+        <Route path="/admin/organisation/update" element={<UpdateOrganisationPage />} >
+          <Route path=":organisationId" element={<UpdateOrganisationPage />} />
+        </Route>
         <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
       </Routes>
     </div>

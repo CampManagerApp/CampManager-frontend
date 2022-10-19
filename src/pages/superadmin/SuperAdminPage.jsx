@@ -85,7 +85,7 @@ function OrganisationForm({onSubmit , onCancel}) {
 }
 
 
-function ListTable({ list, onDelete, onAdd }) {
+function ListTable({ list, onDelete, onAdd, onUpdate}) {
     return (
         <div className='container '>
             <div className="scrollable-table">
@@ -111,7 +111,10 @@ function ListTable({ list, onDelete, onAdd }) {
                                         <Button type="button" className="btn btn-danger" onClick={() => {
                                             onDelete(org.id)
                                         }}>Delete <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Delete/></IconContext.Provider></Button>{' '}
-                                        <Button type="button" className="btn btn-primary">Edit <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Edit /></IconContext.Provider></Button>
+                                        <Button type="button" className="btn btn-primary" onClick={() =>{onUpdate(org.id)}}>
+                                            Edit 
+                                            <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Edit /></IconContext.Provider>
+                                        </Button>
                                     </td>
                                 </tr>
                             )
@@ -132,36 +135,45 @@ function OrganizationTableList() {
     const navigate = useNavigate()
     const [organisations, setOrganisations] = useState([])
     const [update, setUpdate] = useState(true)
-    const [showAlert, setShowAlert] = useState(false)
-
-    function onSubmit(form) {
-        //event.preventDefault();
-        addOrganisation(form).then(() => {
-            setShowAlert(false)
-        })
+    
+    function handleError(error){
+        if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+            console.log(error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', error.message);
+          }
     }
-
-    function onCancel(form) {
-        setShowAlert(false)
-    }
-
 
     function onAdd() {
         navigate('/admin/organisation/create', {replace: true})
     }
 
+    function onUpdate(id) {
+        navigate(`/admin/organisation/update/${id}`, {replace: true})
+    }
+
     useEffect(() => {
-        if (!showAlert || update) {
+        if (update) {
             getOrganisationList()
                 .then(orgs_list => setOrganisations(orgs_list))
-                .catch(err => alert('Error'))
+                .catch(handleError)
         }
         setUpdate(false)
-    }, [update, showAlert])
+    }, [update])
 
     return (
         <div>
-                <ListTable list={organisations} onAdd={onAdd} onDelete={(id) => {
+                <ListTable list={organisations} onAdd={onAdd} onUpdate={onUpdate} onDelete={(id) => {
                     deleteOrganisation(id)
                     setUpdate(true)
                 }} /> 

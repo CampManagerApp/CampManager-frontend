@@ -13,6 +13,8 @@ export default function CreateOrganisationPage() {
     function onSubmit(form){
         addOrganisation(form).then(() => {
             navigate('/admin/panel')
+        }).catch((error) => {
+            alert(error.response)
         })
     }
 
