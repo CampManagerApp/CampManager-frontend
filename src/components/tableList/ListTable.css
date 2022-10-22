@@ -9,3 +9,6 @@ thead tr:nth-child(1) th{
     position: sticky;
     top: 0;
 }
+.pointer-row{
+    cursor: pointer;
+}
