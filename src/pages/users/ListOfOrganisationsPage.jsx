@@ -20,10 +20,10 @@ export default function OrganisationInfoPage () {
 
     return (
         <div>
-            <PageHeader title="Organisation panel" />
-            <div className="container">
-                <ListOfOrganisations handleSubmit={handleSubmit}/>
-                </div>
+        <PageHeader title="Organisation panel" />
+        <div className="list-of-organisations-page-wrapper">
+            <ListOfOrganisations handleSubmit={handleSubmit}/>
+        </div>
         </div>
     )
 }
