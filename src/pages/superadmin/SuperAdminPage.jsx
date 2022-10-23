@@ -3,18 +3,20 @@ import PageHeader from '../../components/common/PageHeader';
 
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getOrganisationList, deleteOrganisation, addOrganisation } from '../../services/superadmin/getOrganisations';
+import { getOrganisationList, deleteOrganisation, addOrganisation } from '../../services/superadmin/Organisations';
 import * as Icons from '../../design/icons.js'
 import logoImg from '../../design/campmanager.png';
 
 import './SuperAdminPage.css'
 import { IconContext } from 'react-icons';
 import ListTable from '../../components/tableList/ListTable';
+import { useAsyncError } from '../../components/errors/Errors';
 
 function OrganizationTableList() {
     const navigate = useNavigate()
     const [organisations, setOrganisations] = useState([])
     const [update, setUpdate] = useState(true)
+    const asyncError = useAsyncError()
     
     function handleError(error){
         if (error.response) {
@@ -46,7 +48,10 @@ function OrganizationTableList() {
         if (update) {
             getOrganisationList()
                 .then(orgs_list => setOrganisations(orgs_list))
-                .catch(handleError)
+                //.catch(handleError)
+                .catch(err => {
+                    asyncError(new Error(err))
+                }) 
         }
         setUpdate(false)
     }, [update])

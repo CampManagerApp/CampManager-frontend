@@ -10,6 +10,7 @@ export default function ApplicationNavbar() {
 
     function logout() {
         navigate('/admin')
+        window.sessionStorage.removeItem("token")
     }
 
     return (

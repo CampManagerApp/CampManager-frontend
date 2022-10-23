@@ -1,7 +1,7 @@
 import PageHeader from '../../components/common/PageHeader';
 import OrganistationForm from '../../components/organisation/OrganistationForm';
 
-import { addOrganisation, getOrganisation, updateOrganisation } from '../../services/superadmin/getOrganisations';
+import { addOrganisation, getOrganisation, updateOrganisation } from '../../services/superadmin/Organisations';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
