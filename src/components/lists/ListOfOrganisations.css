@@ -40,3 +40,13 @@
         width: 100%;
     }
 }
+.list-group-page-wrapper {
+    width: 30%;
+    text-align: center;
+}
+h3.title{
+    margin-bottom: 25px;
+}
+.pointer-item{
+    cursor: pointer;
+}

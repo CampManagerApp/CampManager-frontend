@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../../components/authentication/LoginForm"
+import { loginRequest } from "../../services/Authentication";
+import { useAsyncError } from '../../components/errors/Errors';
+import { useState } from "react";
 
 import './LoginPage.css'
 
@@ -8,9 +11,15 @@ import './LoginPage.css'
 
 export default function LoginPage () {
     const navigate = useNavigate();
+    const asyncError = useAsyncError()
+    
 
-    function handleSubmit(event) {
-       navigate('/admin/panel')
+    function handleSubmit(form) {
+        loginRequest(form).then(() => {
+            navigate('/admin/panel')
+        }).catch(err => {
+            asyncError(new Error(err))
+        })
     }
 
     return (
