@@ -8,6 +8,9 @@ import ApplicationNavbar from './components/common/ApplicationNavbar';
 import CreateOrganisationPage from './pages/organisation/CreatreOrganisationPage';
 import ListOfOrganisationsPage from './pages/users/ListOfOrganisationsPage';
 import UpdateOrganisationPage from './pages/organisation/UpdateOrganisationPage';
+import ListOfOrgUsersPage from './pages/users/ListOfOrgUsersPage';
+import AddOrgUserPage from './pages/organisation/AddOrgUserPage';
+import UpdateOrgUserPage from './pages/organisation/UpdateOrgUserPage';
 import ErrorBoundary from './components/errors/ErrorBoundary';
 
 
@@ -26,6 +29,11 @@ function App() {
             <Route path=":organisationId" element={<UpdateOrganisationPage />} />
           </Route>
           <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
+          <Route path="/admin/organisationusers" element={<ListOfOrgUsersPage />} />   
+          <Route path="/admin/organisationusers/add" element={<AddOrgUserPage />} />
+          <Route path="/admin/organisationusers/update" element={<UpdateOrgUserPage />} >   
+            <Route path=":userId" element={<UpdateOrgUserPage />} />
+          </Route> 
         </Routes>
       </ErrorBoundary>
     </div>

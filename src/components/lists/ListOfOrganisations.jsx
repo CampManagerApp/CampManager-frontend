@@ -15,10 +15,6 @@ export default function ListOfOrganisations() {
   //3 states, waiting("W"), error("E"), correct("C") 
   const [organisation, setOrganisation] = useState("W")
 
-  const [organisationForm, setOrganisationForm] = useState(true)
-  let bool = false
-
-
   function handleError(error){
     if (error.response) {
         // The request was made and the server responded with a status code
