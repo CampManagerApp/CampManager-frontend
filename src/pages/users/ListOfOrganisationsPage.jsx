@@ -17,7 +17,7 @@ export default function OrganisationInfoPage () {
     return (
         <div>
             <PageHeader title="Organisation panel" />
-            <div className="container">
+            <div className="list-of-organisations-page-wrapper">
                 <ListOfOrganisations />
                 </div>
         </div>

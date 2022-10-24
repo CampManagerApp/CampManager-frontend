@@ -7,6 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import './ModalOrganisation.css';
 
 export default function ModalOrganisation(props) {
+
     return (
         <Modal
         {...props}
@@ -23,21 +24,21 @@ export default function ModalOrganisation(props) {
             <Row className="mb-3">
                 <Form.Group as={Col} controlId="formGridEmail">
                     <Form.Label>Index</Form.Label>
-                    <Form.Control placeholder="Index" disabled />
+                    <Form.Control placeholder={props.item.i} disabled />
                 </Form.Group>
                 <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label>Organisation name</Form.Label>
-                    <Form.Control placeholder="Organisation name" disabled />
+                    <Form.Control placeholder={props.item.name} disabled />
                 </Form.Group>
             </Row>
             <Row className="mb-3">
                 <Form.Group as={Col} controlId="formGridAddress1">
                     <Form.Label>ID</Form.Label>
-                    <Form.Control placeholder="ID" disabled/>
+                    <Form.Control placeholder={props.item.id} disabled/>
                 </Form.Group>
             <Form.Group as={Col} controlId="formGridAddress2">
                 <Form.Label>Admin</Form.Label>
-                <Form.Control placeholder="Admin" disabled />
+                <Form.Control placeholder={props.item.admin} disabled />
             </Form.Group>
             </Row>
             <Form.Group className="mb-3" controlId="formGridAddress1">
