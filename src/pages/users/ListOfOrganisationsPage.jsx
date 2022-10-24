@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
 import PageHeader from '../../components/common/PageHeader';
 import ListOfOrganisations from "../../components/lists/ListOfOrganisations"
+import { getOrganisationList } from '../../services/superadmin/getOrganisations';
 
 import './ListOfOrganisationsPage.css'
 
@@ -13,16 +15,11 @@ const handle = (event) => {
 
 export default function OrganisationInfoPage () {
     const navigate = useNavigate();
-
-    function handleSubmit(event) {
-       navigate('/admin/panel')
-    }
-
     return (
         <div>
             <PageHeader title="Organisation panel" />
             <div className="container">
-                <ListOfOrganisations handleSubmit={handleSubmit}/>
+                <ListOfOrganisations />
                 </div>
         </div>
     )
