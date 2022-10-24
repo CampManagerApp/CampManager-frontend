@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './ModalOrganisation.css';
 
-export default function ModalOrganisation(props) {
+export default function ModalSimple(props) {
 
     return (
         <Modal
@@ -21,6 +21,17 @@ export default function ModalOrganisation(props) {
                 </Modal.Title>
             </Modal.Header>
             <Form className='form-padding'>
+                {
+                    Object.keys(props.item).map(function (key, index) {
+                        return (
+                            <Form.Group as={Col}>
+                                <Form.Label>{key}</Form.Label>
+                                <Form.Control placeholder={props.item[key]} disabled />
+                            </Form.Group>
+                        )
+                    })
+                }
+                {/*         
             <Row className="mb-3">
                 <Form.Group as={Col} controlId="formGridEmail">
                     <Form.Label>Index</Form.Label>
@@ -44,7 +55,7 @@ export default function ModalOrganisation(props) {
             <Form.Group className="mb-3" controlId="formGridAddress1">
                 <Form.Label>Comment</Form.Label>
                 <Form.Control as="textarea" placeholder="Comment" disabled />
-            </Form.Group>
+            </Form.Group> */}
             </Form>
         </Modal>
     );

@@ -3,16 +3,18 @@ import { IconContext } from 'react-icons';
 import * as Icons from '../../design/icons.js'
 import React, { useState } from "react";
 import ModalOrganisation from '../modal/ModalOrganisation.jsx';
+import ModalSimple from '../modal/ModalSimple';
 import TableHeaderItem from './TableHeaderItem.jsx';
+
 
 import './ListTable.css'
 
-
-export default function ListTable({children, list, onDelete, onAdd, onUpdate }) {
-    const [modalShow, setModalShow] = React.useState(false);
+export default function ListTable({ children, list, onDelete, onAdd, onUpdate }) {
+    const [modalShow, setModalShow] = useState(false);
+    const [item, setitem] = useState({});
     return (
         <div>
-            <ModalOrganisation show={modalShow} onHide={() => setModalShow(false)} />
+            <ModalSimple item={item} show={modalShow} onHide={() => setModalShow(false)} />
             <div className='container '>
                 <div className="scrollable-table">
                     <table className="table table-hover" id="job-table">
@@ -25,7 +27,11 @@ export default function ListTable({children, list, onDelete, onAdd, onUpdate }) 
                         <tbody className="text-center tableBody">
                             {list.map((org, i) => {
                                 return (
-                                    <tr key={i} onClick={() => setModalShow(true)} className="pointer-row">
+                                    <tr key={i} onClick={() => {
+                                        setitem(org)
+                                        setModalShow(true)
+                                    }}
+                                        className="pointer-row">
                                         <th scope="row">{i}</th>
                                         <td>{org.name}</td>
                                         <td>{org.id}</td>

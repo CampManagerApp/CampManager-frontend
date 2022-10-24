@@ -1,5 +1,4 @@
 import { API_URL, loggedRequest } from "../../config"
-import axios from "axios"
 
 
 
