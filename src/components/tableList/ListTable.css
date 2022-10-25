@@ -12,3 +12,6 @@ thead tr:nth-child(1) th{
 .pointer-row{
     cursor: pointer;
 }
+.actions-buttons{
+    width:200px;
+}
