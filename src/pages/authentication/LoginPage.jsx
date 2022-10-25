@@ -6,9 +6,6 @@ import { useState } from "react";
 
 import './LoginPage.css'
 
-
-  
-
 export default function LoginPage () {
     const navigate = useNavigate();
     const asyncError = useAsyncError()

@@ -12,8 +12,6 @@ import { IconContext } from 'react-icons';
 import ListTable from '../../components/tableList/ListTable';
 import TableHeaderItem from '../../components/tableList/TableHeaderItem';
 
-
-
 function OrganizationTableList() {
     const navigate = useNavigate()
     const [organisations, setOrganisations] = useState([])

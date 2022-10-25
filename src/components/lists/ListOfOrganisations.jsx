@@ -6,7 +6,7 @@ import PopUp from '../common/PopUp';
 import Form from 'react-bootstrap/Form';
 import { getOrganisation } from '../../services/superadmin/Organisations';
 
-export default function ListOfOrganisations() {
+export default function ListOfOrganisations({handle}) {
   //it creates a state open with default as false
   const [buttonPopup, setButtonPopup] = useState(false)
   const [form, setForm] = useState({})
@@ -58,7 +58,6 @@ function onAdd(event){
   }
 
   useEffect(() => {
-    console.log("entra" + organisation)
     if (organisation == "C"){
       setButtonPopup(false)
       setOrganisation("W")
@@ -78,18 +77,18 @@ function onAdd(event){
     <div className='list-group-page-wrapper'>
       <h3 className='title'>Select an organisation</h3>
       <div className="list-group list-group-light">
-        <a onClick={handleSubmit} className="list-group-item list-group-item-action px-3 border-0 rounded-3 mb-2 list-group-item-primary pointer-item">
-          Organisation 1</a>
-        <a onClick={handleSubmit} className="list-group-item list-group-item-action px-3 border-0 rounded-3 mb-2 list-group-item-secondary pointer-item">
+        <a onClick={handle} className="list-group-item list-group-item-action px-3 border-0 rounded-3 mb-2 list-group-item-primary pointer-item">
+          Organisation 1</a> 
+        <a onClick={handle} className="list-group-item list-group-item-action px-3 border-0 rounded-3 mb-2 list-group-item-secondary pointer-item">
           Organisation 2</a>
-        <a onClick={handleSubmit} className="list-group-item list-group-item-action px-3 border-0 rounded-3 mb-2 list-group-item-success pointer-item">
+        <a onClick={handle} className="list-group-item list-group-item-action px-3 border-0 rounded-3 mb-2 list-group-item-success pointer-item">
           Organisation 3</a>
         </div>
         <br></br>
       <div>
         <button type="button" className="btn btn-primary" onClick={() => {
             setButtonPopup(true)
-        }}>Add Organisation<Icons.AddOrganisation /></button>
+        }}>Add Organisation <Icons.AddOrganisation /></button>
       </div>
       <PopUp trigger={buttonPopup}>
           <div >
@@ -119,23 +118,5 @@ function onAdd(event){
           </div>
       </PopUp>  
     </div>
-
-/*export default function ListOfOrganisations({handleSubmit}) {
-  return (
-    <div className='list-group-page-wrapper'>
-      <h3 className='title'>Select an organisation</h3>
-      <div class="list-group list-group-light">
-        <a onClick={handleSubmit} class="list-group-item list-group-item-action px-3 border-0 rounded-3 mb-2 list-group-item-primary pointer-item">
-          Organisation 1</a>
-        <a onClick={handleSubmit} class="list-group-item list-group-item-action px-3 border-0 rounded-3 mb-2 list-group-item-secondary pointer-item">
-          Organisation 2</a>
-        <a onClick={handleSubmit} class="list-group-item list-group-item-action px-3 border-0 rounded-3 mb-2 list-group-item-success pointer-item">
-          Organisation 3</a>
-        </div>
-        <br></br>
-        <Button variant="success">Add organisation</Button>
-    </div>
-    
-  );*/
   );
 }

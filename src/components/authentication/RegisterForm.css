@@ -9,3 +9,15 @@
     text-align: center;
     padding-top: 10px;
 }
+
+@media screen and (min-width: 10px) {
+    .register-form{
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 580px) {
+    .register-form{
+        width: 35%;
+    }
+}
