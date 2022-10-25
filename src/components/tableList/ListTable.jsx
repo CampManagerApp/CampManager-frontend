@@ -12,10 +12,7 @@ import './ListTable.css'
 export default function ListTable({ children, list, onDelete, onAdd, onUpdate }) {
     const [modalShow, setModalShow] = useState(false);
     const [item, setitem] = useState({});
-
-    useEffect(() => {
-        console.log(children)
-    })
+    
     return (
         <div>
             <ModalSimple item={item} show={modalShow} onHide={() => setModalShow(false)} />
