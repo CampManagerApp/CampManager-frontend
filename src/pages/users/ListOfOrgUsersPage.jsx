@@ -11,58 +11,47 @@ import './ListOfOrgUsersPage.css'
 import { IconContext } from 'react-icons';
 import ListTable from '../../components/tableList/ListTable';
 import { useAsyncError } from '../../components/errors/Errors';
+import TableHeaderItem from '../../components/tableList/TableHeaderItem';
+import FormModal from '../../components/modal/FormModal';
+
 
 function ListOfOrgUsers() {
+    const usersList = [
+        { name: 'Jordi', role: 'Admin', status:'online'},
+        { name: 'Joel', role: 'Admin', status:'online'},
+    ]
+
     const navigate = useNavigate()
-    const [organisations, setOrganisations] = useState([])
+    const [users, setUsers] = useState(usersList)
+    const [modalShow, setModalShow] = useState(false)
     const [update, setUpdate] = useState(true)
     const asyncError = useAsyncError()
-    
-    function handleError(error){
-        if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-            console.log(error.request);
-          } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log('Error', error.message);
-          }
-    }
 
     function onAdd() {
-        navigate('/admin/organisationusers/adduser', {replace: true})
+        //navigate('/admin/organisationusers/adduser', { replace: true })
+        setModalShow(true)
     }
 
     function onUpdate(id) {
-        navigate(`/admin/organisationusers/update/${id}`, {replace: true})
+        navigate(`/admin/organisationusers/update/${id}`, { replace: true })
     }
 
     useEffect(() => {
-        /*if (update) {
-            getOrganisationList()
-                .then(orgs_list => setOrganisations(orgs_list))
-                //.catch(handleError)
-                .catch(err => {
-                    asyncError(new Error(err))
-                }) 
-        }
-        setUpdate(false)*/
+
     }, [update])
 
     return (
         <div>
-            <ListTable list={organisations} onAdd={onAdd} onUpdate={onUpdate} onDelete={(id) => {
+            <FormModal title="Add new member" fields={['name', 'role']} show={modalShow} onHide={() => setModalShow(false)}/>
+            <ListTable list={users} onAdd={onAdd} onUpdate={onUpdate} onDelete={(id) => {
                 deleteOrganisation(id).then(() => {
                     setUpdate(true)
                 })
-            }} />           
+            }}>
+                <TableHeaderItem>Name</TableHeaderItem>
+                <TableHeaderItem>Status</TableHeaderItem>
+                <TableHeaderItem>Role</TableHeaderItem>
+            </ListTable>
         </div>
     );
 }
