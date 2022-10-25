@@ -36,7 +36,7 @@ export default function ListTable({ children, list, onDelete, onAdd, onUpdate })
                                         <td>{org.name}</td>
                                         <td>{org.id}</td>
                                         <td>{org.admin}</td>
-                                        <td onClick={e => e.stopPropagation()} width="200px">
+                                        <td className="actions-buttons" onClick={e => e.stopPropagation()} >
                                             <Button type="button" className="btn btn-danger" onClick={() => {
                                                 onDelete(org.id)
                                             }}>Delete <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Delete /></IconContext.Provider></Button>{' '}
