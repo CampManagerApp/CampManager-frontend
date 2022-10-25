@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import './ModalOrganisation.css';
 import { toCapitalLetter } from "../../utils";
 
-export default function ModalSimple(props) {
+export default function FormModal(props) {
 
     return (
         <Modal
@@ -18,22 +18,22 @@ export default function ModalSimple(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Organisation details
+                    {props.title}
                 </Modal.Title>
             </Modal.Header>
             <Form className='form-padding'>
                 {
-                    Object.keys(props.item).map(function (key, index) {
+                    props.fields.map(function (field) {
                         return (
                             <Row className="mb-3">
                                 <Form.Group as={Col}>
-                                    <Form.Label>{toCapitalLetter(key)}</Form.Label>
-                                    <Form.Control placeholder={props.item[key]} disabled />
+                                    <Form.Label>{toCapitalLetter(field)}</Form.Label>
+                                    <Form.Control placeholder={field} />
                                 </Form.Group>
                             </Row>
                         )
                     })
-                }  
+                }
             </Form>
         </Modal>
     );

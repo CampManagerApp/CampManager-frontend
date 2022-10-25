@@ -64,7 +64,7 @@ function OrganizationTableList() {
                 })
             }}>
                 <TableHeaderItem>Index</TableHeaderItem>
-                <TableHeaderItem>Organization Name</TableHeaderItem>
+                <TableHeaderItem>Name</TableHeaderItem>
                 <TableHeaderItem>ID</TableHeaderItem>
                 <TableHeaderItem>Admin</TableHeaderItem>
             </ListTable>
