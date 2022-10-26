@@ -9,7 +9,7 @@ export default function ApplicationNavbar() {
     const navigate = useNavigate()
 
     function logout() {
-        navigate('/admin')
+        navigate('/login')
         window.sessionStorage.removeItem("token")
     }
 
