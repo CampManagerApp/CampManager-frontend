@@ -2,11 +2,16 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
 import * as Icons from '../../design/icons'
+
+import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { UserStatusContext } from '../../context/UserStatusContext';
+
 
 export default function ApplicationNavbar() {
     const navigate = useNavigate()
+    const { update_state, is_unAuthenticated, is_superAdmin, is_user } = useContext(UserStatusContext)
 
     function logout() {
         navigate('/admin')
@@ -21,9 +26,11 @@ export default function ApplicationNavbar() {
                 </Navbar.Brand>
                 <Nav className="container-fluid">
                     {/* <Nav.Link className='ms-auto' href="#pricing">Loggout</Nav.Link> */}
-                    <Button variant="dark" className="ms-auto" onClick={logout}>
-                        Logout <Icons.Logout/>
-                    </Button>
+                    {!is_unAuthenticated() ?
+                        <Button variant="dark" className="ms-auto" onClick={logout}>
+                            Logout <Icons.Logout />
+                        </Button> : ''
+                    }
                 </Nav>
             </Container>
         </Navbar>
