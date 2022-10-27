@@ -6,7 +6,7 @@ import * as Icons from '../../design/icons'
 
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
-import { UserStatusContext } from '../../context/UserStatusContext';
+import { UserStatusContext, USER_STATUS } from '../../context/UserStatusContext';
 
 
 export default function ApplicationNavbar() {
@@ -14,8 +14,13 @@ export default function ApplicationNavbar() {
     const { update_state, is_unAuthenticated, is_superAdmin, is_user } = useContext(UserStatusContext)
 
     function logout() {
-        navigate('/login')
         window.sessionStorage.removeItem("token")
+        update_state(USER_STATUS.UNAUTHENTICATED)
+        if (is_superAdmin()) {
+            navigate('/admin')
+        } else {
+            navigate('/login')
+        }
     }
 
     return (

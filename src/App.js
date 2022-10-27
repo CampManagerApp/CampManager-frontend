@@ -10,7 +10,7 @@ import ListOfOrgUsersPage from './pages/users/ListOfOrgUsersPage';
 import AddOrgUserPage from './pages/organisation/AddOrgUserPage';
 import UpdateOrgUserPage from './pages/organisation/UpdateOrgUserPage';
 import ErrorBoundary from './components/errors/ErrorBoundary';
-import UserStatusProvider from './context/UserStatusContext';
+import UserStatusProvider, { USER_STATUS } from './context/UserStatusContext';
 import { useNavigate, Route, Routes } from "react-router-dom";
 
 
@@ -22,7 +22,7 @@ function App() {
         <UserStatusProvider>
           <ApplicationNavbar />
           <Routes>
-            <Route path="/admin" element={<LoginPage goto={() => { navigate('/admin/panel') }} />} />
+            <Route path="/admin" element={<LoginPage next_user_status={USER_STATUS.SUPERADMIN} goto={() => { navigate('/admin/panel') }} />} />
             <Route path="/login" element={<LoginPage goto={() => { navigate('/listoforganisations') }} />} />
             <Route path="/admin/panel" element={<SuperAdminPage />} />
             <Route path="/register" element={<RegisterPage />} />
