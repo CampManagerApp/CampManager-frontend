@@ -5,44 +5,51 @@ export const UserContext = createContext()
 
 const UserContextProvider  = (props) => {
 
-    const [user, setUser] = useState([
+    const [users, setUser] = useState([
         {
             id:uuidv4(),
             name: 'User 1',
+            status: 'Online',
             admin: 'Joel',
+            role:'admin'
         },
         {
             id:uuidv4(),
             name: 'User 2',
+            status: 'Online',
             admin: 'Jordi',
+            role:'admin'
         },
         {
             id:uuidv4(),
             name: 'User 3',
+            status: 'Online',
             admin: 'Alejandro',
+            role:'admin'
         },
         {
             id:uuidv4(),
             name: 'Organisation 4',
+            status: 'Online',
             admin: 'Carlos',
+            role:'admin'
+        },
+
+        {
+            id:uuidv4(),
+            name: 'Organisation 5',
+            status: 'Online',
+            admin: 'kooo',
+            role:'admi1n'
         },
 ])
 
-useEffect(()=> {
-    setUser(JSON.parse(localStorage.getItem('users')))
-},[])
 
-useEffect(() => {
-    localStorage.setItem('users', JSON.stringify(users));
-})
+const users_list = users.map((user) => {return user})
 
 
 
-const sortedUsers = users.sort((a,b)=>(a.name < b.name ? -1 : 1));
-
-
-
-const addUser = (name, user) => {
+const addUser = (name, user, admin) => {
     setUser([...users , {id:uuidv4(), name, admin}])
 }
 
@@ -55,7 +62,7 @@ const updateUser = (id, updatedUser) => {
 }
 
     return (
-        <UserContext.Provider value={{sortedUsers, addUser, deleteUser, updateUser}}>
+        <UserContext.Provider value={{users_list, addUser, deleteUser, updateUser}}>
             {props.children}
         </UserContext.Provider>
     )

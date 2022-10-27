@@ -34,6 +34,11 @@ export default function FormModal(props) {
                         )
                     })
                 }
+                <div className="d-grid gap-2 ">
+                    <Button type="submit" className="btn btn-primary">
+                        Submit
+                    </Button>
+                </div>
             </Form>
         </Modal>
     );

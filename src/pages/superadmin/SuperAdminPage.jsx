@@ -65,7 +65,6 @@ function OrganizationTableList() {
                     setUpdate(true)
                 })
             }}>
-                <TableHeaderItem>Index</TableHeaderItem>
                 <TableHeaderItem>Name</TableHeaderItem>
                 <TableHeaderItem>ID</TableHeaderItem>
                 <TableHeaderItem>Admin</TableHeaderItem>
