@@ -30,34 +30,49 @@ function ListOfOrgUsers() {
     const navigate = useNavigate()
     const [users, setUsers] = useState(usersList)
     const [modalShow, setModalShow] = useState(false)
+    const [modalShowUpdate, setModalShowUpdate] = useState(false)
+    const [selectUser, setSelectUser] = useState(null)
     const [update, setUpdate] = useState(true)
     const asyncError = useAsyncError()
-    const { users_list } = useContext(UserContext)
+    const { users_list, getUser, addUser, updateUser, deleteUser} = useContext(UserContext)
 
 
-    function onAdd() {
-        //navigate('/admin/organisationusers/adduser', { replace: true })
+    function onAdd(user) {
         setModalShow(true)
     }
 
-    function onUpdate(id) {
-        navigate(`/admin/organisationusers/update/${id}`, { replace: true })
+    function onSubmit(user) {
+        addUser(user.name, user.role)
+        setModalShow(false)
     }
 
-    useEffect(() => {
-        
-    }, [update])
+    function onUpdate(id) {
+        //navigate(`/admin/organisationusers/update/${id}`, { replace: true })
+        const form = getUser(id)[0]
+        setSelectUser(form)
+        setModalShowUpdate(true)
+    }
+
+    function submitUpdate(form) {
+        const updatedUser = selectUser
+        updatedUser.role = form.role
+        updateUser(selectUser.id, updatedUser)
+        setSelectUser(null)
+        setModalShowUpdate(false)
+    }
+
+    function onDelete(id) {
+        deleteUser(id)
+    }
+
+
 
     return (
         <div>
-            <FormModal title="Add new member" fields={['name', 'role']} show={modalShow} onHide={() => setModalShow(false)} />
-            <ListTable list={users_list} onAdd={onAdd} onUpdate={onUpdate} onDelete={(id) => {
-                deleteOrganisation(id).then(() => {
-                    setUpdate(true)
-                })
-            }}>
+            <FormModal  onSubmit={onSubmit} title="Add new member" fields={['name', 'role']} show={modalShow} onHide={() => setModalShow(false)} />
+            <FormModal  onSubmit={submitUpdate} title="Update Member" fields={['role']} show={modalShowUpdate} onHide={() => setModalShowUpdate(false)} />
+            <ListTable list={users_list} onAdd={onAdd} onUpdate={onUpdate} onDelete={onDelete}>
                 <TableHeaderItem>Name</TableHeaderItem>
-                <TableHeaderItem>Status</TableHeaderItem>
                 <TableHeaderItem>Role</TableHeaderItem>
             </ListTable>
         </div>

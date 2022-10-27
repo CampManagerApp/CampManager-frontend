@@ -9,6 +9,21 @@ import { toCapitalLetter } from "../../utils";
 
 export default function FormModal(props) {
 
+    const [form, setForm] = useState({})
+
+    function onChange(e) {
+        setForm({
+            ...form,
+            [e.target.id]: e.target.value
+        })
+    }
+
+    function submit(e) {
+        e.stopPropagation()
+        e.preventDefault()
+        props.onSubmit(form)
+    }
+
     return (
         <Modal
             {...props}
@@ -21,14 +36,14 @@ export default function FormModal(props) {
                     {props.title}
                 </Modal.Title>
             </Modal.Header>
-            <Form className='form-padding'>
+            <Form onSubmit={submit} className='form-padding'>
                 {
-                    props.fields.map(function (field) {
+                    props.fields.map(function (field, key) {
                         return (
-                            <Row className="mb-3">
-                                <Form.Group as={Col}>
+                            <Row key={key} className="mb-3">
+                                <Form.Group  as={Col} controlId={field}>
                                     <Form.Label>{toCapitalLetter(field)}</Form.Label>
-                                    <Form.Control placeholder={field} />
+                                    <Form.Control onChange={onChange} placeholder={field} />
                                 </Form.Group>
                             </Row>
                         )

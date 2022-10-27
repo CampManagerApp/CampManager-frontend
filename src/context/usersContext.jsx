@@ -8,39 +8,29 @@ const UserContextProvider  = (props) => {
     const [users, setUser] = useState([
         {
             id:uuidv4(),
-            name: 'User 1',
-            status: 'Online',
-            admin: 'Joel',
+            name: 'USER1',
             role:'admin'
         },
         {
             id:uuidv4(),
-            name: 'User 2',
-            status: 'Online',
-            admin: 'Jordi',
+            name: 'USER2',
             role:'admin'
         },
         {
             id:uuidv4(),
-            name: 'User 3',
-            status: 'Online',
-            admin: 'Alejandro',
-            role:'admin'
+            name: 'USER3',
+            role:'cousellor'
         },
         {
             id:uuidv4(),
-            name: 'Organisation 4',
-            status: 'Online',
-            admin: 'Carlos',
-            role:'admin'
+            name: 'USER3',
+            role:'cousellor'
         },
 
         {
             id:uuidv4(),
-            name: 'Organisation 5',
-            status: 'Online',
-            admin: 'kooo',
-            role:'admi1n'
+            name: 'USER4',
+            role:'admin'
         },
 ])
 
@@ -49,8 +39,8 @@ const users_list = users.map((user) => {return user})
 
 
 
-const addUser = (name, user, admin) => {
-    setUser([...users , {id:uuidv4(), name, admin}])
+const addUser = (name, role) => {
+    setUser([...users , {id:uuidv4(), name, role}])
 }
 
 const deleteUser = (id) => {
@@ -61,8 +51,12 @@ const updateUser = (id, updatedUser) => {
     setUser(users.map((user) => user.id === id ? updatedUser : user))
 }
 
+const getUser = (id) => {
+    return users.filter(user => user.id == id)
+}
+
     return (
-        <UserContext.Provider value={{users_list, addUser, deleteUser, updateUser}}>
+        <UserContext.Provider value={{users_list, getUser, addUser, deleteUser, updateUser}}>
             {props.children}
         </UserContext.Provider>
     )
