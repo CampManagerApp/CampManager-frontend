@@ -1,8 +1,4 @@
 import './App.css';
-
-import { Routes, Route } from "react-router-dom";
-
-
 import SuperAdminPage from './pages/superadmin/SuperAdminPage';
 import LoginPage from './pages/authentication/LoginPage';
 import RegisterPage from './pages/authentication/RegisterPage';
@@ -15,17 +11,19 @@ import AddOrgUserPage from './pages/organisation/AddOrgUserPage';
 import UpdateOrgUserPage from './pages/organisation/UpdateOrgUserPage';
 import ErrorBoundary from './components/errors/ErrorBoundary';
 import UserStatusProvider from './context/UserStatusContext';
-
+import { useNavigate, Route, Routes } from "react-router-dom";
 
 
 function App() {
+  const navigate = useNavigate();
   return (
     <div className="App">
       <ErrorBoundary>
         <UserStatusProvider>
           <ApplicationNavbar />
           <Routes>
-            <Route path="/admin" element={<LoginPage />} />
+            <Route path="/admin" element={<LoginPage goto={() => { navigate('/admin/panel') }} />} />
+            <Route path="/login" element={<LoginPage goto={() => { navigate('/listoforganisations') }} />} />
             <Route path="/admin/panel" element={<SuperAdminPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/admin/organisation/create" element={<CreateOrganisationPage />} />

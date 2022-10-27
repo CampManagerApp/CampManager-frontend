@@ -4,7 +4,6 @@ import OrganistationForm from '../../components/organisation/OrganistationForm';
 import { addOrganisation } from '../../services/superadmin/Organisations';
 import { useNavigate } from 'react-router-dom';
 
-
 export default function CreateOrganisationPage() {
 
     const navigate = useNavigate()

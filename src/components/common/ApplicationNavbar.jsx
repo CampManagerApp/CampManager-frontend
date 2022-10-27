@@ -14,7 +14,7 @@ export default function ApplicationNavbar() {
     const { update_state, is_unAuthenticated, is_superAdmin, is_user } = useContext(UserStatusContext)
 
     function logout() {
-        navigate('/admin')
+        navigate('/login')
         window.sessionStorage.removeItem("token")
     }
 

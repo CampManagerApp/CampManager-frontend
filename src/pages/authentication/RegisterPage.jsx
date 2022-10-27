@@ -3,7 +3,6 @@ import RegisterForm from "../../components/authentication/RegisterForm"
 
 import './RegisterPage.css'
 
-
 export default function RegisterPage () {
     const navigate = useNavigate();
 

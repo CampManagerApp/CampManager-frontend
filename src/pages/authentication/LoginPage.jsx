@@ -6,17 +6,15 @@ import { useState } from "react";
 
 import './LoginPage.css'
 
-
-  
-
-export default function LoginPage () {
+export default function LoginPage ({goto}) {
     const navigate = useNavigate();
     const asyncError = useAsyncError()
     
 
     function handleSubmit(form) {
         loginRequest(form).then(() => {
-            navigate('/admin/panel')
+            //navigate('/admin/panel')
+            goto()
         }).catch(err => {
             asyncError(new Error(err))
         })
