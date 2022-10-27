@@ -39,9 +39,9 @@ export default function ListTable({ children, list, onDelete, onAdd, onUpdate })
                                     }}
                                         className="pointer-row">
                                         <th scope="row">{i}</th>
-                                        {children.map(function (item) {
+                                        {children.map(function (item, key) {
                                             return (
-                                                <td>{org[item.props.children.toLowerCase()]}</td>
+                                                <td key={key}>{org[item.props.children.toLowerCase()]}</td>
                                             )
                                         })}
                                         <td onClick={e => e.stopPropagation()} width="200px">
