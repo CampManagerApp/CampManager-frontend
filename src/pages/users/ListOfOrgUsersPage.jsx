@@ -47,7 +47,6 @@ function ListOfOrgUsers() {
     }
 
     function onUpdate(id) {
-        //navigate(`/admin/organisationusers/update/${id}`, { replace: true })
         const form = getUser(id)[0]
         setSelectUser(form)
         setModalShowUpdate(true)
