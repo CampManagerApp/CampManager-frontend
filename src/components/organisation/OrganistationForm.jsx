@@ -39,9 +39,14 @@ export default function OrganistationForm({onSubmit, onCancel, form_values = {},
                     <Form.Control onChange={onUpdate} type="text" value={getValue("name")} placeholder="Organisation Name" />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="admin">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control onChange={onUpdate} type="text" value={getValue("admin")} placeholder="Admin Name" />
+                <Form.Group className="mb-3" controlId="manager">
+                    <Form.Label>Manager</Form.Label>
+                    <Form.Control onChange={onUpdate} type="text" value={getValue("manager")} placeholder="Manager name" />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="description">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control onChange={onUpdate} type="text" value={getValue("description")} placeholder="Description" />
                 </Form.Group>
                 <div className="d-grid gap-2 ">
                     <Button type="submit" className="btn btn-primary">
