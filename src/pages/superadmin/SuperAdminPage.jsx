@@ -37,11 +37,11 @@ function OrganizationTableList() {
     }
 
     function onAdd() {
-        navigate('/admin/organisation/create', { replace: true })
+        navigate('/superadmin/organisation/create', { replace: true })
     }
 
     function onUpdate(id) {
-        navigate(`/admin/organisation/update/${id}`, { replace: true })
+        navigate(`/superadmin/organisation/update/${id}`, { replace: true })
     }
 
     useEffect(() => {

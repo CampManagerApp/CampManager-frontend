@@ -22,12 +22,12 @@ function App() {
         <UserStatusProvider>
           <ApplicationNavbar />
           <Routes>
-            <Route path="/admin" element={<LoginPage next_user_status={USER_STATUS.SUPERADMIN} goto={() => { navigate('/admin/panel') }} />} />
+            <Route path="/superadmin" element={<LoginPage next_user_status={USER_STATUS.SUPERADMIN} goto={() => { navigate('/superadmin/panel') }} />} />
             <Route path="/login" element={<LoginPage goto={() => { navigate('/listoforganisations') }} />} />
-            <Route path="/admin/panel" element={<SuperAdminPage />} />
+            <Route path="/superadmin/panel" element={<SuperAdminPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/admin/organisation/create" element={<CreateOrganisationPage />} />
-            <Route path="/admin/organisation/update" element={<UpdateOrganisationPage />} >
+            <Route path="/superadmin/organisation/create" element={<CreateOrganisationPage />} />
+            <Route path="/superadmin/organisation/update" element={<UpdateOrganisationPage />} >
               <Route path=":organisationId" element={<UpdateOrganisationPage />} />
             </Route>
             <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
