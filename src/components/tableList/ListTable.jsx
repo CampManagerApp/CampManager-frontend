@@ -2,15 +2,14 @@ import Button from 'react-bootstrap/Button';
 import { IconContext } from 'react-icons';
 import * as Icons from '../../design/icons.js'
 import React, { useEffect, useState } from "react";
-import ModalOrganisation from '../modal/ModalOrganisation.jsx';
 import ModalSimple from '../modal/ModalSimple';
 import TableHeaderItem from './TableHeaderItem.jsx';
-
-
 import './ListTable.css'
+import ConfirmationModal from '../modal/ConfirmationModal.jsx';
 
 export default function ListTable({ children, list, onDelete, onAdd, onUpdate }) {
     const [modalShow, setModalShow] = useState(false);
+    const [modalShowDelete, setModalShowDelete] = useState(false);
     const [item, setitem] = useState({});
 
     useEffect(()=> {
@@ -20,6 +19,7 @@ export default function ListTable({ children, list, onDelete, onAdd, onUpdate })
     return (
         <div>
             <ModalSimple item={item} show={modalShow} onHide={() => setModalShow(false)} />
+            <ConfirmationModal item={item} onConfirmation={onDelete} show={modalShowDelete} onHide={() => setModalShowDelete(false)} />
             <div className='container '>
                 <div className="scrollable-table">
                     <table className="table table-hover" id="job-table">
@@ -46,7 +46,9 @@ export default function ListTable({ children, list, onDelete, onAdd, onUpdate })
                                         })}
                                         <td onClick={e => e.stopPropagation()} width="200px">
                                             <Button type="button" className="btn btn-danger" onClick={() => {
-                                                onDelete(org.id)
+                                                setitem(org)
+                                                setModalShowDelete(true)
+                                                // onDelete(org.id)
                                             }}>Delete <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Delete /></IconContext.Provider></Button>{' '}
                                             <Button type="button" className="btn btn-primary" onClick={() => { onUpdate(org.id) }}>
                                                 Edit
