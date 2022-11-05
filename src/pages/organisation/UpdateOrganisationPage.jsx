@@ -15,14 +15,14 @@ export default function UpdateOrganisationPage() {
     
     function onSubmit(form){
         updateOrganisation(params.organisationId, form).then(() => {
-            navigate('/admin/panel')
+            navigate('/superadmin/panel')
         }).catch((error) => {
             alert(error.response)
         })
     }
 
     function onCancel() {
-        navigate('/admin/panel')
+        navigate('/superadmin/panel')
     }
 
     useEffect(() => {

@@ -1,25 +1,13 @@
 import PageHeader from '../../components/common/PageHeader';
-
-
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
-import { getOrganisationList, deleteOrganisation, addOrganisation } from '../../services/superadmin/Organisations';
-import { IconContext } from 'react-icons';
 import { useAsyncError } from '../../components/errors/Errors';
 import { UserContext } from '../../context/usersContext'
 import UserContextProvider from '../../context/usersContext';
-
-import * as Icons from '../../design/icons.js'
-import logoImg from '../../design/campmanager.png';
-
 import './ListOfOrgUsersPage.css'
 import TableHeaderItem from '../../components/tableList/TableHeaderItem';
 import FormModal from '../../components/modal/FormModal';
 import ListTable from '../../components/tableList/ListTable';
-
-
-
-
 
 function ListOfOrgUsers() {
     const usersList = [

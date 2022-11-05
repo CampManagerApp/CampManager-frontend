@@ -17,7 +17,7 @@ export default function ApplicationNavbar() {
         window.sessionStorage.removeItem("token")
         update_state(USER_STATUS.UNAUTHENTICATED)
         if (is_superAdmin()) {
-            navigate('/admin')
+            navigate('/superadmin')
         } else {
             navigate('/login')
         }
