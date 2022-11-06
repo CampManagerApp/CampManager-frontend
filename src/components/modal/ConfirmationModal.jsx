@@ -16,16 +16,14 @@ export default function ConfirmationModal(props) {
         <Modal.Header closeButton>
           <Modal.Title>WARNING</Modal.Title>
         </Modal.Header>
-        {Object.keys(props.item).map(function (key) {
-                        return (
-                          <Modal.Body>Are you sure you want to delete the user</Modal.Body>                   
-                        )
-                    })
-                }  
+        <Modal.Body>Are you sure you want to delete.</Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={
-            ()=>{props.onConfirmation(props.item.id)}} >Delete</Button>
-          <Button variant="primary" >Cancel</Button>
+          <Button variant="danger" onClick={() => {
+              props.onConfirmation()
+              props.onHide()
+            }
+          } >Delete</Button>
+          <Button variant="primary" onClick={props.onHide} >Cancel</Button>
         </Modal.Footer>
       </Modal>
     </>
