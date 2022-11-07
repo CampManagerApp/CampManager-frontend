@@ -25,7 +25,7 @@ export default function ModalSimple(props) {
                 {
                     Object.keys(props.item).map(function (key, index) {
                         return (
-                            <Row className="mb-3">
+                            <Row key={index} className="mb-3">
                                 <Form.Group as={Col}>
                                     <Form.Label>{toCapitalLetter(key)}</Form.Label>
                                     <Form.Control placeholder={props.item[key]} disabled />

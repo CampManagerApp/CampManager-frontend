@@ -24,20 +24,22 @@ export default function ApplicationNavbar() {
     }
 
     return (
-        <Navbar bg="dark" variant="dark">
-            <Container>
-                <Navbar.Brand><img src={require('../../design/campmanager.png')} />{' '}
-                    Camp Manager
-                </Navbar.Brand>
-                <Nav className="container-fluid">
-                    {/* <Nav.Link className='ms-auto' href="#pricing">Loggout</Nav.Link> */}
-                    {!is_unAuthenticated() ?
-                        <Button variant="dark" className="ms-auto" onClick={logout}>
-                            Logout <Icons.Logout />
-                        </Button> : ''
-                    }
-                </Nav>
-            </Container>
-        </Navbar>
+        <div>
+            <Navbar bg="dark" variant="dark">
+                <Container>
+                    <Navbar.Brand><img src={require('../../design/campmanager.png')} />{' '}
+                        Camp Manager
+                    </Navbar.Brand>
+                    <Nav className="container-fluid">
+                        {/* <Nav.Link className='ms-auto' href="#pricing">Loggout</Nav.Link> */}
+                        {!is_unAuthenticated() ?
+                            <Button variant="dark" className="ms-auto" onClick={logout}>
+                                Logout <Icons.Logout />
+                            </Button> : ''
+                        }
+                    </Nav>
+                </Container>
+            </Navbar>
+        </div>
     )
 }
