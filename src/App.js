@@ -13,6 +13,7 @@ import ErrorBoundary from './components/errors/ErrorBoundary';
 import { useNavigate, Route, Routes } from "react-router-dom";
 import ApplicationContextProvider from './components/common/ApplicationContextProvider';
 import { USER_STATUS } from './context/UserStatusContext';
+import ApplicationHeader from './components/common/ApplicationHeader';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
     <div className="App">
       <ErrorBoundary>
         <ApplicationContextProvider>
-            <ApplicationNavbar />
+            <ApplicationHeader />
             <Routes>
               <Route path="/superadmin" element={<LoginPage next_user_status={USER_STATUS.SUPERADMIN} goto={() => { navigate('/superadmin/panel') }} />} />
               <Route path="/login" element={<LoginPage goto={() => { navigate('/listoforganisations') }} />} />
