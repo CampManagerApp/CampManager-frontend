@@ -15,3 +15,11 @@ thead tr:nth-child(1) th{
 .actions-buttons{
     width:200px;
 }
+.button-delete{
+    margin-right: 5px;
+}
+@media (max-width:767px) {
+    .hide-text-buttons {
+        font-size: 0px !important;
+    }
+}

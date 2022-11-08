@@ -51,13 +51,19 @@ export default function ListTable({ children, list, onDelete, onAdd, onUpdate })
                                             )
                                         })}
                                         <td onClick={e => e.stopPropagation()} width="200px">
-                                            <Button type="button" className="btn btn-danger" onClick={() => {
+                                        <button type="button" class="btn btn-danger button-delete" onClick={() => {
                                                 showConfirmationModal(() => {delete_item(org.id)})
-                                            }}>Delete <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Delete /></IconContext.Provider></Button>{' '}
-                                            <Button type="button" className="btn btn-primary" onClick={() => { onUpdate(org.id) }}>
+                                            }}><span class="hide-text-buttons">Delete</span><i class="bi bi-trash"></i></button>
+                                            {/* <Button type="button" className="btn btn-danger" onClick={() => {
+                                                showConfirmationModal(() => {delete_item(org.id)})
+                                            }}>Delete <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Delete /></IconContext.Provider></Button>{' '} */}
+                                        <button type="button" class="btn btn-primary" onClick={() => { onUpdate(org.id) }}>
+                                            <span class="hide-text-buttons">Edit</span><i class="bi bi-pen"></i>
+                                        </button>
+                                            {/* <Button type="button" className="btn btn-primary" onClick={() => { onUpdate(org.id) }}>
                                                 Edit
                                                 <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Edit /></IconContext.Provider>
-                                            </Button>
+                                            </Button> */}
                                         </td>
                                     </tr>
                                 )
