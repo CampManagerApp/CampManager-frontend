@@ -7,6 +7,7 @@ import * as Icons from '../../design/icons'
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserStatusContext, USER_STATUS } from '../../context/UserStatusContext';
+import BackPage from './BackPage';
 
 
 export default function ApplicationNavbar() {
@@ -40,6 +41,7 @@ export default function ApplicationNavbar() {
                     </Nav>
                 </Container>
             </Navbar>
+            <BackPage />
         </div>
     )
 }
