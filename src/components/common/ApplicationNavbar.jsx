@@ -14,7 +14,7 @@ import BackPage from './BackPage';
 export default function ApplicationNavbar() {
     const navigate = useNavigate()
     const { update_state, is_unAuthenticated, is_superAdmin, is_user } = useContext(UserStatusContext)
-    const [expand, setExpand] = useState(false)
+    const [expand, setExpand] = useState('sm')
 
     function logout() {
         window.sessionStorage.removeItem("token")
@@ -24,13 +24,18 @@ export default function ApplicationNavbar() {
         } else {
             navigate('/login')
         }
+        setExpand(true)
     }
+
 
     return (
         <div>
-            <Navbar expand={expand}>
-                <Container fluid>
-                    <Navbar.Brand href="#">CampManager</Navbar.Brand>
+            <Navbar expand={expand} className="mb-3">
+                <Container>
+                    <div className='navbar-brand'>
+                        <img src={require('../../design/campmanager.png')} />{' '}
+                        Camp Manager
+                    </div>
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                     <Navbar.Offcanvas
                         id={`offcanvasNavbar-expand-${expand}`}
@@ -43,8 +48,14 @@ export default function ApplicationNavbar() {
                             </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            
-
+                            <Nav className="container-fluid" closeButton>
+                                {/* <Nav.Link className='ms-auto' href="#pricing">Loggout</Nav.Link> */}
+                                {!is_unAuthenticated() ?
+                                    <Button variant="dark" className="ms-auto" onClick={logout}>
+                                        Logout <Icons.Logout />
+                                    </Button> : ''
+                                }
+                            </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
                 </Container>
