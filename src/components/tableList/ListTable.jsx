@@ -7,6 +7,7 @@ import TableHeaderItem from './TableHeaderItem.jsx';
 import './ListTable.css'
 import ConfirmationModal from '../modal/ConfirmationModal.jsx';
 import { MessageContext } from '../../context/MessageContex.jsx';
+import Col from 'react-bootstrap/Col';
 
 export default function ListTable({ children, list, onDelete, onAdd, onUpdate }) {
     const [modalShow, setModalShow] = useState(false);
@@ -51,13 +52,15 @@ export default function ListTable({ children, list, onDelete, onAdd, onUpdate })
                                             )
                                         })}
                                         <td onClick={e => e.stopPropagation()} width="200px">
-                                            <Button type="button" className="btn btn-danger" onClick={() => {
+                                        <button type="button" class="btn btn-danger button-delete" onClick={() => {
                                                 showConfirmationModal(() => {delete_item(org.id)})
-                                            }}>Delete <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Delete /></IconContext.Provider></Button>{' '}
-                                            <Button type="button" className="btn btn-primary" onClick={() => { onUpdate(org.id) }}>
-                                                Edit
-                                                <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Edit /></IconContext.Provider>
-                                            </Button>
+                                            }}><span class="d-none d-lg-inline d-print-flex">Delete</span><i class="bi bi-trash"></i></button>
+                                             {/* <Button type="button" className="btn btn-danger" onClick={() => {
+                                                showConfirmationModal(() => {delete_item(org.id)})
+                                            }}><Col lg="6" className="d-none d-lg-inline">Delete</Col> <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Delete /></IconContext.Provider></Button> */}
+                                        <button type="button" class="btn btn-primary" onClick={() => { onUpdate(org.id) }}>
+                                            <span class="d-none d-lg-inline d-print-flex">Edit</span><i class="bi bi-pen"></i>
+                                        </button>
                                         </td>
                                     </tr>
                                 )
