@@ -10,10 +10,11 @@ import ListOfOrgUsersPage from './pages/users/ListOfOrgUsersPage';
 import AddOrgUserPage from './pages/organisation/AddOrgUserPage';
 import UpdateOrgUserPage from './pages/organisation/UpdateOrgUserPage';
 import ErrorBoundary from './components/errors/ErrorBoundary';
-import { useNavigate, Route, Routes } from "react-router-dom";
+import { useNavigate, Route, Routes, Navigate } from "react-router-dom";
 import ApplicationContextProvider from './components/common/ApplicationContextProvider';
 import { USER_STATUS } from './context/UserStatusContext';
 import ApplicationHeader from './components/common/ApplicationHeader';
+import AppFooter from './components/common/footer/AppFooter';
 
 
 function App() {
@@ -38,7 +39,9 @@ function App() {
               <Route path="/admin/organisationusers/update" element={<UpdateOrgUserPage />} >
                 <Route path=":userId" element={<UpdateOrgUserPage />} />
               </Route>
+              <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
+            <AppFooter />
         </ApplicationContextProvider>
       </ErrorBoundary>
     </div>

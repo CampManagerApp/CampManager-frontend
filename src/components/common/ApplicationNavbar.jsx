@@ -24,14 +24,13 @@ export default function ApplicationNavbar() {
         } else {
             navigate('/login')
         }
-        setExpand(true)
+        setExpand('sm')
     }
 
 
     return (
         <div>
             <Navbar expand={expand} className="mb-3">
-                <Container>
                     <div className='navbar-brand'>
                         <img src={require('../../design/campmanager.png')} />{' '}
                         Camp Manager
@@ -48,7 +47,7 @@ export default function ApplicationNavbar() {
                             </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            <Nav className="container-fluid" closeButton>
+                            <Nav className="container-fluid">
                                 {/* <Nav.Link className='ms-auto' href="#pricing">Loggout</Nav.Link> */}
                                 {!is_unAuthenticated() ?
                                     <Button variant="dark" className="ms-auto" onClick={logout}>
@@ -58,7 +57,6 @@ export default function ApplicationNavbar() {
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
-                </Container>
             </Navbar>
         </div>
     )

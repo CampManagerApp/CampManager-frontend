@@ -1,4 +1,4 @@
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import ApplicationNavbar from "./ApplicationNavbar";
 import './ApplicationHeader.css'
 import BackPage from "./BackPage";
@@ -11,9 +11,6 @@ export default function ApplicationHeader() {
                     <ApplicationNavbar />
                 </Container>
             </div>
-            <Container>
-                <BackPage />
-            </Container>
         </div>
     )
 }

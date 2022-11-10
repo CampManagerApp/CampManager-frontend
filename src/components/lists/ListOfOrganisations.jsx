@@ -1,4 +1,5 @@
 import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
 import './ListOfOrganisations.css'
 import * as Icons from '../../design/icons.js'
 import React, { useState, useEffect } from "react";
@@ -7,6 +8,7 @@ import Form from 'react-bootstrap/Form';
 import { getOrganisation } from '../../services/superadmin/Organisations';
 import { useContext } from 'react';
 import { UserOrganisationsContex } from '../../context/UserOrganisationsContex';
+import { Col, Container, Row } from 'react-bootstrap';
 
 export default function ListOfOrganisations({ handle }) {
   //it creates a state open with default as false
@@ -63,7 +65,7 @@ export default function ListOfOrganisations({ handle }) {
   }
 
   useEffect(() => {
-    
+
   }, [organisation])
 
 
@@ -73,22 +75,30 @@ export default function ListOfOrganisations({ handle }) {
 
   return (
     <div className='list-group-page-wrapper'>
-      <h3 className='title'>Select an organisation</h3>
       <div className="list-group list-group-light">
         {orgList.map((org, key) => {
-            return (
-              <a key={key} onClick={handle} className="list-group-item list-group-item-action px-3 border-0 rounded-3 mb-2 list-group-item-primary pointer-item">
-                {org.name}
-              </a>)
-          })
+          return (
+            <a key={key} onClick={handle} className="list-group-item list-group-item-action px-5 border-4 pointer-item">
+              {org.name}
+            </a>)
+        })
         }
       </div>
       <br></br>
-      <div>
-        <button type="button" className="btn btn-primary" onClick={() => {
-          setButtonPopup(true)
-        }}>Add Organisation <Icons.AddOrganisation /></button>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <button type="button" className="btn btn-primary" onClick={() => {
+              setButtonPopup(true)
+            }}>External User</button>
+          </Col>
+          <Col>
+            <button type="button" className="btn btn-primary" onClick={() => {
+              setButtonPopup(true)
+            }}>Add Organisation</button>
+          </Col>
+        </Row>
+      </Container>
       <PopUp trigger={buttonPopup}>
         <div >
           <h3>Add organisation</h3>
@@ -101,7 +111,7 @@ export default function ListOfOrganisations({ handle }) {
             </Form.Group>
             <div className="d-grid gap-2 ">
               <button type="submit" className="btn btn-primary" id='btn-add' onClick={() => {
-                addOrg({name:'OrgTest'})
+                addOrg({ name: 'OrgTest' })
               }}>
                 Add <Icons.AddOrganisation />
               </button>
