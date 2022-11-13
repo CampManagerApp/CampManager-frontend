@@ -4,7 +4,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import * as Icons from '../../design/icons'
-
+import { CgProfile } from "react-icons/cg";
+import { GrTask } from "react-icons/gr";
+import { GiForestCamp } from "react-icons/gi";
+import { VscOrganization } from "react-icons/vsc";
+import { CgArrowsExchangeAlt } from "react-icons/cg";
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserStatusContext, USER_STATUS } from '../../context/UserStatusContext';
@@ -27,7 +31,6 @@ export default function ApplicationNavbar() {
         setExpand('sm')
     }
 
-
     return (
         <div>
             <Navbar expand={expand} className="mb-3">
@@ -43,8 +46,23 @@ export default function ApplicationNavbar() {
                     >
                         <Offcanvas.Header closeButton>
                             <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                                Offcanvas
+                                Menu
                             </Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Header >
+                            <Nav.Link href="#action1"><CgProfile/>{" "}My profile</Nav.Link>
+                        </Offcanvas.Header>
+                        <Offcanvas.Header >
+                            <Nav.Link href="#action1"><GrTask/>{" "}My tasks</Nav.Link>
+                        </Offcanvas.Header>
+                        <Offcanvas.Header >
+                            <Nav.Link href="#action1"><GiForestCamp/>{" "}My campaigns</Nav.Link>
+                        </Offcanvas.Header>
+                        <Offcanvas.Header >
+                            <Nav.Link href="#action1"><VscOrganization/>{" "}My organisations</Nav.Link>
+                        </Offcanvas.Header>
+                        <Offcanvas.Header >
+                            <Nav.Link href="#action1"><CgArrowsExchangeAlt/>{" "}Change organisation</Nav.Link>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
                             <Nav className="container-fluid">
