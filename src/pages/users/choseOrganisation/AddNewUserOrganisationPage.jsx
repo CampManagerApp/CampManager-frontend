@@ -14,6 +14,7 @@ import { UserOrganisationsContex } from '../../../context/UserOrganisationsConte
 export default function AddNewUserOrganisation() {
     const navigate = useNavigate();
     const [confirmationModalShow, setConfirmationModalShow] = useState(false)
+    const [usersToClaim, setUsersToClaim] = new useState([])
     const { get_org_unclaimed_users } = useContext(organisationContex)
     const { addOrg } = useContext(UserOrganisationsContex)
 
@@ -25,6 +26,11 @@ export default function AddNewUserOrganisation() {
 
     function cancelClaimUser() {
         setConfirmationModalShow(false)
+    }
+
+    function load_users_to_claim() {
+        const users = get_org_unclaimed_users()
+        setUsersToClaim(users)
     }
 
     return (
@@ -39,7 +45,7 @@ export default function AddNewUserOrganisation() {
                 </Row>
                 <Row className="d-flex justify-content-md-center">
                     <Col>
-                        <Button className="mt-3">Search</Button>
+                        <Button className="mt-3" onClick={load_users_to_claim}>Search</Button>
                     </Col>
                 </Row>
             </Container>
@@ -49,7 +55,7 @@ export default function AddNewUserOrganisation() {
                 <hr style={{ height: "12px" }} />
                 <ListGroup bsPrefix="user-list">
                     {
-                        get_org_unclaimed_users().map((user, key) => {
+                        usersToClaim.map((user, key) => {
                             return <ListGroup.Item key={key} onClick={() => { setConfirmationModalShow(true) }}>{user.name}</ListGroup.Item>
                         })
                     }
