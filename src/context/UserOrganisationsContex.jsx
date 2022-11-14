@@ -28,7 +28,7 @@ export default function UserOrganisationsProvider(props) {
         setOrgUserList([...orgUserList, org])
     }
 
-
+    
     return (
         <UserOrganisationsContex.Provider value={{orgList, addOrg}}>
             {props.children}

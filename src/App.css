@@ -15,3 +15,7 @@
   height: 1em;
   width: 1em;
 }
+
+#root {
+    height: 100vh;
+}
