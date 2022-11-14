@@ -1,8 +1,10 @@
-import { Container, Row } from 'react-bootstrap';
+import { Card, Container, ListGroupItem, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-export default function ConfirmationClaim({ show = false, onConfirmation=()=>{}, onCancel=()=>{}}) {
+import './ConfirmationClaim.css'
+
+export default function ConfirmationClaim({user='' ,show = false, onConfirmation=()=>{}, onCancel=()=>{}}) {
     return (
         <Modal show={show} centered={true} >
             <Modal.Dialog>
@@ -12,7 +14,7 @@ export default function ConfirmationClaim({ show = false, onConfirmation=()=>{},
 
                 <Modal.Body>
                     <p>You are about to claim the name</p>
-
+                        <Card bsPrefix='confirmation-user-box' body>{user}</Card>
                     <p>Are you sure?</p>
                 </Modal.Body>
 

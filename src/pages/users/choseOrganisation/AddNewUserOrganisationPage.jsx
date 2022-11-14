@@ -13,19 +13,19 @@ import { UserOrganisationsContex } from '../../../context/UserOrganisationsConte
 
 export default function AddNewUserOrganisation() {
     const navigate = useNavigate();
-    const [confirmationModalShow, setConfirmationModalShow] = useState(false)
+    const [confirmationModalState, setConfirmationModalState] = useState({user:'', show:false})
     const [usersToClaim, setUsersToClaim] = new useState([])
     const { get_org_unclaimed_users } = useContext(organisationContex)
     const { addOrg } = useContext(UserOrganisationsContex)
 
     function claimUser() {
-        setConfirmationModalShow(false)
+        setConfirmationModalState({user:'', show:false})
         addOrg({name:'Colònies Aina'})
         navigate('/listoforganisations/');
     }
 
     function cancelClaimUser() {
-        setConfirmationModalShow(false)
+        setConfirmationModalState({user:'', show:false})
     }
 
     function load_users_to_claim() {
@@ -43,7 +43,7 @@ export default function AddNewUserOrganisation() {
                         <Form.Control id="basic-url" aria-describedby="basic-addon3" />
                     </Col>
                 </Row>
-                <Row className="d-flex justify-content-md-center">
+                <Row className="d-flex justify-content-end">
                     <Col>
                         <Button className="mt-3" onClick={load_users_to_claim}>Search</Button>
                     </Col>
@@ -56,12 +56,13 @@ export default function AddNewUserOrganisation() {
                 <ListGroup bsPrefix="user-list">
                     {
                         usersToClaim.map((user, key) => {
-                            return <ListGroup.Item key={key} onClick={() => { setConfirmationModalShow(true) }}>{user.name}</ListGroup.Item>
-                        })
+                            return <ListGroup.Item key={key} onClick={() => { setConfirmationModalState({user:user.name, show:true}) }}>{user.name}</ListGroup.Item>
+                        })  
                     }
                 </ListGroup>
             </Container>
-            <ConfirmationClaim show={confirmationModalShow}
+            <ConfirmationClaim show={confirmationModalState.show} 
+                user={confirmationModalState.user}
                 onConfirmation={claimUser}
                 onCancel={cancelClaimUser} />
         </>
