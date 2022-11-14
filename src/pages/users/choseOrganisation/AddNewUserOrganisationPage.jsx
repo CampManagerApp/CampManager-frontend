@@ -6,14 +6,20 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import ConfirmationClaim from './ConfirmationClaim';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { organisationContex } from '../../../context/OrganisationContex';
+import { UserOrganisationsContex } from '../../../context/UserOrganisationsContex';
 
 
 export default function AddNewUserOrganisation() {
     const navigate = useNavigate();
     const [confirmationModalShow, setConfirmationModalShow] = useState(false)
+    const { get_org_unclaimed_users } = useContext(organisationContex)
+    const { addOrg } = useContext(UserOrganisationsContex)
 
     function claimUser() {
         setConfirmationModalShow(false)
+        addOrg({name:'Colònies Aina'})
         navigate('/listoforganisations/');
     }
 
@@ -40,13 +46,13 @@ export default function AddNewUserOrganisation() {
 
             <Container>
                 <h5>Colònies Aina</h5>
-                <hr style={{height:"12px"}}/>
+                <hr style={{ height: "12px" }} />
                 <ListGroup bsPrefix="user-list">
-                    <ListGroup.Item onClick={()=>{setConfirmationModalShow(true)}}>Alejandro Clavera</ListGroup.Item>
-                    <ListGroup.Item onClick={()=>{setConfirmationModalShow(true)}}>Fadil Aba</ListGroup.Item>
-                    <ListGroup.Item onClick={()=>{setConfirmationModalShow(true)}}>Carlos Isaac</ListGroup.Item>
-                    <ListGroup.Item onClick={()=>{setConfirmationModalShow(true)}}>Jordi Lazo</ListGroup.Item>
-                    <ListGroup.Item onClick={()=>{setConfirmationModalShow(true)}}>Joel Aumedes</ListGroup.Item>
+                    {
+                        get_org_unclaimed_users().map((user, key) => {
+                            return <ListGroup.Item key={key} onClick={() => { setConfirmationModalShow(true) }}>{user.name}</ListGroup.Item>
+                        })
+                    }
                 </ListGroup>
             </Container>
             <ConfirmationClaim show={confirmationModalShow}

@@ -34,7 +34,6 @@ function App() {
               <Route path="/superadmin/organisation/update" element={<UpdateOrganisationPage />} >
                 <Route path=":organisationId" element={<UpdateOrganisationPage />} />
               </Route>
-              <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
               <Route path="/admin/organisationusers" element={<ListOfOrgUsersPage />} />
               <Route path="/admin/organisationusers/add" element={<AddOrgUserPage />} />
               <Route path="/admin/organisationusers/update" element={<UpdateOrgUserPage />} >
@@ -42,6 +41,7 @@ function App() {
               </Route>
 
               {/* user organisations list */}
+              <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
               <Route path="/user/listoforganisations/add" element={<AddNewUserOrganisation />} ></Route>
               <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
