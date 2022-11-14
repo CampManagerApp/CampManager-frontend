@@ -16,6 +16,7 @@ import ApplicationContextProvider from './components/common/ApplicationContextPr
 import { USER_STATUS } from './context/UserStatusContext';
 import ApplicationHeader from './components/common/ApplicationHeader';
 import AppFooter from './components/common/footer/AppFooter';
+import AddNewUserOrganisation from './pages/users/choseOrganisation/AddNewUserOrganisationPage';
 
 
 
@@ -35,13 +36,16 @@ function App() {
               <Route path="/superadmin/organisation/update" element={<UpdateOrganisationPage />} >
                 <Route path=":organisationId" element={<UpdateOrganisationPage />} />
               </Route>
-              <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
               <Route path="/admin/organisationusers" element={<ListOfOrgUsersPage />} />
               <Route path="/admin/organisationusers/add" element={<AddOrgUserPage />} />
               <Route path="/admin/profile" element={<ProfileCardPage/>} />
               <Route path="/admin/organisationusers/update" element={<UpdateOrgUserPage />} >
                 <Route path=":userId" element={<UpdateOrgUserPage />} />
               </Route>
+
+              {/* user organisations list */}
+              <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
+              <Route path="/user/listoforganisations/add" element={<AddNewUserOrganisation />} ></Route>
               <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
             <AppFooter />

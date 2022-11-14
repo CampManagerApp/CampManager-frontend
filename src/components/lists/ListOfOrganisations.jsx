@@ -9,9 +9,11 @@ import { getOrganisation } from '../../services/superadmin/Organisations';
 import { useContext } from 'react';
 import { UserOrganisationsContex } from '../../context/UserOrganisationsContex';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 export default function ListOfOrganisations({ handle }) {
   //it creates a state open with default as false
+  const navigate = useNavigate();
   const [buttonPopup, setButtonPopup] = useState(false)
   const [form, setForm] = useState({})
   //error is active or not, default false
@@ -87,46 +89,16 @@ export default function ListOfOrganisations({ handle }) {
       <br></br>
       <Container>
         <Row>
-          <Col>
-            <button type="button" className="btn btn-primary" onClick={() => {
-              setButtonPopup(true)
+          <div>
+            <button type="button" className="btn btn-primary m-3" onClick={() => {
+              
             }}>External User</button>
-          </Col>
-          <Col>
             <button type="button" className="btn btn-primary" onClick={() => {
-              setButtonPopup(true)
+              navigate('/user/listoforganisations/add/')
             }}>Add Organisation</button>
-          </Col>
+          </div>
         </Row>
       </Container>
-      <PopUp trigger={buttonPopup}>
-        <div >
-          <h3>Add organisation</h3>
-          <Form className='p-5 p-sm-3 rounded' noValidate onSubmit={(event) => {
-            event.preventDefault();
-            handleSubmit(form)
-          }} id='inp'>
-            <Form.Group className="mb-3" controlId="code">
-              <Form.Control onChange={onUpdate} type="text" placeholder="Add your new organisation code " />
-            </Form.Group>
-            <div className="d-grid gap-2 ">
-              <button type="submit" className="btn btn-primary" id='btn-add' onClick={() => {
-                addOrg({ name: 'OrgTest' })
-              }}>
-                Add <Icons.AddOrganisation />
-              </button>
-              <p className="error" style={{
-                visibility: isActive ? 'visible' : 'hidden',
-                display: isActive ? 'contents' : 'none',
-              }}>Incorrect code</p>
-              <button type="button" className="btn btn-primary" id='btn-close' onClick={() => {
-                setButtonPopup(false)
-                setIsActive(false)
-              }}>Close <Icons.Close /></button>
-            </div>
-          </Form>
-        </div>
-      </PopUp>
     </div>
   );
 }

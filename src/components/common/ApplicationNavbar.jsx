@@ -23,6 +23,7 @@ export default function ApplicationNavbar() {
     function logout() {
         window.sessionStorage.removeItem("token")
         update_state(USER_STATUS.UNAUTHENTICATED)
+        setExpanded(false)
         if (is_superAdmin()) {
             navigate('/superadmin')
         } else {
@@ -32,43 +33,45 @@ export default function ApplicationNavbar() {
 
     return (
         <div>
-            <Navbar expanded={expanded} expand={false}className="mb-3">
-                    <div className='navbar-brand'>
-                        <img src={require('../../design/campmanager.png')} />{' '}
-                        Camp Manager
-                    </div>
-                    <Navbar.Toggle onClick={() => setExpanded(expanded ? true : "expanded")}/>
-                    <Navbar.Offcanvas
-                        id={`offcanvasNavbar-expand-${expanded}`}
-                        aria-labelledby={`offcanvasNavbarLabel-expand-${expanded}`}
-                        placement="end"
-                    >
-                        <Offcanvas.Header closeButton>
-                            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expanded}`}>
-                                Menu
-                            </Offcanvas.Title>
-                        </Offcanvas.Header>
-                        <Offcanvas.Header >
-                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgProfile/>{" "}My profile</Nav.Link>
-                        </Offcanvas.Header>
-                        <Offcanvas.Header >
-                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><GrTask/>{" "}My tasks</Nav.Link>
-                        </Offcanvas.Header>
-                        <Offcanvas.Header >
-                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")} href="#action1"><GiForestCamp/>{" "}My campaigns</Nav.Link>
-                        </Offcanvas.Header>
-                        <Offcanvas.Header >
-                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><VscOrganization/>{" "}My organisations</Nav.Link>
-                        </Offcanvas.Header>
-                        <Offcanvas.Header >
-                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgArrowsExchangeAlt/>{" "}Change organisation</Nav.Link>
-                        </Offcanvas.Header>
-                        <Offcanvas.Header>
+            <Navbar expanded={expanded} expand={false} className="mb-3" onToggle={() => {
+                setExpanded(expanded ? false : "expanded")
+            }}>
+                <div className='navbar-brand'>
+                    <img src={require('../../design/campmanager.png')} />{' '}
+                    Camp Manager
+                </div>
+                <Navbar.Toggle />
+                <Navbar.Offcanvas
+                    id={`offcanvasNavbar-expand-${expanded}`}
+                    aria-labelledby={`offcanvasNavbarLabel-expand-${expanded}`}
+                    placement="end"
+                >
+                    <Offcanvas.Header closeButton>
+                        <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expanded}`}>
+                            Menu
+                        </Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Header >
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgProfile />{" "}My profile</Nav.Link>
+                    </Offcanvas.Header>
+                    <Offcanvas.Header >
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><GrTask />{" "}My tasks</Nav.Link>
+                    </Offcanvas.Header>
+                    <Offcanvas.Header >
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")} href="#action1"><GiForestCamp />{" "}My campaigns</Nav.Link>
+                    </Offcanvas.Header>
+                    <Offcanvas.Header >
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><VscOrganization />{" "}My organisations</Nav.Link>
+                    </Offcanvas.Header>
+                    <Offcanvas.Header >
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgArrowsExchangeAlt />{" "}Change organisation</Nav.Link>
+                    </Offcanvas.Header>
+                    <Offcanvas.Header>
                         {!is_unAuthenticated() ?
-                            <Nav.Link onClick={logout}><Icons.Logout/>{" "}Logout</Nav.Link>:''
+                            <Nav.Link onClick={logout}><Icons.Logout />{" "}Logout</Nav.Link> : ''
                         }
-                        </Offcanvas.Header>
-                        </Navbar.Offcanvas>
+                    </Offcanvas.Header>
+                </Navbar.Offcanvas>
             </Navbar>
         </div>
     )
