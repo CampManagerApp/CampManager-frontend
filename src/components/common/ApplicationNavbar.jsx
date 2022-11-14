@@ -18,7 +18,7 @@ import BackPage from './BackPage';
 export default function ApplicationNavbar() {
     const navigate = useNavigate()
     const { update_state, is_unAuthenticated, is_superAdmin, is_user } = useContext(UserStatusContext)
-    const [expand, setExpand] = useState('sm')
+    const [expanded, setExpanded] = useState(false);
 
     function logout() {
         window.sessionStorage.removeItem("token")
@@ -28,53 +28,47 @@ export default function ApplicationNavbar() {
         } else {
             navigate('/login')
         }
-        setExpand('sm')
     }
 
     return (
         <div>
-            <Navbar expand={expand} className="mb-3">
+            <Navbar expanded={expanded} expand={false}className="mb-3">
                     <div className='navbar-brand'>
                         <img src={require('../../design/campmanager.png')} />{' '}
                         Camp Manager
                     </div>
-                    <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+                    <Navbar.Toggle onClick={() => setExpanded(expanded ? true : "expanded")}/>
                     <Navbar.Offcanvas
-                        id={`offcanvasNavbar-expand-${expand}`}
-                        aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+                        id={`offcanvasNavbar-expand-${expanded}`}
+                        aria-labelledby={`offcanvasNavbarLabel-expand-${expanded}`}
                         placement="end"
                     >
                         <Offcanvas.Header closeButton>
-                            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expanded}`}>
                                 Menu
                             </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Header >
-                            <Nav.Link href="#action1"><CgProfile/>{" "}My profile</Nav.Link>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgProfile/>{" "}My profile</Nav.Link>
                         </Offcanvas.Header>
                         <Offcanvas.Header >
-                            <Nav.Link href="#action1"><GrTask/>{" "}My tasks</Nav.Link>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><GrTask/>{" "}My tasks</Nav.Link>
                         </Offcanvas.Header>
                         <Offcanvas.Header >
-                            <Nav.Link href="#action1"><GiForestCamp/>{" "}My campaigns</Nav.Link>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")} href="#action1"><GiForestCamp/>{" "}My campaigns</Nav.Link>
                         </Offcanvas.Header>
                         <Offcanvas.Header >
-                            <Nav.Link href="#action1"><VscOrganization/>{" "}My organisations</Nav.Link>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><VscOrganization/>{" "}My organisations</Nav.Link>
                         </Offcanvas.Header>
                         <Offcanvas.Header >
-                            <Nav.Link href="#action1"><CgArrowsExchangeAlt/>{" "}Change organisation</Nav.Link>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgArrowsExchangeAlt/>{" "}Change organisation</Nav.Link>
                         </Offcanvas.Header>
-                        <Offcanvas.Body>
-                            <Nav className="container-fluid">
-                                {/* <Nav.Link className='ms-auto' href="#pricing">Loggout</Nav.Link> */}
-                                {!is_unAuthenticated() ?
-                                    <Button variant="dark" className="ms-auto" onClick={logout}>
-                                        Logout <Icons.Logout />
-                                    </Button> : ''
-                                }
-                            </Nav>
-                        </Offcanvas.Body>
-                    </Navbar.Offcanvas>
+                        <Offcanvas.Header>
+                        {!is_unAuthenticated() ?
+                            <Nav.Link onClick={logout}><Icons.Logout/>{" "}Logout</Nav.Link>:''
+                        }
+                        </Offcanvas.Header>
+                        </Navbar.Offcanvas>
             </Navbar>
         </div>
     )
