@@ -17,9 +17,13 @@ export default function OrganisationProvider(props) {
         return unclaimed_users
     }
 
+    function get_org_by_code(code) {
+        return {'id':0, name:'Colònies Aina'}
+    }
+
     
     return (
-        <organisationContex.Provider value={{ get_org_unclaimed_users }}>
+        <organisationContex.Provider value={{ get_org_unclaimed_users, get_org_by_code }}>
             {props.children}
         </organisationContex.Provider>
     )
