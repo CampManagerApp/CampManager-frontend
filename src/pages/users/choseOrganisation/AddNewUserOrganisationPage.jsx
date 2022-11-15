@@ -4,18 +4,22 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ConfirmationClaim from './ConfirmationClaim';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { organisationContex } from '../../../context/OrganisationContex';
 import { UserOrganisationsContex } from '../../../context/UserOrganisationsContex';
+import ItemList from '../../../components/lists/ItemList';
 
+function UserItem({item:user}) {
+    return <div className='d-flex justify-content-center'>{user}</div>
+}
 
 export default function AddNewUserOrganisation() {
     const navigate = useNavigate();
     const [confirmationModalState, setConfirmationModalState] = useState({user:'', show:false})
     const [usersToClaim, setUsersToClaim] = new useState([])
-    const { get_org_unclaimed_users } = useContext(organisationContex)
+    const { get_org_unclaimed_users, get_org_by_code } = useContext(organisationContex)
     const { addOrg } = useContext(UserOrganisationsContex)
 
     function claimUser() {
@@ -29,8 +33,13 @@ export default function AddNewUserOrganisation() {
     }
 
     function load_users_to_claim() {
-        const users = get_org_unclaimed_users()
+        const id = ''
+        const users = get_org_unclaimed_users(id).map((item) => {return item.name})
         setUsersToClaim(users)
+    }
+
+    function showClaimModal(user) {
+        setConfirmationModalState({user:user, show:true})
     }
 
     return (
@@ -53,13 +62,7 @@ export default function AddNewUserOrganisation() {
             <Container>
                 <h5>Colònies Aina</h5>
                 <hr style={{ height: "12px" }} />
-                <ListGroup bsPrefix="user-list">
-                    {
-                        usersToClaim.map((user, key) => {
-                            return <ListGroup.Item key={key} onClick={() => { setConfirmationModalState({user:user.name, show:true}) }}>{user.name}</ListGroup.Item>
-                        })  
-                    }
-                </ListGroup>
+                <ItemList items={usersToClaim} template={UserItem} onClickItem={showClaimModal}  />
             </Container>
             <ConfirmationClaim show={confirmationModalState.show} 
                 user={confirmationModalState.user}
