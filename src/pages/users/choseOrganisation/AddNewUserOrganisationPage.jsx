@@ -43,8 +43,8 @@ export default function AddNewUserOrganisation() {
                         <Form.Control id="basic-url" aria-describedby="basic-addon3" />
                     </Col>
                 </Row>
-                <Row className="d-flex justify-content-end">
-                    <Col>
+                <Row>
+                    <Col className="d-flex justify-content-end">
                         <Button className="mt-3" onClick={load_users_to_claim}>Search</Button>
                     </Col>
                 </Row>

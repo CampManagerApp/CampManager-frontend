@@ -14,7 +14,11 @@ export default function ConfirmationClaim({user='' ,show = false, onConfirmation
 
                 <Modal.Body>
                     <p>You are about to claim the name</p>
-                        <Card bsPrefix='confirmation-user-box' body>{user}</Card>
+                        <Card bsPrefix='confirmation-user-box'>
+                            <Card.Body className='d-flex justify-content-center'>
+                                {user}
+                            </Card.Body>
+                        </Card>
                     <p>Are you sure?</p>
                 </Modal.Body>
 
