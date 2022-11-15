@@ -5,6 +5,7 @@ import RegisterPage from './pages/authentication/RegisterPage';
 import ApplicationNavbar from './components/common/ApplicationNavbar';
 import CreateOrganisationPage from './pages/organisation/CreatreOrganisationPage';
 import ListOfOrganisationsPage from './pages/users/ListOfOrganisationsPage';
+import ProfileCardPage from './pages/users/ProfileCardPage';
 import UpdateOrganisationPage from './pages/organisation/UpdateOrganisationPage';
 import ListOfOrgUsersPage from './pages/users/ListOfOrgUsersPage';
 import AddOrgUserPage from './pages/organisation/AddOrgUserPage';
@@ -16,6 +17,7 @@ import { USER_STATUS } from './context/UserStatusContext';
 import ApplicationHeader from './components/common/ApplicationHeader';
 import AppFooter from './components/common/footer/AppFooter';
 import AddNewUserOrganisation from './pages/users/choseOrganisation/AddNewUserOrganisationPage';
+
 
 
 function App() {
@@ -36,6 +38,7 @@ function App() {
               </Route>
               <Route path="/admin/organisationusers" element={<ListOfOrgUsersPage />} />
               <Route path="/admin/organisationusers/add" element={<AddOrgUserPage />} />
+              <Route path="/admin/profile" element={<ProfileCardPage/>} />
               <Route path="/admin/organisationusers/update" element={<UpdateOrgUserPage />} >
                 <Route path=":userId" element={<UpdateOrgUserPage />} />
               </Route>
