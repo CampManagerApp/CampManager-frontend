@@ -1,8 +1,0 @@
-{
-	"appId": "io.ionic.campManager",
-	"appName": "campManager",
-	"bundledWebRuntime": false,
-	"npmClient": "npm",
-	"webDir": "build",
-	"cordova": {}
-}
