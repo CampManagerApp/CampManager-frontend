@@ -4,10 +4,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import * as Icons from '../../design/icons'
-import { CgProfile } from "react-icons/cg";
-import { GrTask } from "react-icons/gr";
-import { GiForestCamp } from "react-icons/gi";
-import { VscOrganization } from "react-icons/vsc";
+import { IoPersonOutline } from "react-icons/io5";
+import { BiTask } from "react-icons/bi";
+import { AiFillHome } from "react-icons/ai";
+import { FaCampground } from "react-icons/fa";
+import { CgOrganisation } from "react-icons/cg";
 import { CgArrowsExchangeAlt } from "react-icons/cg";
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
@@ -52,16 +53,19 @@ export default function ApplicationNavbar() {
                         </Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgProfile />{" "}My profile</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><IoPersonOutline/>{" "}My profile</Nav.Link>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><GrTask />{" "}My tasks</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><BiTask/>{" "}My tasks</Nav.Link>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")} href="#action1"><GiForestCamp />{" "}My campaigns</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><AiFillHome/>{" "}My home</Nav.Link>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><VscOrganization />{" "}My organisations</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><FaCampground/>{" "}My campaigns</Nav.Link>
+                    </Offcanvas.Header>
+                    <Offcanvas.Header >
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgOrganisation />{" "}My organisations</Nav.Link>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
                         <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgArrowsExchangeAlt />{" "}Change organisation</Nav.Link>
