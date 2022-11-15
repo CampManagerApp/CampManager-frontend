@@ -15,6 +15,7 @@ import ApplicationContextProvider from './components/common/ApplicationContextPr
 import { USER_STATUS } from './context/UserStatusContext';
 import ApplicationHeader from './components/common/ApplicationHeader';
 import AppFooter from './components/common/footer/AppFooter';
+import OrganisationPage from './pages/organisation/OrganisationPage';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                 <Route path=":userId" element={<UpdateOrgUserPage />} />
               </Route>
               <Route path="*" element={<Navigate to="/login" />} />
+              <Route path="/organisation" element={<OrganisationPage/>}></Route>
             </Routes>
             <AppFooter />
         </ApplicationContextProvider>
