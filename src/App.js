@@ -16,7 +16,7 @@ import { USER_STATUS } from './context/UserStatusContext';
 import ApplicationHeader from './components/common/ApplicationHeader';
 import AppFooter from './components/common/footer/AppFooter';
 import AddNewUserOrganisation from './pages/users/choseOrganisation/AddNewUserOrganisationPage';
-
+import ProfileUserPage from './pages/users/ProfileUserPage';
 import OrganisationPage from './pages/organisation/OrganisationPage';
 
 
@@ -47,6 +47,7 @@ function App() {
               <Route path="/user/listoforganisations/add" element={<AddNewUserOrganisation />} ></Route>
               <Route path="*" element={<Navigate to="/login" />} />
               <Route path="/organisation" element={<OrganisationPage/>}></Route>
+              <Route path="/profile" element={<ProfileUserPage/>}></Route>
             </Routes>
             <AppFooter />
         </ApplicationContextProvider>
