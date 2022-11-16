@@ -1,9 +1,9 @@
-import OrganistationPageForm from "../../components/organisation/OrganisationPageForm";
+import OrganisationPageForm from "../../components/organisation/OrganisationPageForm";
 
 export default function OrganisationPage() {
     return (
         <div>
-            <OrganistationPageForm />
+            <OrganisationPageForm />
         </div>
     )
 }

@@ -5,8 +5,8 @@
 
 .App {
   margin: auto;
-  overflow-y: hidden;
   overflow-x: hidden;
+  overflow-y: hidden;
   height: 100%;
 }
 

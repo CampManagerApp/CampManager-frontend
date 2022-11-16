@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 
 import { useEffect, useState } from 'react';
 
-export default function OrganistationForm({onSubmit, onCancel, form_values = {}, isUpdate=false}) {
+export default function OrganisationForm({onSubmit, onCancel, form_values = {}, isUpdate=false}) {
     const [form, setForm] = useState({})
 
 

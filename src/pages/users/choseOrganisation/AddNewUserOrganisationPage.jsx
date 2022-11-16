@@ -47,7 +47,7 @@ export default function AddNewUserOrganisation() {
             <h1 className="d-flex justify-content-center display-4" style={{ textAlign: "center", marginBottom: "5%" }}> Add organisation</h1>
             <Container className='mb-5 mt-5'>
                 <Row>
-                    <Col>
+                    <Col> 
                         <Form.Label htmlFor="basic-url">Organisation Code</Form.Label>
                         <Form.Control id="basic-url" aria-describedby="basic-addon3" />
                     </Col>
