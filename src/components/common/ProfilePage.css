@@ -24,6 +24,10 @@
 }
 .profile-text{
     font-size: 20px;
+    font-weight: bold;
+}
+.id-text{
+    font-size: 20px;
 }
 .profile-img{
     text-align: left;
