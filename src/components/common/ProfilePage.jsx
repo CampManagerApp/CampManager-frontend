@@ -5,7 +5,7 @@ import './ProfilePage.css'
  profileName
  profileNick
  backgroundImg
-
+ idVisible
 
 */
 export default function ProfilePage(props){
@@ -21,7 +21,7 @@ export default function ProfilePage(props){
                 </div>
                 <div className='profile-inf'>
                     <p className='profile-text'>{props.profileName}</p> 
-                    <p className='profile-text'>@{props.profileNick}</p>
+                    <p className='profile-text' style={{visibility:props.idVisible}}>@{props.profileNick}</p>
                 </div>
 
             </div>
