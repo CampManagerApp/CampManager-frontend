@@ -34,7 +34,7 @@ export default function ApplicationNavbar() {
 
     return (
         <div>
-            <Navbar expanded={expanded} expand={false} className="mb-3 " onToggle={() => {
+            <Navbar expanded={expanded} expand={false} onToggle={() => {
                 setExpanded(expanded ? false : "expanded")
             }}>
                 <div className='navbar-brand'>
