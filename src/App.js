@@ -18,6 +18,7 @@ import AppFooter from './components/common/footer/AppFooter';
 import AddNewUserOrganisation from './pages/users/choseOrganisation/AddNewUserOrganisationPage';
 
 import OrganisationPage from './pages/organisation/OrganisationPage';
+import CampPage from './pages/camp/CampPage';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
               <Route path="/user/listoforganisations/add" element={<AddNewUserOrganisation />} ></Route>
               <Route path="*" element={<Navigate to="/login" />} />
               <Route path="/organisation" element={<OrganisationPage/>}></Route>
+              <Route path="/camp" element={<CampPage/>}></Route>
             </Routes>
             <AppFooter />
         </ApplicationContextProvider>

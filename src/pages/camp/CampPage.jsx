@@ -3,7 +3,7 @@ import ProfilePage from "../../components/common/ProfilePage";
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import ItemList from '../../components/lists/ItemList';
 
-import './OrganisationPageForm.css'
+import './CampPage.css'
 
 /* Para que tenga 0 padding la lista px-0 py-0*/
 export default function CampPage(){
@@ -16,31 +16,33 @@ export default function CampPage(){
         navigate('/listoforganisations/');
     }
     return(
-        <div className="div-all">
+        <div className="div-page">
             <div>
-                <ProfilePage profileName="Perfil de ejemplo" profileImg={imagenPerfil} profileNick="Nick de ejemplo" backgroundImg={imagenFondo} idVisible={idVisible}/> 
+                <ProfilePage profileName="Colònies d'estiu 2023" profileImg={imagenPerfil} profileNick="August 14, 2023 - August 20, 2023" backgroundImg={imagenFondo}  includeProfileImage={includeProfileImage} /> 
             </div>
             <div className="list">
                 <Col className="list-group"> 
 
                     <Row className="list-group-item justify-content-between align-items-center px-0 py-0 " onClick={submit}>
                         <div className="list-image" >
-                            <p className="overlay-text">Campaigns</p> 
-                            <img src={require('../../design/nophotoimg.jpg')} className="image-list"  />
+                            <p className="overlay-text">Participants</p> 
+                            <img src={require('../../design/nophotoimg.jpg')} className="himage-list"  />
                         </div>
                     </Row>
-                    <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 "  onClick={submit}>
-                        <div className="list-image">
-                            <p className="overlay-text">Members</p> 
-                            <img src={require('../../design/nophotoimg.jpg')} className="image-list" />
-                        </div>
-                    </Row>
-                    <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 "  onClick={submit}>  
-                        <div className="list-image">
-                            <p className="overlay-text">Social Page</p> 
-                            <img src={require('../../design/nophotoimg.jpg')} className="image-list" />
-                        </div>
-                    </Row>
+                    <Row className=" list-group-horizontal  px-0 py-0">
+                        <Col className="list-group-item justify-content-between align-items-center  px-0 py-0 "  onClick={submit}>
+                            <div className="list-image">
+                                <p className="overlay-text">Tables</p> 
+                                <img src={require('../../design/nophotoimg.jpg')} className="vimage-list" />
+                            </div>
+                        </Col>
+                        <Col className="list-group-item justify-content-between align-items-center  px-0 py-0 " onClick={submit}>  
+                            <div className="list-image">
+                                <p className="overlay-text">Activities</p> 
+                                <img src={require('../../design/nophotoimg.jpg')} className="vimage-list" />
+                            </div>
+                        </Col>
+                    </Row>               
                 </Col>
             </div>
       </div>
