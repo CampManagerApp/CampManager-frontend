@@ -4,7 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import { CgOrganisation } from "react-icons/cg";
 import { CgProfile } from "react-icons/cg";
 import { AiFillHome } from "react-icons/ai";
-import './AppFooter.css'
+
+import './Appfooter.css'
 
 export default function AppFooter() {
     return (
