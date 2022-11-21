@@ -18,7 +18,7 @@ export default function OrganistationPageForm(){
     return(
         <div className="div-all">
             <div>
-                <ProfilePage profileName="Perfil de ejemplo" profileImg={imagenPerfil} profileNick="Nick de ejemplo" backgroundImg={imagenFondo} idVisible={idVisible}/> 
+                <ProfilePage profileName="Profile example" profileImg={imagenPerfil} profileNick="Nick de ejemplo" backgroundImg={imagenFondo} idVisible={idVisible}/> 
             </div>
             <div className="list">
                 <Col className="list-group"> 
