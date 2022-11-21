@@ -21,9 +21,14 @@ export default function OrganisationProvider(props) {
         return {'id':0, name:'Colònies Aina'}
     }
 
+
+    function get_campaings_list(org_id) {
+        return [{id:0, name:'2021-2022'}, {id:1, name:'2022-2023'}]
+    }
+
     
     return (
-        <organisationContex.Provider value={{ get_org_unclaimed_users, get_org_by_code }}>
+        <organisationContex.Provider value={{ get_org_unclaimed_users, get_org_by_code, get_campaings_list}}>
             {props.children}
         </organisationContex.Provider>
     )
