@@ -12,6 +12,7 @@
     margin-top: -25%;
 }
 .profile{
+    width: 100%;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -20,13 +21,15 @@
     margin-top: 2%;
     margin-left: 2%;
     text-align: left;
-    width: 65%;
+    width: 100%;
 }
 .profile-text{
+    width: 100%;
     font-size: 20px;
     font-weight: bold;
 }
 .id-text{
+    width: 100%;
     font-size: 20px;
 }
 .profile-img{

@@ -16,7 +16,7 @@ export default function ConfirmationModal(props) {
         <Modal.Header closeButton>
           <Modal.Title>WARNING</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete.</Modal.Body>
+        <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={() => {
               props.onConfirmation()

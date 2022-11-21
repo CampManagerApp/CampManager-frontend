@@ -16,9 +16,14 @@ import { USER_STATUS } from './context/UserStatusContext';
 import ApplicationHeader from './components/common/ApplicationHeader';
 import AppFooter from './components/common/footer/AppFooter';
 import AddNewUserOrganisation from './pages/users/choseOrganisation/AddNewUserOrganisationPage';
-
+import ProfileUserPage from './pages/users/ProfileUserPage';
 import OrganisationPage from './pages/organisation/OrganisationPage';
+
+import CampPage from './pages/camp/CampPage';
+import CampParticipantsPage from './pages/camp/CampParticipantsPage';
+import CampParticipantsList from './pages/camp/CampParticipantsList';
 import CampaingsListPage from './pages/organisation/campaings/CampaingsListPage';
+
 
 
 function App() {
@@ -42,7 +47,6 @@ function App() {
             <Route path="/admin/organisationusers/update" element={<UpdateOrgUserPage />} >
               <Route path=":userId" element={<UpdateOrgUserPage />} />
             </Route>
-
             {/* user organisations list */}
             <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
             <Route path="/user/listoforganisations/add" element={<AddNewUserOrganisation />} ></Route>
@@ -50,12 +54,16 @@ function App() {
             <Route path="/organisation" element={<OrganisationPage />}>
               <Route path=":organisationId" element={<OrganisationPage />} />
             </Route>
-            <Route path="/organisation/campaing" element={<CampaingsListPage />} />
+            <Route path="/organisation/campaings" element={<CampaingsListPage />} />
+            <Route path="/profile" element={<ProfileUserPage />}></Route>
+            <Route path="/camp" element={<CampPage />}></Route>
+            <Route path="/camp/participants" element={<CampParticipantsPage />}></Route>
+            <Route path="/camp/participants/list" element={<CampParticipantsList />}></Route>
           </Routes>
           <AppFooter />
-        </ApplicationContextProvider>
-      </ErrorBoundary>
-    </div>
+        </ApplicationContextProvider >
+      </ErrorBoundary >
+    </div >
   );
 }
 

@@ -6,7 +6,7 @@ import './ProfilePage.css'
  profileNick
  backgroundImg
  idVisible : visible | hidden | collapse | inherit
- includeProfileImage : 'hidden'
+ includeProfileImage : 'none'
 
 */
 export default function ProfilePage(props){
@@ -22,7 +22,7 @@ export default function ProfilePage(props){
                 </div>
                 <div className='profile-inf'>
                     <p className='profile-text'>{props.profileName}</p> 
-                    <p className='id-text' style={{visibility:props.idVisible}}>@{props.profileNick}</p>
+                    <p className='id-text' style={{visibility:props.idVisible}}>{props.profileNick}</p>
                 </div>
 
             </div>
