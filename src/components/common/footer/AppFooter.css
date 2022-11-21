@@ -1,0 +1,15 @@
+.footerStyle {
+    width: 100%;
+    background-color: #356021!important;
+    vertical-align: middle;
+    position: absolute;
+    left:0;
+    bottom:0;
+    right:0;
+}
+.navlink-left{
+    margin-right: 60px;
+}
+.navlink-right{
+    margin-left: 60px;
+}
