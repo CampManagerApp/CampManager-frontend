@@ -15,6 +15,9 @@ export default function CampPage(){
     function submit(){
         navigate('/listoforganisations/');
     }
+    function participants(){
+        navigate('/camp/participants/');
+    }
     return(
         <div className="div-page">
             <div>
@@ -23,7 +26,7 @@ export default function CampPage(){
             <div className="list">
                 <Col className="list-group"> 
 
-                    <Row className="list-group-item justify-content-between align-items-center px-0 py-0 " onClick={submit}>
+                    <Row className="list-group-item justify-content-between align-items-center px-0 py-0 " onClick={participants}>
                         <div className="list-image" >
                             <p className="overlay-text">Participants</p> 
                             <img src={require('../../design/nophotoimg.jpg')} className="himage-list"  />

@@ -20,6 +20,7 @@ import ProfileUserPage from './pages/users/ProfileUserPage';
 import OrganisationPage from './pages/organisation/OrganisationPage';
 import CampPage from './pages/camp/CampPage';
 import CampParticipantsPage from './pages/camp/CampParticipantsPage';
+import CampParticipantsList from './pages/camp/CampParticipantsList';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
               <Route path="/profile" element={<ProfileUserPage/>}></Route>
               <Route path="/camp" element={<CampPage/>}></Route>
               <Route path="/camp/participants" element={<CampParticipantsPage/>}></Route>
+              <Route path="/camp/participants/list" element={<CampParticipantsList/>}></Route>
             </Routes>
             <AppFooter />
         </ApplicationContextProvider>
