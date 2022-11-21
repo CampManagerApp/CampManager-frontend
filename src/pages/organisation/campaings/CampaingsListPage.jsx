@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import BannerImage from "../../../components/common/BannerImage"
 import ProfilePage from "../../../components/common/ProfilePage"
 import TitlePage from "../../../components/common/TitlePage"
 import ItemList from "../../../components/lists/ItemList"
@@ -21,7 +22,7 @@ export default function CampaingsListPage() {
     
     return (
         <React.Fragment>
-            <ProfilePage profileName="Perfil de ejemplo" profileImg={imagenPerfil} profileNick="Nick de ejemplo" backgroundImg={imagenFondo}/> 
+            <BannerImage bannerImage={imagenFondo}/>
             <TitlePage>Campaings</TitlePage>
             <ItemList items={get_campaings_list()} template={CampaingContent}/>
         </React.Fragment>
