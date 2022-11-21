@@ -12,8 +12,8 @@ export default function OrganistationPageForm(){
     const idVisible = 'hidden';
     const includeProfileImage = 'none';
     const navigate = useNavigate()
-    function submit(){
-        navigate('/listoforganisations/');
+    function goto_campaings_list(){
+        navigate('/organisation/campaings');
     }
     return(
         <div className="div-all">
@@ -23,19 +23,19 @@ export default function OrganistationPageForm(){
             <div className="list">
                 <Col className="list-group"> 
 
-                    <Row className="list-group-item justify-content-between align-items-center px-0 py-0 " onClick={submit}>
+                    <Row className="list-group-item justify-content-between align-items-center px-0 py-0 " onClick={goto_campaings_list}>
                         <div className="list-image" >
                             <p className="overlay-text">Campaigns</p> 
                             <img src={require('../../design/nophotoimg.jpg')} className="image-list"  />
                         </div>
                     </Row>
-                    <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 "  onClick={submit}>
+                    <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 "  onClick={goto_campaings_list}>
                         <div className="list-image">
                             <p className="overlay-text">Members</p> 
                             <img src={require('../../design/nophotoimg.jpg')} className="image-list" />
                         </div>
                     </Row>
-                    <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 "  onClick={submit}>  
+                    <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 "  onClick={goto_campaings_list}>  
                         <div className="list-image">
                             <p className="overlay-text">Social Page</p> 
                             <img src={require('../../design/nophotoimg.jpg')} className="image-list" />
