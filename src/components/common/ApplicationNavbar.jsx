@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserStatusContext, USER_STATUS } from '../../context/UserStatusContext';
 import BackPage from './BackPage';
+import './ApplicationNavbar.css'
 
 
 export default function ApplicationNavbar() {
@@ -32,6 +33,12 @@ export default function ApplicationNavbar() {
         }
     }
 
+    function change_organisation() {
+        setExpanded(false)
+        navigate('listoforganisations', { replace: true })
+    }
+
+
     return (
         <>
             <Navbar expanded={expanded} expand={false} onToggle={() => {
@@ -47,28 +54,28 @@ export default function ApplicationNavbar() {
                     aria-labelledby={`offcanvasNavbarLabel-expand-${expanded}`}
                     placement="end"
                 >
-                    <Offcanvas.Header closeButton>
+                    <Offcanvas.Header bsPrefix='navbar-header' closeButton>
                         <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expanded}`}>
                             Menu
                         </Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><IoPersonOutline/>{" "}My profile</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><IoPersonOutline />{" "}My profile</Nav.Link>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><BiTask/>{" "}My tasks</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><BiTask />{" "}My tasks</Nav.Link>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><AiFillHome/>{" "}My home</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><AiFillHome />{" "}My home</Nav.Link>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><FaCampground/>{" "}My campaigns</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><FaCampground />{" "}My campaigns</Nav.Link>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
                         <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgOrganisation />{" "}My organisations</Nav.Link>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgArrowsExchangeAlt />{" "}Change organisation</Nav.Link>
+                        <Nav.Link onClick={change_organisation}><CgArrowsExchangeAlt />{" "}Change organisation</Nav.Link>
                     </Offcanvas.Header>
                     <Offcanvas.Header>
                         {!is_unAuthenticated() ?

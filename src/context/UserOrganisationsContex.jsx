@@ -1,24 +1,11 @@
 import { useState } from "react";
 import { createContext } from "react";
+import { Organisations } from "../data/organisations";
 
 export const UserOrganisationsContex = createContext()
 
 export default function UserOrganisationsProvider(props) {
-    const [orgUserList, setOrgUserList] = useState([
-        {
-            name:'organisation 1'
-        },
-        {
-            name:'organisation 2'
-        },
-        {
-            name:'organisation 3'
-        },
-        {
-            name:'organisation 4'
-        },
-    ])
-
+    const [orgUserList, setOrgUserList] = useState([Organisations[2], Organisations[3]])
     
     const orgList = orgUserList.map((org) => {
         return org
@@ -28,7 +15,6 @@ export default function UserOrganisationsProvider(props) {
         setOrgUserList([...orgUserList, org])
     }
 
-    
     return (
         <UserOrganisationsContex.Provider value={{orgList, addOrg}}>
             {props.children}

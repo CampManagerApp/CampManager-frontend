@@ -12,45 +12,51 @@ import { UserOrganisationsContex } from '../../../context/UserOrganisationsConte
 import ItemList from '../../../components/lists/ItemList';
 import TitlePage from '../../../components/common/TitlePage';
 
-function UserItem({item:user}) {
+function UserItem({ item: user }) {
     return <div className='d-flex justify-content-center'>{user}</div>
 }
 
 export default function AddNewUserOrganisation() {
     const navigate = useNavigate();
-    const [confirmationModalState, setConfirmationModalState] = useState({user:'', show:false})
+    const [confirmationModalState, setConfirmationModalState] = useState({ user: '', show: false })
+    const [code, setCode] = useState('')
     const [usersToClaim, setUsersToClaim] = new useState([])
+    const [organisation, setOrganisation] = new useState({ name: '' })
     const { get_org_unclaimed_users, get_org_by_code } = useContext(organisationContex)
     const { addOrg } = useContext(UserOrganisationsContex)
 
     function claimUser() {
-        setConfirmationModalState({user:'', show:false})
-        addOrg({name:'Colònies Aina'})
-        navigate('/listoforganisations/');
+        setConfirmationModalState({ user: '', show: false })
+        addOrg(organisation)
+        navigate('/listoforganisations/', { replace: true });
     }
 
     function cancelClaimUser() {
-        setConfirmationModalState({user:'', show:false})
+        setConfirmationModalState({ user: '', show: false })
     }
 
     function load_users_to_claim() {
-        const id = ''
-        const users = get_org_unclaimed_users(id).map((item) => {return item.name})
+        console.log(code)
+        const org = get_org_by_code(code)
+        const users = get_org_unclaimed_users(org.id).map((item) => { return item.name })
+        setOrganisation(org)
         setUsersToClaim(users)
     }
 
     function showClaimModal(user) {
-        setConfirmationModalState({user:user, show:true})
+        setConfirmationModalState({ user: user, show: true })
     }
 
     return (
-        <>
+        <div className='scrollable-content'>
             <TitlePage>Add organisation</TitlePage>
             <Container className='mb-5 mt-5'>
                 <Row>
-                    <Col> 
-                        <Form.Label htmlFor="basic-url">Organisation Code</Form.Label>
-                        <Form.Control id="basic-url" aria-describedby="basic-addon3" />
+                    <Col>
+                        <Form.Group controlId="code">
+                            <Form.Label >Organisation Code</Form.Label>
+                            <Form.Control placeholder="Organisation code" type="text" onChange={(e) => { setCode(e.target.value) }} />
+                        </Form.Group>
                     </Col>
                 </Row>
                 <Row>
@@ -61,14 +67,15 @@ export default function AddNewUserOrganisation() {
             </Container>
 
             <Container>
-                <h5>Colònies Aina</h5>
+                {/* <h5>Colònies Aina</h5> */}
+                <h5>{organisation.name}</h5>
                 <hr style={{ height: "12px" }} />
-                <ItemList items={usersToClaim} template={UserItem} onClickItem={showClaimModal}  />
+                <ItemList items={usersToClaim} template={UserItem} onClickItem={showClaimModal} />
             </Container>
-            <ConfirmationClaim show={confirmationModalState.show} 
+            <ConfirmationClaim show={confirmationModalState.show}
                 user={confirmationModalState.user}
                 onConfirmation={claimUser}
                 onCancel={cancelClaimUser} />
-        </>
+        </div>
     )
 }

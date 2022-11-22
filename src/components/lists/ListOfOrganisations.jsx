@@ -42,6 +42,8 @@ export default function ListOfOrganisations({ handle }) {
 
 
   function handleSubmit(event) {
+    event.preventDefault();
+    event.stopPropagation();
     onAdd(event)
   }
 
@@ -80,7 +82,7 @@ export default function ListOfOrganisations({ handle }) {
       <div className="list-group list-group-light">
         {orgList.map((org, key) => {
           return (
-            <a key={key} onClick={handle} className="list-group-item list-group-item-action px-5 border-4 pointer-item">
+            <a key={key} onClick={() => {handle(org)}} className="list-group-item list-group-item-action px-5 border-4 pointer-item">
               {org.name}
             </a>)
         })

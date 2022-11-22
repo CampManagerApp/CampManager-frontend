@@ -10,6 +10,7 @@ export const USER_STATUS = Object.freeze({
 
 export default function UserStatusProvider (props) {
     const [status, setStatus] = useState(USER_STATUS.UNAUTHENTICATED)
+    const [currentOrganisation, setCurrentOrganisation] = useState({in_org:false})
 
     const update_state = (status) => {
         setStatus(status)
@@ -27,8 +28,26 @@ export default function UserStatusProvider (props) {
         return status == USER_STATUS.USER
     }
 
+    const get_current_organisation = () => {
+        return currentOrganisation
+    }
+
+    const set_current_organisation = (org) => {
+        setCurrentOrganisation(org) 
+    } 
+
+    const operations = {
+        update_state, 
+        is_unAuthenticated, 
+        is_superAdmin, 
+        is_user, 
+        get_current_organisation, 
+        set_current_organisation, 
+        currentOrganisation,
+    }
+
     return (
-        <UserStatusContext.Provider value={{update_state, is_unAuthenticated, is_superAdmin, is_user}}>
+        <UserStatusContext.Provider value={operations}>
             {props.children}
         </UserStatusContext.Provider>
     )
