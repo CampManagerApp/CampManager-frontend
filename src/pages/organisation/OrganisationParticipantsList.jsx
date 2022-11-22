@@ -2,10 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import ProfilePage from "../../components/common/ProfilePage";
 import ItemList from "../../components/lists/ItemList";
 import { organisationContex } from "../../context/OrganisationContex";
+import * as image from "../../design/images";
 
 export default function OrganisationParticipantsList({ items=[], template:Template, onClickItem = ()=>{}}) {
-    const imagenPerfil = "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
-    const imagenFondo = "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
     const idVisible = 'hidden';
     const includeProfileImage = 'none';
     const [participants, setParticipants] = new useState([])
@@ -27,7 +26,7 @@ export default function OrganisationParticipantsList({ items=[], template:Templa
 
     return (
         <div>
-            <ProfilePage profileName="Esplai Xino-Xano" profileImg={imagenPerfil} profileNick="Members" backgroundImg={imagenFondo}  includeProfileImage={includeProfileImage}  /> 
+            <ProfilePage profileName="Esplai Xino-Xano" profileNick="Members" backgroundImg={image.Miembro}  includeProfileImage={includeProfileImage}  /> 
             <ItemList items={participants}></ItemList>
         </div>
     )
