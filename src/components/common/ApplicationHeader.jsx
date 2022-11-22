@@ -20,10 +20,8 @@ export default function ApplicationHeader() {
     const location = useLocation()
     const [visible, setVisible] = useState(false)
     
-
     useEffect(() => {
         setVisible(!DISABLED_LOCATIONS.includes(location.pathname))
-        console.log(getPlatforms())
     }, [location])
 
     return (
