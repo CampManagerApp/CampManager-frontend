@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { isPlatform } from '@ionic/react';
+import { getPlatforms } from '@ionic/react';
 
 import ApplicationNavbar from "./ApplicationNavbar";
 import './ApplicationHeader.css'
@@ -22,6 +23,7 @@ export default function ApplicationHeader() {
 
     useEffect(() => {
         setVisible(!DISABLED_LOCATIONS.includes(location.pathname))
+        console.log(getPlatforms())
     }, [location])
 
     return (
