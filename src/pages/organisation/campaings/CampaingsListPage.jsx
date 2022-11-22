@@ -24,9 +24,9 @@ export default function CampaingsListPage() {
     
     return (
         <React.Fragment>
-            <BannerImage bannerImage={imagenFondo}/>
+            <BannerImage bannerImage={image.backgroundOrg}/>
             <TitlePage>Campaings</TitlePage>
-            <ItemList items={get_campaings_list()} template={CampaingContent}/>
+            <ItemList items={get_campaings_list(currentOrganisation.id)} template={CampaingContent}/>
         </React.Fragment>
     )
 }
