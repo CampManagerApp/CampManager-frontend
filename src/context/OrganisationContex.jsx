@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { Organisations } from "../data/organisations";
 
 export const organisationContex = createContext()
 
@@ -13,17 +14,31 @@ const unclaimed_users = [
 
 
 export default function OrganisationProvider(props) {
-    function get_org_unclaimed_users(org_id) {
-        return unclaimed_users
+
+    function get_organisation(org_id) {
+        console.log(org_id)
+        const organisation = Organisations.filter((org) => {
+            return org.id == org_id
+        })
+        return organisation[0]
     }
 
+
+    function get_org_unclaimed_users(org_id) {
+        //return unclaimed_users
+        return get_organisation(org_id).members
+    }
+
+    
     function get_org_by_code(code) {
-        return {'id':0, name:'Colònies Aina'}
+        //return {'id':0, name:'Colònies Aina'}
+        const organisation = Organisations.filter((org) => {return org.code == code})
+        return organisation[0]
     }
 
 
     function get_campaings_list(org_id) {
-        return [{id:0, name:'2021-2022'}, {id:1, name:'2022-2023'}]
+        return get_organisation(org_id).campaings
     }
 
     
