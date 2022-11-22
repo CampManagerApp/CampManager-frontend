@@ -27,7 +27,7 @@ export default function AddNewUserOrganisation() {
 
     function claimUser() {
         setConfirmationModalState({ user: '', show: false })
-        addOrg({ name: 'Colònies Aina' })
+        addOrg(organisation)
         navigate('/listoforganisations/', { replace: true });
     }
 
