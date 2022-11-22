@@ -15,12 +15,16 @@ export default function OrganistationPageForm(){
     function submit(){
         navigate('/listoforganisations/');
     }
+    function members(){
+        navigate('/organisation/members/list');
+    }
+    
     return(
-        <div className="div-all">
+        <div className="div-all scrollable-content">
             <div>
-                <ProfilePage profileName="Perfil de ejemplo" profileImg={imagenPerfil} profileNick="Nick de ejemplo" backgroundImg={imagenFondo} idVisible={idVisible}/> 
+                <ProfilePage profileName="Esplai Xino-Xano" profileImg={imagenPerfil} profileNick="Nick de ejemplo" backgroundImg={imagenFondo} idVisible={idVisible}/> 
             </div>
-            <div className="list">
+            <div className="list ">
                 <Col className="list-group"> 
 
                     <Row className="list-group-item justify-content-between align-items-center px-0 py-0 " onClick={submit}>
@@ -29,7 +33,7 @@ export default function OrganistationPageForm(){
                             <img src={require('../../design/nophotoimg.jpg')} className="image-list"  />
                         </div>
                     </Row>
-                    <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 "  onClick={submit}>
+                    <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 "  onClick={members}>
                         <div className="list-image">
                             <p className="overlay-text">Members</p> 
                             <img src={require('../../design/nophotoimg.jpg')} className="image-list" />

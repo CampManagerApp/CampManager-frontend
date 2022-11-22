@@ -19,7 +19,7 @@ export default function CampPage(){
         navigate('/camp/participants/');
     }
     return(
-        <div className="div-page">
+        <div className="div-page scrollable-content">
             <div>
                 <ProfilePage profileName="Colònies d'estiu 2023" profileImg={imagenPerfil} profileNick="August 14, 2023 - August 20, 2023" backgroundImg={imagenFondo}  includeProfileImage={includeProfileImage} /> 
             </div>

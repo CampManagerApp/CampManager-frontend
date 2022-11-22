@@ -21,6 +21,7 @@ import OrganisationPage from './pages/organisation/OrganisationPage';
 import CampPage from './pages/camp/CampPage';
 import CampParticipantsPage from './pages/camp/CampParticipantsPage';
 import CampParticipantsList from './pages/camp/CampParticipantsList';
+import OrganisationParticipantsList from './pages/organisation/OrganisationParticipantsList';
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
               <Route path="/user/listoforganisations/add" element={<AddNewUserOrganisation />} ></Route>
               <Route path="*" element={<Navigate to="/login" />} />
               <Route path="/organisation" element={<OrganisationPage/>}></Route>
+              <Route path="/organisation/members/list" element={<OrganisationParticipantsList/>}></Route>
               <Route path="/profile" element={<ProfileUserPage/>}></Route>
               <Route path="/camp" element={<CampPage/>}></Route>
               <Route path="/camp/participants" element={<CampParticipantsPage/>}></Route>
