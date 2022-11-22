@@ -15,7 +15,7 @@ export default function OrganisationInfoPage() {
     const handle = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        navigate('/admin/organisationusers/', { replace: true })
+        navigate('/organisation', { replace: true })
     }
 
 

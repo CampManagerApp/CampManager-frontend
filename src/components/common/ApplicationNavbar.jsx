@@ -33,14 +33,14 @@ export default function ApplicationNavbar() {
     }
 
     return (
-        <div>
+        <>
             <Navbar expanded={expanded} expand={false} onToggle={() => {
                 setExpanded(expanded ? false : "expanded")
             }}>
-                <div className='navbar-brand'>
+                {/* <div className='navbar-brand'>
                     <img src={require('../../design/campmanager.png')} />{' '}
                     Camp Manager
-                </div>
+                </div> */}
                 <Navbar.Toggle />
                 <Navbar.Offcanvas
                     id={`offcanvasNavbar-expand-${expanded}`}
@@ -77,6 +77,6 @@ export default function ApplicationNavbar() {
                     </Offcanvas.Header>
                 </Navbar.Offcanvas>
             </Navbar>
-        </div>
+        </>
     )
 }

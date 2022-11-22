@@ -5,11 +5,11 @@ import { CgOrganisation } from "react-icons/cg";
 import { CgProfile } from "react-icons/cg";
 import { AiFillHome } from "react-icons/ai";
 
-import './Appfooter.css'
+import './AppFooter.css'
 
 export default function AppFooter() {
     return (
-        <div className='jordi'>
+        <div className='footerStyle'>
         <Navbar expand="lg">
             <Container className="justify-content-center">
                 <Nav.Link className='navlink-left'><CgOrganisation/></Nav.Link>

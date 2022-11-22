@@ -18,10 +18,13 @@ import AppFooter from './components/common/footer/AppFooter';
 import AddNewUserOrganisation from './pages/users/choseOrganisation/AddNewUserOrganisationPage';
 import ProfileUserPage from './pages/users/ProfileUserPage';
 import OrganisationPage from './pages/organisation/OrganisationPage';
+
 import CampPage from './pages/camp/CampPage';
 import CampParticipantsPage from './pages/camp/CampParticipantsPage';
 import CampParticipantsList from './pages/camp/CampParticipantsList';
 import OrganisationParticipantsList from './pages/organisation/OrganisationParticipantsList';
+import CampaingsListPage from './pages/organisation/campaings/CampaingsListPage';
+
 
 
 function App() {
@@ -30,37 +33,39 @@ function App() {
     <div className="App">
       <ErrorBoundary>
         <ApplicationContextProvider>
-            <ApplicationHeader />
-            <Routes>
-              <Route path="/superadmin" element={<LoginPage next_user_status={USER_STATUS.SUPERADMIN} goto={() => { navigate('/superadmin/panel') }} />} />
-              <Route path="/login" element={<LoginPage goto={() => { navigate('/listoforganisations') }} />} />
-              <Route path="/superadmin/panel" element={<SuperAdminPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/superadmin/organisation/create" element={<CreateOrganisationPage />} />
-              <Route path="/superadmin/organisation/update" element={<UpdateOrganisationPage />} >
-                <Route path=":organisationId" element={<UpdateOrganisationPage />} />
-              </Route>
-              <Route path="/admin/organisationusers" element={<ListOfOrgUsersPage />} />
-              <Route path="/admin/organisationusers/add" element={<AddOrgUserPage />} />
-              <Route path="/admin/organisationusers/update" element={<UpdateOrgUserPage />} >
-                <Route path=":userId" element={<UpdateOrgUserPage />} />
-              </Route>
-
-              {/* user organisations list */}
-              <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
-              <Route path="/user/listoforganisations/add" element={<AddNewUserOrganisation />} ></Route>
-              <Route path="*" element={<Navigate to="/login" />} />
-              <Route path="/organisation" element={<OrganisationPage/>}></Route>
-              <Route path="/organisation/members/list" element={<OrganisationParticipantsList/>}></Route>
-              <Route path="/profile" element={<ProfileUserPage/>}></Route>
-              <Route path="/camp" element={<CampPage/>}></Route>
-              <Route path="/camp/participants" element={<CampParticipantsPage/>}></Route>
-              <Route path="/camp/participants/list" element={<CampParticipantsList/>}></Route>
-            </Routes>
-            <AppFooter />
-        </ApplicationContextProvider>
-      </ErrorBoundary>
-    </div>
+          <ApplicationHeader />
+          <Routes>
+            <Route path="/superadmin" element={<LoginPage next_user_status={USER_STATUS.SUPERADMIN} goto={() => { navigate('/superadmin/panel') }} />} />
+            <Route path="/login" element={<LoginPage goto={() => { navigate('/listoforganisations') }} />} />
+            <Route path="/superadmin/panel" element={<SuperAdminPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/superadmin/organisation/create" element={<CreateOrganisationPage />} />
+            <Route path="/superadmin/organisation/update" element={<UpdateOrganisationPage />} >
+              <Route path=":organisationId" element={<UpdateOrganisationPage />} />
+            </Route>
+            <Route path="/admin/organisationusers" element={<ListOfOrgUsersPage />} />
+            <Route path="/admin/organisationusers/add" element={<AddOrgUserPage />} />
+            <Route path="/admin/organisationusers/update" element={<UpdateOrgUserPage />} >
+              <Route path=":userId" element={<UpdateOrgUserPage />} />
+            </Route>
+            {/* user organisations list */}
+            <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
+            <Route path="/user/listoforganisations/add" element={<AddNewUserOrganisation />} ></Route>
+            <Route path="*" element={<Navigate to="/login" />} />
+            <Route path="/organisation" element={<OrganisationPage />}>
+              <Route path=":organisationId" element={<OrganisationPage />} />
+            </Route>
+            <Route path="/organisation/members/list" element={<OrganisationParticipantsList />}></Route>
+            <Route path="/organisation/campaings" element={<CampaingsListPage />} />
+            <Route path="/profile" element={<ProfileUserPage />}></Route>
+            <Route path="/camp" element={<CampPage />}></Route>
+            <Route path="/camp/participants" element={<CampParticipantsPage />}></Route>
+            <Route path="/camp/participants/list" element={<CampParticipantsList />}></Route>
+          </Routes>
+          <AppFooter />
+        </ApplicationContextProvider >
+      </ErrorBoundary >
+    </div >
   );
 }
 

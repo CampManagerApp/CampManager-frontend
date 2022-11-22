@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import { organisationContex } from '../../../context/OrganisationContex';
 import { UserOrganisationsContex } from '../../../context/UserOrganisationsContex';
 import ItemList from '../../../components/lists/ItemList';
+import TitlePage from '../../../components/common/TitlePage';
 
 function UserItem({item:user}) {
     return <div className='d-flex justify-content-center'>{user}</div>
@@ -44,7 +45,7 @@ export default function AddNewUserOrganisation() {
 
     return (
         <>
-            <h1 className="d-flex justify-content-center display-4" style={{ textAlign: "center", marginBottom: "5%" }}> Add organisation</h1>
+            <TitlePage>Add organisation</TitlePage>
             <Container className='mb-5 mt-5'>
                 <Row>
                     <Col> 
