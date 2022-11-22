@@ -9,7 +9,7 @@ export const Organisations = [
             { name: 'Lluís Ros' },
             { name: 'Xavier Fort' }
         ],
-        campaings: [
+        campaigns: [
             {id:0, name:'Aina 2023 1r'}, 
             {id:1, name:'Aina 2023 2n'},
             {id:2, name:'Aina 2023 3n'},
@@ -26,7 +26,7 @@ export const Organisations = [
             { name: 'Bernat Prats' },
             { name: 'Pau Talarn' },
         ],
-        campaings: [
+        campaigns: [
             {id:0, name:'Colònies Infants 2022'}, 
             {id:1, name:'Colònies Joves 2022'},
             {id:2, name:'Colònies Infants 2023'}, 
@@ -42,7 +42,7 @@ export const Organisations = [
             { name: 'Robert Creus' },
             { name: 'Mariona Villaró' }
         ],
-        campaings: [
+        campaigns: [
             {id:0, name:'Colònies Estiu 2022'}, 
             {id:1, name:'Estiu 2021'}
         ]
@@ -57,7 +57,7 @@ export const Organisations = [
             { name: 'Manel Castell' },
             { name: 'Júlia Caps' },
         ],
-        campaings: [
+        campaigns: [
             {id:0, name:'Activitat de Nadal 2023'}, 
             {id:1, name:'Setmana Santa 2023'},
             {id:2, name:'Curs Monis 2023'}

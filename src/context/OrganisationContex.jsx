@@ -38,7 +38,7 @@ export default function OrganisationProvider(props) {
 
 
     function get_campaings_list(org_id) {
-        return get_organisation(org_id).campaings
+        return get_organisation(org_id).campaigns
     }
 
     
