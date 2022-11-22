@@ -2,13 +2,12 @@ import { useNavigate } from "react-router-dom";
 import ProfilePage from "../../components/common/ProfilePage";
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import ItemList from '../../components/lists/ItemList';
+import * as image from "../../design/images.js";
 
 import './OrganisationPageForm.css'
 
 /* Para que tenga 0 padding la lista px-0 py-0*/
 export default function OrganistationPageForm(){
-    const imagenPerfil = "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
-    const imagenFondo = "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
     const idVisible = 'hidden';
     const includeProfileImage = 'none';
     const navigate = useNavigate()
@@ -22,7 +21,7 @@ export default function OrganistationPageForm(){
     return(
         <div className="div-all scrollable-content">
             <div>
-                <ProfilePage profileName="Esplai Xino-Xano" profileImg={imagenPerfil} profileNick="Nick de ejemplo" backgroundImg={imagenFondo} idVisible={idVisible}/> 
+                <ProfilePage profileName="Esplai Xino-Xano" profileImg={image.hikingProf} profileNick="Nick de ejemplo" backgroundImg={image.backgroundOrg} idVisible={idVisible}/> 
             </div>
             <div className="list ">
                 <Col className="list-group"> 
