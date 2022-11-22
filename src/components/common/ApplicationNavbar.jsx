@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserStatusContext, USER_STATUS } from '../../context/UserStatusContext';
 import BackPage from './BackPage';
+import './ApplicationNavbar.css'
 
 
 export default function ApplicationNavbar() {
@@ -53,7 +54,7 @@ export default function ApplicationNavbar() {
                     aria-labelledby={`offcanvasNavbarLabel-expand-${expanded}`}
                     placement="end"
                 >
-                    <Offcanvas.Header closeButton>
+                    <Offcanvas.Header bsPrefix='navbar-header' closeButton>
                         <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expanded}`}>
                             Menu
                         </Offcanvas.Title>

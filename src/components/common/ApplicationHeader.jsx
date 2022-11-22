@@ -2,6 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { isPlatform } from '@ionic/react';
 
 import ApplicationNavbar from "./ApplicationNavbar";
 import './ApplicationHeader.css'
@@ -17,6 +18,7 @@ const DISABLED_LOCATIONS = [
 export default function ApplicationHeader() {
     const location = useLocation()
     const [visible, setVisible] = useState(false)
+    
 
     useEffect(() => {
         setVisible(!DISABLED_LOCATIONS.includes(location.pathname))
@@ -25,7 +27,7 @@ export default function ApplicationHeader() {
     return (
         // <div>
         <div className="application-header">
-            <Container>
+            <Container className={isPlatform('ios') ? 'ios-header' : null}>
                 <Row>
                     {visible &&
                         <Col xs={2} className='d-flex align-items-center'>
