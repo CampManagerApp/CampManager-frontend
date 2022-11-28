@@ -18,19 +18,20 @@ import AppFooter from './components/common/footer/AppFooter';
 import AddNewUserOrganisation from './pages/users/choseOrganisation/AddNewUserOrganisationPage';
 import ProfileUserPage from './pages/users/ProfileUserPage';
 import OrganisationPage from './pages/organisation/OrganisationPage';
-
 import CampPage from './pages/camp/CampPage';
 import CampParticipantsPage from './pages/camp/CampParticipantsPage';
 import CampParticipantsList from './pages/camp/CampParticipantsList';
 import OrganisationParticipantsList from './pages/organisation/OrganisationParticipantsList';
 import CampaingsListPage from './pages/organisation/campaings/CampaingsListPage';
-
+import {I18nextProvider} from "react-i18next";
+import i18next from "i18next";
 
 
 function App() {
   const navigate = useNavigate();
   return (
     <div className="App">
+      <I18nextProvider i18n={i18next}>
       <ErrorBoundary>
         <ApplicationContextProvider>
           <ApplicationHeader />
@@ -65,6 +66,7 @@ function App() {
           <AppFooter />
         </ApplicationContextProvider >
       </ErrorBoundary >
+      </I18nextProvider>
     </div >
   );
 }

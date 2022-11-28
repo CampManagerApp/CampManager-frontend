@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from "react";
-
+import {useTranslation} from "react-i18next";
 import * as Icons from '../../design/icons.js'
 import './LoginForm.css'
 
@@ -15,6 +15,7 @@ export default function LoginForm ({handleSubmit}) {
             [e.target.id]: e.target.value
         })
     }
+    const {t, i18n} = useTranslation('common');
 
     return (
         <div className='login-form'>
@@ -26,7 +27,7 @@ export default function LoginForm ({handleSubmit}) {
             }}>
                 <Form.Group className="mb-3" controlId="username">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control onChange={onUpdate} type="email" placeholder="Enter email" />
+                    <Form.Control onChange={onUpdate} type="email" placeholder={t('LOGIN.ENTER_EMAIL')} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="password">
