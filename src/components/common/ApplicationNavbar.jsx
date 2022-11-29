@@ -10,11 +10,15 @@ import { AiFillHome } from "react-icons/ai";
 import { FaCampground } from "react-icons/fa";
 import { CgOrganisation } from "react-icons/cg";
 import { CgArrowsExchangeAlt } from "react-icons/cg";
+import { HiLanguage } from "react-icons/hi2";
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserStatusContext, USER_STATUS } from '../../context/UserStatusContext';
 import BackPage from './BackPage';
 import './ApplicationNavbar.css'
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 export default function ApplicationNavbar() {
@@ -56,31 +60,62 @@ export default function ApplicationNavbar() {
                 >
                     <Offcanvas.Header bsPrefix='navbar-header' closeButton>
                         <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expanded}`}>
-                            Menu
+                            <Container>Menu</Container>
                         </Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><IoPersonOutline />{" "}My profile</Nav.Link>
+                        <Container>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><IoPersonOutline />{" "}My profile</Nav.Link>
+                        </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><BiTask />{" "}My tasks</Nav.Link>
+                        <Container>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><BiTask />{" "}My tasks</Nav.Link>
+                        </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><AiFillHome />{" "}My home</Nav.Link>
+                        <Container>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><AiFillHome />{" "}My home</Nav.Link>
+                        </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><FaCampground />{" "}My campaigns</Nav.Link>
+                        <Container>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><FaCampground />{" "}My campaigns</Nav.Link>
+                        </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgOrganisation />{" "}My organisations</Nav.Link>
+                        <Container>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgOrganisation />{" "}My organisations</Nav.Link>
+                        </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={change_organisation}><CgArrowsExchangeAlt />{" "}Change organisation</Nav.Link>
+                        <Container>
+                            <Nav.Link onClick={change_organisation}><CgArrowsExchangeAlt />{" "}Change organisation</Nav.Link>
+                        </Container>
+                    </Offcanvas.Header>
+                    <Offcanvas.Header >
+                        <Container>
+                            <Row xs="auto">
+                                <Col>
+                                    <Nav.Link className="ms-auto"><HiLanguage />{" "}</Nav.Link>
+                                </Col>
+                                <Col>
+                                    <Form.Select size="sm">
+                                        <option value="EN">🇬🇧&emsp;EN</option>
+                                        <option value="ES">🇪🇸&emsp;ES</option>
+                                        <option value="CA">🇪🇸&emsp;CA</option>
+                                    </Form.Select>
+                                </Col>
+                            </Row>
+                        </Container>
+
                     </Offcanvas.Header>
                     <Offcanvas.Header>
-                        {!is_unAuthenticated() ?
-                            <Nav.Link onClick={logout}><Icons.Logout />{" "}Logout</Nav.Link> : ''
-                        }
+                        <Container>
+                            {!is_unAuthenticated() ?
+                                <Nav.Link onClick={logout}><Icons.Logout />{" "}Logout</Nav.Link> : ''
+                            }
+                        </Container>
                     </Offcanvas.Header>
                 </Navbar.Offcanvas>
             </Navbar>
