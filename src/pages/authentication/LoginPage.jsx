@@ -16,15 +16,13 @@ export default function LoginPage ({goto, next_user_status=USER_STATUS.USER}) {
     
 
     function handleSubmit(form) {
-        // loginRequest(form).then(() => {
-        //     //navigate('/admin/panel')
-        //     update_state(next_user_status)
-        //     goto()
-        // }).catch(err => {
-        //     asyncError(new Error(err))
-        // })
-        update_state(next_user_status)
-        goto()
+        loginRequest(form).then(() => {
+            //navigate('/admin/panel')
+            update_state(next_user_status)
+            goto()
+        }).catch(err => {
+            asyncError(new Error(err))
+        })
     }
 
     return (

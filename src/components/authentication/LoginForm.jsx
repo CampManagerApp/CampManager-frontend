@@ -20,7 +20,7 @@ export default function LoginForm ({handleSubmit}) {
     return (
         <div className='login-form'>
             <h3 className='login-form-title'>Login</h3>
-            <Form className='p-5 p-sm-3 rounded' noValidate onSubmit={(e) => {
+            <Form className='p-5 p-sm-3 rounded h-100' noValidate onSubmit={(e) => {
                 e.stopPropagation()
                 e.preventDefault()
                 handleSubmit(form)

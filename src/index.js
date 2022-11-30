@@ -1,6 +1,8 @@
+import { BrowserRouter } from "react-router-dom";
+import { Device } from '@capacitor/device';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,21 +13,36 @@ import common_cat from "./translations/cat.json";
 import common_en from "./translations/en.json";
 import i18next from "i18next";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
-i18next.init({
-  interpolation: { escapeValue: false },  // React already does escaping
-  lng: 'en',                              // language to use
-  resources: {
+async function logDeviceInfo() {
+  const lang = await Device.getLanguageCode()
+  const lang_code = lang.value
+
+  return lang_code
+};
+
+
+
+logDeviceInfo().then((value) => {
+  i18next.init({
+    interpolation: { escapeValue: false },  // React already does escaping
+    lng: (value == 'en' | value == 'ca') ? value : 'en',                              // language to use
+    resources: {
       en: {
-          common: common_en               // 'common' is our custom namespace
+        common: common_en               // 'common' is our custom namespace
       },
-      cat: {
-          common: common_cat
+      ca: {
+        common: common_cat
       },
-  },
-});
+    },
+  });
+
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+
+})
+
+
