@@ -1,10 +1,21 @@
 {
     "LOGIN":{
+        "TITLE":"Iniciar sesión",
         "EMAIL_ADDRESS":"Correo electrónico",
         "EMAIL_ADDRESS_PLACEHOLDER":"Introduce tu correo electrónico",
         "PASSWORD":"Contraseña",
         "PASSWORD_PLACEHOLDER":"Introduce tu contraseña",
         "ERROR":"Correo electrónico o contraseña incorrectos",
         "SUBMIT":"Acceder"
+    },
+    "NAVBAR":{
+        "MENU":"Menú",
+        "PROFILE":"Perfil",
+        "TASKS":"Tareas",
+        "HOME":"Inicio",
+        "CAMPAIGNS":"Campañas",
+        "ORGANISATIONS":"Organizaciones",
+        "CHANGE_ORGANISATION":"Cambiar organización",
+        "LANGUAGE":"Lenguaje"
     }
 }

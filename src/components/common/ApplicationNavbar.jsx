@@ -14,14 +14,15 @@ import { HiLanguage } from "react-icons/hi2";
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserStatusContext, USER_STATUS } from '../../context/UserStatusContext';
-import BackPage from './BackPage';
 import './ApplicationNavbar.css'
+import { useTranslation } from "react-i18next";
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
 export default function ApplicationNavbar() {
+    const { t, i18n } = useTranslation('common');
     const navigate = useNavigate()
     const { update_state, is_unAuthenticated, is_superAdmin, is_user,set_language } = useContext(UserStatusContext)
     const [expanded, setExpanded] = useState(false);
@@ -70,44 +71,44 @@ export default function ApplicationNavbar() {
                 >
                     <Offcanvas.Header bsPrefix='navbar-header' closeButton>
                         <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expanded}`}>
-                            <Container>Menu</Container>
+                            <Container>{t('NAVBAR.MENU')}</Container>
                         </Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
                         <Container>
-                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><IoPersonOutline />{" "}My profile</Nav.Link>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><IoPersonOutline />{" "}{t('NAVBAR.PROFILE')}</Nav.Link>
                         </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
                         <Container>
-                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><BiTask />{" "}My tasks</Nav.Link>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><BiTask />{" "}{t('NAVBAR.TASKS')}</Nav.Link>
                         </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
                         <Container>
-                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><AiFillHome />{" "}My home</Nav.Link>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><AiFillHome />{" "}{t('NAVBAR.HOME')}</Nav.Link>
                         </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
                         <Container>
-                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><FaCampground />{" "}My campaigns</Nav.Link>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><FaCampground />{" "}{t('NAVBAR.CAMPAIGNS')}</Nav.Link>
                         </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
                         <Container>
-                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgOrganisation />{" "}My organisations</Nav.Link>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgOrganisation />{" "}{t('NAVBAR.ORGANISATIONS')}</Nav.Link>
                         </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
                         <Container>
-                            <Nav.Link onClick={change_organisation}><CgArrowsExchangeAlt />{" "}Change organisation</Nav.Link>
+                            <Nav.Link onClick={change_organisation}><CgArrowsExchangeAlt />{" "}{t('NAVBAR.CHANGE_ORGANISATION')}</Nav.Link>
                         </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
                         <Container>
                             <Row xs="auto">
                                 <Col>
-                                    <Nav.Link className="ms-auto"><HiLanguage />{" "}</Nav.Link>
+                                    <Nav.Link className="ms-auto"><HiLanguage />{" "}{t('NAVBAR.LANGUAGE')}</Nav.Link>
                                 </Col>
                                 <Col>
                                     <Form.Select size="sm">

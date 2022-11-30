@@ -1,10 +1,21 @@
 {
     "LOGIN":{
+        "TITLE":"Iniciar sessió",
         "EMAIL_ADDRESS":"Correu electrònic",
         "EMAIL_ADDRESS_PLACEHOLDER":"Introdueix el teu correu electrònic",
         "PASSWORD":"Contrasenya",
         "PASSWORD_PLACEHOLDER":"Introdueix la teva contrasenya",
         "ERROR":"Correu electrònic o contraseny incorrecta",
         "SUBMIT":"Accedeix"
+    },
+    "NAVBAR":{
+        "MENU":"Menú",
+        "PROFILE":"Perfil",
+        "TASKS":"Tasques",
+        "HOME":"Inici",
+        "CAMPAIGNS":"Campanyes",
+        "ORGANISATIONS":"Organitzacions",
+        "CHANGE_ORGANISATION":"Cambiar organització",
+        "LANGUAGE":"Llenguatje"
     }
 }

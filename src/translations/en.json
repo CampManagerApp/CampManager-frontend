@@ -1,10 +1,21 @@
 {
     "LOGIN":{
+        "TITLE":"Login",
         "EMAIL_ADDRESS":"Email address",
         "EMAIL_ADDRESS_PLACEHOLDER":"Enter your email address",
         "PASSWORD":"Password",
         "PASSWORD_PLACEHOLDER":"Enter your password",
         "ERROR":"Invalid email address or password",
         "SUBMIT":"Submit"
+    },
+    "NAVBAR":{
+        "MENU":"Menu",
+        "PROFILE":"Profile",
+        "TASKS":"Tasks",
+        "HOME":"Home",
+        "CAMPAIGNS":"Campaigns",
+        "ORGANISATIONS":"Organisations",
+        "CHANGE_ORGANISATION":"Change organisation",
+        "LANGUAGE":"Language"
     }
 }

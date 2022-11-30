@@ -17,10 +17,9 @@ export default function LoginForm({ showInvalidMessage, handleSubmit }) {
         })
     }
 
-
     return (
         <div className='login-form'>
-            <h3 className='login-form-title'>Login</h3>
+            <h3 className='login-form-title'>{t('LOGIN.TITLE')}</h3>
             <Form className='p-5 p-sm-3 rounded h-100' noValidate onSubmit={(e) => {
                 e.stopPropagation()
                 e.preventDefault()
