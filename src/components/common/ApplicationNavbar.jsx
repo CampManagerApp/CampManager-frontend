@@ -23,7 +23,7 @@ import Col from 'react-bootstrap/Col';
 
 export default function ApplicationNavbar() {
     const navigate = useNavigate()
-    const { update_state, is_unAuthenticated, is_superAdmin, is_user } = useContext(UserStatusContext)
+    const { update_state, is_unAuthenticated, is_superAdmin, is_user,set_language } = useContext(UserStatusContext)
     const [expanded, setExpanded] = useState(false);
 
     function logout() {
@@ -36,6 +36,16 @@ export default function ApplicationNavbar() {
             navigate('/login')
         }
     }
+    function changeLanguageCa(){
+        set_language("ca")
+    }
+    function changeLanguageEn(){
+        set_language("en")
+    }
+    function changeLanguageEs(){
+        set_language("es")
+    }
+
 
     function change_organisation() {
         setExpanded(false)
@@ -101,9 +111,9 @@ export default function ApplicationNavbar() {
                                 </Col>
                                 <Col>
                                     <Form.Select size="sm">
-                                        <option value="EN">🇬🇧&emsp;EN</option>
-                                        <option value="ES">🇪🇸&emsp;ES</option>
-                                        <option value="CA">🇪🇸&emsp;CA</option>
+                                        <option value="EN" onClick={changeLanguageEn}>🇬🇧&emsp;EN</option>
+                                        <option value="ES" onClick={changeLanguageEs}>🇪🇸&emsp;ES</option>
+                                        <option value="CA" onClick={changeLanguageCa}>🇪🇸&emsp;CA</option>
                                     </Form.Select>
                                 </Col>
                             </Row>

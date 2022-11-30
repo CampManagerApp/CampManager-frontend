@@ -1,6 +1,10 @@
 {
     "LOGIN":{
-        "ENTER_EMAIL":"Enter your email.",
-        "ERROR":"Invalid username or password."
+        "EMAIL_ADDRESS":"Email address",
+        "EMAIL_ADDRESS_PLACEHOLDER":"Enter your email address",
+        "PASSWORD":"Password",
+        "PASSWORD_PLACEHOLDER":"Enter your password",
+        "ERROR":"Invalid email address or password",
+        "SUBMIT":"Submit"
     }
 }

@@ -1,6 +1,10 @@
 {
     "LOGIN":{
-        "ENTER_EMAIL":"Introduce usuario.",
-        "ERROR":"Usuario o contraseña incorrecto."
+        "EMAIL_ADDRESS":"Correo electrónico",
+        "EMAIL_ADDRESS_PLACEHOLDER":"Introduce tu correo electrónico",
+        "PASSWORD":"Contraseña",
+        "PASSWORD_PLACEHOLDER":"Introduce tu contraseña",
+        "ERROR":"Correo electrónico o contraseña incorrectos",
+        "SUBMIT":"Acceder"
     }
 }

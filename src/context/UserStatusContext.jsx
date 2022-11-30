@@ -1,4 +1,5 @@
 import {createContext, useEffect, useState} from 'react';
+import { useTranslation } from "react-i18next";
 
 export const UserStatusContext = createContext()
 
@@ -9,8 +10,10 @@ export const USER_STATUS = Object.freeze({
   })
 
 export default function UserStatusProvider (props) {
+    const {i18n } = useTranslation('common');
     const [status, setStatus] = useState(USER_STATUS.UNAUTHENTICATED)
     const [currentOrganisation, setCurrentOrganisation] = useState({in_org:false})
+    const [languageStatus, setLanguageStatus] = useState('en')
 
     const update_state = (status) => {
         setStatus(status)
@@ -34,6 +37,10 @@ export default function UserStatusProvider (props) {
 
     const set_current_organisation = (org) => {
         setCurrentOrganisation(org) 
+    }
+    const set_language = (lang) => {
+        setLanguageStatus(lang)
+        i18n.changeLanguage(lang) 
     } 
 
     const operations = {
@@ -44,6 +51,7 @@ export default function UserStatusProvider (props) {
         get_current_organisation, 
         set_current_organisation, 
         currentOrganisation,
+        set_language
     }
 
     return (

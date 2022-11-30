@@ -1,0 +1,10 @@
+{
+    "LOGIN":{
+        "EMAIL_ADDRESS":"Correu electrònic",
+        "EMAIL_ADDRESS_PLACEHOLDER":"Introdueix el teu correu electrònic",
+        "PASSWORD":"Contrasenya",
+        "PASSWORD_PLACEHOLDER":"Introdueix la teva contrasenya",
+        "ERROR":"Correu electrònic o contraseny incorrecta",
+        "SUBMIT":"Accedeix"
+    }
+}
