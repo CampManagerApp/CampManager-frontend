@@ -1,12 +1,13 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from "react";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 import * as Icons from '../../design/icons.js'
 import './LoginForm.css'
 
-export default function LoginForm ({handleSubmit}) {
+export default function LoginForm({ showInvalidMessage, handleSubmit }) {
 
+    const { t, i18n } = useTranslation('common');
     const [form, setForm] = useState({})
 
     function onUpdate(e) {
@@ -15,7 +16,7 @@ export default function LoginForm ({handleSubmit}) {
             [e.target.id]: e.target.value
         })
     }
-    const {t, i18n} = useTranslation('common');
+
 
     return (
         <div className='login-form'>
@@ -35,8 +36,9 @@ export default function LoginForm ({handleSubmit}) {
                     <Form.Control onChange={onUpdate} type="password" placeholder="Password" />
                 </Form.Group>
                 <div className="d-grid gap-2 ">
+                    {showInvalidMessage ? <p class="text-danger">{t('LOGIN.ERROR')}</p> : ''}
                     <Button type="submit" className="btn btn-primary">
-                    Submit <Icons.Login/>
+                        Submit <Icons.Login />
                     </Button>
                 </div>
             </Form>

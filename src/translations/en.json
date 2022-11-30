@@ -1,5 +1,6 @@
 {
     "LOGIN":{
-        "ENTER_EMAIL":"Enter your email"
+        "ENTER_EMAIL":"Enter your email.",
+        "ERROR":"Invalid username or password."
     }
 }

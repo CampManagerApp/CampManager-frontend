@@ -1,0 +1,6 @@
+{
+    "LOGIN":{
+        "ENTER_EMAIL":"Introduce usuario.",
+        "ERROR":"Usuario o contraseña incorrecto."
+    }
+}
