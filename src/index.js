@@ -8,8 +8,7 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@ionic/react/css/core.css';
-import Popper from '@popperjs/core';
-import common_cat from "./translations/cat.json";
+import common_ca from "./translations/ca.json";
 import common_en from "./translations/en.json";
 import common_es from "./translations/es.json";
 import i18next from "i18next";
@@ -32,7 +31,7 @@ logDeviceInfo().then((value) => {
         common: common_en               // 'common' is our custom namespace
       },
       ca: {
-        common: common_cat
+        common: common_ca
       },
       es: {
         common: common_es
@@ -41,12 +40,11 @@ logDeviceInfo().then((value) => {
   });
 
   const root = ReactDOM.createRoot(document.getElementById('root'));
-  root.render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  );
-
+    root.render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
 })
 
 

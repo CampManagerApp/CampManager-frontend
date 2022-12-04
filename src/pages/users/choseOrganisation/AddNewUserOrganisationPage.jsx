@@ -11,6 +11,7 @@ import ConfirmationClaim from './ConfirmationClaim';
 import ItemList from '../../../components/lists/ItemList';
 import TitlePage from '../../../components/common/TitlePage';
 
+
 import './AddNewUserOrganisationPage.css'
 import { UserStatusContext } from '../../../context/UserStatusContext';
 
@@ -19,8 +20,8 @@ function UserItem({ item: user }) {
 }
 
 export default function AddNewUserOrganisation() {
-    const navigate = useNavigate();
     const { t, i18n } = useTranslation('common');
+    const navigate = useNavigate();
 
     // states definitons
     const [confirmationModalState, setConfirmationModalState] = useState({ user: '', show: false })

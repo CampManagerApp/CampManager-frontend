@@ -1,17 +1,14 @@
-import Button from 'react-bootstrap/Button';
-import ListGroup from 'react-bootstrap/ListGroup';
 import './ListOfOrganisations.css'
-import * as Icons from '../../design/icons.js'
 import React, { useState, useEffect } from "react";
-import PopUp from '../common/PopUp';
-import Form from 'react-bootstrap/Form';
 import { getOrganisation } from '../../services/superadmin/Organisations';
 import { useContext } from 'react';
 import { UserOrganisationsContex } from '../../context/UserOrganisationsContex';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 export default function ListOfOrganisations({ handle }) {
+  const { t, i18n } = useTranslation('common');
   //it creates a state open with default as false
   const navigate = useNavigate();
   const [buttonPopup, setButtonPopup] = useState(false)
@@ -94,10 +91,10 @@ export default function ListOfOrganisations({ handle }) {
           <div>
             <button type="button" className="btn btn-primary m-3" onClick={() => {
               
-            }}>External User</button>
+            }}>{t('SELECT_ORGANISATION.EXTERNAL_USER')}</button>
             <button type="button" className="btn btn-primary" onClick={() => {
               navigate('/user/listoforganisations/add/')
-            }}>Add Organisation</button>
+            }}>{t('SELECT_ORGANISATION.ADD_ORGANISATION_BUTTON')}</button>
           </div>
         </Row>
       </Container>
