@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './ModalOrganisation.css';
 import { toCapitalLetter } from "../../utils";
+import { useTranslation } from "react-i18next";
 
 export default function ModalSimple(props) {
-
+    const { t, i18n } = useTranslation('common');
     return (
         <Modal
             {...props}
@@ -18,7 +18,7 @@ export default function ModalSimple(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Organisation details
+                {t('MODAL_INFORMATION.TITLE')}
                 </Modal.Title>
             </Modal.Header>
             <Form className='form-padding'>

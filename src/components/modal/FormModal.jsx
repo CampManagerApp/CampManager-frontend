@@ -6,9 +6,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './ModalOrganisation.css';
 import { toCapitalLetter } from "../../utils";
+import { useTranslation } from "react-i18next";
 
 export default function FormModal(props) {
-
+    const { t, i18n } = useTranslation('common');
     const [form, setForm] = useState({})
 
     function onChange(e) {
@@ -51,7 +52,7 @@ export default function FormModal(props) {
                 }
                 <div className="d-grid gap-2 ">
                     <Button type="submit" className="btn btn-primary">
-                        Submit
+                    {t('MODAL_ADD.ADD_BUTTON')}
                     </Button>
                 </div>
             </Form>
