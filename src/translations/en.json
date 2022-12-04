@@ -70,6 +70,36 @@
             "CONFIRMATION": "YES, PROCEED",
             "CANCEL": "NO, CANCEL"
         }
+    },
+
+    "MODAL_DELETE":{
+        "TITLE":"Confirmation",
+        "QUESTION":"Are you sure you want to delete this element?",
+        "DELETE_BUTTON":"Delete",
+        "CANCEL_BUTTON":"Cancel"
+    },
+    
+    "MODAL_INFORMATION":{
+        "TITLE":"Organisation details"
+    },
+
+    "MODAL_ADD":{
+        "ADD_BUTTON":"Add"
+    },
+
+    "ORGANISATION_PAGE":{
+        "CAMPAIGNS":"Campaings",
+        "MEMBERS":"Members",
+        "SOCIAL_PAGE":"Social page"
+    },
+
+    "ORGANISATION_EDIT_INFO":{
+        "ORGANISATION_NAME":"Organisation's name",
+        "MANAGER":"Manager",
+        "DESCRIPTION":"Description",
+        "CANCEL_BUTTON":"Cancel",
+        "UPDATE_BUTTON":"Update",
+        "CREATE_BUTTON":"Create"
     }
         
 }

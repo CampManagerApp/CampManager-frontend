@@ -54,6 +54,31 @@
     "BACK_BUTTON":"Enrere",
     "ERRORS":{
         "ERROR_01":"Alguna cosa ha anat malament, torna a intentar-ho després"
+    },
+    "MODAL_DELETE":{
+        "TITLE":"Confirmació",
+        "QUESTION":"Esteu segur que voleu esborrar aquest element?",
+        "DELETE_BUTTON":"Esborrar",
+        "CANCEL_BUTTON":"Cancel·lar"
+    },
+    "MODAL_INFORMATION":{
+        "TITLE":"Detalls de l'organització"
+    },
+    "MODAL_ADD":{
+        "ADD_BUTTON":"Afegir"
+    },
+    "ORGANISATION_PAGE":{
+        "CAMPAIGNS":"Campanyes",
+        "MEMBERS":"Membres",
+        "SOCIAL_PAGE":"Pàgina social"
+    },
+    "ORGANISATION_EDIT_INFO":{
+        "ORGANISATION_NAME":"Nom de l'organització",
+        "MANAGER":"Administrador",
+        "DESCRIPTION":"Descripció",
+        "CANCEL_BUTTON":"Cancel·lar",
+        "UPDATE_BUTTON":"Actualitzar",
+        "CREATE_BUTTON":"Crear"
     }
 
 }

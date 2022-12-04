@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import ProfilePage from "../../components/common/ProfilePage";
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import ItemList from '../../components/lists/ItemList';
 import * as image from "../../design/images.js";
-
+import { useTranslation } from "react-i18next";
 import './OrganisationPageForm.css'
 import { useContext } from "react";
 import { UserStatusContext } from "../../context/UserStatusContext";
 
 /* Para que tenga 0 padding la lista px-0 py-0*/
 export default function OrganistationPageForm() {
+    const { t, i18n } = useTranslation('common');
     const idVisible = 'hidden';
     const includeProfileImage = 'none';
     const navigate = useNavigate()
@@ -31,19 +31,19 @@ export default function OrganistationPageForm() {
 
                     <Row className="list-group-item justify-content-between align-items-center px-0 py-0 " onClick={goto_campaings_list}>
                         <div className="list-image" >
-                            <p className="overlay-text">Campaigns</p>
+                            <p className="overlay-text">{t('ORGANISATION_PAGE.CAMPAIGNS')}</p>
                             <img src={require('../../design/nophotoimg.jpg')} className="image-list" />
                         </div>
                     </Row>
                     <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 " onClick={goto_members_list}>
                         <div className="list-image">
-                            <p className="overlay-text">Members</p>
+                            <p className="overlay-text">{t('ORGANISATION_PAGE.MEMBERS')}</p>
                             <img src={require('../../design/nophotoimg.jpg')} className="image-list" />
                         </div>
                     </Row>
                     <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 " onClick={()=>{}}>
                         <div className="list-image">
-                            <p className="overlay-text">Social Page</p>
+                            <p className="overlay-text">{t('ORGANISATION_PAGE.SOCIAL_PAGE')}</p>
                             <img src={require('../../design/nophotoimg.jpg')} className="image-list" />
                         </div>
                     </Row>

@@ -67,5 +67,41 @@
             "CONFIRMATION": "SI, PROCEDER",
             "CANCEL": "NO, CANCELAR"
         }
+    },
+
+    "BACK_BUTTON":"Atrás",
+
+    "ERRORS":{
+        "ERROR_01":"Alguna cosa ha salido mal, inténtalo más tarde"
+    },
+
+    "MODAL_DELETE":{
+        "TITLE":"Confirmación",
+        "QUESTION":"Estas seguro que quieres eliminar este elemento?",
+        "DELETE_BUTTON":"Eliminar",
+        "CANCEL_BUTTON":"Cancelar"
+    },
+
+    "MODAL_INFORMATION":{
+        "TITLE":"Detalles de la organización"
+    },
+
+    "MODAL_ADD":{
+        "ADD_BUTTON":"Añadir"
+    },
+
+    "ORGANISATION_PAGE":{
+        "CAMPAIGNS":"Campañas",
+        "MEMBERS":"Miembros",
+        "SOCIAL_PAGE":"Página social"
+    },
+    
+    "ORGANISATION_EDIT_INFO":{
+        "ORGANISATION_NAME":"Nombre de la orgnización",
+        "MANAGER":"Administrador",
+        "DESCRIPTION":"Descripción",
+        "CANCEL_BUTTON":"Cancelar",
+        "UPDATE_BUTTON":"Actualizar",
+        "CREATE_BUTTON":"Crear"
     }
  }
