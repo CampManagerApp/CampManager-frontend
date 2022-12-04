@@ -1,17 +1,8 @@
 import { createContext } from "react";
 import { Organisations } from "../data/organisations";
+import { claim_org_member, get_organisation_by_code, get_org_unclaimned_members } from "../services/organisation/Organisation"
 
 export const organisationContex = createContext()
-
-const unclaimed_users = [
-    { name: 'Alejandro Clavera' },
-    { name: 'Fadil Aba' },
-    { name: 'Carlos Isaac' },
-    { name: 'Jordi Lazo' },
-    { name: 'Joel Aumedes' },
-    { name: 'Random' },
-]
-
 
 export default function OrganisationProvider(props) {
 
@@ -24,16 +15,25 @@ export default function OrganisationProvider(props) {
     }
 
 
-    function get_org_unclaimed_users(org_id) {
-        //return unclaimed_users
-        return get_organisation(org_id).members
+    async function get_org_unclaimed_users(org_id) {
+        try {
+            return await get_org_unclaimned_members(org_id);
+        } catch (error) {
+            if (error.response.status == 404)
+                throw new Error('Not found')
+        }
     }
 
-    
-    function get_org_by_code(code) {
-        //return {'id':0, name:'Colònies Aina'}
-        const organisation = Organisations.filter((org) => {return org.code == code})
-        return organisation[0]
+
+    async function get_org_by_code(code) {
+        try {
+            const data = await get_organisation_by_code(code);
+            const org = { ...Organisations[0], ['name']: data.name, ['id']: data.id }
+            return org
+        } catch (error) {
+            if (error.response.status == 404)
+                throw new Error('Not found')
+        }
     }
 
 
@@ -41,9 +41,25 @@ export default function OrganisationProvider(props) {
         return get_organisation(org_id).campaigns
     }
 
-    
+
+    async function claim_member(username, orgname, full_name) {
+        try {
+            const data = await claim_org_member(username, orgname, full_name)
+            console.log(data)
+        } catch (error) {
+            throw new Error('Error')
+        }
+    }
+
+    const operations = {
+        get_org_unclaimed_users, 
+        get_org_by_code, 
+        get_campaings_list, 
+        claim_member
+    }
+
     return (
-        <organisationContex.Provider value={{ get_org_unclaimed_users, get_org_by_code, get_campaings_list}}>
+        <organisationContex.Provider value={operations}>
             {props.children}
         </organisationContex.Provider>
     )

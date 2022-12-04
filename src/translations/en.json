@@ -1,6 +1,22 @@
 {
-    "LOGIN":{
-        "ENTER_EMAIL":"Enter your email.",
-        "ERROR":"Invalid username or password."
+    "LOGIN": {
+        "ENTER_EMAIL": "Enter your email.",
+        "ERROR": "Invalid username or password."
+    },
+
+    "ADD_NEW_USR_ORG": {
+        "ADD_ORG": "Add organisation",
+        "ORG_CODE_LABEL": "Organisation Code",
+        "ORG_CODE_PLACEHOLDER": "Organisation code",
+        "ORG_NOT_FOUND": "Not exist a organisation with this code",
+        "SEARCH": "Search",
+        "ANY_MEMBER_TO_CLAIM":  "Any member to claim",
+        "CLAIM_CONFIRMATION": {
+            "CLAIM_MODAL_TITLE": "Claim Name",
+            "ACTION_INFORMATION": "You are about to claim the name",
+            "CONFIRMATION_MESSAGE": "Are you sure?",
+            "CONFIRMATION": "YES, PROCEED",
+            "CANCEL": "NO, CANCEL"
+        }
     }
 }

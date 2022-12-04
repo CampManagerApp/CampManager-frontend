@@ -2,5 +2,21 @@
     "LOGIN":{
         "ENTER_EMAIL":"Introduce usuario.",
         "ERROR":"Usuario o contraseña incorrecto."
+    },
+
+    "ADD_NEW_USR_ORG": {
+        "ADD_ORG": "Añadir organización",
+        "ORG_CODE_LABEL": "Código de la organización",
+        "ORG_CODE_PLACEHOLDER": "Código de la organización",
+        "ORG_NOT_FOUND": "No existe una organización con este codigo.",
+        "SEARCH": "Buscar",
+        "ANY_MEMBER_TO_CLAIM":  "Ningun miembro por reclamar",
+        "CLAIM_CONFIRMATION": {
+            "CLAIM_MODAL_TITLE": "Reclamar usuario",
+            "ACTION_INFORMATION": "Vas a reclamar el usuario",
+            "CONFIRMATION_MESSAGE": "¿Estas seguro?",
+            "CONFIRMATION": "SI, PROCEDER",
+            "CANCEL": "NO, CANCELAR"
+        }
     }
 }

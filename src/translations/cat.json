@@ -2,5 +2,22 @@
     "LOGIN":{
         "ENTER_EMAIL":"Introdueix email",
         "ERROR":"Invalid username or password"
+    },
+
+    "ADD_NEW_USR_ORG": {
+        "ADD_ORG": "Afegir organització",
+        "ORG_CODE_LABEL": "Codi d'organització",
+        "ORG_CODE_PLACEHOLDER": "Codi d'organització",
+        "ORG_NOT_FOUND": "No hi ha una organització amb aquest codi",
+        "SEARCH": "Cerca",
+        "ANY_MEMBER_TO_CLAIM":  "Cap membre per reclamar",
+        "CLAIM_CONFIRMATION": {
+            "CLAIM_MODAL_TITLE": "Reclamar usuari",
+            "ACTION_INFORMATION": "Reclamaràs l'usuari",
+            "CONFIRMATION_MESSAGE": "Estàs segur?",
+            "CONFIRMATION": "SI, PROCEDIR",
+            "CANCEL": "NO, CANCEL·LAR"
+        }
     }
+}
 }

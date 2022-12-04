@@ -13,6 +13,7 @@ import BackPage from "./BackPage";
 const DISABLED_LOCATIONS = [
     '/login',
     '/listoforganisations',
+    '/listoforganisations/',
     '/organisation',
 ]
 
@@ -25,7 +26,6 @@ export default function ApplicationHeader() {
     }, [location])
 
     return (
-        // <div>
         <div className="application-header">
             <Container className={isPlatform('ios') ? 'ios-header' : null}>
                 <Row>
@@ -48,6 +48,5 @@ export default function ApplicationHeader() {
                 </Row>
             </Container>
         </div>
-        // </div>
     )
 }

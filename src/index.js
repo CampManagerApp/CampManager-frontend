@@ -11,6 +11,7 @@ import '@ionic/react/css/core.css';
 import Popper from '@popperjs/core';
 import common_cat from "./translations/cat.json";
 import common_en from "./translations/en.json";
+import common_es from "./translations/es.json";
 import i18next from "i18next";
 
 async function logDeviceInfo() {
@@ -32,6 +33,9 @@ logDeviceInfo().then((value) => {
       },
       ca: {
         common: common_cat
+      },
+      es: {
+        common: common_es
       },
     },
   });
