@@ -1,8 +1,6 @@
 import './AddNewUserOrganisationPage.css'
-
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import ListGroup from 'react-bootstrap/ListGroup';
 import ConfirmationClaim from './ConfirmationClaim';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -11,12 +9,14 @@ import { organisationContex } from '../../../context/OrganisationContex';
 import { UserOrganisationsContex } from '../../../context/UserOrganisationsContex';
 import ItemList from '../../../components/lists/ItemList';
 import TitlePage from '../../../components/common/TitlePage';
+import { useTranslation } from "react-i18next";
 
 function UserItem({ item: user }) {
     return <div className='d-flex justify-content-center'>{user}</div>
 }
 
 export default function AddNewUserOrganisation() {
+    const { t, i18n } = useTranslation('common');
     const navigate = useNavigate();
     const [confirmationModalState, setConfirmationModalState] = useState({ user: '', show: false })
     const [code, setCode] = useState('')
@@ -49,19 +49,19 @@ export default function AddNewUserOrganisation() {
 
     return (
         <div className='scrollable-content'>
-            <TitlePage>Add organisation</TitlePage>
+            <TitlePage>{t('ADD_ORGANISATION.TITLE')}</TitlePage>
             <Container className='mb-5 mt-5'>
                 <Row>
                     <Col>
                         <Form.Group controlId="code">
-                            <Form.Label >Organisation Code</Form.Label>
-                            <Form.Control placeholder="Organisation code" type="text" onChange={(e) => { setCode(e.target.value) }} />
+                            <Form.Label >{t('ADD_ORGANISATION.ORGANISATION_CODE')}</Form.Label>
+                            <Form.Control placeholder={t('ADD_ORGANISATION.ORGANISATION_CODE_PLACEHOLDER')} type="text" onChange={(e) => { setCode(e.target.value) }} />
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
                     <Col className="d-flex justify-content-end">
-                        <Button className="mt-3" onClick={load_users_to_claim}>Search</Button>
+                        <Button className="mt-3" onClick={load_users_to_claim}>{t('ADD_ORGANISATION.SEARCH_BUTTON')}</Button>
                     </Col>
                 </Row>
             </Container>

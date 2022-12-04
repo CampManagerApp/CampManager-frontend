@@ -3,8 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { isPlatform } from '@ionic/react';
-import { getPlatforms } from '@ionic/react';
-
+import { useTranslation } from "react-i18next";
 import ApplicationNavbar from "./ApplicationNavbar";
 import './ApplicationHeader.css'
 import BackPage from "./BackPage";
@@ -17,6 +16,7 @@ const DISABLED_LOCATIONS = [
 ]
 
 export default function ApplicationHeader() {
+    const { t, i18n } = useTranslation('common');
     const location = useLocation()
     const [visible, setVisible] = useState(false)
     
@@ -38,7 +38,7 @@ export default function ApplicationHeader() {
                         <div className="container">
                             <div className="row">
                                 <div className="col-2"><img src={require('../../design/campmanager.png')} />{' '}</div>
-                                <div className="col"><h4>CampManager</h4></div>
+                                <div className="col"><h4>{t('HEADER.TITLE')}</h4></div>
                             </div>
                         </div>
                     </Col>

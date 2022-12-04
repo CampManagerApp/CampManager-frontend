@@ -1,4 +1,7 @@
 {
+    "HEADER":{
+        "TITLE":"CampManager"
+    },
     "LOGIN":{
         "TITLE":"Login",
         "EMAIL_ADDRESS":"Email address",
@@ -6,7 +9,7 @@
         "PASSWORD":"Password",
         "PASSWORD_PLACEHOLDER":"Enter your password",
         "ERROR":"Invalid email address or password",
-        "SUBMIT":"Submit"
+        "SUBMIT_BUTTON":"Submit"
     },
     "NAVBAR":{
         "MENU":"Menu",
@@ -16,6 +19,40 @@
         "CAMPAIGNS":"Campaigns",
         "ORGANISATIONS":"Organisations",
         "CHANGE_ORGANISATION":"Change organisation",
-        "LANGUAGE":"Language"
+        "LANGUAGE":"Language",
+        "LOGOUT":"Logout"
+    },
+    "SELECT_ORGANISATION":{
+        "TITLE":"Select an organisation",
+        "EXTERNAL_USER":"External user",
+        "ADD_ORGANISATION_BUTTON":"Add an organisation"
+    },
+    "ADD_ORGANISATION":{
+        "TITLE":"Add an organisation",
+        "ORGANISATION_CODE":"Organisation code",
+        "ORGANISATION_CODE_PLACEHOLDER":"Enter the organisation code",
+        "SEARCH_BUTTON":"Search"
+    },
+    "REGISTER_FORM":{
+        "TITLE":"Create an account",
+        "NAME":"Name",
+        "NAME_PLACEHOLDER":"Enter your name",
+        "FIRST_NAME":"First name",
+        "FIRST_NAME_PLACEHOLDER":"Enter your first name",
+        "LAST_NAME":"Last name",
+        "LAST_NAME_PLACEHOLDER":"Enter your last name",
+        "USERNAME":"Username",
+        "USERNAME_PLACEHOLDER":"Enter your username",
+        "EMAIL_ADDRESS":"Email address",
+        "EMAIL_ADDRESS_PLACEHOLDER":"Enter your email address",
+        "PASSWORD":"Password",
+        "PASSWORD_PLACEHOLDER":"Enter your password",
+        "REPEAT_PASSWORD":"Repeat your password",
+        "REPEAT_PASSWORD_PLACEHOLDER":"Rewrite your password",
+        "SUBMIT_BUTTON":"Create account"
+    },
+    "BACK_BUTTON":"Back",
+    "ERRORS":{
+        "ERROR_01":"Something went wrong, try again later"
     }
 }

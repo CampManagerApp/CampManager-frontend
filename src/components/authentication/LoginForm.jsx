@@ -37,7 +37,7 @@ export default function LoginForm({ showInvalidMessage, handleSubmit }) {
                 <div className="d-grid gap-2 ">
                     {showInvalidMessage ? <p class="text-danger">{t('LOGIN.ERROR')}</p> : ''}
                     <Button type="submit" className="btn btn-primary">
-                    {t('LOGIN.SUBMIT')} <Icons.Login />
+                    {t('LOGIN.SUBMIT_BUTTON')} <Icons.Login />
                     </Button>
                 </div>
             </Form>

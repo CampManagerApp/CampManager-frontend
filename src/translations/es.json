@@ -1,4 +1,7 @@
 {
+    "HEADER":{
+        "TITLE":"CampManager"
+    },
     "LOGIN":{
         "TITLE":"Iniciar sesión",
         "EMAIL_ADDRESS":"Correo electrónico",
@@ -6,7 +9,7 @@
         "PASSWORD":"Contraseña",
         "PASSWORD_PLACEHOLDER":"Introduce tu contraseña",
         "ERROR":"Correo electrónico o contraseña incorrectos",
-        "SUBMIT":"Acceder"
+        "SUBMIT_BUTTON":"Acceder"
     },
     "NAVBAR":{
         "MENU":"Menú",
@@ -16,6 +19,40 @@
         "CAMPAIGNS":"Campañas",
         "ORGANISATIONS":"Organizaciones",
         "CHANGE_ORGANISATION":"Cambiar organización",
-        "LANGUAGE":"Lenguaje"
+        "LANGUAGE":"Lenguaje",
+        "LOGOUT":"Cerrar sesión"
+    },
+    "SELECT_ORGANISATION":{
+        "TITLE":"Selecciona una organización",
+        "EXTERNAL_USER":"Usuario externo",
+        "ADD_ORGANISATION_BUTTON":"Añadir una organización"
+    },
+    "ADD_ORGANISATION":{
+        "TITLE":"Añadir una organización",
+        "ORGANISATION_CODE":"Código de la organización",
+        "ORGANISATION_CODE_PLACEHOLDER":"Introduce el código de la organización",
+        "SEARCH_BUTTON":"Buscar"
+    },
+    "REGISTER_FORM":{
+        "TITLE":"Crear una cuenta",
+        "NAME":"Nombre",
+        "NAME_PLACEHOLDER":"Introduce tu nombre",
+        "FIRST_NAME":"Primer apellido",
+        "FIRST_NAME_PLACEHOLDER":"Introduce tu primer apellido",
+        "LAST_NAME":"Segundo apellido",
+        "LAST_NAME_PLACEHOLDER":"Introduce tu segundo apellido",
+        "USERNAME":"Nombre de usuario",
+        "USERNAME_PLACEHOLDER":"Introduce tu nombre de usuario",
+        "EMAIL_ADDRESS":"Correo electrónico",
+        "EMAIL_ADDRESS_PLACEHOLDER":"Introduce tu correo electrónico",
+        "PASSWORD":"Contraseña",
+        "PASSWORD_PLACEHOLDER":"Introduce tu contraseña",
+        "REPEAT_PASSWORD":"Repite la contraseña",
+        "REPEAT_PASSWORD_PLACEHOLDER":"Vuelve a introducir tu contrasenya",
+        "SUBMIT_BUTTON":"Crear cuenta"
+    },
+    "BACK_BUTTON":"Atrás",
+    "ERRORS":{
+        "ERROR_01":"Alguna cosa ha salido mal, inténtalo más tarde"
     }
 }

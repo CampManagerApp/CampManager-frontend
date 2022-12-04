@@ -124,7 +124,7 @@ export default function ApplicationNavbar() {
                     <Offcanvas.Header>
                         <Container>
                             {!is_unAuthenticated() ?
-                                <Nav.Link onClick={logout}><Icons.Logout />{" "}Logout</Nav.Link> : ''
+                                <Nav.Link onClick={logout}><Icons.Logout />{" "}{t('NAVBAR.LOGOUT')}</Nav.Link> : ''
                             }
                         </Container>
                     </Offcanvas.Header>
