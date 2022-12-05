@@ -23,6 +23,8 @@ import CampParticipantsPage from './pages/camp/CampParticipantsPage';
 import CampParticipantsList from './pages/camp/CampParticipantsList';
 import OrganisationParticipantsList from './pages/organisation/OrganisationParticipantsList';
 import CampaingsListPage from './pages/organisation/campaings/CampaingsListPage';
+import CampCounsellorsList from './pages/camp/CampCounsellorsList';
+
 import {I18nextProvider} from "react-i18next";
 import i18next from "i18next";
 
@@ -58,10 +60,12 @@ function App() {
             </Route>
             <Route path="/organisation/members/list" element={<OrganisationParticipantsList />}></Route>
             <Route path="/organisation/campaings" element={<CampaingsListPage />} />
-            <Route path="/profile" element={<ProfileUserPage />}></Route>
             <Route path="/camp" element={<CampPage />}></Route>
             <Route path="/camp/participants" element={<CampParticipantsPage />}></Route>
             <Route path="/camp/participants/list" element={<CampParticipantsList />}></Route>
+            <Route path="/camp/counsellors/list" element={<CampCounsellorsList />}></Route>
+            <Route path="/camp/tables" element={<CampCounsellorsList />}></Route>
+            <Route path="/profile" element={<ProfileUserPage />}></Route>
           </Routes>
           <AppFooter />
         </ApplicationContextProvider >
