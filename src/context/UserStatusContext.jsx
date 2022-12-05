@@ -11,6 +11,7 @@ export const USER_STATUS = Object.freeze({
 export default function UserStatusProvider (props) {
     const [status, setStatus] = useState(USER_STATUS.UNAUTHENTICATED)
     const [currentOrganisation, setCurrentOrganisation] = useState({in_org:false})
+    const [currentCamp, setCurrentCamp] = useState({in_camp:false})
 
     const update_state = (status) => {
         setStatus(status)
@@ -36,6 +37,14 @@ export default function UserStatusProvider (props) {
         setCurrentOrganisation(org) 
     } 
 
+    const get_current_camp = () => {
+        return currentCamp
+    }
+
+    const set_current_camp = (camp) => {
+        setCurrentCamp(camp) 
+    } 
+
     const operations = {
         update_state, 
         is_unAuthenticated, 
@@ -44,6 +53,9 @@ export default function UserStatusProvider (props) {
         get_current_organisation, 
         set_current_organisation, 
         currentOrganisation,
+        get_current_camp,
+        set_current_camp,
+        currentCamp,
     }
 
     return (

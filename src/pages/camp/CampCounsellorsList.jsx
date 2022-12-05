@@ -6,36 +6,35 @@ import { organisationContex } from "../../context/OrganisationContex";
 import { UserStatusContext } from "../../context/UserStatusContext";
 import * as image from "../../design/images.js";
 
-export default function CampParticipantsList({ items=[], template:Template, onClickItem = ()=>{}}) {
+export default function CampCounsellorsList({ items=[], template:Template, onClickItem = ()=>{}}) {
     const idVisible = 'hidden';
     const includeProfileImage = 'none';
     const [update, setUpdate] = useState(true)
     const { currentCamp, currentOrganisation } = useContext(UserStatusContext)
-    const { get_campaign_participants} = useContext(organisationContex)
+    const { get_campaign_counsellors} = useContext(organisationContex)
     const [item, setitem] = useState({});
     
-    const [participants, setParticipants] = new useState()
+    const [counsellors, setCounsellors] = new useState()
     const [modalShow, setModalShow] = useState(false);
 
-    function participantContent({item}) {
+    function counsellorContent({item}) {
         return (
             <div className="d-flex justify-content-center">
                 {item.name}
             </div>
-        )
-        
+        )  
     }
 
-    function onClickParticipant(item){
-        const itemSinID = { 'Participant Name':item.name, 'Parent Contact':item.contact, 'Notes':items.notes }
+    function onClickCounsellor(item){
+        const itemSinID = { 'Counsellor Name':item.name, 'Parent Contact':item.contact, 'Notes':items.notes }
         setitem(itemSinID)  
         setModalShow(true)
     }
 
     useEffect(()=> {
         if (update) {
-            const participantsList = get_campaign_participants(currentOrganisation.id, currentCamp.id)
-            setParticipants(participantsList)
+            const counsellorsList = get_campaign_counsellors(currentOrganisation.id, currentCamp.id)
+            setCounsellors(counsellorsList)
         }
         setUpdate(false)
     }, [update])
@@ -43,8 +42,8 @@ export default function CampParticipantsList({ items=[], template:Template, onCl
     return (
         <div>
             <ParticipantModal item={item} show={modalShow} onHide={() => setModalShow(false)} />
-            <ProfilePage profileName={currentCamp.name} profileNick="Participants" backgroundImg={image.hiking}  includeProfileImage={includeProfileImage}  /> 
-            <ItemList items={participants} onClickItem={onClickParticipant} template={participantContent}></ItemList>
+            <ProfilePage profileName={currentCamp.name} profileNick="Counsellors" backgroundImg={image.hiking}  includeProfileImage={includeProfileImage}  /> 
+            <ItemList items={counsellors} onClickItem={onClickCounsellor} template={counsellorContent}></ItemList>
         </div>
     )
 }

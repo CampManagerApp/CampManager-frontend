@@ -43,8 +43,38 @@ export const Organisations = [
             { name: 'Mariona Villaró' }
         ],
         campaigns: [
-            {id:0, name:'Colònies Estiu 2022'}, 
-            {id:1, name:'Estiu 2021'}
+            {id:0, name:'Colònies Estiu 2022', initDate:'August 14, 2023', finishDate:'August 20, 2023',
+             participants:[
+                {id:0, name:'Ares Miró'}, 
+                {id:1, name:'Robert Creus'},
+                {id:2, name:'Mariona Villaró'}, 
+                {id:3, name:'Darío'}
+             ],
+             counsellors:[
+                {id:0, name:'Ares Miró'}, 
+                {id:1, name:'Robert Creus'},
+                {id:2, name:'Mariona Villaró'}, 
+                {id:3, name:'Darío'}
+             ],
+             tables:[
+                {id:0, name:'Roda de Serveis Monis'}, 
+                {id:1, name:'Roda de Serveis Nens'},
+             ]
+            }, 
+            {id:1, name:'Estiu 2021', initDate:'August 14, 2023', finishDate:'August 20, 2023',
+             participants:[
+                { id:0, name:'Ares Miró' }, 
+                { id:1, name:'Robert Creus' },
+                { id:2, name:'Mariona Villaró' }, 
+                { id:3, name:'Darío' }
+             ],
+             counsellors:[
+                {id:0, name:'Ares Miró'}, 
+                {id:1, name:'Robert Creus'},
+                {id:2, name:'Mariona Villaró'}, 
+                {id:3, name:'Darío'}
+             ]
+            }
         ]
     },
     {

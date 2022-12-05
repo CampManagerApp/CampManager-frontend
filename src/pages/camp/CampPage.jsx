@@ -4,24 +4,30 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 import ItemList from '../../components/lists/ItemList';
 
 import './CampPage.css'
+import { useContext } from "react";
+import { UserStatusContext } from "../../context/UserStatusContext";
+import * as image from "../../design/images.js";
 
 /* Para que tenga 0 padding la lista px-0 py-0*/
 export default function CampPage(){
-    const imagenPerfil = "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
-    const imagenFondo = "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
     const idVisible = 'hidden';
     const includeProfileImage = 'none';
     const navigate = useNavigate()
+    const { currentCamp } = useContext(UserStatusContext)
+
     function submit(){
         navigate('/listoforganisations/');
     }
     function participants(){
         navigate('/camp/participants/');
     }
+    function tables(){
+        navigate('/camp/tables/');
+    }
     return(
         <div className="div-page scrollable-content">
             <div>
-                <ProfilePage profileName="Colònies d'estiu 2023" profileImg={imagenPerfil} profileNick="August 14, 2023 - August 20, 2023" backgroundImg={imagenFondo}  includeProfileImage={includeProfileImage} /> 
+                <ProfilePage profileName={currentCamp.name} profileNick={currentCamp.initDate + " - " + currentCamp.finishDate} backgroundImg={image.backgroundOrgList}  includeProfileImage={includeProfileImage} /> 
             </div>
             <div className="list">
                 <Col className="list-group"> 
@@ -33,7 +39,7 @@ export default function CampPage(){
                         </div>
                     </Row>
                     <Row className=" list-group-horizontal  px-0 py-0 div-row" >
-                        <Col className="list-group-item justify-content-between align-items-center  px-0 py-0 "  onClick={submit}>
+                        <Col className="list-group-item justify-content-between align-items-center  px-0 py-0 "  onClick={tables}>
                             <div className="list-image">
                                 <p className="overlay-text">Tables</p> 
                                 <img src={require('../../design/nophotoimg.jpg')} className="vimage-list" />
