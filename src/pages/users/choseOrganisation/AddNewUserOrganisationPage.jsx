@@ -61,7 +61,6 @@ export default function AddNewUserOrganisation() {
             get_org_unclaimed_users(org.id).then((users) => {
                 //setUsersToClaim(users)
                 setOrganisation(org)
-                console.log(users)
                 const members = users.map((member) => {return member.full_name})
                 setUsersToClaim(members)
             }).catch((error) => {
