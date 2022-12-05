@@ -10,16 +10,21 @@ import { AiFillHome } from "react-icons/ai";
 import { FaCampground } from "react-icons/fa";
 import { CgOrganisation } from "react-icons/cg";
 import { CgArrowsExchangeAlt } from "react-icons/cg";
+import { HiLanguage } from "react-icons/hi2";
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserStatusContext, USER_STATUS } from '../../context/UserStatusContext';
-import BackPage from './BackPage';
 import './ApplicationNavbar.css'
+import { useTranslation } from "react-i18next";
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 export default function ApplicationNavbar() {
+    const { t, i18n } = useTranslation('common');
     const navigate = useNavigate()
-    const { update_state, is_unAuthenticated, is_superAdmin, is_user } = useContext(UserStatusContext)
+    const { update_state, is_unAuthenticated, is_superAdmin, is_user,set_language } = useContext(UserStatusContext)
     const [expanded, setExpanded] = useState(false);
 
     function logout() {
@@ -32,6 +37,16 @@ export default function ApplicationNavbar() {
             navigate('/login')
         }
     }
+    function changeLanguageCa(){
+        set_language("ca")
+    }
+    function changeLanguageEn(){
+        set_language("en")
+    }
+    function changeLanguageEs(){
+        set_language("es")
+    }
+
 
     function change_organisation() {
         setExpanded(false)
@@ -56,31 +71,62 @@ export default function ApplicationNavbar() {
                 >
                     <Offcanvas.Header bsPrefix='navbar-header' closeButton>
                         <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expanded}`}>
-                            Menu
+                            <Container>{t('NAVBAR.MENU')}</Container>
                         </Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><IoPersonOutline />{" "}My profile</Nav.Link>
+                        <Container>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><IoPersonOutline />{" "}{t('NAVBAR.PROFILE')}</Nav.Link>
+                        </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><BiTask />{" "}My tasks</Nav.Link>
+                        <Container>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><BiTask />{" "}{t('NAVBAR.TASKS')}</Nav.Link>
+                        </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><AiFillHome />{" "}My home</Nav.Link>
+                        <Container>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><AiFillHome />{" "}{t('NAVBAR.HOME')}</Nav.Link>
+                        </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><FaCampground />{" "}My campaigns</Nav.Link>
+                        <Container>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><FaCampground />{" "}{t('NAVBAR.CAMPAIGNS')}</Nav.Link>
+                        </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgOrganisation />{" "}My organisations</Nav.Link>
+                        <Container>
+                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgOrganisation />{" "}{t('NAVBAR.ORGANISATIONS')}</Nav.Link>
+                        </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
-                        <Nav.Link onClick={change_organisation}><CgArrowsExchangeAlt />{" "}Change organisation</Nav.Link>
+                        <Container>
+                            <Nav.Link onClick={change_organisation}><CgArrowsExchangeAlt />{" "}{t('NAVBAR.CHANGE_ORGANISATION')}</Nav.Link>
+                        </Container>
+                    </Offcanvas.Header>
+                    <Offcanvas.Header >
+                        <Container>
+                            <Row xs="auto">
+                                <Col>
+                                    <Nav.Link className="ms-auto"><HiLanguage />{" "}{t('NAVBAR.LANGUAGE')}</Nav.Link>
+                                </Col>
+                                <Col>
+                                    <Form.Select size="sm">
+                                        <option value="EN" onClick={changeLanguageEn}>🇬🇧&emsp;EN</option>
+                                        <option value="ES" onClick={changeLanguageEs}>🇪🇸&emsp;ES</option>
+                                        <option value="CA" onClick={changeLanguageCa}>🇪🇸&emsp;CA</option>
+                                    </Form.Select>
+                                </Col>
+                            </Row>
+                        </Container>
+
                     </Offcanvas.Header>
                     <Offcanvas.Header>
-                        {!is_unAuthenticated() ?
-                            <Nav.Link onClick={logout}><Icons.Logout />{" "}Logout</Nav.Link> : ''
-                        }
+                        <Container>
+                            {!is_unAuthenticated() ?
+                                <Nav.Link onClick={logout}><Icons.Logout />{" "}{t('NAVBAR.LOGOUT')}</Nav.Link> : ''
+                            }
+                        </Container>
                     </Offcanvas.Header>
                 </Navbar.Offcanvas>
             </Navbar>
