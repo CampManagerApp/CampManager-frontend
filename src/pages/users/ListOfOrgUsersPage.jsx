@@ -27,7 +27,7 @@ function ListOfOrgUsers() {
 
     const asyncError = useAsyncError()
     const { users_list, getUser, addUser, updateUser, deleteUser } = useContext(UserContext)
-    const { get_members_list } = useContext(organisationContex)
+    const { get_members_list, registry_new_member, delete_member } = useContext(organisationContex)
     const { get_current_organisation } = useContext(UserStatusContext)
 
     useEffect(() => {
@@ -48,9 +48,11 @@ function ListOfOrgUsers() {
                     const claimed = 'false'
                     return { name: name, role: role, claimed: claimed }
                 } else {
+                    const id = org_status.id
                     const role = org_status.is_admin ? 'admin' : 'cousellor'
                     const claimed = 'true'
-                    return { name: name, role: role, claimed: claimed }
+                    const username = member.username
+                    return { id: id, name: name, role: role, claimed: claimed, username: username }
                 }
             })
             setMembers(members_info)
@@ -63,8 +65,15 @@ function ListOfOrgUsers() {
     }
 
     function onSubmit(user) {
-        addUser(user.name, user.role)
-        setModalShow(false)
+        const full_name = user.name
+        const is_admin = user.role == 'admin' ? true : false
+        //const orgname = get_current_organisation().name
+        const orgname = "Sió"
+        registry_new_member(orgname, full_name, is_admin, true).then(() => {
+            setModalShow(false)
+            load_members()
+        })
+        //addUser(user.name, user.role)
     }
 
     function onUpdate(id) {
@@ -82,7 +91,19 @@ function ListOfOrgUsers() {
     }
 
     function onDelete(id) {
-        deleteUser(id)
+        //deleteUser(id)
+        //const orgname = get_current_organisation().name
+        const orgname = "Sió"
+        // find the member with id (provisional)
+        const member_to_delete = members.filter((member) => {
+            return member.id === id
+        })[0]
+        delete_member(orgname, member_to_delete.username).then(() => {
+            load_members()
+        }).catch((error) => {
+            alert(error)
+        })
+
     }
 
     return (
