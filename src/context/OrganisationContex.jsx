@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { Organisations } from "../data/organisations";
-import { claim_org_member, get_organisation_by_code, get_org_members, get_org_unclaimned_members } from "../services/organisation/Organisation"
+import { claim_org_member, delete_org_member, get_organisation_by_code, get_org_members, get_org_unclaimned_members, registry_org_member, update_org_member } from "../services/organisation/Organisation"
 
 export const organisationContex = createContext()
 
@@ -40,50 +40,73 @@ export default function OrganisationProvider(props) {
     async function get_members_list(org_id) {
         try {
             const members = await get_org_members(org_id)
-            const members_info = members.map((member) => {
-                // apply filter to get member org info
-                if (member.organisations == null) {
-                    return {...member, ['organisation_status']: undefined}
-                }
-                const org_info = member.organisations[0]
-                return {...member, ['organisation_status']: org_info}
-            })
-            return members_info 
+            return members
         } catch (error) {
-            console.log(error)
             if (error.response.status == 404)
                 throw new Error('Not found')
         }
     }
 
+    async function registry_new_member(orgname, fullname, is_admin, is_member) {
+        try {
+            await registry_org_member(orgname, fullname, is_admin, is_member)
+        } catch (error) {
+            if (error.response.status == 404)
+                throw new Error('Not found')
+            if (error.response.status == 403)
+                alert("Forbbiden")
+        }
+    }
+
+    async function delete_member(orgname, username) {
+        try {
+            await delete_org_member(orgname, username)
+        } catch (error) {
+            if (error.response.status == 404)
+                throw new Error('Not found')
+            if (error.response.status == 403)
+                alert("Forbbiden")
+        }
+    }
+
+    async function update_member(orgname, username, is_admin, is_member) {
+        try {
+            await update_org_member(orgname, username, is_admin, is_member)
+        } catch (error) {
+            if (error.response.status == 404)
+                throw new Error('Not found')
+            if (error.response.status == 403)
+                alert("Forbbiden")
+        }
+    }
 
     function get_campaings_list(org_id) {
         return get_organisation(org_id).campaigns
     }
 
-    function get_campaign_participants(org_id, camp_id){
+    function get_campaign_participants(org_id, camp_id) {
         const campaign = get_campaign(org_id, camp_id)
         return campaign.participants
     }
 
-    function get_campaign_counsellors(org_id, camp_id){
+    function get_campaign_counsellors(org_id, camp_id) {
         const campaign = get_campaign(org_id, camp_id)
         return campaign.counsellors
     }
 
-    function get_campaign_tables(org_id, camp_id){
+    function get_campaign_tables(org_id, camp_id) {
         const campaign = get_campaign(org_id, camp_id)
         return campaign.tables
     }
 
-    function get_campaign(org_id, camp_id){
+    function get_campaign(org_id, camp_id) {
         const campaigns = get_campaings_list(org_id)
-        const campaign = campaigns.filter((camp) =>{
+        const campaign = campaigns.filter((camp) => {
             return camp.id == camp_id
         })
         return campaign[0]
     }
-    
+
 
     async function claim_member(username, orgname, full_name) {
         try {
@@ -95,12 +118,15 @@ export default function OrganisationProvider(props) {
     }
 
     const operations = {
-        get_org_unclaimed_users, 
-        get_org_by_code, 
-        get_campaings_list, 
+        get_org_unclaimed_users,
+        get_org_by_code,
+        get_campaings_list,
         claim_member,
         get_members_list,
-        get_campaign_participants, 
+        registry_new_member,
+        delete_member,
+        update_member,
+        get_campaign_participants,
         get_campaign_counsellors
     }
 

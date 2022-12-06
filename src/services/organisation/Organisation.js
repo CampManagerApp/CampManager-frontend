@@ -20,6 +20,40 @@ export const claim_org_member = async (username, orgname, fullname) => {
     return res.data
 }
 
+export const registry_org_member = async (orgname, fullname, is_admin, is_member) => {
+    const url = `${API_URL}/names/role/`
+    const res = await loggedRequest.post(url, {
+        orgname: orgname,
+        fullname: fullname,
+        is_admin: is_admin,
+        is_member: is_member
+    })
+    return res.data
+}
+
+export const delete_org_member = async (orgname, username) => {
+    const url = `${API_URL}/users/role/`
+    const res = await loggedRequest.delete(url, {
+        data: {
+            orgname: orgname,
+            username: username,
+        }
+    })
+    return res.data
+}
+
+
+export const update_org_member = async (orgname, username, is_admin, is_member) => {
+    const url = `${API_URL}/users/role/`
+    const res = await loggedRequest.put(url, {
+        orgname: orgname,
+        username: username,
+        is_admin: is_admin,
+        is_member: is_member
+    })
+    return res.data
+}
+
 export const get_org_members = async (org_id) => {
     const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/members`)
     return res.data

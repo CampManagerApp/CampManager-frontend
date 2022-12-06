@@ -49,7 +49,9 @@
         "REPEAT_PASSWORD_PLACEHOLDER": "Vuelve a introducir tu contrasenya",
         "SUBMIT_BUTTON": "Crear cuenta"
     },
+    
     "BACK_BUTTON": "Atrás",
+
     "ERRORS": {
         "ERROR_01": "Alguna cosa ha salido mal, inténtalo más tarde"
     },
