@@ -46,7 +46,7 @@ function ListOfOrgUsers() {
                 const name = member.full_name
                 const member_organisations = member.organisations
                 // check if the member is claimed (implies organisations object undefined)
-                if (member_organisations === undefined) {
+                if (member_organisations === null) {
                     const role = ''
                     const claimed = 'false'
                     return { name: name, role: role, claimed: claimed }
