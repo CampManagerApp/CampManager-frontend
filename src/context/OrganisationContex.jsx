@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { Organisations } from "../data/organisations";
-import { claim_org_member, get_organisation_by_code, get_org_unclaimned_members } from "../services/organisation/Organisation"
+import { claim_org_member, get_organisation_by_code, get_org_members, get_org_unclaimned_members } from "../services/organisation/Organisation"
 
 export const organisationContex = createContext()
 
@@ -31,6 +31,26 @@ export default function OrganisationProvider(props) {
             const org = { ...Organisations[0], ['name']: data.name, ['id']: data.id }
             return org
         } catch (error) {
+            if (error.response.status == 404)
+                throw new Error('Not found')
+        }
+    }
+
+
+    async function get_members_list(org_id) {
+        try {
+            const members = await get_org_members(org_id)
+            const members_info = members.map((member) => {
+                // apply filter to get member org info
+                if (member.organisations == null) {
+                    return {...member, ['organisation_status']: undefined}
+                }
+                const org_info = member.organisations[0]
+                return {...member, ['organisation_status']: org_info}
+            })
+            return members_info 
+        } catch (error) {
+            console.log(error)
             if (error.response.status == 404)
                 throw new Error('Not found')
         }
@@ -79,6 +99,7 @@ export default function OrganisationProvider(props) {
         get_org_by_code, 
         get_campaings_list, 
         claim_member,
+        get_members_list,
         get_campaign_participants, 
         get_campaign_counsellors
     }

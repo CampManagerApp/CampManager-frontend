@@ -8,21 +8,48 @@ import './ListOfOrgUsersPage.css'
 import TableHeaderItem from '../../components/tableList/TableHeaderItem';
 import FormModal from '../../components/modal/FormModal';
 import ListTable from '../../components/tableList/ListTable';
+import { organisationContex } from '../../context/OrganisationContex';
+import { UserStatusContext } from '../../context/UserStatusContext';
 
 function ListOfOrgUsers() {
-    const usersList = [
-        { name: 'Jordi', role: 'Admin', status: 'online' },
-        { name: 'Joel', role: 'Admin', status: 'online' },
-    ]
-
     const navigate = useNavigate()
-    const [users, setUsers] = useState(usersList)
+    const [members, setMembers] = useState([])
     const [modalShow, setModalShow] = useState(false)
     const [modalShowUpdate, setModalShowUpdate] = useState(false)
     const [selectUser, setSelectUser] = useState(null)
     const [update, setUpdate] = useState(true)
     const asyncError = useAsyncError()
-    const { users_list, getUser, addUser, updateUser, deleteUser} = useContext(UserContext)
+    const { users_list, getUser, addUser, updateUser, deleteUser } = useContext(UserContext)
+    const { get_members_list } = useContext(organisationContex)
+    const { get_current_organisation } = useContext(UserStatusContext)
+
+    useEffect(() => {
+        load_members()
+    }, [])
+
+
+    function load_members() {
+        //const { id } = get_current_organisation()
+        const id = 2
+        get_members_list(id).then((members) => {
+            const members_info = members.map((member) => {
+                console.log(member)
+                // apply member info transformation to visualizate in the table
+                const name = member.full_name
+                const org_status = member.organisation_status
+                if (org_status === undefined) {
+                    const role = ''
+                    const claimed = false
+                    return { name: name, role: role, claimed: claimed }
+                } else {
+                    const role = org_status.is_admin ? 'admin' : 'cousellor'
+                    const claimed = true
+                    return { name: name, role: role, claimed: claimed }
+                }
+            })
+            setMembers(members_info)
+        })
+    }
 
 
     function onAdd(user) {
@@ -52,15 +79,14 @@ function ListOfOrgUsers() {
         deleteUser(id)
     }
 
-
-
     return (
         <div>
-            <FormModal  onSubmit={onSubmit} title="Add new member" fields={['name', 'role']} show={modalShow} onHide={() => setModalShow(false)} />
-            <FormModal  onSubmit={submitUpdate} title="Update Member" fields={['role']} show={modalShowUpdate} onHide={() => setModalShowUpdate(false)} />
-            <ListTable list={users_list} onAdd={onAdd} onUpdate={onUpdate} onDelete={onDelete}>
+            <FormModal onSubmit={onSubmit} title="Add new member" fields={['name', 'role']} show={modalShow} onHide={() => setModalShow(false)} />
+            <FormModal onSubmit={submitUpdate} title="Update Member" fields={['role']} show={modalShowUpdate} onHide={() => setModalShowUpdate(false)} />
+            <ListTable list={members} onAdd={onAdd} onUpdate={onUpdate} onDelete={onDelete}>
                 <TableHeaderItem>Name</TableHeaderItem>
                 <TableHeaderItem>Role</TableHeaderItem>
+                <TableHeaderItem>Claimed</TableHeaderItem>
             </ListTable>
         </div>
     );
