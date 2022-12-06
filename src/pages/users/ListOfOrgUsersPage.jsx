@@ -27,7 +27,7 @@ function ListOfOrgUsers() {
 
     const asyncError = useAsyncError()
     const { users_list, getUser, addUser, updateUser, deleteUser } = useContext(UserContext)
-    const { get_members_list, registry_new_member, delete_member } = useContext(organisationContex)
+    const { get_members_list, registry_new_member, delete_member, update_member } = useContext(organisationContex)
     const { get_current_organisation } = useContext(UserStatusContext)
 
     useEffect(() => {
@@ -36,18 +36,26 @@ function ListOfOrgUsers() {
 
 
     function load_members() {
-        //const { id } = get_current_organisation()
+        //const { id, name } = get_current_organisation()
         const id = 2
+        const org_name = 'Sió'
         get_members_list(id).then((members) => {
             const members_info = members.map((member) => {
+                console.log(member)
                 // apply member info transformation to visualizate in the table
                 const name = member.full_name
-                const org_status = member.organisation_status
-                if (org_status === undefined) {
+                const member_organisations = member.organisations
+                // check if the member is claimed (implies organisations object undefined)
+                if (member_organisations === undefined) {
                     const role = ''
                     const claimed = 'false'
                     return { name: name, role: role, claimed: claimed }
                 } else {
+                    // filtering by organisation name to get the current organisation
+                    const org_status = member_organisations.filter((org) => {
+                        return org.organisationName === org_name
+                    })[0]
+                    // extra member info
                     const id = org_status.id
                     const role = org_status.is_admin ? 'admin' : 'cousellor'
                     const claimed = 'true'
@@ -73,21 +81,31 @@ function ListOfOrgUsers() {
             setModalShow(false)
             load_members()
         })
-        //addUser(user.name, user.role)
     }
 
     function onUpdate(id) {
-        const form = getUser(id)[0]
-        setSelectUser(form)
+        // find the member with id (provisional)
+        const selected_member = members.filter((member) => {
+            return member.id === id
+        })[0]
+        setSelectUser(selected_member)
         setModalShowUpdate(true)
     }
 
     function submitUpdate(form) {
-        const updatedUser = selectUser
-        updatedUser.role = form.role
-        updateUser(selectUser.id, updatedUser)
-        setSelectUser(null)
-        setModalShowUpdate(false)
+        // const updatedUser = selectUser
+        // updatedUser.role = form.role
+        // updateUser(selectUser.id, updatedUser)
+        const username = selectUser.username
+        const is_admin = form.role == 'admin' ? true : false
+        //const orgname = get_current_organisation().name
+        const orgname = "Sió"
+
+        update_member(orgname, username, is_admin, true).then(() =>{
+            setSelectUser(null)
+            setModalShowUpdate(false)
+            load_members()
+        })
     }
 
     function onDelete(id) {

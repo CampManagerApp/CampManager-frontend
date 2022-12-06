@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { Organisations } from "../data/organisations";
-import { claim_org_member, delete_org_member, get_organisation_by_code, get_org_members, get_org_unclaimned_members, registry_org_member } from "../services/organisation/Organisation"
+import { claim_org_member, delete_org_member, get_organisation_by_code, get_org_members, get_org_unclaimned_members, registry_org_member, update_org_member } from "../services/organisation/Organisation"
 
 export const organisationContex = createContext()
 
@@ -40,15 +40,7 @@ export default function OrganisationProvider(props) {
     async function get_members_list(org_id) {
         try {
             const members = await get_org_members(org_id)
-            const members_info = members.map((member) => {
-                // apply filter to get member org info
-                if (member.organisations == null) {
-                    return { ...member, ['organisation_status']: undefined }
-                }
-                const org_info = member.organisations[0]
-                return { ...member, ['organisation_status']: org_info }
-            })
-            return members_info
+            return members
         } catch (error) {
             if (error.response.status == 404)
                 throw new Error('Not found')
@@ -68,9 +60,18 @@ export default function OrganisationProvider(props) {
 
     async function delete_member(orgname, username) {
         try {
-            console.log(orgname)
-            console.log(username)
             await delete_org_member(orgname, username)
+        } catch (error) {
+            if (error.response.status == 404)
+                throw new Error('Not found')
+            if (error.response.status == 403)
+                alert("Forbbiden")
+        }
+    }
+
+    async function update_member(orgname, username, is_admin, is_member) {
+        try {
+            await update_org_member(orgname, username, is_admin, is_member)
         } catch (error) {
             if (error.response.status == 404)
                 throw new Error('Not found')
@@ -124,6 +125,7 @@ export default function OrganisationProvider(props) {
         get_members_list,
         registry_new_member,
         delete_member,
+        update_member,
         get_campaign_participants,
         get_campaign_counsellors
     }
