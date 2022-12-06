@@ -34,5 +34,5 @@ sudo chmod -R 777 .
 ```
 5. In order to deploy the back-end in docker once we have cloned the repository inside the folder we must execute the command:
 ```
-docker compose up
+docker compose run --rm app npm install
 ```
