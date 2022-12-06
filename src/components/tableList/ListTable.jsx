@@ -9,21 +9,21 @@ import ConfirmationModal from '../modal/ConfirmationModal.jsx';
 import { MessageContext } from '../../context/MessageContex.jsx';
 import Col from 'react-bootstrap/Col';
 
-export default function ListTable({ children, list, onDelete, onAdd, onUpdate }) {
+export default function ListTable({ children, list, onDelete, onAdd, onUpdate, fields = null }) {
     const [modalShow, setModalShow] = useState(false);
     const [modalShowDelete, setModalShowDelete] = useState(false);
     const [item, setitem] = useState({});
-    const {showConfirmationModal} = useContext(MessageContext)
+    const { showConfirmationModal } = useContext(MessageContext)
 
-    useEffect(()=> {
-    
+    useEffect(() => {
+
     }, [])
 
     function delete_item(id) {
         onDelete(id)
-    }  
-    
-    
+    }
+
+
     return (
         <div>
             <ModalSimple item={item} show={modalShow} onHide={() => setModalShow(false)} />
@@ -32,7 +32,6 @@ export default function ListTable({ children, list, onDelete, onAdd, onUpdate })
                     <table className="table table-hover" id="job-table">
                         <thead>
                             <tr className="text-center">
-                                <TableHeaderItem>index</TableHeaderItem>
                                 {children}
                                 <TableHeaderItem>Actions</TableHeaderItem>
                             </tr>
@@ -45,22 +44,28 @@ export default function ListTable({ children, list, onDelete, onAdd, onUpdate })
                                         setModalShow(true)
                                     }}
                                         className="pointer-row">
-                                        <th scope="row">{i}</th>
-                                        {children.map(function (item, key) {
-                                            return (
-                                                <td key={key}>{org[item.props.children.toLowerCase()]}</td>
-                                            )
-                                        })}
+                                        {fields == null
+                                            ? children.map(function (item, key) {
+                                                return (
+                                                    <td key={key}>{org[item.props.children.toLowerCase()]}</td>
+                                                )
+                                            })
+                                            : fields.map(function (field, key) {
+                                                return (
+                                                    <td key={key}>{org[field]}</td>
+                                                )
+                                            })
+                                        }
                                         <td onClick={e => e.stopPropagation()} width="200px">
-                                        <button type="button" className="btn btn-danger button-delete" onClick={() => {
-                                                showConfirmationModal(() => {delete_item(org.id)})
+                                            <button type="button" className="btn btn-danger button-delete" onClick={() => {
+                                                showConfirmationModal(() => { delete_item(org.id) })
                                             }}><span className="d-none d-lg-inline d-print-flex">Delete</span><i className="bi bi-trash"></i></button>
-                                             {/* <Button type="button" className="btn btn-danger" onClick={() => {
+                                            {/* <Button type="button" className="btn btn-danger" onClick={() => {
                                                 showConfirmationModal(() => {delete_item(org.id)})
                                             }}><Col lg="6" className="d-none d-lg-inline">Delete</Col> <IconContext.Provider value={{ className: 'react-icons' }}><Icons.Delete /></IconContext.Provider></Button> */}
-                                        <button type="button" className="btn btn-primary" onClick={() => { onUpdate(org.id) }}>
-                                            <span className="d-none d-lg-inline d-print-flex">Edit</span><i className="bi bi-pen"></i>
-                                        </button>
+                                            <button type="button" className="btn btn-primary" onClick={() => { onUpdate(org.id) }}>
+                                                <span className="d-none d-lg-inline d-print-flex">Edit</span><i className="bi bi-pen"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 )

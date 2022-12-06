@@ -50,7 +50,6 @@ export default function OrganisationProvider(props) {
             })
             return members_info 
         } catch (error) {
-            console.log(error)
             if (error.response.status == 404)
                 throw new Error('Not found')
         }
