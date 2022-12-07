@@ -1,11 +1,17 @@
+import { useContext } from "react";
 import { createContext } from "react";
+import { useTranslation } from "react-i18next";
 import { Organisations } from "../data/organisations";
 import { claim_org_member, delete_org_member, delete_org_unclaimed_user, get_organisation_by_code, get_org_members, get_org_unclaimed_user_role, get_org_unclaimned_members, registry_org_member, update_org_member, update_org_unclaimed_user } from "../services/organisation/Organisation"
+import { MessageContext } from "./MessageContex";
 
 
 export const organisationContex = createContext()
 
 export default function OrganisationProvider(props) {
+
+    const { showErrorMessage } = useContext(MessageContext)
+    const { t, i18n } = useTranslation('common');
 
     function get_organisation(org_id) {
         console.log(org_id)
@@ -31,8 +37,11 @@ export default function OrganisationProvider(props) {
             const org = { ...Organisations[0], ['name']: data.name, ['id']: data.id }
             return org
         } catch (error) {
-            if (error.response.status == 404)
-                throw new Error('Not found')
+            if(!error.response) {
+                showErrorMessage(t("ERRORS.CONEXION_ERROR.ERROR_MODAL_TITLE"), t("ERRORS.CONEXION_ERROR.ERROR_MODAL_BODY"))
+            }else if (error.response.status == 404) {
+                throw new {not_found:true}
+            }
         }
     }
 
@@ -83,7 +92,7 @@ export default function OrganisationProvider(props) {
         }
     }
 
-    async function update_member(orgname, name, is_admin, is_member, is_claimed=true) {
+    async function update_member(orgname, name, is_admin, is_member, is_claimed = true) {
         try {
             if (is_claimed) {
                 await update_org_member(orgname, name, is_admin, is_member)

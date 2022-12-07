@@ -67,7 +67,8 @@ export default function AddNewUserOrganisation() {
                 console.log('ni caso')
             })
         }).catch((error) => {
-            setShowError({ ...showError, ['notFound']: true })
+            if (error.not_found)
+                setShowError({ ...showError, ['notFound']: true })
         })
     }
 

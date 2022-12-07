@@ -19,12 +19,6 @@ export default function ErrorModal({ error_title = 'Error', error_message = '', 
                     <Modal.Title>{error_title}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>{error_message}</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="danger" onClick={() => {
-                    }
-                    } >{t('MODAL_DELETE.DELETE_BUTTON')}</Button>
-                    <Button variant="primary" onClick={props.onHide} >{t('MODAL_DELETE.CANCEL_BUTTON')}</Button>
-                </Modal.Footer>
             </Modal>
         </>
     );
