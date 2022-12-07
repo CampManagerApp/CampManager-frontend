@@ -53,7 +53,11 @@
     "BACK_BUTTON": "Atrás",
 
     "ERRORS": {
-        "ERROR_01": "Alguna cosa ha salido mal, inténtalo más tarde"
+        "ERROR_01": "Alguna cosa ha salido mal, inténtalo más tarde",
+        "CONEXION_ERROR": {
+            "ERROR_MODAL_TITLE": "Error de conexión",
+            "ERROR_MODAL_BODY": "No se puede conectar con el servidor"
+        }
     },
     "ADD_NEW_USR_ORG": {
         "ADD_ORG": "Añadir organización",

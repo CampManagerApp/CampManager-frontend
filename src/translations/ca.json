@@ -1,93 +1,98 @@
 {
-    "HEADER":{
-        "TITLE":"CampManager"
+    "HEADER": {
+        "TITLE": "CampManager"
     },
-    "LOGIN":{
-        "TITLE":"Iniciar sessió",
-        "EMAIL_ADDRESS":"Correu electrònic",
-        "EMAIL_ADDRESS_PLACEHOLDER":"Introdueix el teu correu electrònic",
-        "PASSWORD":"Contrasenya",
-        "PASSWORD_PLACEHOLDER":"Introdueix la teva contrasenya",
-        "ERROR":"Correu electrònic o contraseny incorrecta",
-        "SUBMIT_BUTTON":"Accedeix"
+    "LOGIN": {
+        "TITLE": "Iniciar sessió",
+        "EMAIL_ADDRESS": "Correu electrònic",
+        "EMAIL_ADDRESS_PLACEHOLDER": "Introdueix el teu correu electrònic",
+        "PASSWORD": "Contrasenya",
+        "PASSWORD_PLACEHOLDER": "Introdueix la teva contrasenya",
+        "ERROR": "Correu electrònic o contraseny incorrecta",
+        "SUBMIT_BUTTON": "Accedeix"
     },
-    "NAVBAR":{
-        "MENU":"Menú",
-        "PROFILE":"Perfil",
-        "TASKS":"Tasques",
-        "HOME":"Inici",
-        "CAMPAIGNS":"Campanyes",
-        "ORGANISATIONS":"Organitzacions",
-        "CHANGE_ORGANISATION":"Cambiar organització",
-        "LANGUAGE":"Llenguatje",
-        "LOGOUT":"Tancar sessió"
+    "NAVBAR": {
+        "MENU": "Menú",
+        "PROFILE": "Perfil",
+        "TASKS": "Tasques",
+        "HOME": "Inici",
+        "CAMPAIGNS": "Campanyes",
+        "ORGANISATIONS": "Organitzacions",
+        "CHANGE_ORGANISATION": "Cambiar organització",
+        "LANGUAGE": "Llenguatje",
+        "LOGOUT": "Tancar sessió"
     },
-    "SELECT_ORGANISATION":{
-        "TITLE":"Selecciona una organització",
-        "EXTERNAL_USER":"Usuari extern",
-        "ADD_ORGANISATION_BUTTON":"Afegir una organització"
+    "SELECT_ORGANISATION": {
+        "TITLE": "Selecciona una organització",
+        "EXTERNAL_USER": "Usuari extern",
+        "ADD_ORGANISATION_BUTTON": "Afegir una organització"
     },
-    "ADD_ORGANISATION":{
-        "TITLE":"Afegir una organització",
-        "ORGANISATION_CODE":"Codi de l'organització",
-        "ORGANISATION_CODE_PLACEHOLDER":"Introdueix el codi de l'organització",
-        "SEARCH_BUTTON":"Cerca"
+    "ADD_ORGANISATION": {
+        "TITLE": "Afegir una organització",
+        "ORGANISATION_CODE": "Codi de l'organització",
+        "ORGANISATION_CODE_PLACEHOLDER": "Introdueix el codi de l'organització",
+        "SEARCH_BUTTON": "Cerca"
     },
-    "REGISTER_FORM":{
-        "TITLE":"Crear un compte",
-        "NAME":"Nom",
-        "NAME_PLACEHOLDER":"Introdueix el teu nom",
-        "FIRST_NAME":"Primer cognom",
-        "FIRST_NAME_PLACEHOLDER":"Introdueix el teu primer cognom",
-        "LAST_NAME":"Segon cognom",
-        "LAST_NAME_PLACEHOLDER":"Introdueix el teu segon cognom",
-        "USERNAME":"Nom d'usuari",
-        "USERNAME_PLACEHOLDER":"Introdueix el teu nom d'usuari",
-        "EMAIL_ADDRESS":"Correu electrònic",
-        "EMAIL_ADDRESS_PLACEHOLDER":"Introdueix el teu correu electrònic",
-        "PASSWORD":"Contrasenya",
-        "PASSWORD_PLACEHOLDER":"Introdueix la teva contrasenya",
-        "REPEAT_PASSWORD":"Repetir la contrasenya",
-        "REPEAT_PASSWORD_PLACEHOLDER":"Torna a introduir la teva contrasenya",
-        "SUBMIT_BUTTON":"Crear compte"
+    "REGISTER_FORM": {
+        "TITLE": "Crear un compte",
+        "NAME": "Nom",
+        "NAME_PLACEHOLDER": "Introdueix el teu nom",
+        "FIRST_NAME": "Primer cognom",
+        "FIRST_NAME_PLACEHOLDER": "Introdueix el teu primer cognom",
+        "LAST_NAME": "Segon cognom",
+        "LAST_NAME_PLACEHOLDER": "Introdueix el teu segon cognom",
+        "USERNAME": "Nom d'usuari",
+        "USERNAME_PLACEHOLDER": "Introdueix el teu nom d'usuari",
+        "EMAIL_ADDRESS": "Correu electrònic",
+        "EMAIL_ADDRESS_PLACEHOLDER": "Introdueix el teu correu electrònic",
+        "PASSWORD": "Contrasenya",
+        "PASSWORD_PLACEHOLDER": "Introdueix la teva contrasenya",
+        "REPEAT_PASSWORD": "Repetir la contrasenya",
+        "REPEAT_PASSWORD_PLACEHOLDER": "Torna a introduir la teva contrasenya",
+        "SUBMIT_BUTTON": "Crear compte"
     },
-    "BACK_BUTTON":"Enrere",
-    "ERRORS":{
-        "ERROR_01":"Alguna cosa ha anat malament, torna a intentar-ho després"
-    },
-    "MODAL_DELETE":{
-        "TITLE":"Confirmació",
-        "QUESTION":"Esteu segur que voleu esborrar aquest element?",
-        "DELETE_BUTTON":"Esborrar",
-        "CANCEL_BUTTON":"Cancel·lar"
-    },
-    "MODAL_INFORMATION":{
-        "TITLE":"Detalls de l'organització"
-    },
-    "MODAL_ADD":{
-        "ADD_BUTTON":"Afegir"
-    },
-    "ORGANISATION_PAGE":{
-        "CAMPAIGNS":"Campanyes",
-        "MEMBERS":"Membres",
-        "SOCIAL_PAGE":"Pàgina social"
-    },
-    "ORGANISATION_EDIT_INFO":{
-        "ORGANISATION_NAME":"Nom de l'organització",
-        "MANAGER":"Administrador",
-        "DESCRIPTION":"Descripció",
-        "CANCEL_BUTTON":"Cancel·lar",
-        "UPDATE_BUTTON":"Actualitzar",
-        "CREATE_BUTTON":"Crear"
+    "BACK_BUTTON": "Enrere",
+
+    "ERRORS": {
+        "ERROR_01": "Alguna cosa ha anat malament, torna a intentar-ho després",
+        "CONEXION_ERROR": {
+            "ERROR_MODAL_TITLE": "",
+            "ERROR_MODAL_BODY": ""
+        }
     },
 
+    "MODAL_DELETE": {
+        "TITLE": "Confirmació",
+        "QUESTION": "Esteu segur que voleu esborrar aquest element?",
+        "DELETE_BUTTON": "Esborrar",
+        "CANCEL_BUTTON": "Cancel·lar"
+    },
+    "MODAL_INFORMATION": {
+        "TITLE": "Detalls de l'organització"
+    },
+    "MODAL_ADD": {
+        "ADD_BUTTON": "Afegir"
+    },
+    "ORGANISATION_PAGE": {
+        "CAMPAIGNS": "Campanyes",
+        "MEMBERS": "Membres",
+        "SOCIAL_PAGE": "Pàgina social"
+    },
+    "ORGANISATION_EDIT_INFO": {
+        "ORGANISATION_NAME": "Nom de l'organització",
+        "MANAGER": "Administrador",
+        "DESCRIPTION": "Descripció",
+        "CANCEL_BUTTON": "Cancel·lar",
+        "UPDATE_BUTTON": "Actualitzar",
+        "CREATE_BUTTON": "Crear"
+    },
     "ADD_NEW_USR_ORG": {
         "ADD_ORG": "Afegir organització",
         "ORG_CODE_LABEL": "Codi d'organització",
         "ORG_CODE_PLACEHOLDER": "Codi d'organització",
         "ORG_NOT_FOUND": "No hi ha una organització amb aquest codi",
         "SEARCH": "Cerca",
-        "ANY_MEMBER_TO_CLAIM":  "Cap membre per reclamar",
+        "ANY_MEMBER_TO_CLAIM": "Cap membre per reclamar",
         "CLAIM_CONFIRMATION": {
             "CLAIM_MODAL_TITLE": "Reclamar usuari",
             "ACTION_INFORMATION": "Reclamaràs l'usuari",

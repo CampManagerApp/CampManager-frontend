@@ -1,10 +1,17 @@
+import { useContext } from "react";
 import { createContext } from "react";
+import { useTranslation } from "react-i18next";
 import { Organisations } from "../data/organisations";
-import { claim_org_member, delete_org_member, get_organisation_by_code, get_org_campaings, get_org_members, get_org_unclaimned_members, registry_org_member, update_org_member } from "../services/organisation/Organisation"
+import { claim_org_member, delete_org_member, delete_org_unclaimed_user, get_organisation_by_code, get_org_campaings, get_org_members, get_org_unclaimed_user_role, get_org_unclaimned_members, registry_org_member, update_org_member, update_org_unclaimed_user } from "../services/organisation/Organisation"
+import { MessageContext } from "./MessageContex";
+
 
 export const organisationContex = createContext()
 
 export default function OrganisationProvider(props) {
+
+    const { showErrorMessage } = useContext(MessageContext)
+    const { t, i18n } = useTranslation('common');
 
     function get_organisation(org_id) {
         console.log(org_id)
@@ -24,23 +31,35 @@ export default function OrganisationProvider(props) {
         }
     }
 
-
     async function get_org_by_code(code) {
         try {
             const data = await get_organisation_by_code(code);
             const org = { ...Organisations[0], ['name']: data.name, ['id']: data.id }
             return org
         } catch (error) {
-            if (error.response.status == 404)
-                throw new Error('Not found')
+            if(!error.response) {
+                showErrorMessage(t("ERRORS.CONEXION_ERROR.ERROR_MODAL_TITLE"), t("ERRORS.CONEXION_ERROR.ERROR_MODAL_BODY"))
+            }else if (error.response.status == 404) {
+                throw new {not_found:true}
+            }
         }
     }
 
 
-    async function get_members_list(org_id) {
+    async function get_members_list(org_id, org_name = '') {
         try {
             const members = await get_org_members(org_id)
-            return members
+            //const names = await get_org_unclaimed_user_role(org_id, org_name)
+            // const roles = names.map((name_rol) => {
+            //     console.log(name_rol)
+            // })
+            const members_list = members.map((member) => {
+                if (member.organisations != null) {
+                    return member
+                }
+                return { ...member, ['role']: 'cousellor' }
+            })
+            return members_list
         } catch (error) {
             if (error.response.status == 404)
                 throw new Error('Not found')
@@ -58,9 +77,13 @@ export default function OrganisationProvider(props) {
         }
     }
 
-    async function delete_member(orgname, username) {
+    async function delete_member(orgname, username, is_claimed = true) {
         try {
-            await delete_org_member(orgname, username)
+            if (is_claimed) {
+                await delete_org_member(orgname, username)
+            } else {
+                await delete_org_unclaimed_user(orgname, username)
+            }
         } catch (error) {
             if (error.response.status == 404)
                 throw new Error('Not found')
@@ -69,9 +92,13 @@ export default function OrganisationProvider(props) {
         }
     }
 
-    async function update_member(orgname, username, is_admin, is_member) {
+    async function update_member(orgname, name, is_admin, is_member, is_claimed = true) {
         try {
-            await update_org_member(orgname, username, is_admin, is_member)
+            if (is_claimed) {
+                await update_org_member(orgname, name, is_admin, is_member)
+            } else {
+                await update_org_unclaimed_user(orgname, name, is_admin, is_member)
+            }
         } catch (error) {
             if (error.response.status == 404)
                 throw new Error('Not found')
