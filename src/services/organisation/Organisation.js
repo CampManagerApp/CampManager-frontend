@@ -84,6 +84,7 @@ export const get_org_members = async (org_id) => {
 
 export const get_org_campaings = async (org_id) => {
     const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/campaign/all/`)
+    return res.data
 }
 
 

@@ -142,7 +142,6 @@ export default function OrganisationProvider(props) {
         return campaign[0]
     }
 
-
     async function claim_member(username, orgname, full_name) {
         try {
             const data = await claim_org_member(username, orgname, full_name)
