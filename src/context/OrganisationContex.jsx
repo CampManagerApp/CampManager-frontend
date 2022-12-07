@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { Organisations } from "../data/organisations";
-import { claim_org_member, delete_org_member, delete_org_unclaimed_user, get_organisation_by_code, get_org_members, get_org_unclaimed_user_role, get_org_unclaimned_members, registry_org_member, update_org_member } from "../services/organisation/Organisation"
+import { claim_org_member, delete_org_member, delete_org_unclaimed_user, get_organisation_by_code, get_org_members, get_org_unclaimed_user_role, get_org_unclaimned_members, registry_org_member, update_org_member, update_org_unclaimed_user } from "../services/organisation/Organisation"
 
 
 export const organisationContex = createContext()
@@ -52,7 +52,6 @@ export default function OrganisationProvider(props) {
             })
             return members_list
         } catch (error) {
-            console.log(error)
             if (error.response.status == 404)
                 throw new Error('Not found')
         }
@@ -84,9 +83,13 @@ export default function OrganisationProvider(props) {
         }
     }
 
-    async function update_member(orgname, username, is_admin, is_member) {
+    async function update_member(orgname, name, is_admin, is_member, is_claimed=true) {
         try {
-            await update_org_member(orgname, username, is_admin, is_member)
+            if (is_claimed) {
+                await update_org_member(orgname, name, is_admin, is_member)
+            } else {
+                await update_org_unclaimed_user(orgname, name, is_admin, is_member)
+            }
         } catch (error) {
             if (error.response.status == 404)
                 throw new Error('Not found')

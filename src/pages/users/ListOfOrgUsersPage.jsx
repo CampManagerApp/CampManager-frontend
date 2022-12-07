@@ -94,12 +94,12 @@ function ListOfOrgUsers() {
         // const updatedUser = selectUser
         // updatedUser.role = form.role
         // updateUser(selectUser.id, updatedUser)
-        const username = selectUser.username
+        const name = selectUser.claimed ? selectUser.username : selectUser.name
         const is_admin = form.role == 'admin' ? true : false
         //const orgname = get_current_organisation().name
         const orgname = "Sió"
 
-        update_member(orgname, username, is_admin, true).then(() => {
+        update_member(orgname, name, is_admin, true, selectUser.claimed).then(() => {
             setSelectUser(null)
             setModalShowUpdate(false)
             load_members()
@@ -110,10 +110,12 @@ function ListOfOrgUsers() {
         //deleteUser(id)
         //const orgname = get_current_organisation().name
         const orgname = "Sió"
+
         // find the member with id
         const member_to_delete = members.filter((member) => {
             return member.id === id
         })[0]
+
         // check if it is claimied
         const name = member_to_delete.claimed ? member_to_delete.username : member_to_delete.name
         // delete member
