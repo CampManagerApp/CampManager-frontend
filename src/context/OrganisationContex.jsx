@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { Organisations } from "../data/organisations";
-import { claim_org_member, delete_org_member, get_organisation_by_code, get_org_members, get_org_unclaimned_members, registry_org_member, update_org_member } from "../services/organisation/Organisation"
+import { claim_org_member, delete_org_member, get_organisation_by_code, get_org_campaings, get_org_members, get_org_unclaimned_members, registry_org_member, update_org_member } from "../services/organisation/Organisation"
 
 export const organisationContex = createContext()
 
@@ -80,8 +80,16 @@ export default function OrganisationProvider(props) {
         }
     }
 
-    function get_campaings_list(org_id) {
-        return get_organisation(org_id).campaigns
+    async function get_campaings_list(org_id) {
+        try {
+            return await get_org_campaings(org_id)
+        } catch (error) {
+            if (error.response.status == 404)
+                throw new Error('Not found')
+            if (error.response.status == 403)
+                alert("Forbbiden")
+        }
+        
     }
 
     function get_campaign_participants(org_id, camp_id) {
