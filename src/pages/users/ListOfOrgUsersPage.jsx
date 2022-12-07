@@ -39,15 +39,14 @@ function ListOfOrgUsers() {
         //const { id, name } = get_current_organisation()
         const id = 2
         const org_name = 'Sió'
-        get_members_list(id).then((members) => {
+        get_members_list(id, org_name).then((members) => {
             const members_info = members.map((member) => {
-                console.log(member)
                 // apply member info transformation to visualizate in the table
                 const name = member.full_name
                 const member_organisations = member.organisations
                 // check if the member is claimed (implies organisations object undefined)
                 if (member_organisations === null) {
-                    const role = ''
+                    const role = member.role
                     const claimed = 'false'
                     return { name: name, role: role, claimed: claimed }
                 } else {

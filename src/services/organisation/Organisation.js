@@ -58,3 +58,15 @@ export const get_org_members = async (org_id) => {
     const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/members`)
     return res.data
 }
+
+
+export const get_org_unclaimed_user_role = async (orgname, fullname) => {
+    const url = `${API_URL}/users/role/`
+    const res = await loggedRequest.get(url, {
+        data: {
+            orgname: orgname,
+            fullname: fullname,
+        }
+    })
+    return res.data
+}
