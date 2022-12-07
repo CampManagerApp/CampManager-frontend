@@ -47,8 +47,7 @@ function ListOfOrgUsers() {
                 // check if the member is claimed (implies organisations object undefined)
                 if (member_organisations === null) {
                     const role = member.role
-                    const claimed = 'false'
-                    return { name: name, role: role, claimed: claimed }
+                    return { name: name, role: role, status: 'false', claimed: false }
                 } else {
                     // filtering by organisation name to get the current organisation
                     const org_status = member_organisations.filter((org) => {
@@ -57,9 +56,9 @@ function ListOfOrgUsers() {
                     // extra member info
                     const id = org_status.id
                     const role = org_status.is_admin ? 'admin' : 'cousellor'
-                    const claimed = 'true'
+                    const status = 'true'
                     const username = member.username
-                    return { id: id, name: name, role: role, claimed: claimed, username: username }
+                    return { id: id, name: name, role: role, status: status, claimed: true, username: username }
                 }
             })
             setMembers(members_info)
@@ -100,7 +99,7 @@ function ListOfOrgUsers() {
         //const orgname = get_current_organisation().name
         const orgname = "Sió"
 
-        update_member(orgname, username, is_admin, true).then(() =>{
+        update_member(orgname, username, is_admin, true).then(() => {
             setSelectUser(null)
             setModalShowUpdate(false)
             load_members()
@@ -111,11 +110,14 @@ function ListOfOrgUsers() {
         //deleteUser(id)
         //const orgname = get_current_organisation().name
         const orgname = "Sió"
-        // find the member with id (provisional)
+        // find the member with id
         const member_to_delete = members.filter((member) => {
             return member.id === id
         })[0]
-        delete_member(orgname, member_to_delete.username).then(() => {
+        // check if it is claimied
+        const name = member_to_delete.claimed ? member_to_delete.username : member_to_delete.name
+        // delete member
+        delete_member(orgname, name, member_to_delete.claimed).then(() => {
             load_members()
         }).catch((error) => {
             alert(error)
@@ -127,7 +129,7 @@ function ListOfOrgUsers() {
         <div>
             <FormModal onSubmit={onSubmit} title="Add new member" fields={['name', 'role']} show={modalShow} onHide={() => setModalShow(false)} />
             <FormModal onSubmit={submitUpdate} title="Update Member" fields={['role']} show={modalShowUpdate} onHide={() => setModalShowUpdate(false)} />
-            <ListTable list={members} fields={['name', 'role', 'claimed']} onAdd={onAdd} onUpdate={onUpdate} onDelete={onDelete}>
+            <ListTable list={members} fields={['name', 'role', 'status']} onAdd={onAdd} onUpdate={onUpdate} onDelete={onDelete}>
                 <TableHeaderItem>{t('MEMBERS_ADMIN_CRUD.NAME_HEADER')}</TableHeaderItem>
                 <TableHeaderItem>{t('MEMBERS_ADMIN_CRUD.ROLE_HEADER')}</TableHeaderItem>
                 <TableHeaderItem>{t('MEMBERS_ADMIN_CRUD.CLAIMED_HEADER')}</TableHeaderItem>

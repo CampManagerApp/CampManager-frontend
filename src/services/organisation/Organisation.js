@@ -20,6 +20,18 @@ export const claim_org_member = async (username, orgname, fullname) => {
     return res.data
 }
 
+
+export const delete_org_unclaimed_user = async (orgname, fullname) => {
+    const url = `${API_URL}/names/role/`
+    const res = await loggedRequest.delete(url, {
+        data: {
+            orgname: orgname,
+            fullname: fullname,
+        }
+    })
+    return res.data
+}
+
 export const registry_org_member = async (orgname, fullname, is_admin, is_member) => {
     const url = `${API_URL}/names/role/`
     const res = await loggedRequest.post(url, {
