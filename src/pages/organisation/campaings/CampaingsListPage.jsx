@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { useEffect } from "react"
 import { useState } from "react"
-import { Container } from "react-bootstrap"
+import { Button, Container } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import BannerImage from "../../../components/common/BannerImage"
 import TitlePage from "../../../components/common/TitlePage"
@@ -21,7 +21,7 @@ function CampaingContent({ item }) {
 
 export default function CampaingsListPage() {
     const [campaings, setCampaings] = useState([])
-    const { get_campaings_list } = useContext(organisationContex)
+    const { get_campaings_list, create_campaign } = useContext(organisationContex)
     const { get_current_organisation } = useContext(UserStatusContext)
     const { set_current_camp } = useContext(UserStatusContext)
     const navigate = useNavigate()
@@ -41,11 +41,19 @@ export default function CampaingsListPage() {
         navigate('/camp')
     }
 
+    async function addCampaign() {
+        const { id } = get_current_organisation()
+        create_campaign(id, "Test", "10-7-2022 09:00:00", "24-7-2022 17:00:00").then(() => {
+            loadCampaigns()
+        })
+    }
+
     return (
         <React.Fragment>
             <BannerImage bannerImage={image.backgroundOrg} />
             <TitlePage>Campaigns</TitlePage>
             <Container>
+                <Button onClick={addCampaign}>+</Button>
                 <ItemList items={campaings} template={CampaingContent} onClickItem={CampaignClick} />
             </Container>
         </React.Fragment>
