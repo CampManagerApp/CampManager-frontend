@@ -7,31 +7,29 @@ export const UserOrganisationsContex = createContext()
 
 export default function UserOrganisationsProvider(props) {
     const [orgUserList, setOrgUserList] = useState([])
-
-    useEffect(() => {
-        loadUserOrganisation()
-    }, [])
     
     const orgList = orgUserList.map((org) => {
         return org
     })
 
-    async function loadUserOrganisation() {
+    async function get_organisations(username) {
         try {
-            const organisations = await get_usr_organisations('admin')
-            setOrgUserList(organisations)
+            const organisations_list = await get_usr_organisations(username)
+            const organisations = organisations_list.map((organisation) => {
+                return {...organisation, ['name']: organisation.organisationName}
+            } )
+            return organisations
         } catch (error) {
-            
+            console.log(error)
         }
     }
 
-    
     function addOrg(org) {
         setOrgUserList([...orgUserList, org])
     }
 
     return (
-        <UserOrganisationsContex.Provider value={{orgList, addOrg}}>
+        <UserOrganisationsContex.Provider value={{orgList, addOrg, get_organisations}}>
             {props.children}
         </UserOrganisationsContex.Provider>
     )
