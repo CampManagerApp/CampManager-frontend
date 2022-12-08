@@ -74,11 +74,15 @@
             "CANCEL": "NO, CANCELAR"
         }
     },
-
-    "BACK_BUTTON":"Atrás",
-
-    "ERRORS":{
-        "ERROR_01":"Alguna cosa ha salido mal, inténtalo más tarde"
+    "ADD_NEW_CAMPAIGN": {
+        "TITLE": "Crear una campaña",
+        "CAMPAIGN_NAME":"Nombre de la campaña",
+        "CAMPAIGN_START_DATE":"Fecha inicio de la campaña",
+        "CAMPAIGN_END_DATE":"Fecha final de la campaña",
+        "COUNSELLORS":"Monitores",
+        "PARTICIPANTS":"Participantes",
+        "CANCEL_BUTTON":"Cancelar",
+        "CREATE_BUTTON":"Crear"
     },
 
     "MODAL_DELETE":{

@@ -56,8 +56,8 @@
     "ERRORS": {
         "ERROR_01": "Alguna cosa ha anat malament, torna a intentar-ho després",
         "CONEXION_ERROR": {
-            "ERROR_MODAL_TITLE": "",
-            "ERROR_MODAL_BODY": ""
+            "ERROR_MODAL_TITLE": "Error de connexió",
+            "ERROR_MODAL_BODY": "No ha estat possible connectar amb el servidor"
         }
     },
 
@@ -100,5 +100,15 @@
             "CONFIRMATION": "SI, PROCEDIR",
             "CANCEL": "NO, CANCEL·LAR"
         }
+    },
+    "ADD_NEW_CAMPAIGN": {
+        "TITLE": "Crear una campanya",
+        "CAMPAIGN_NAME":"Nom de la campanya",
+        "CAMPAIGN_START_DATE":"Data d'inici de la campanya",
+        "CAMPAIGN_END_DATE":"data final de la campanya",
+        "COUNSELLORS":"Monitors",
+        "PARTICIPANTS":"Participants",
+        "CANCEL_BUTTON":"Cancel·lar",
+        "CREATE_BUTTON":"Crear"
     }
 }
