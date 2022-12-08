@@ -6,6 +6,7 @@ import { UserOrganisationsContex } from '../../context/UserOrganisationsContex';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
+import { UserStatusContext } from '../../context/UserStatusContext';
 
 export default function ListOfOrganisations({ handle }) {
   const { t, i18n } = useTranslation('common');
@@ -17,7 +18,22 @@ export default function ListOfOrganisations({ handle }) {
   const [isActive, setIsActive] = useState(false)
   //3 states, waiting("W"), error("E"), correct("C") 
   const [organisation, setOrganisation] = useState("W")
-  const { orgList, addOrg } = useContext(UserOrganisationsContex)
+  const [orgList, setOrgList] = useState([])
+  const { addOrg, get_organisations } = useContext(UserOrganisationsContex)
+  const { userInfo } = useContext(UserStatusContext)
+
+
+  useEffect(() => {
+    loadOrganisations()
+  }, [])
+
+
+  function loadOrganisations() {
+    const { username } = userInfo
+    get_organisations(username).then((organisations) => {
+      setOrgList(organisations)
+    })
+  }
 
   function handleError(error) {
     if (error.response) {
@@ -45,7 +61,6 @@ export default function ListOfOrganisations({ handle }) {
   }
 
   function onAdd(event) {
-    console.log(getValue("code"))
     getOrganisation(getValue("code"))
       .then(form => {
         setOrganisation(form)
@@ -65,10 +80,6 @@ export default function ListOfOrganisations({ handle }) {
     setForm({})
   }
 
-  useEffect(() => {
-
-  }, [organisation])
-
 
   function getValue(field) {
     return field in form ? form[field] : ''
@@ -79,7 +90,7 @@ export default function ListOfOrganisations({ handle }) {
       <div className="list-group list-group-light">
         {orgList.map((org, key) => {
           return (
-            <a key={key} onClick={() => {handle(org)}} className="list-group-item list-group-item-action px-5 border-4 pointer-item">
+            <a key={key} onClick={() => { handle(org) }} className="list-group-item list-group-item-action px-5 border-4 pointer-item">
               {org.name}
             </a>)
         })
@@ -90,7 +101,7 @@ export default function ListOfOrganisations({ handle }) {
         <Row>
           <div>
             <button type="button" className="btn btn-primary m-3" onClick={() => {
-              
+
             }}>{t('SELECT_ORGANISATION.EXTERNAL_USER')}</button>
             <button type="button" className="btn btn-primary" onClick={() => {
               navigate('/user/listoforganisations/add/')

@@ -73,8 +73,7 @@ function ListOfOrgUsers() {
     function onSubmit(user) {
         const full_name = user.name
         const is_admin = user.role == 'admin' ? true : false
-        //const orgname = get_current_organisation().name
-        const orgname = "Sió"
+        const orgname = get_current_organisation().name
         registry_new_member(orgname, full_name, is_admin, true).then(() => {
             setModalShow(false)
             load_members()
@@ -96,9 +95,8 @@ function ListOfOrgUsers() {
         // updateUser(selectUser.id, updatedUser)
         const name = selectUser.claimed ? selectUser.username : selectUser.name
         const is_admin = form.role == 'admin' ? true : false
-        //const orgname = get_current_organisation().name
-        const orgname = "Sió"
-
+        const orgname = get_current_organisation().name
+        
         update_member(orgname, name, is_admin, true, selectUser.claimed).then(() => {
             setSelectUser(null)
             setModalShowUpdate(false)
@@ -108,9 +106,7 @@ function ListOfOrgUsers() {
 
     function onDelete(id) {
         //deleteUser(id)
-        //const orgname = get_current_organisation().name
-        const orgname = "Sió"
-
+        const orgname = get_current_organisation().name
         // find the member with id
         const member_to_delete = members.filter((member) => {
             return member.id === id
