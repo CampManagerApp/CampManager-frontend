@@ -87,7 +87,11 @@
         "ADD_NEW_PARTICIPANT_TITLE":"Información del participante",
         "PARTICIPANT_NAME":"Nombre del participante",
         "PARENT_EMAIL":"Email del participante",
-        "NOTES":"Notas"
+        "NOTES":"Notas",
+        "ERRORS" : {
+            "ERROR_TITLE": "Error al crear la campaña",
+            "DUPLICATED_ERROR": "Nombre de la campaña duplicado"
+        }
     },
 
     "MODAL_DELETE":{

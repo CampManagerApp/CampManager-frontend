@@ -83,7 +83,11 @@
         "ADD_NEW_PARTICIPANT_TITLE":"Participant information",
         "PARTICIPANT_NAME":"Parent name",
         "PARENT_EMAIL":"Parent email",
-        "NOTES":"Notes"
+        "NOTES":"Notes",
+        "ERRORS" : {
+            "ERROR_TITLE": "Error to create a campaign",
+            "DUPLICATED_ERROR": "Duplicated campaign name"
+        }
     },
 
     "MODAL_DELETE": {

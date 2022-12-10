@@ -139,8 +139,12 @@ export default function OrganisationProvider(props) {
             if (!error.response) {
                 showErrorMessage(t("ERRORS.CONEXION_ERROR.ERROR_MODAL_TITLE"), t("ERRORS.CONEXION_ERROR.ERROR_MODAL_BODY"))
             } else if (error.response.status == 404) {
-                throw new { not_found: true }
-            }
+                throw { not_found: true }
+            } else if (error.response.status == 400) {
+                const message = error.response.data
+                if (message.includes('Duplicated'))
+                     throw { duplicated: true }
+            } 
         }
     }
 

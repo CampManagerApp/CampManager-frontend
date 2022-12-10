@@ -19,6 +19,7 @@ import CreateCampaignParticipants from "./CreateCampaignParticipants";
 import { UserStatusContext } from "../../../../context/UserStatusContext";
 import { Alert } from "react-bootstrap";
 import { toBackendFormat } from "../../../../utils";
+import { MessageContext } from "../../../../context/MessageContex";
 
 
 export default function CreateCampaign() {
@@ -26,6 +27,7 @@ export default function CreateCampaign() {
     const { t, i18n } = useTranslation('common');
     const { get_claimed_members, create_campaign } = useContext(organisationContex)
     const { get_current_organisation } = useContext(UserStatusContext)
+    const { showErrorMessage } = useContext(MessageContext)
 
     const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(new Date())
@@ -71,7 +73,13 @@ export default function CreateCampaign() {
         const id = 2
         const start = toBackendFormat(startDate)
         const end = toBackendFormat(endDate)
-        await create_campaign(id, name, start, end)
+        try {
+            await create_campaign(id, name, start, end)
+        } catch (error) {
+            if (error.duplicated) {
+                showErrorMessage(t('ADD_NEW_CAMPAIGN.ERRORS.ERROR_TITLE'), t('ADD_NEW_CAMPAIGN.ERRORS.DUPLICATED_ERROR'))
+            }
+        }
     }
 
     return (
