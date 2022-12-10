@@ -61,7 +61,7 @@ function App() {
             </Route>
             <Route path="/organisation/members/list" element={<OrganisationParticipantsList />}></Route>
             <Route path="/organisation/campaings" element={<CampaingsListPage />} />
-            <Route path="/test" element={<CreateCampaign />} />
+            <Route path="/createcampaign" element={<CreateCampaign />} />
             <Route path="/camp" element={<CampPage />}></Route>
             <Route path="/camp/participants" element={<CampParticipantsPage />}></Route>
             <Route path="/camp/participants/list" element={<CampParticipantsList />}></Route>

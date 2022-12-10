@@ -50,7 +50,7 @@
     "ERRORS": {
         "ERROR_01": "Something went wrong, try again later",
         "CONEXION_ERROR": {
-            "ERROR_MODAL_TITLE": "CONEXION ERROR",
+            "ERROR_MODAL_TITLE": "Connexion error",
             "ERROR_MODAL_BODY": "Can't connect with the server"
         }
     },
@@ -69,6 +69,16 @@
             "CONFIRMATION": "YES, PROCEED",
             "CANCEL": "NO, CANCEL"
         }
+    },
+    "ADD_NEW_CAMPAIGN": {
+        "TITLE": "Create campaign",
+        "CAMPAIGN_NAME":"Campaing name",
+        "CAMPAIGN_START_DATE":"Campaign start date",
+        "CAMPAIGN_END_DATE":"Campaign end date",
+        "COUNSELLORS":"Counsellors",
+        "PARTICIPANTS":"Participants",
+        "CANCEL_BUTTON":"Cancel",
+        "CREATE_BUTTON":"Create"
     },
 
     "MODAL_DELETE": {
