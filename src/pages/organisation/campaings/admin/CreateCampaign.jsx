@@ -58,8 +58,7 @@ export default function CreateCampaign() {
     }
 
     function loadMembers() {
-        // const { id } = get_current_organisation()
-        const id = 2
+        const { id } = get_current_organisation()
         get_claimed_members(id).then((members) => {
             const members_options = members.map((member) => {
                 return { label: member.full_name }
@@ -69,17 +68,19 @@ export default function CreateCampaign() {
     }
 
     async function createCampaing() {
-        //const { id } = get_current_organisation()
-        const id = 2
+        const { id } = get_current_organisation()
         const start = toBackendFormat(startDate)
         const end = toBackendFormat(endDate)
+        var campaing_id = ''
+        // create a campaing
         try {
-            await create_campaign(id, name, start, end)
+            campaing_id = await create_campaign(id, name, start, end)
         } catch (error) {
             if (error.duplicated) {
                 showErrorMessage(t('ADD_NEW_CAMPAIGN.ERRORS.ERROR_TITLE'), t('ADD_NEW_CAMPAIGN.ERRORS.DUPLICATED_ERROR'))
             }
         }
+        // add counsellors
     }
 
     return (

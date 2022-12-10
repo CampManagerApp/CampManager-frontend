@@ -5,6 +5,11 @@ export const get_organisation_by_code = async (code) => {
     return res.data
 }
 
+export const get_organisation_by_name = async (name) => {
+    const res = await loggedRequest.get(`${API_URL}/organisation/name/?name=${name}`)
+    return res.data
+}
+
 export const get_org_unclaimned_members = async (id) => {
     const res = await loggedRequest.get(`${API_URL}/organisation/${id}/names`)
     return res.data
@@ -118,6 +123,17 @@ export const create_org_campaign = async (org_id, campaign_name, start, end) => 
         campaign_name: campaign_name,
         start: start,
         end: end
+    })
+    return res.data
+}
+
+export const add_org_campaign_counsellor = async(org_id, campaign_id, counsellor) => {
+    const res = await loggedRequest.post(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/counsellor/`, {
+        fullname: counsellor.full_name,
+        name: counsellor.full_name,
+        // empty params (provisional)
+        emergencyPhone: "",
+        nonFoodAffection: ""
     })
     return res.data
 }

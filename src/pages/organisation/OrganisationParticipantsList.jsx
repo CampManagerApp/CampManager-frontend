@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ProfilePage from "../../components/common/ProfilePage";
 import ItemList from "../../components/lists/ItemList";
 import { organisationContex } from "../../context/OrganisationContex";
+import { UserStatusContext } from "../../context/UserStatusContext";
 import * as image from "../../design/images";
 
 export default function OrganisationParticipantsList({ items = [], template: Template, onClickItem = () => { } }) {
@@ -15,6 +16,7 @@ export default function OrganisationParticipantsList({ items = [], template: Tem
     const id = ''
 
     const { get_org_unclaimed_users, get_claimed_members } = useContext(organisationContex)
+    const { get_current_organisation } = useContext(UserStatusContext)
 
 
     useEffect(() => {
@@ -22,7 +24,7 @@ export default function OrganisationParticipantsList({ items = [], template: Tem
     }, [])
 
     function loadOrganisationParticipants() {
-        const id = 2
+        const { id } = get_current_organisation()
         get_claimed_members(id).then((participants_list) => {
             const participants = participants_list.map((participant) => {
                 return participant.username

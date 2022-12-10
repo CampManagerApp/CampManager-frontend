@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { useAsyncError } from '../../components/errors/Errors';
-import { UserContext } from '../../context/usersContext';
 import { useTranslation } from "react-i18next";
 import { organisationContex } from '../../context/OrganisationContex';
 import { UserStatusContext } from '../../context/UserStatusContext';
@@ -23,10 +22,8 @@ function ListOfOrgUsers() {
     const [modalShow, setModalShow] = useState(false)
     const [modalShowUpdate, setModalShowUpdate] = useState(false)
     const [selectUser, setSelectUser] = useState(null)
-    const [update, setUpdate] = useState(true)
 
     const asyncError = useAsyncError()
-    const { users_list, getUser, addUser, updateUser, deleteUser } = useContext(UserContext)
     const { get_members_list, registry_new_member, delete_member, update_member } = useContext(organisationContex)
     const { get_current_organisation } = useContext(UserStatusContext)
 
@@ -34,11 +31,8 @@ function ListOfOrgUsers() {
         load_members()
     }, [])
 
-
     function load_members() {
-        //const { id, name } = get_current_organisation()
-        const id = 2
-        const org_name = 'Sió'
+        const { id, name: org_name } = get_current_organisation()
         get_members_list(id, org_name).then((members) => {
             const members_info = members.map((member) => {
                 // apply member info transformation to visualizate in the table
@@ -90,9 +84,6 @@ function ListOfOrgUsers() {
     }
 
     function submitUpdate(form) {
-        // const updatedUser = selectUser
-        // updatedUser.role = form.role
-        // updateUser(selectUser.id, updatedUser)
         const name = selectUser.claimed ? selectUser.username : selectUser.name
         const is_admin = form.role == 'admin' ? true : false
         const orgname = get_current_organisation().name
@@ -105,7 +96,6 @@ function ListOfOrgUsers() {
     }
 
     function onDelete(id) {
-        //deleteUser(id)
         const orgname = get_current_organisation().name
         // find the member with id
         const member_to_delete = members.filter((member) => {

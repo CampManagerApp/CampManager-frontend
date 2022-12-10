@@ -6,17 +6,21 @@ import './ListOfOrganisationsPage.css'
 import { useTranslation } from "react-i18next";
 import { useContext, useEffect } from "react";
 import { UserStatusContext } from "../../context/UserStatusContext";
+import { organisationContex } from "../../context/OrganisationContex";
 
 
 
 export default function OrganisationInfoPage() {
     const { t, i18n } = useTranslation('common');
     const { set_current_organisation } = useContext(UserStatusContext)
+    const { get_by_name } = useContext(organisationContex)
     const navigate = useNavigate()
 
     const handle = (choosed_organisation) => {
-        set_current_organisation(choosed_organisation)
-        navigate('/organisation')
+        get_by_name(choosed_organisation.name).then((org) => {
+            set_current_organisation(org)
+            navigate('/organisation')
+        })
     }
 
     return (

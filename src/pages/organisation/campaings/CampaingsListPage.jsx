@@ -31,8 +31,7 @@ export default function CampaingsListPage() {
     }, [])
 
     function loadCampaigns() {
-        // const { id } = get_current_organisation()
-        const id = 2
+        const { id } = get_current_organisation()
         get_campaings_list(id).then((campaigns_list) => {
             setCampaings(campaigns_list)
         })
@@ -53,16 +52,14 @@ export default function CampaingsListPage() {
     }
 
     async function deleteCampaign() {
-        //const { id } = get_current_organisation()
-        const id = 2
+        const { id } = get_current_organisation()
         delete_campaign(id, "Test").then(() => {
             loadCampaigns()
         })
     }
 
     async function updateCampaign() {
-        //const { id } = get_current_organisation()
-        const id = 2
+        const { id } = get_current_organisation()
         updateCampaign(id, "Test", "").then(() => {
             loadCampaigns()
         })
