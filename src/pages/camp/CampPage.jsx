@@ -27,7 +27,7 @@ export default function CampPage(){
     return(
         <div className="div-page scrollable-content">
             <div>
-                <ProfilePage profileName={currentCamp.name} profileNick={currentCamp.initDate + " - " + currentCamp.finishDate} backgroundImg={image.backgroundOrgList}  includeProfileImage={includeProfileImage} /> 
+                <ProfilePage profileName={currentCamp.campaignName} profileNick={currentCamp.startDate + " - " + currentCamp.endDate} backgroundImg={image.backgroundOrgList}  includeProfileImage={includeProfileImage} /> 
             </div>
             <div className="list">
                 <Col className="list-group"> 

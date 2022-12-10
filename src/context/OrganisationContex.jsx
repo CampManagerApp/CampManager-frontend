@@ -1,8 +1,9 @@
+import { start } from "@popperjs/core";
 import { useContext } from "react";
 import { createContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Organisations } from "../data/organisations";
-import { claim_org_member, create_org_campaign, delete_org_member, delete_org_unclaimed_user, get_organisation_by_code, get_org_campaigns, get_org_members, get_org_unclaimed_user_role, get_org_unclaimned_members, registry_org_member, update_org_member, update_org_unclaimed_user } from "../services/organisation/Organisation"
+import { claim_org_member, create_org_campaign, delete_org_campaign, delete_org_member, delete_org_unclaimed_user, get_organisation_by_code, get_org_campaigns, get_org_claimed_members, get_org_members, get_org_unclaimed_members, get_org_unclaimed_user_role, get_org_unclaimned_members, registry_org_member, update_org_campaign, update_org_member, update_org_unclaimed_user } from "../services/organisation/Organisation"
 import { MessageContext } from "./MessageContex";
 
 
@@ -45,24 +46,31 @@ export default function OrganisationProvider(props) {
         }
     }
 
+    async function get_claimed_members(org_id) {
+        try {
+            const members = await get_org_claimed_members(org_id)
+            return members
+        } catch (error) {
+            if (error.response.status == 404)
+                throw new Error('Not found')
+        }
+    }
 
     async function get_members_list(org_id, org_name = '') {
         try {
             const members = await get_org_members(org_id)
-            //const names = await get_org_unclaimed_user_role(org_id, org_name)
-            // const roles = names.map((name_rol) => {
-            //     console.log(name_rol)
-            // })
-            const members_list = members.map((member) => {
+            const members_list = await Promise.all(members.map(async (member) => {
                 if (member.organisations != null) {
                     return member
                 }
-                return { ...member, ['role']: 'cousellor' }
-            })
+                const name_member = await get_org_unclaimed_user_role(org_name, member.full_name)
+                return { ...member, ['is_admin']: name_member.is_admin }
+            }))
             return members_list
         } catch (error) {
             if (error.response.status == 404)
                 throw new Error('Not found')
+            return []
         }
     }
 
@@ -109,7 +117,12 @@ export default function OrganisationProvider(props) {
 
     async function get_campaings_list(org_id) {
         try {
-            return await get_org_campaigns(org_id)
+            const campaigns_list = await get_org_campaigns(org_id)
+            return campaigns_list.map((campaing) => {
+                const startDate = new Date(campaing.startDate).toISOString().split('T')[0]
+                const endDate = new Date(campaing.endDate).toISOString().split('T')[0]
+                return { ...campaing, ['startDate']: startDate, ['endDate']: endDate }
+            })
         } catch (error) {
             if (error.response.status == 404)
                 throw new Error('Not found')
@@ -121,7 +134,31 @@ export default function OrganisationProvider(props) {
 
     async function create_campaign(org_id, campaign_name, start, end) {
         try {
-           await create_org_campaign(org_id, campaign_name, start, end)
+            await create_org_campaign(org_id, campaign_name, start, end)
+        } catch (error) {
+            if (!error.response) {
+                showErrorMessage(t("ERRORS.CONEXION_ERROR.ERROR_MODAL_TITLE"), t("ERRORS.CONEXION_ERROR.ERROR_MODAL_BODY"))
+            } else if (error.response.status == 404) {
+                throw new { not_found: true }
+            }
+        }
+    }
+
+    async function delete_campaign(org_id, campaign_name) {
+        try {
+            await delete_org_campaign(org_id, campaign_name)
+        } catch (error) {
+            if (!error.response) {
+                showErrorMessage(t("ERRORS.CONEXION_ERROR.ERROR_MODAL_TITLE"), t("ERRORS.CONEXION_ERROR.ERROR_MODAL_BODY"))
+            } else if (error.response.status == 404) {
+                throw new { not_found: true }
+            }
+        }
+    }
+
+    async function update_campaign(org_id, campaign_name, end) {
+        try {
+            await update_org_campaign(org_id, campaign_name, end)
         } catch (error) {
             if (!error.response) {
                 showErrorMessage(t("ERRORS.CONEXION_ERROR.ERROR_MODAL_TITLE"), t("ERRORS.CONEXION_ERROR.ERROR_MODAL_BODY"))
@@ -167,12 +204,15 @@ export default function OrganisationProvider(props) {
         get_org_unclaimed_users,
         get_org_by_code,
         claim_member,
+        get_claimed_members,
         get_members_list,
         registry_new_member,
         delete_member,
         update_member,
         get_campaings_list,
         create_campaign,
+        delete_campaign,
+        update_campaign,
         get_campaign_participants,
         get_campaign_counsellors
     }

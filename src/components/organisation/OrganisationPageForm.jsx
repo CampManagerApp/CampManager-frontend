@@ -19,7 +19,7 @@ export default function OrganistationPageForm() {
     }
 
     function goto_members_list() {
-        navigate('/admin/organisationusers');
+        navigate('/organisation/members/list');
     }
     return (
         <div className="div-all scrollable-content">

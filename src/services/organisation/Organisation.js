@@ -82,8 +82,20 @@ export const get_org_members = async (org_id) => {
     return res.data
 }
 
+
+export const get_org_claimed_members = async (org_id) => {
+    const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/users`)
+    return res.data
+} 
+
+export const get_org_unclaimed_members = async (org_id) => {
+    const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/names`)
+    return res.data
+}
+
+
 export const get_org_unclaimed_user_role = async (orgname, fullname) => {
-    const url = `${API_URL}/users/role/`
+    const url = `${API_URL}/names/role/?orgname=${orgname}&fullname=${fullname}`
     const res = await loggedRequest.get(url, {
         data: {
             orgname: orgname,
@@ -110,3 +122,19 @@ export const create_org_campaign = async (org_id, campaign_name, start, end) => 
     return res.data
 }
 
+export const delete_org_campaign = async (org_id, campaign_name) => {
+    const res = await loggedRequest.delete(`${API_URL}/organisation/${org_id}/campaign/`, {
+        data: {
+            campaign_name: campaign_name,
+        }
+    })
+    return res.data
+}
+
+export const update_org_campaign = async (org_id, campaign_name, end) => {
+    const res = await loggedRequest.put(`${API_URL}/organisation/${org_id}/campaign/`, {
+        campaign_name: campaign_name,
+        end: end
+    })
+    return res.data
+}

@@ -46,7 +46,7 @@ function ListOfOrgUsers() {
                 const member_organisations = member.organisations
                 // check if the member is claimed (implies organisations object undefined)
                 if (member_organisations === null) {
-                    const role = member.role
+                    const role = member.is_admin ? 'admin' : 'cousellor'
                     return { name: name, role: role, status: 'false', claimed: false }
                 } else {
                     // filtering by organisation name to get the current organisation

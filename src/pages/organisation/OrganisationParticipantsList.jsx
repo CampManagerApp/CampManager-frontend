@@ -1,33 +1,48 @@
 import { useContext, useEffect, useState } from "react";
+import { Button, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import ProfilePage from "../../components/common/ProfilePage";
 import ItemList from "../../components/lists/ItemList";
 import { organisationContex } from "../../context/OrganisationContex";
 import * as image from "../../design/images";
 
-export default function OrganisationParticipantsList({ items=[], template:Template, onClickItem = ()=>{}}) {
+export default function OrganisationParticipantsList({ items = [], template: Template, onClickItem = () => { } }) {
+    const navigate = useNavigate()
     const idVisible = 'hidden';
     const includeProfileImage = 'none';
     const [participants, setParticipants] = new useState([])
     const [update, setUpdate] = useState(true)
     const id = ''
-   
-    const { get_org_unclaimed_users, get_org_by_code } = useContext(organisationContex)
+
+    const { get_org_unclaimed_users, get_claimed_members } = useContext(organisationContex)
 
 
     useEffect(() => {
-        if (update) {
-            const id = ''
-            const users = get_org_unclaimed_users(id).map((item) => {return item.name})
-            setParticipants(users)
-        }
-        setUpdate(false)
-    }, [update])
-    
+        loadOrganisationParticipants()
+    }, [])
+
+    function loadOrganisationParticipants() {
+        const id = 2
+        get_claimed_members(id).then((participants_list) => {
+            const participants = participants_list.map((participant) => {
+                return participant.username
+            })
+            setParticipants(participants)
+        })
+    }
+
+    function updateParticipants() {
+        navigate("/admin/organisationusers")
+    }
+
 
     return (
         <div>
-            <ProfilePage profileName="Esplai Xino-Xano" profileNick="Members" backgroundImg={image.Miembro}  includeProfileImage={includeProfileImage}  /> 
-            <ItemList items={participants}></ItemList>
+            <ProfilePage profileName="Esplai Xino-Xano" profileNick="Members" backgroundImg={image.Miembro} includeProfileImage={includeProfileImage} />
+            <Container>
+                <Button onClick={updateParticipants}>Update members</Button>
+                <ItemList items={participants}></ItemList>
+            </Container>
         </div>
     )
 }
