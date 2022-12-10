@@ -82,7 +82,12 @@
         "COUNSELLORS":"Monitores",
         "PARTICIPANTS":"Participantes",
         "CANCEL_BUTTON":"Cancelar",
-        "CREATE_BUTTON":"Crear"
+        "CREATE_BUTTON":"Crear",
+        "PARTICIPANTS_BUTTON":"Select",
+        "ADD_NEW_PARTICIPANT_TITLE":"Información del participante",
+        "PARTICIPANT_NAME":"Nombre del participante",
+        "PARENT_EMAIL":"Email del participante",
+        "NOTES":"Notas"
     },
 
     "MODAL_DELETE":{

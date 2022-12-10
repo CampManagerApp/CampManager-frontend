@@ -109,6 +109,11 @@
         "COUNSELLORS":"Monitors",
         "PARTICIPANTS":"Participants",
         "CANCEL_BUTTON":"Cancel·lar",
-        "CREATE_BUTTON":"Crear"
+        "CREATE_BUTTON":"Crear",
+        "PARTICIPANTS_BUTTON":"Seleccionar",
+        "ADD_NEW_PARTICIPANT_TITLE":"Informació del participant",
+        "PARTICIPANT_NAME":"Nom del participant",
+        "PARENT_EMAIL":"Correu electrònic dels pares",
+        "NOTES":"Notes"
     }
 }

@@ -78,7 +78,12 @@
         "COUNSELLORS":"Counsellors",
         "PARTICIPANTS":"Participants",
         "CANCEL_BUTTON":"Cancel",
-        "CREATE_BUTTON":"Create"
+        "CREATE_BUTTON":"Create",
+        "PARTICIPANTS_BUTTON":"Select",
+        "ADD_NEW_PARTICIPANT_TITLE":"Participant information",
+        "PARTICIPANT_NAME":"Parent name",
+        "PARENT_EMAIL":"Parent email",
+        "NOTES":"Notes"
     },
 
     "MODAL_DELETE": {
