@@ -129,11 +129,11 @@ export const create_org_campaign = async (org_id, campaign_name, start, end) => 
 
 export const add_org_campaign_counsellor = async(org_id, campaign_id, counsellor) => {
     const res = await loggedRequest.post(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/counsellor/`, {
-        fullname: counsellor.full_name,
-        name: counsellor.full_name,
+        fullName: counsellor.full_name,
+        name: counsellor.full_name, 
         // empty params (provisional)
-        emergencyPhone: "",
-        nonFoodAffection: ""
+        emergencyPhone: "34",
+        nonFoodAffection: " "
     })
     return res.data
 }

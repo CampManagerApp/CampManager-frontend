@@ -25,7 +25,7 @@ import { MessageContext } from "../../../../context/MessageContex";
 export default function CreateCampaign() {
     const navigate = useNavigate()
     const { t, i18n } = useTranslation('common');
-    const { get_claimed_members, create_campaign } = useContext(organisationContex)
+    const { get_claimed_members, create_campaign, add_campaign_counsellors } = useContext(organisationContex)
     const { get_current_organisation } = useContext(UserStatusContext)
     const { showErrorMessage } = useContext(MessageContext)
 
@@ -71,16 +71,33 @@ export default function CreateCampaign() {
         const { id } = get_current_organisation()
         const start = toBackendFormat(startDate)
         const end = toBackendFormat(endDate)
-        var campaing_id = ''
+        var campaign_id = ''
         // create a campaing
         try {
-            campaing_id = await create_campaign(id, name, start, end)
+            const campaign = await create_campaign(id, name, start, end)
+            campaign_id = campaign.id
         } catch (error) {
+            if (error.duplicated) {
+                showErrorMessage(t('ADD_NEW_CAMPAIGN.ERRORS.ERROR_TITLE'), t('ADD_NEW_CAMPAIGN.ERRORS.DUPLICATED_ERROR'))
+                return
+            }
+        }
+        // check if must be add counsellors to the campaing
+        if (selectedCounsellors.length == 0)
+            return
+        // add counsellors
+        try {
+            // transform the counsellor object
+            const counsellors = selectedCounsellors.map((counsellor) => {
+               return { full_name: counsellor.label}
+            })
+            const campaign = await add_campaign_counsellors(id, campaign_id, counsellors)
+        } catch (error) {
+            console.log(error)
             if (error.duplicated) {
                 showErrorMessage(t('ADD_NEW_CAMPAIGN.ERRORS.ERROR_TITLE'), t('ADD_NEW_CAMPAIGN.ERRORS.DUPLICATED_ERROR'))
             }
         }
-        // add counsellors
     }
 
     return (

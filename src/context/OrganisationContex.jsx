@@ -163,7 +163,7 @@ export default function OrganisationProvider(props) {
 
     async function add_campaign_counsellors(org_id, campaing_id, counsellors) {
         try {
-            await Promise.all(counsellors.forEach(async counsellor => {
+            await Promise.all(counsellors.map(async (counsellor) => {
                 await add_org_campaign_counsellor(org_id, campaing_id, counsellor)
             }))
         } catch (error) {
@@ -248,6 +248,7 @@ export default function OrganisationProvider(props) {
         update_member,
         get_campaings_list,
         create_campaign,
+        add_campaign_counsellors,
         delete_campaign,
         update_campaign,
         get_campaign_participants,
