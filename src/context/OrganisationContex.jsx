@@ -119,8 +119,8 @@ export default function OrganisationProvider(props) {
         try {
             const campaigns_list = await get_org_campaigns(org_id)
             return campaigns_list.map((campaing) => {
-                const startDate = new Date(campaing.startDate).toISOString().split('T')[0]
-                const endDate = new Date(campaing.endDate).toISOString().split('T')[0]
+                const startDate = new Date(campaing.startDate).toLocaleDateString('es')
+                const endDate = new Date(campaing.endDate).toLocaleDateString('es')
                 return { ...campaing, ['startDate']: startDate, ['endDate']: endDate }
             })
         } catch (error) {
