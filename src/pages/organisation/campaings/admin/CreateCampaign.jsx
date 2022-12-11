@@ -49,9 +49,6 @@ export default function CreateCampaign() {
     ]);
     /*--------DELETE AFTER IMPLEMENTATION--------*/
 
-    const handleCampaignName = event => {
-        // setMessage(event.target.value);
-    }
 
     function navigateToParticipants() {
         navigate('/admin/createcampaign/participants');
@@ -89,9 +86,10 @@ export default function CreateCampaign() {
         try {
             // transform the counsellor object
             const counsellors = selectedCounsellors.map((counsellor) => {
-               return { full_name: counsellor.label}
+                return { full_name: counsellor.label }
             })
             const campaign = await add_campaign_counsellors(id, campaign_id, counsellors)
+            navigate('/organisation/campaings', { replace: true })
         } catch (error) {
             console.log(error)
             if (error.duplicated) {
