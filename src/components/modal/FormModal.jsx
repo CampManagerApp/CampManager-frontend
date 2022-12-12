@@ -40,9 +40,21 @@ export default function FormModal(props) {
             <Form onSubmit={submit} className='form-padding'>
                 {
                     props.fields.map(function (field, key) {
+                        if (props.piker && props.piker[field]) {
+                            return (
+                                <Row key={key} className="mb-3">
+                                    <Form.Group as={Col} controlId={field}>
+                                        <Form.Label>{toCapitalLetter(field)}</Form.Label>
+                                        <Form.Select defaultValue="counsellor" onChange={onChange}>
+                                            <option value="counsellor">counsellor</option>
+                                            <option value="admin">admin</option>
+                                        </Form.Select>
+                                    </Form.Group>
+                                </Row>)
+                        }
                         return (
                             <Row key={key} className="mb-3">
-                                <Form.Group  as={Col} controlId={field}>
+                                <Form.Group as={Col} controlId={field}>
                                     <Form.Label>{toCapitalLetter(field)}</Form.Label>
                                     <Form.Control onChange={onChange} placeholder={field} />
                                 </Form.Group>
@@ -52,7 +64,7 @@ export default function FormModal(props) {
                 }
                 <div className="d-grid gap-2 ">
                     <Button type="submit" className="btn btn-primary">
-                    {t('MODAL_ADD.ADD_BUTTON')}
+                        {t('MODAL_ADD.ADD_BUTTON')}
                     </Button>
                 </div>
             </Form>
