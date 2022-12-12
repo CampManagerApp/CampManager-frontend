@@ -14,6 +14,11 @@ import ListTable from '../../components/tableList/ListTable';
 import './ListOfOrgUsersPage.css'
 
 
+const piker = {
+    'role': [{value:"admin", label:'admin'}, {value:"counsellor", label:"counsellor"}]
+}
+
+
 function ListOfOrgUsers() {
     const navigate = useNavigate()
     const { t, i18n } = useTranslation('common');
@@ -65,6 +70,7 @@ function ListOfOrgUsers() {
     }
 
     function onSubmit(user) {
+        console.log(user)
         const full_name = user.name
         const is_admin = user.role == 'admin' ? true : false
         const orgname = get_current_organisation().name
@@ -115,8 +121,8 @@ function ListOfOrgUsers() {
 
     return (
         <div>
-            <FormModal onSubmit={onSubmit} title="Add new member" fields={['name', 'role']} show={modalShow} onHide={() => setModalShow(false)} />
-            <FormModal onSubmit={submitUpdate} title="Update Member" fields={['role']} show={modalShowUpdate} onHide={() => setModalShowUpdate(false)} />
+            <FormModal onSubmit={onSubmit} title="Add new member" fields={['name', 'role']} piker={piker} show={modalShow} onHide={() => setModalShow(false)} />
+            <FormModal onSubmit={submitUpdate} title="Update Member" fields={['role']} show={modalShowUpdate} piker={piker}  onHide={() => setModalShowUpdate(false)} />
             <ListTable list={members} fields={['name', 'role', 'status']} onAdd={onAdd} onUpdate={onUpdate} onDelete={onDelete}>
                 <TableHeaderItem>{t('MEMBERS_ADMIN_CRUD.NAME_HEADER')}</TableHeaderItem>
                 <TableHeaderItem>{t('MEMBERS_ADMIN_CRUD.ROLE_HEADER')}</TableHeaderItem>
