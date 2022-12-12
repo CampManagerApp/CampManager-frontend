@@ -1,0 +1,17 @@
+.bt-add{
+    position: absolute;
+    right:    5%;
+    bottom:   7%;
+}
+
+.bt-del{
+    float: right;
+}
+
+.row-texto{
+    width:80%;
+}
+
+.row-del{
+    width:20%;
+}
