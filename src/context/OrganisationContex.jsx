@@ -63,7 +63,22 @@ export default function OrganisationProvider(props) {
         })
         return campaign[0]
     }
-    
+   
+    function get_campaign_participant(org_id, camp_id, participant_id){
+        const participants = get_campaign_participants(org_id, camp_id)
+        const participant = participants.filter((part) =>{
+            return part.id == participant_id
+        })
+        return participant[0]
+    } 
+
+    function get_campaign_counsellor(org_id, camp_id, counsellor_id){
+        const counsellors = get_campaign_counsellors(org_id, camp_id)
+        const counsellor = counsellors.filter((coun) =>{
+            return coun.id == counsellor_id
+        })
+        return counsellor[0]
+    }
 
     async function claim_member(username, orgname, full_name) {
         try {
@@ -80,7 +95,9 @@ export default function OrganisationProvider(props) {
         get_campaings_list, 
         claim_member,
         get_campaign_participants, 
-        get_campaign_counsellors
+        get_campaign_counsellors,
+        get_campaign_participant,
+        get_campaign_counsellor
     }
 
     return (

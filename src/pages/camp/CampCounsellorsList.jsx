@@ -1,4 +1,5 @@
 import React,{ useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ProfilePage from "../../components/common/ProfilePage";
 import ItemList from "../../components/lists/ItemList";
 import ParticipantModal from "../../components/modal/ParticipantModal";
@@ -16,7 +17,9 @@ export default function CampCounsellorsList({ items=[], template:Template, onCli
     
     const [counsellors, setCounsellors] = new useState()
     const [modalShow, setModalShow] = useState(false);
-
+    const { set_current_counsellor } = useContext(UserStatusContext)
+    const navigate = useNavigate()
+ 
     function counsellorContent({item}) {
         return (
             <div className="d-flex justify-content-center">
@@ -27,8 +30,10 @@ export default function CampCounsellorsList({ items=[], template:Template, onCli
 
     function onClickCounsellor(item){
         const itemSinID = { 'Counsellor Name':item.name, 'Parent Contact':item.contact, 'Notes':items.notes }
+        set_current_counsellor(item)
         setitem(itemSinID)  
-        setModalShow(true)
+        console.log(item)
+        navigate('/camp/counsellors/list/counsellor');
     }
 
     useEffect(()=> {

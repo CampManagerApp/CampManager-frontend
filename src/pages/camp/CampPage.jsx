@@ -16,7 +16,9 @@ export default function CampPage(){
     const { currentCamp } = useContext(UserStatusContext)
 
     function submit(){
-        navigate('/listoforganisations/');
+        //navigate('/listoforganisations/');
+        console.log("entra")
+        navigate('/camp/participants/list/add');
     }
     function participants(){
         navigate('/camp/participants/');

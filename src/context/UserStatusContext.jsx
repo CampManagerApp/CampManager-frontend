@@ -16,6 +16,9 @@ export default function UserStatusProvider(props) {
     const [currentOrganisation, setCurrentOrganisation] = useState({ in_org: false })
     const [userInfo, setUserInfo] = useState({ username: '' })
     const [languageStatus, setLanguageStatus] = useState('en')
+    const [currentParticipant, setCurrentParticipant] = useState({in_part:false})
+    const [currentCounsellor, setCurrentCounsellor] = useState({in_part:false})
+    const [currentParticipantsAdd, setParticipantsAdd] = useState([])
 
     const update_state = (status) => {
         setStatus(status)
@@ -58,6 +61,30 @@ export default function UserStatusProvider(props) {
         setCurrentCamp(camp) 
     } 
 
+    const get_current_participant = () => {
+        return currentParticipant
+    }
+
+    const set_current_participant = (participant) => {
+        setCurrentParticipant(participant) 
+    } 
+
+    const get_current_counsellor = () => {
+        return currentCounsellor
+    }
+
+    const set_current_counsellor = (counsellor) => {
+        setCurrentCounsellor(counsellor) 
+    } 
+
+    const get_current_participantsAdd = () => {
+        return currentParticipantsAdd
+    }
+
+    const set_current_participantsAdd = (participantsAdd) => {
+        setParticipantsAdd(participantsAdd) 
+    } 
+
     const operations = {
         update_state,
         is_unAuthenticated,
@@ -71,7 +98,16 @@ export default function UserStatusProvider(props) {
         set_current_camp,
         currentCamp,
         userInfo,
-        set_language
+        set_language,
+        get_current_participant,
+        set_current_participant,
+        currentParticipant,
+        get_current_counsellor,
+        set_current_counsellor,
+        currentCounsellor,
+        get_current_participantsAdd,
+        set_current_participantsAdd,
+        currentParticipantsAdd,    
     }
 
     return (

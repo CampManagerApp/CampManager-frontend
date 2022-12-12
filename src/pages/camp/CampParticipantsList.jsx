@@ -1,4 +1,5 @@
 import React,{ useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ProfilePage from "../../components/common/ProfilePage";
 import ItemList from "../../components/lists/ItemList";
 import ParticipantModal from "../../components/modal/ParticipantModal";
@@ -16,6 +17,8 @@ export default function CampParticipantsList({ items=[], template:Template, onCl
     
     const [participants, setParticipants] = new useState()
     const [modalShow, setModalShow] = useState(false);
+    const { currentParticipant, set_current_participant } = useContext(UserStatusContext)
+    const navigate = useNavigate()
 
     function participantContent({item}) {
         return (
@@ -28,8 +31,9 @@ export default function CampParticipantsList({ items=[], template:Template, onCl
 
     function onClickParticipant(item){
         const itemSinID = { 'Participant Name':item.name, 'Parent Contact':item.contact, 'Notes':items.notes }
+        set_current_participant(item)
         setitem(itemSinID)  
-        setModalShow(true)
+        navigate('/camp/participants/list/participant');
     }
 
     useEffect(()=> {
@@ -42,7 +46,6 @@ export default function CampParticipantsList({ items=[], template:Template, onCl
 
     return (
         <div>
-            <ParticipantModal item={item} show={modalShow} onHide={() => setModalShow(false)} />
             <ProfilePage profileName={currentCamp.name} profileNick="Participants" backgroundImg={image.hiking}  includeProfileImage={includeProfileImage}  /> 
             <ItemList items={participants} onClickItem={onClickParticipant} template={participantContent}></ItemList>
         </div>
