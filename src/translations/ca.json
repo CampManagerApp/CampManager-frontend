@@ -115,5 +115,12 @@
         "PARTICIPANT_NAME":"Nom del participant",
         "PARENT_EMAIL":"Correu electrònic dels pares",
         "NOTES":"Notes"
+    },
+    "ADD_NEW_TABLE":{
+        "TITLE":"Afegir una nova taula",
+        "TABLE_NAME":"Nom de la taula",
+        "X_VALUE":"Valor de X",
+        "Y_VALUE":"Valor de Y",
+        "VALUES":"Valors"
     }
 }

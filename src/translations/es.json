@@ -122,5 +122,12 @@
         "CANCEL_BUTTON":"Cancelar",
         "UPDATE_BUTTON":"Actualizar",
         "CREATE_BUTTON":"Crear"
+    },
+    "ADD_NEW_TABLE":{
+        "TITLE":"Añadir una nueva tabla",
+        "TABLE_NAME":"Nombre de la tabla",
+        "X_VALUE":"Valores de X",
+        "Y_VALUE":"Valores de Y",
+        "VALUES":"Valores"
     }
  }
