@@ -163,7 +163,7 @@ export const get_org_campaign_counsellors = async (org_id, campaign_id) => {
 export const add_org_campaign_participant = async (org_id, campaign_id, participant) => {
     const res = await loggedRequest.post(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/participant/`, {
         name: participant.name,
-        fullName: participant.full_name,
+        fullName: participant.fullName,
         ibuprofen: false,
         paracetamol: true,
         county: participant.county,

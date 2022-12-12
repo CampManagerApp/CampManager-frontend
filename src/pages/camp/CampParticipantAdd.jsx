@@ -13,36 +13,29 @@ import ItemInfoParticipant from "../../components/lists/ItemInfoParticipant";
 import * as Icons from '../../design/icons.js';
 import { IonItemSliding } from "@ionic/react";
 import ItemAddParticipant from "../../components/lists/ItemAddParticipant";
+import { useNavigate } from "react-router-dom"
+import { TemporalDataContext } from "../../context/TemporalDataContext";
 
 
 export default function CampParticipantAdd() {
     const idVisible = 'hidden';
     const includeProfileImage = 'none';
-    const [update, setUpdate] = useState(true)
-    const [participant, setParticipant] = new useState({})
+    const navigate = useNavigate()
 
-    const [form, setForm] = useState({})
-    const [items, setItems] = useState({})
-    
-    //const participants = [{email:'Email',name:'Nombre', apellido:'Apellido', gender:'Gender', birthday:'Birthday', PostalCode:'PostalCode'} ] 
-    const ids = ['email', 'name', 'apellido', 'gender', 'Birthday', 'PostalCode' ] 
-    const strings = ['Email', 'Nombre', 'Apellido', 'Gender', 'Birthday', 'PostalCode' ] 
+    const { campaign_data, set_campaign_data } = useContext(TemporalDataContext)
 
-    useEffect(()=> {
-        if (update) {
-            const participants = {email:'Email', name:'Nombre' }
-            console.log(participants)       
-            setItems(participants) 
-        }
-        setUpdate(false)
-    }, [update])
+    function handleSubmit(form) {
+        const participants = [...campaign_data.participants, form]
+        set_campaign_data({...campaign_data, ['participants']: participants})
+        navigate(-1)
+    }
 
 
     return (
         <div className="div-form1 scrollable-content">
-            <ProfilePage profileName="Add participant" profileNick={participant.name} backgroundImg={image.hiking}  includeProfileImage={includeProfileImage}  />
+            <ProfilePage profileName="Add participant" profileNick="" backgroundImg={image.hiking}  includeProfileImage={includeProfileImage}  />
             <div className='div-form' style={{'paddingBottom': 50+'px'}}>
-                <ItemAddParticipant participants={items}></ItemAddParticipant>
+                <ItemAddParticipant handleSubmit={handleSubmit}/>
             </div>    
         </div>
     )
