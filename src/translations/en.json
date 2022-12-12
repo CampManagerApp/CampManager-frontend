@@ -123,5 +123,12 @@
         "NAME_HEADER": "Name",
         "ROLE_HEADER": "Role",
         "CLAIMED_HEADER": "Claimed"
+    },
+    "ADD_NEW_TABLE":{
+        "TITLE":"Add new table",
+        "TABLE_NAME":"Table name",
+        "X_VALUE":"X values",
+        "Y_VALUE":"Y values",
+        "VALUES":"Values"
     }
 }
