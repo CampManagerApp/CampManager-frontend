@@ -8,10 +8,17 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@ionic/react/css/core.css';
+import "primereact/resources/themes/lara-light-indigo/theme.css";  
+import "primereact/resources/primereact.min.css";                  
+import "primeicons/primeicons.css";      
+
 import common_ca from "./translations/ca.json";
 import common_en from "./translations/en.json";
 import common_es from "./translations/es.json";
 import i18next from "i18next";
+
+
+
 
 async function logDeviceInfo() {
   const lang = await Device.getLanguageCode()
