@@ -128,6 +128,8 @@
         "TABLE_NAME":"Nombre de la tabla",
         "X_VALUE":"Valores de X",
         "Y_VALUE":"Valores de Y",
-        "VALUES":"Valores"
+        "VALUES":"Valores",
+        "CANCEL_BUTTON":"Cancelar",
+        "CREATE_BUTTON":"Crear"
     }
  }
