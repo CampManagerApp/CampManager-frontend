@@ -10,7 +10,7 @@ import { AiFillHome } from "react-icons/ai";
 import { FaCampground } from "react-icons/fa";
 import { CgOrganisation } from "react-icons/cg";
 import { CgArrowsExchangeAlt } from "react-icons/cg";
-import { HiLanguage } from "react-icons/hi2";
+import { IoText } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserStatusContext, USER_STATUS } from '../../context/UserStatusContext';
@@ -26,6 +26,11 @@ export default function ApplicationNavbar() {
     const navigate = useNavigate()
     const { update_state, is_unAuthenticated, is_superAdmin, is_user,set_language } = useContext(UserStatusContext)
     const [expanded, setExpanded] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('EN');
+      
+    function handleOptionChange(event) {
+        setSelectedOption(event.target.value);
+    }
 
     function logout() {
         window.sessionStorage.removeItem("token")
@@ -108,10 +113,10 @@ export default function ApplicationNavbar() {
                         <Container>
                             <Row xs="auto">
                                 <Col>
-                                    <Nav.Link className="ms-auto"><HiLanguage />{" "}{t('NAVBAR.LANGUAGE')}</Nav.Link>
+                                    <Nav.Link className="ms-auto"><IoText />{" "}{t('NAVBAR.LANGUAGE')}</Nav.Link>
                                 </Col>
                                 <Col>
-                                    <Form.Select size="sm">
+                                    <Form.Select size="sm" value={selectedOption} onChange={handleOptionChange}>
                                         <option value="EN" onClick={changeLanguageEn}>🇬🇧&emsp;EN</option>
                                         <option value="ES" onClick={changeLanguageEs}>🇪🇸&emsp;ES</option>
                                         <option value="CA" onClick={changeLanguageCa}>🇪🇸&emsp;CA</option>
