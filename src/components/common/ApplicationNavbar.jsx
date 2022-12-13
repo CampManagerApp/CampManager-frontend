@@ -26,10 +26,11 @@ export default function ApplicationNavbar() {
     const navigate = useNavigate()
     const { update_state, is_unAuthenticated, is_superAdmin, is_user,set_language } = useContext(UserStatusContext)
     const [expanded, setExpanded] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('EN');
+    const [selectedOption, setSelectedOption] = useState('en');
       
     function handleOptionChange(event) {
         setSelectedOption(event.target.value);
+        set_language(event.target.value)
     }
 
     function logout() {
@@ -42,16 +43,6 @@ export default function ApplicationNavbar() {
             navigate('/login')
         }
     }
-    function changeLanguageCa(){
-        set_language("ca")
-    }
-    function changeLanguageEn(){
-        set_language("en")
-    }
-    function changeLanguageEs(){
-        set_language("es")
-    }
-
 
     function change_organisation() {
         setExpanded(false)
@@ -117,9 +108,9 @@ export default function ApplicationNavbar() {
                                 </Col>
                                 <Col>
                                     <Form.Select size="sm" value={selectedOption} onChange={handleOptionChange}>
-                                        <option value="EN" onClick={changeLanguageEn}>🇬🇧&emsp;EN</option>
-                                        <option value="ES" onClick={changeLanguageEs}>🇪🇸&emsp;ES</option>
-                                        <option value="CA" onClick={changeLanguageCa}>🇪🇸&emsp;CA</option>
+                                        <option value="en">🇬🇧&emsp;EN</option>
+                                        <option value="es" >🇪🇸&emsp;ES</option>
+                                        <option value="ca" >🇪🇸&emsp;CA</option>
                                     </Form.Select>
                                 </Col>
                             </Row>

@@ -23,13 +23,13 @@ import i18next from "i18next";
 async function logDeviceInfo() {
   const lang = await Device.getLanguageCode()
   const lang_code = lang.value
-
   return lang_code
 };
 
 
 
 logDeviceInfo().then((value) => {
+  console.log('entre')
   i18next.init({
     interpolation: { escapeValue: false },  // React already does escaping
     lng: (value == 'en' | value == 'ca') ? value : 'en',                              // language to use
