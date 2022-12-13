@@ -31,8 +31,8 @@ export default function ItemAddParticipant({ handleSubmit = () => { } }) {
                 <Form.Control onChange={onUpdate} placeholder="Put the full name" />
             </Form.Group>
 
-            <Form.Group className="mb-3" as={Col} controlId="country">
-                <Form.Label>Country</Form.Label>
+            <Form.Group className="mb-3" as={Col} controlId="county">
+                <Form.Label>County</Form.Label>
                 <Form.Control onChange={onUpdate} placeholder="Put the country" />
             </Form.Group>
 
