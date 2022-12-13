@@ -114,13 +114,19 @@
         "ADD_NEW_PARTICIPANT_TITLE":"Informació del participant",
         "PARTICIPANT_NAME":"Nom del participant",
         "PARENT_EMAIL":"Correu electrònic dels pares",
-        "NOTES":"Notes"
+        "NOTES":"Notes",
+        "ERRORS" : {
+            "ERROR_TITLE": "Error to create a campaign",
+            "DUPLICATED_ERROR": "Duplicated campaign name"
+        }
     },
     "ADD_NEW_TABLE":{
         "TITLE":"Afegir una nova taula",
         "TABLE_NAME":"Nom de la taula",
         "X_VALUE":"Valor de X",
         "Y_VALUE":"Valor de Y",
-        "VALUES":"Valors"
+        "VALUES":"Valors",
+        "CANCEL_BUTTON":"Cancel·lar",
+        "CREATE_BUTTON":"Crear"
     }
 }

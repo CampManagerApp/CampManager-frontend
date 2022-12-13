@@ -85,8 +85,8 @@
         "PARENT_EMAIL":"Parent email",
         "NOTES":"Notes",
         "ERRORS" : {
-            "ERROR_TITLE": "Error to create a campaign",
-            "DUPLICATED_ERROR": "Duplicated campaign name"
+            "ERROR_TITLE": "Error al crear una campanya",
+            "DUPLICATED_ERROR": "El nom de la campanya està duplicat"
         }
     },
 
@@ -129,6 +129,8 @@
         "TABLE_NAME":"Table name",
         "X_VALUE":"X values",
         "Y_VALUE":"Y values",
-        "VALUES":"Values"
+        "VALUES":"Values",
+        "CANCEL_BUTTON":"Cancel",
+        "CREATE_BUTTON":"Create"
     }
 }
