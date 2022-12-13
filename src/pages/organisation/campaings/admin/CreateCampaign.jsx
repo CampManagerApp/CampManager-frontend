@@ -77,10 +77,11 @@ export default function CreateCampaign() {
             const campaign = await create_campaign(id, campaign_data.name, start, end)
             campaign_id = campaign.id
         } catch (error) {
+            reset_campaign_data()
             if (error.duplicated) {
                 showErrorMessage(t('ADD_NEW_CAMPAIGN.ERRORS.ERROR_TITLE'), t('ADD_NEW_CAMPAIGN.ERRORS.DUPLICATED_ERROR'))
-                return
             }
+            return
         }
         // check if must be add counsellors to the campaing
         if (campaign_data.counsellors.length == 0)
@@ -92,27 +93,28 @@ export default function CreateCampaign() {
                 return { full_name: counsellor.label }
             })
             const campaign = await add_campaign_counsellors(id, campaign_id, counsellors)
-            reset_campaign_data()
-            navigate('/organisation/campaings', { replace: true })
         } catch (error) {
             console.log(error)
             if (error.duplicated) {
                 showErrorMessage(t('ADD_NEW_CAMPAIGN.ERRORS.ERROR_TITLE'), t('ADD_NEW_CAMPAIGN.ERRORS.DUPLICATED_ERROR'))
             }
             reset_campaign_data()
+            return
         }
 
         try {
             console.log(campaign_data.participants)
             await add_campaign_participants(id, campaign_id, campaign_data.participants)
-            reset_campaign_data()
-            navigate('/organisation/campaings', { replace: true })
         } catch (error) {
             console.log(error)
             if (error.duplicated) {
                 showErrorMessage(t('ADD_NEW_CAMPAIGN.ERRORS.ERROR_TITLE'), t('ADD_NEW_CAMPAIGN.ERRORS.DUPLICATED_ERROR'))
             }
+            reset_campaign_data()
+            return
         }
+        reset_campaign_data()
+        navigate('/organisation/campaings', { replace: true })
     }
 
     return (

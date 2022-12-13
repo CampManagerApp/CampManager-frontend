@@ -28,7 +28,7 @@ html, body {
 }
 
 .scrollable-content{
-  height: 100vh; 
+  /* height: 100vh;  */
   /* width: 100%; */
   overflow-y:scroll;
   max-width: 100%;

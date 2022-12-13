@@ -211,6 +211,7 @@ export default function OrganisationProvider(props) {
     async function add_campaign_participants(org_id, camp_id, participants = []) {
         try {
             await Promise.all(participants.map(async (participant) => {
+                console.log(participant)
                 await add_org_campaign_participant(org_id, camp_id, participant)
 
             }))

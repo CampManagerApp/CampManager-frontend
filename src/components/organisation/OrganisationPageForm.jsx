@@ -22,7 +22,7 @@ export default function OrganistationPageForm() {
         navigate('/organisation/members/list');
     }
     return (
-        <div className="div-all scrollable-content">
+        <div className="div-all scrollable-content" style={{height:'100vh'}}>
             <div>
                 <ProfilePage profileName={currentOrganisation.name} profileImg={image.hikingProf} profileNick="Nick de ejemplo" backgroundImg={image.backgroundOrg} idVisible={idVisible} />
             </div>
