@@ -11,7 +11,7 @@ import './ProfilePage.css'
 */
 export default function ProfilePage(props){
     return(
-        <div>
+        <div className='profile-content'>
             <div className="top-photo col-md-12 ">
                 <img src={props.backgroundImg}/>
             </div>

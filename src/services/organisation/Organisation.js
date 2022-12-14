@@ -178,4 +178,13 @@ export const get_org_campaign_participants = async (org_id, campaign_id) => {
     return res.data
 }
 
+export const get_org_campaign_participant = async (org_id, campaign_id, full_name) => {
+    const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/participant/info/?name=${full_name}`)
+    return res.data
+}
+
+export const get_org_campaign_counsellor = async (org_id, campaign_id, full_name) => {
+    const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/counsellor/info/?name=${full_name}`)
+    return res.data
+}
 

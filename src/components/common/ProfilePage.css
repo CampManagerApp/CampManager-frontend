@@ -43,7 +43,20 @@
 	z-index: -110;
  
 }
+/* .top-photo img{
+    width: 100%;
+    max-height: 200px;
+} */
+
 .top-photo img{
-	width: 100%;
-	max-height: 200px;
-}
+    width: 100%;
+    height: 25vh;
+  }
+  @supports(object-fit: cover){
+    .top-photo img{
+        /* height: 100%; */
+        object-fit: cover;
+        /* object-position: center center; */
+      }
+  }
+  

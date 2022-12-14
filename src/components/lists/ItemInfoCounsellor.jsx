@@ -5,24 +5,26 @@ import { toCapitalLetter } from "../../utils"
 
 export default function ItemInfoCounsellor(props) {
 
-    useEffect(()=> {
-       console.log(props.counsellor)
+    useEffect(() => {
+        console.log(props.counsellor)
     })
     return (
- 
-        <Form className='form-padding'>
+
+        <Form className='form-padding scrollable-content' style={{ height: "50vh" }}>
             {
                 Object.keys(props.counsellor).map(function (key, index) {
                     return (
-                        <Row key={index} className="mb-3">
-                            <Form.Group as={Col}>
-                                <Form.Label>{toCapitalLetter(key)}</Form.Label>
-                                <Form.Control placeholder={props.counsellor[key]} disabled />
-                            </Form.Group>
-                        </Row>
+                        props.counsellor[key] != null
+                            ? <Row key={index} className="mb-3">
+                                <Form.Group as={Col}>
+                                    <Form.Label>{toCapitalLetter(key)}</Form.Label>
+                                    <Form.Control placeholder={props.counsellor[key]} disabled />
+                                </Form.Group>
+                            </Row>
+                            : ''
                     )
                 })
-            }  
+            }
         </Form>
 
     )

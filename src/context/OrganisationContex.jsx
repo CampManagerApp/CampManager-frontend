@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { createContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Organisations } from "../data/organisations";
-import { add_org_campaign_counsellor, add_org_campaign_participant, claim_org_member, create_org_campaign, delete_org_campaign, delete_org_member, delete_org_unclaimed_user, get_organisation_by_code, get_organisation_by_name, get_org_campaigns, get_org_campaign_counsellors, get_org_campaign_participants, get_org_claimed_members, get_org_members, get_org_unclaimed_members, get_org_unclaimed_user_role, get_org_unclaimned_members, registry_org_member, update_org_campaign, update_org_member, update_org_unclaimed_user } from "../services/organisation/Organisation"
+import { add_org_campaign_counsellor, add_org_campaign_participant, claim_org_member, create_org_campaign, delete_org_campaign, delete_org_member, delete_org_unclaimed_user, get_organisation_by_code, get_organisation_by_name, get_org_campaigns, get_org_campaign_counsellor, get_org_campaign_counsellors, get_org_campaign_participant, get_org_campaign_participants, get_org_claimed_members, get_org_members, get_org_unclaimed_members, get_org_unclaimed_user_role, get_org_unclaimned_members, registry_org_member, update_org_campaign, update_org_member, update_org_unclaimed_user } from "../services/organisation/Organisation"
 import { MessageContext } from "./MessageContex";
 
 
@@ -266,21 +266,31 @@ export default function OrganisationProvider(props) {
         })
         return campaign[0]
     }
-   
-    function get_campaign_participant(org_id, camp_id, participant_id){
-        const participants = get_campaign_participants(org_id, camp_id)
-        const participant = participants.filter((part) =>{
-            return part.id == participant_id
-        })
-        return participant[0]
-    } 
 
-    function get_campaign_counsellor(org_id, camp_id, counsellor_id){
-        const counsellors = get_campaign_counsellors(org_id, camp_id)
-        const counsellor = counsellors.filter((coun) =>{
-            return coun.id == counsellor_id
-        })
-        return counsellor[0]
+    async function get_campaign_participant(org_id, camp_id, full_name) {
+        try {
+            const participant = await get_org_campaign_participant(org_id, camp_id, full_name)
+            return participant
+        } catch (error) {
+            if (!error.response) {
+                showErrorMessage(t("ERRORS.CONEXION_ERROR.ERROR_MODAL_TITLE"), t("ERRORS.CONEXION_ERROR.ERROR_MODAL_BODY"))
+            } else if (error.response.status == 404) {
+                throw new { not_found: true }
+            }
+        }
+    }
+
+    async function get_campaign_counsellor(org_id, camp_id, full_name) {
+        try {
+            const participant = await get_org_campaign_counsellor(org_id, camp_id, full_name)
+            return participant
+        } catch (error) {
+            if (!error.response) {
+                showErrorMessage(t("ERRORS.CONEXION_ERROR.ERROR_MODAL_TITLE"), t("ERRORS.CONEXION_ERROR.ERROR_MODAL_BODY"))
+            } else if (error.response.status == 404) {
+                throw new { not_found: true }
+            }
+        }
     }
 
     async function claim_member(username, orgname, full_name) {
@@ -292,7 +302,7 @@ export default function OrganisationProvider(props) {
         }
     }
 
-    async function create_table(table_name,x_values,y_values,values){
+    async function create_table(table_name, x_values, y_values, values) {
     }
 
     const operations = {
