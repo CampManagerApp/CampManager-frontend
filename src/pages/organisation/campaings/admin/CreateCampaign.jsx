@@ -20,38 +20,41 @@ import { UserStatusContext } from "../../../../context/UserStatusContext";
 import { Alert } from "react-bootstrap";
 import { toBackendFormat } from "../../../../utils";
 import { MessageContext } from "../../../../context/MessageContex";
+import { TemporalDataContext } from "../../../../context/TemporalDataContext";
+import { useEffect } from "react";
 
 
 export default function CreateCampaign() {
     const navigate = useNavigate()
     const { t, i18n } = useTranslation('common');
-    const { get_claimed_members, create_campaign, add_campaign_counsellors } = useContext(organisationContex)
+    const { get_claimed_members, create_campaign, add_campaign_counsellors, add_campaign_participants } = useContext(organisationContex)
     const { get_current_organisation } = useContext(UserStatusContext)
     const { showErrorMessage } = useContext(MessageContext)
+    const { campaign_data, set_campaign_data, reset_campaign_data } = useContext(TemporalDataContext)
 
-    const [startDate, setStartDate] = useState(new Date())
-    const [endDate, setEndDate] = useState(new Date())
-    const [name, setName] = useState('')
-    const [counsellors, setCounsellorsOptions] = useState([]);
+    const [members, setMembers] = useState([])
+    
+
+    function setName(name) {
+        set_campaign_data({ ...campaign_data, ['name']: name })
+    }
+
+    function setStartDate(date) {
+        set_campaign_data({ ...campaign_data, ['start']: date })
+    }
+
+    function setEndDate(date) {
+        set_campaign_data({ ...campaign_data, ['end']: date })
+    }
 
 
-    /*--------DELETE AFTER IMPLEMENTATION--------*/
-    const [selectedCounsellors, setCounsellors] = useState([])
-    const [participants, setParticipantsOptions] = useState([
-        { label: "Alejandro Clavera", value: "NY" },
-        { label: "Rome", value: "RM" },
-        { label: "London", value: "LDN" },
-        { label: "Istanbul", value: "IST" },
-        { label: "Paris", value: "PRS" },
-        { label: "Madrid", value: "MAD" },
-        { label: "Lleida", value: "LLE" },
-        { label: "Barcelona", value: "BCN" }
-    ]);
-    /*--------DELETE AFTER IMPLEMENTATION--------*/
+    function setCounsellors(counsellors) {
+        set_campaign_data({ ...campaign_data, ['counsellors']: counsellors })
+    }
 
 
     function navigateToParticipants() {
-        navigate('/admin/createcampaign/participants');
+        navigate('/camp/participants/list/add');
     }
 
     function loadMembers() {
@@ -60,42 +63,58 @@ export default function CreateCampaign() {
             const members_options = members.map((member) => {
                 return { label: member.full_name }
             })
-            setCounsellorsOptions(members_options)
+            setMembers(members_options)
         })
     }
 
     async function createCampaing() {
         const { id } = get_current_organisation()
-        const start = toBackendFormat(startDate)
-        const end = toBackendFormat(endDate)
+        const start = toBackendFormat(campaign_data.start)
+        const end = toBackendFormat(campaign_data.end)
         var campaign_id = ''
         // create a campaing
         try {
-            const campaign = await create_campaign(id, name, start, end)
+            const campaign = await create_campaign(id, campaign_data.name, start, end)
             campaign_id = campaign.id
         } catch (error) {
+            reset_campaign_data()
             if (error.duplicated) {
                 showErrorMessage(t('ADD_NEW_CAMPAIGN.ERRORS.ERROR_TITLE'), t('ADD_NEW_CAMPAIGN.ERRORS.DUPLICATED_ERROR'))
-                return
             }
+            return
         }
         // check if must be add counsellors to the campaing
-        if (selectedCounsellors.length == 0)
+        if (campaign_data.counsellors.length == 0)
             return
         // add counsellors
         try {
             // transform the counsellor object
-            const counsellors = selectedCounsellors.map((counsellor) => {
+            const counsellors = campaign_data.counsellors.map((counsellor) => {
                 return { full_name: counsellor.label }
             })
             const campaign = await add_campaign_counsellors(id, campaign_id, counsellors)
-            navigate('/organisation/campaings', { replace: true })
         } catch (error) {
             console.log(error)
             if (error.duplicated) {
                 showErrorMessage(t('ADD_NEW_CAMPAIGN.ERRORS.ERROR_TITLE'), t('ADD_NEW_CAMPAIGN.ERRORS.DUPLICATED_ERROR'))
             }
+            reset_campaign_data()
+            return
         }
+
+        try {
+            console.log(campaign_data.participants)
+            await add_campaign_participants(id, campaign_id, campaign_data.participants)
+        } catch (error) {
+            console.log(error)
+            if (error.duplicated) {
+                showErrorMessage(t('ADD_NEW_CAMPAIGN.ERRORS.ERROR_TITLE'), t('ADD_NEW_CAMPAIGN.ERRORS.DUPLICATED_ERROR'))
+            }
+            reset_campaign_data()
+            return
+        }
+        reset_campaign_data()
+        navigate('/organisation/campaings', { replace: true })
     }
 
     return (
@@ -106,17 +125,17 @@ export default function CreateCampaign() {
                 <Form.Group controlId="name">
                     <Form.Label>{t('ADD_NEW_CAMPAIGN.CAMPAIGN_NAME')}:</Form.Label>
                     {" "}
-                    <Form.Control type="text" aria-describedby="passwordHelpBlock" value={name} onChange={(e) => setName(e.target.value)} />
+                    <Form.Control type="text" aria-describedby="passwordHelpBlock" value={campaign_data.name} onChange={(e) => setName(e.target.value)} />
                 </Form.Group>
                 <br />
                 <Row>
                     <Col>
                         <><Form.Label className="formLabel">{t('ADD_NEW_CAMPAIGN.CAMPAIGN_START_DATE')}:</Form.Label></>
-                        <Calendar dateFormat="dd/mm/yy" value={startDate} onChange={(e) => setStartDate(e.value)} showIcon={true} touchUI={true}></Calendar>
+                        <Calendar dateFormat="dd/mm/yy" value={campaign_data.start} onChange={(e) => setStartDate(e.value)} showIcon={true} touchUI={true}></Calendar>
                     </Col>
                     <Col>
                         <><Form.Label className="formLabel">{t('ADD_NEW_CAMPAIGN.CAMPAIGN_END_DATE')}:</Form.Label></>
-                        <Calendar dateFormat="dd/mm/yy" value={endDate} onChange={(e) => setEndDate(e.value)} showIcon={true} touchUI={true}></Calendar>
+                        <Calendar dateFormat="dd/mm/yy" value={campaign_data.end} onChange={(e) => setEndDate(e.value)} showIcon={true} touchUI={true}></Calendar>
                     </Col>
                 </Row>
                 <br />
@@ -124,7 +143,7 @@ export default function CreateCampaign() {
                     <Col>
                         {/* <p>Counsellors:</p> */}
                         <><Form.Label className="formLabel">{t('ADD_NEW_CAMPAIGN.COUNSELLORS')}:</Form.Label></>
-                        <MultiSelect showClear={true} maxSelectedLabels={1} value={selectedCounsellors} options={counsellors} onShow={loadMembers} onChange={(e) => setCounsellors(e.value)} />
+                        <MultiSelect showClear={true} maxSelectedLabels={1} value={campaign_data.counsellors} options={members} onShow={loadMembers} onChange={(e) => setCounsellors(e.value)} />
                         {/* <p>Participants:</p> */}
                         <br />
                         <br />

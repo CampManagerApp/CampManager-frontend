@@ -10,7 +10,7 @@ import { AiFillHome } from "react-icons/ai";
 import { FaCampground } from "react-icons/fa";
 import { CgOrganisation } from "react-icons/cg";
 import { CgArrowsExchangeAlt } from "react-icons/cg";
-import { HiLanguage } from "react-icons/hi2";
+import { IoText } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserStatusContext, USER_STATUS } from '../../context/UserStatusContext';
@@ -26,6 +26,12 @@ export default function ApplicationNavbar() {
     const navigate = useNavigate()
     const { update_state, is_unAuthenticated, is_superAdmin, is_user,set_language } = useContext(UserStatusContext)
     const [expanded, setExpanded] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('en');
+      
+    function handleOptionChange(event) {
+        setSelectedOption(event.target.value);
+        set_language(event.target.value)
+    }
 
     function logout() {
         window.sessionStorage.removeItem("token")
@@ -37,16 +43,6 @@ export default function ApplicationNavbar() {
             navigate('/login')
         }
     }
-    function changeLanguageCa(){
-        set_language("ca")
-    }
-    function changeLanguageEn(){
-        set_language("en")
-    }
-    function changeLanguageEs(){
-        set_language("es")
-    }
-
 
     function change_organisation() {
         setExpanded(false)
@@ -108,13 +104,13 @@ export default function ApplicationNavbar() {
                         <Container>
                             <Row xs="auto">
                                 <Col>
-                                    <Nav.Link className="ms-auto"><HiLanguage />{" "}{t('NAVBAR.LANGUAGE')}</Nav.Link>
+                                    <Nav.Link className="ms-auto"><IoText />{" "}{t('NAVBAR.LANGUAGE')}</Nav.Link>
                                 </Col>
                                 <Col>
-                                    <Form.Select size="sm">
-                                        <option value="EN" onClick={changeLanguageEn}>🇬🇧&emsp;EN</option>
-                                        <option value="ES" onClick={changeLanguageEs}>🇪🇸&emsp;ES</option>
-                                        <option value="CA" onClick={changeLanguageCa}>🇪🇸&emsp;CA</option>
+                                    <Form.Select size="sm" value={selectedOption} onChange={handleOptionChange}>
+                                        <option value="en">🇬🇧&emsp;EN</option>
+                                        <option value="es" >🇪🇸&emsp;ES</option>
+                                        <option value="ca" >🇪🇸&emsp;CA</option>
                                     </Form.Select>
                                 </Col>
                             </Row>

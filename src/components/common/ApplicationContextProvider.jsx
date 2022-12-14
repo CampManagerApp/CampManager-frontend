@@ -1,6 +1,7 @@
 import MessageContextProvider from "../../context/MessageContex";
 import OrganisationProvider from "../../context/OrganisationContex";
-import UserOrganisationsProvider, { UserOrganisationsContex } from "../../context/UserOrganisationsContex";
+import TemporalDataProvider from "../../context/TemporalDataContext";
+import UserOrganisationsProvider from "../../context/UserOrganisationsContex";
 import UserStatusProvider, { USER_STATUS } from '../../context/UserStatusContext';
 
 export default function ApplicationContextProvider(props) {
@@ -8,9 +9,11 @@ export default function ApplicationContextProvider(props) {
         <MessageContextProvider>
             <UserStatusProvider>
                 <OrganisationProvider>
-                    <UserOrganisationsProvider>
-                        {props.children}
-                    </UserOrganisationsProvider>
+                    <TemporalDataProvider>
+                        <UserOrganisationsProvider>
+                            {props.children}
+                        </UserOrganisationsProvider>
+                    </TemporalDataProvider>
                 </OrganisationProvider>
             </UserStatusProvider>
         </MessageContextProvider>

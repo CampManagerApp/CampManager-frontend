@@ -2,9 +2,9 @@ import './ItemList.css'
 import { ListGroup } from "react-bootstrap";
 
 
-export default function ItemList({ items = [], template: Template, onClickItem = () => { } }) {
+export default function ItemList({ items = [], template: Template, max_height = '50vh', onClickItem = () => { } }) {
     return (
-        <ListGroup bsPrefix="item-list" className='scrollable-content'>
+        <ListGroup bsPrefix="item-list" className='scrollable-content' style={{height: max_height}}>
             {
                 items.map((item, key) => {
                     if (Template === undefined) {

@@ -133,5 +133,14 @@
     },
     "TABLES_LIST":{
         "TITLE": "Tablas"
+    },
+    "ADD_NEW_TABLE":{
+        "TITLE":"Añadir una nueva tabla",
+        "TABLE_NAME":"Nombre de la tabla",
+        "X_VALUE":"Valores de X",
+        "Y_VALUE":"Valores de Y",
+        "VALUES":"Valores",
+        "CANCEL_BUTTON":"Cancelar",
+        "CREATE_BUTTON":"Crear"
     }
  }
