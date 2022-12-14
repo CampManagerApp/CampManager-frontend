@@ -260,6 +260,7 @@ export default function OrganisationProvider(props) {
 
     function get_campaign(org_id, camp_id) {
         const campaigns = get_campaings_list(org_id)
+        console.log(campaigns)
         const campaign = campaigns.filter((camp) => {
             return camp.id == camp_id
         })
@@ -310,7 +311,8 @@ export default function OrganisationProvider(props) {
         get_campaign_participants,
         get_campaign_counsellors,
         get_campaign_participant,
-        get_campaign_counsellor
+        get_campaign_counsellor,
+        get_campaign_tables
     }
 
     return (

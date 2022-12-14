@@ -11,12 +11,14 @@ import { Button, Row } from "react-bootstrap";
 
 import './CampParticipantsSelect.css'
 import { MessageContext } from "../../context/MessageContex";
+import { useTranslation } from "react-i18next";
 
 export default function CampParticipantsSelect({ items=[], template:Template, onClickItem = ()=>{}}) {
     const idVisible = 'hidden';
     const includeProfileImage = 'none';
     const [update, setUpdate] = useState(true)
     const [item, setitem] = useState({});
+    const { t, i18n } = useTranslation('common');
     
     const [participants, setParticipants] = new useState()
     
@@ -34,7 +36,7 @@ export default function CampParticipantsSelect({ items=[], template:Template, on
                     </Row>
                     <Row className="row-del" style={{width:20+'%'}}>
                         <button type="button" className="btn btn-danger button-delete bt-del" onClick={() => {
-                                showConfirmationModal(() => {delete_item(item.name)})
+                                showConfirmationModal(() => {delete_item(participants.indexOf(item))})
                         }}><span className="d-none d-lg-inline d-print-flex">Delete</span><i className="bi bi-trash"></i></button>
                     </Row>
                 </Row>
@@ -56,19 +58,17 @@ export default function CampParticipantsSelect({ items=[], template:Template, on
     }, [update])
     
     function delete_item(id)  {
-        setParticipants(participants.filter(participant => participant.name !== id))
-        set_current_participantsAdd(participants.filter(participant => participant.name !== id))
+        setParticipants(participants.filter(participant => participants.indexOf(participant) !== id))
+        set_current_participantsAdd(participants.filter(participant => participants.indexOf(participant) !== id))
     }
 
     return (
         <div>
-            <ProfilePage profileName="Select participants"  backgroundImg={image.hiking}  includeProfileImage={includeProfileImage}  /> 
+            <ProfilePage profileName={t('PARTICIPANTS_SELECT.TITLE')}  backgroundImg={image.hiking}  includeProfileImage={includeProfileImage}  /> 
             <ItemList items={participants} template={participantContent}></ItemList>
             <Button className="bt-add" onClick={onClickAdd}>
                      <Icons.AddUser />
             </Button>
-
-
         </div>
     )
 }

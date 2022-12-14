@@ -115,5 +115,17 @@
         "PARTICIPANT_NAME":"Nom del participant",
         "PARENT_EMAIL":"Correu electrònic dels pares",
         "NOTES":"Notes"
+    },
+    "PARTICIPANTS_SELECT":{
+        "TITLE": "Selecciona els participants"
+    },
+    "PARTICIPANTS_ADD":{
+        "TITLE": "Afegir participant",
+        "EMAIL": "Correu electrònic",
+        "NAME": "Nom"
+    },
+    "TABLES_LIST":{
+        "TITLE": "Taules"
     }
+    
 }

@@ -31,13 +31,13 @@ export default function CampParticipantsPage(){
                     <Row className="list-group-item justify-content-between align-items-center px-0 py-0 " onClick={submitParticipants}>
                         <div className="list-image" >
                             <p className="overlay-text">Participants</p> 
-                            <img src={require('../../design/nophotoimg.jpg')} className="himage-list"  />
+                            <img src={image.ParticipantsButton} className="himage-list"  />
                         </div>
                     </Row>
                     <Row className="list-group-item justify-content-between align-items-center px-0 py-0 " onClick={submitCounsellors} >
                         <div className="list-image">
                             <p className="overlay-text">Counsellors</p> 
-                            <img src={require('../../design/nophotoimg.jpg')} className="himage-list" />
+                            <img src={image.Counsellors} className="himage-list" />
                         </div>
                     </Row>               
                 </Col>

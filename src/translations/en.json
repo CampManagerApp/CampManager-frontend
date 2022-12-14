@@ -106,7 +106,7 @@
     },
 
     "ORGANISATION_PAGE": {
-        "CAMPAIGNS": "Campaings",
+        "CAMPAIGNS": "Campaigns",
         "MEMBERS": "Members",
         "SOCIAL_PAGE": "Social page"
     },
@@ -123,5 +123,16 @@
         "NAME_HEADER": "Name",
         "ROLE_HEADER": "Role",
         "CLAIMED_HEADER": "Claimed"
+    },
+    "PARTICIPANTS_SELECT":{
+        "TITLE": "Select participants"
+    },
+    "PARTICIPANTS_ADD":{
+        "TITLE": "Add participant",
+        "EMAIL": "Email",
+        "NAME": "Name"
+    },
+    "TABLES_LIST":{
+        "TITLE": "Tables"
     }
 }
