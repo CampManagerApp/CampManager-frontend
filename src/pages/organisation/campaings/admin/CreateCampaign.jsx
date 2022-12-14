@@ -33,7 +33,7 @@ export default function CreateCampaign() {
     const { campaign_data, set_campaign_data, reset_campaign_data } = useContext(TemporalDataContext)
 
     const [members, setMembers] = useState([])
-    
+
 
     function setName(name) {
         set_campaign_data({ ...campaign_data, ['name']: name })
@@ -83,16 +83,17 @@ export default function CreateCampaign() {
             }
             return
         }
-        // check if must be add counsellors to the campaing
-        if (campaign_data.counsellors.length == 0)
-            return
-        // add counsellors
+
         try {
-            // transform the counsellor object
-            const counsellors = campaign_data.counsellors.map((counsellor) => {
-                return { full_name: counsellor.label }
-            })
-            const campaign = await add_campaign_counsellors(id, campaign_id, counsellors)
+            // check if must be add counsellors to the campaing
+            if (campaign_data.counsellors.length != 0) {
+                // add counsellors
+                // transform the counsellor object
+                const counsellors = campaign_data.counsellors.map((counsellor) => {
+                    return { full_name: counsellor.label }
+                })
+                const campaign = await add_campaign_counsellors(id, campaign_id, counsellors)
+            }
         } catch (error) {
             console.log(error)
             if (error.duplicated) {
