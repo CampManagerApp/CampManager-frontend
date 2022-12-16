@@ -86,8 +86,8 @@ export default function ListOfOrganisations({ handle }) {
   }
 
   return (
-    <div className='list-group-page-wrapper'>
-      <div className="list-group list-group-light scrollable-content" style={{height: '50vh'}}>
+    <div className='list-group-page-wrapper' style={{height: '100%'}}>
+      <div className="list-group list-group-light scrollable-content" style={{height: '65%'}}>
         {orgList.map((org, key) => {
           return (
             <a key={key} onClick={() => { handle(org) }} className="list-group-item list-group-item-action px-5 border-4 pointer-item">

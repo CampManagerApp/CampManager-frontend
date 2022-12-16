@@ -34,7 +34,7 @@ export default function ApplicationNavbar() {
     }
 
     function logout() {
-        window.sessionStorage.removeItem("token")
+        localStorage.removeItem("token")
         update_state(USER_STATUS.UNAUTHENTICATED)
         setExpanded(false)
         if (is_superAdmin()) {
@@ -47,6 +47,16 @@ export default function ApplicationNavbar() {
     function change_organisation() {
         setExpanded(false)
         navigate('listoforganisations', { replace: true })
+    }
+
+    function goto_campaigns() {
+        setExpanded(false)
+        navigate('organisation/campaings')
+    }
+
+    function goto_organisation_page() {
+        setExpanded(false)
+        navigate('organisation', {replace: true})
     }
 
 
@@ -70,7 +80,7 @@ export default function ApplicationNavbar() {
                             <Container>{t('NAVBAR.MENU')}</Container>
                         </Offcanvas.Title>
                     </Offcanvas.Header>
-                    <Offcanvas.Header >
+                    {/* <Offcanvas.Header >
                         <Container>
                             <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><IoPersonOutline />{" "}{t('NAVBAR.PROFILE')}</Nav.Link>
                         </Container>
@@ -79,22 +89,22 @@ export default function ApplicationNavbar() {
                         <Container>
                             <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><BiTask />{" "}{t('NAVBAR.TASKS')}</Nav.Link>
                         </Container>
-                    </Offcanvas.Header>
+                    </Offcanvas.Header> */}
                     <Offcanvas.Header >
                         <Container>
-                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><AiFillHome />{" "}{t('NAVBAR.HOME')}</Nav.Link>
+                            <Nav.Link onClick={goto_organisation_page}><AiFillHome />{" "}{t('NAVBAR.HOME')}</Nav.Link>
                         </Container>
                     </Offcanvas.Header>
                     <Offcanvas.Header >
                         <Container>
-                            <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><FaCampground />{" "}{t('NAVBAR.CAMPAIGNS')}</Nav.Link>
+                            <Nav.Link onClick={goto_campaigns}><FaCampground />{" "}{t('NAVBAR.CAMPAIGNS')}</Nav.Link>
                         </Container>
                     </Offcanvas.Header>
-                    <Offcanvas.Header >
+                    {/* <Offcanvas.Header >
                         <Container>
                             <Nav.Link onClick={() => setExpanded(expanded ? false : "expanded")}><CgOrganisation />{" "}{t('NAVBAR.ORGANISATIONS')}</Nav.Link>
                         </Container>
-                    </Offcanvas.Header>
+                    </Offcanvas.Header> */}
                     <Offcanvas.Header >
                         <Container>
                             <Nav.Link onClick={change_organisation}><CgArrowsExchangeAlt />{" "}{t('NAVBAR.CHANGE_ORGANISATION')}</Nav.Link>

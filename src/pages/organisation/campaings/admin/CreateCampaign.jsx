@@ -119,7 +119,7 @@ export default function CreateCampaign() {
     }
 
     return (
-        <React.Fragment>
+        <div className="div-all scrollable-content" style={{height:"80vh"}}>
             <BannerImage bannerImage={image.backgroundOrg} />
             <TitlePage>{t('ADD_NEW_CAMPAIGN.TITLE')}</TitlePage>
             <Container>
@@ -165,6 +165,6 @@ export default function CreateCampaign() {
                 </Container>
 
             </Container>
-        </React.Fragment>
+        </div>
     )
 }

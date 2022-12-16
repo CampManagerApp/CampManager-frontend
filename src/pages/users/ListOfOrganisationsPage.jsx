@@ -26,8 +26,8 @@ export default function OrganisationInfoPage() {
     return (
         <div>
             <h1 className="d-flex justify-content-center display-1" style={{ textAlign: "center", marginBottom: "5%" }}> {t('SELECT_ORGANISATION.TITLE')}</h1>
-            <Container style={{ height: "80%" }}>
-                <Row><ListOfOrganisations handle={handle} /></Row>
+            <Container className="scrollable-content" style={{ height: "60vh" }}> 
+                <ListOfOrganisations handle={handle} />
             </Container>
         </div>
     )

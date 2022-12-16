@@ -14,6 +14,7 @@ import TitlePage from '../../../components/common/TitlePage';
 
 import './AddNewUserOrganisationPage.css'
 import { UserStatusContext } from '../../../context/UserStatusContext';
+import { subscribe_to_org_notifications } from '../../../services/notifications/OrganisationNotifications';
 
 function UserItem({ item: user }) {
     return <div className='d-flex justify-content-center'>{user}</div>
@@ -42,7 +43,11 @@ export default function AddNewUserOrganisation() {
         const full_name = confirmationModalState.user
         claim_member(username, orgname, full_name).then(() => {
             addOrg(organisation)
-            navigate('/listoforganisations/', { replace: true });
+            subscribe_to_org_notifications(organisation.id).then(() => {
+                navigate('/listoforganisations/', { replace: true });
+            }).catch((error) => {
+                navigate('/listoforganisations/', { replace: true });
+            })
         }).catch((error) => {
             console.log('error to claim')
             setConfirmationModalState({ user: '', show: false })
@@ -64,11 +69,13 @@ export default function AddNewUserOrganisation() {
                 const members = users.map((member) => {return member.full_name})
                 setUsersToClaim(members)
             }).catch((error) => {
-                console.log('ni caso')
+               return
             })
         }).catch((error) => {
-            if (error.not_found)
+            console.log(error.not_found)
+            if (error.not_found) {
                 setShowError({ ...showError, ['notFound']: true })
+            }
         })
     }
 
