@@ -17,7 +17,6 @@ export default function CampPage(){
 
     function submit(){
         //navigate('/listoforganisations/');
-        console.log("entra")
         navigate('/camp/participants/list/add');
     }
     function participants(){
@@ -37,20 +36,20 @@ export default function CampPage(){
                     <Row className="list-group-item justify-content-between align-items-center px-0 py-0 " onClick={participants}>
                         <div className="list-image" >
                             <p className="overlay-text">Participants</p> 
-                            <img src={require('../../design/nophotoimg.jpg')} className="himage-list"  />
+                            <img src={image.Participants} className="himage-list"  />
                         </div>
                     </Row>
                     <Row className=" list-group-horizontal  px-0 py-0 div-row" >
                         <Col className="list-group-item justify-content-between align-items-center  px-0 py-0 "  onClick={tables}>
                             <div className="list-image">
                                 <p className="overlay-text">Tables</p> 
-                                <img src={require('../../design/nophotoimg.jpg')} className="vimage-list" />
+                                <img src={image.TablesButton} className="vimage-list" />
                             </div>
                         </Col>
                         <Col className="list-group-item justify-content-between align-items-center  px-0 py-0 " onClick={submit}>  
                             <div className="list-image">
                                 <p className="overlay-text">Activities</p> 
-                                <img src={require('../../design/nophotoimg.jpg')} className="vimage-list" />
+                                <img src={image.ActivitiesButton} className="vimage-list" />
                             </div>
                         </Col>
                     </Row>               

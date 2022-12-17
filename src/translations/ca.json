@@ -120,6 +120,17 @@
             "DUPLICATED_ERROR": "Duplicated campaign name"
         }
     },
+    "PARTICIPANTS_SELECT":{
+        "TITLE": "Selecciona els participants"
+    },
+    "PARTICIPANTS_ADD":{
+        "TITLE": "Afegir participant",
+        "EMAIL": "Correu electrònic",
+        "NAME": "Nom"
+    },
+    "TABLES_LIST":{
+        "TITLE": "Taules"
+    },
     "ADD_NEW_TABLE":{
         "TITLE":"Afegir una nova taula",
         "TABLE_NAME":"Nom de la taula",
@@ -129,4 +140,5 @@
         "CANCEL_BUTTON":"Cancel·lar",
         "CREATE_BUTTON":"Crear"
     }
+    
 }

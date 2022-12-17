@@ -123,6 +123,17 @@
         "UPDATE_BUTTON":"Actualizar",
         "CREATE_BUTTON":"Crear"
     },
+    "PARTICIPANTS_SELECT":{
+        "TITLE": "Selecciona los participantes"
+    },
+    "PARTICIPANTS_ADD":{
+        "TITLE": "Añadir participante",
+        "EMAIL": "Correo electrónico",
+        "NAME": "Nombre"
+    },
+    "TABLES_LIST":{
+        "TITLE": "Tablas"
+    },
     "ADD_NEW_TABLE":{
         "TITLE":"Añadir una nueva tabla",
         "TABLE_NAME":"Nombre de la tabla",

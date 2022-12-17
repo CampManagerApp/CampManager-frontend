@@ -32,19 +32,19 @@ export default function OrganistationPageForm() {
                     <Row className="list-group-item justify-content-between align-items-center px-0 py-0 " onClick={goto_campaings_list}>
                         <div className="list-image" >
                             <p className="overlay-text">{t('ORGANISATION_PAGE.CAMPAIGNS')}</p>
-                            <img src={require('../../design/nophotoimg.jpg')} className="image-list" />
+                            <img src={image.Campaigns} className="image-list" />
                         </div>
                     </Row>
                     <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 " onClick={goto_members_list}>
                         <div className="list-image">
                             <p className="overlay-text">{t('ORGANISATION_PAGE.MEMBERS')}</p>
-                            <img src={require('../../design/nophotoimg.jpg')} className="image-list" />
+                            <img src={image.Members} className="image-list" />
                         </div>
                     </Row>
                     <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 " onClick={()=>{}}>
                         <div className="list-image">
                             <p className="overlay-text">{t('ORGANISATION_PAGE.SOCIAL_PAGE')}</p>
-                            <img src={require('../../design/nophotoimg.jpg')} className="image-list" />
+                            <img src={image.SocialPage} className="image-list" />
                         </div>
                     </Row>
                 </Col>
