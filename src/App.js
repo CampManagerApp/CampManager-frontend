@@ -35,6 +35,7 @@ import CampCounsellorInfo from './pages/camp/CampCounsellorInfo';
 import CampParticipantsSelect from './pages/camp/CampParticipantsSelect';
 import CampParticipantAdd from './pages/camp/CampParticipantAdd';
 import TablesListPage from './pages/organisation/campaings/tables/TablesListPage';
+import ShowTableList from './pages/organisation/campaings/tables/ShowTableList';
 
 
 function App() {
@@ -78,7 +79,8 @@ function App() {
             <Route path="/camp/counsellors/list/counsellor" element={<CampCounsellorInfo/>}></Route>
             <Route path="/camp/participants/list/add" element={<CampParticipantsSelect/>}></Route>
             <Route path="/camp/participants/list/addpart" element={<CampParticipantAdd/>}></Route>
-            <Route path="/camp/tables" element={<TablesListPage />}></Route>
+            {/* <Route path="/camp/tables" element={<TablesListPage />}></Route>*/}
+            <Route path="/camp/tables" element={<ShowTableList />}></Route>
             <Route path="/camp/tables/createtable" element={<CreateTable />}></Route>
             <Route path="/profile" element={<ProfileUserPage />}></Route>
           </Routes>
