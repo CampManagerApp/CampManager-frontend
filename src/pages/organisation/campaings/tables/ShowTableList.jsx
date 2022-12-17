@@ -8,6 +8,7 @@ import ParticipantModal from "../../../../components/modal/ParticipantModal";
 import { organisationContex } from "../../../../context/OrganisationContex";
 import { UserStatusContext } from "../../../../context/UserStatusContext";
 import * as image from "../../../../design/images.js";
+import { useTranslation } from "react-i18next";
 
 export default function ShowTableList({ items = [], template: Template, onClickItem = () => { } }) {
     const idVisible = 'hidden';
