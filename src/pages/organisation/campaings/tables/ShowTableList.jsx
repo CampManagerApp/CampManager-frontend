@@ -14,49 +14,32 @@ export default function ShowTableList({ items = [], template: Template, onClickI
     const includeProfileImage = 'none';
     const [update, setUpdate] = useState(true)
     const { currentCamp, get_current_organisation, get_current_camp } = useContext(UserStatusContext)
-    const { get_campaign_counsellors } = useContext(organisationContex)
+    const { get_campaign_tables } = useContext(organisationContex)
     const [item, setitem] = useState({});
 
     const [tables, setTables] = new useState()
     const [modalShow, setModalShow] = useState(false);
     const { set_current_counsellor } = useContext(UserStatusContext)
     const navigate = useNavigate()
-    const dia1 = {id:0, name :"dia1", items:[{id:0, descripcion:"sadge"},{id:1, descripcion:"bedge"}]}
-
-
-    function tableContent({ item }) {
-        return (
-            <div className="d-flex justify-content-center">
-                {item.description}
-            </div>
-        )
-    }
-
-    function onClickTable(item){
-        const itemSinID = { 'Counsellor Name':item.name, 'Parent Contact':item.contact, 'Notes':items.notes }
-        set_current_counsellor(item)
-        setitem(itemSinID)  
-        console.log(item)
-        navigate('/camp/counsellors/list/counsellor');
-    }
+    const { t, i18n } = useTranslation('common');
 
     useEffect(() => {
-        loadCounsellors()
+        loadTables()
     }, [])
 
 
-    async function loadCounsellors() {
-        const counsellorsList = await get_campaign_counsellors(get_current_organisation().id, currentCamp.id)
-        setTables(counsellorsList)
-        console.log(counsellorsList)
+    async function loadTables() {
+        const tablesList = await get_campaign_tables(get_current_organisation().id, currentCamp.id)
+        setTables(tablesList)
+        console.log(tablesList)
     }
 
     return (
         <div>
             <ParticipantModal item={item} show={modalShow} onHide={() => setModalShow(false)} />
-            <ProfilePage profileName={currentCamp.name} profileNick="Tables" backgroundImg={image.hiking} includeProfileImage={includeProfileImage} />
+            <ProfilePage profileName={currentCamp.name} profileNick={t('TABLES_LIST.TITLE')} backgroundImg={image.hiking} includeProfileImage={includeProfileImage} />
             <Container>
-                <ItemTableList table={dia1} onClickItem={onClickTable} ></ItemTableList>
+                <ItemTableList table={tables}></ItemTableList>
             </Container>
         </div>
     )
