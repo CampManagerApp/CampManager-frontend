@@ -188,3 +188,15 @@ export const get_org_campaign_counsellor = async (org_id, campaign_id, full_name
     return res.data
 }
 
+export const create_org_campaign_table = async (org_id, campaign_id, table_form) => {
+    const res = await loggedRequest.post(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/tables/`, table_form)
+    return res.data
+}
+
+export const get_org_campaign_tables = async (org_id, campaign_id) => {
+    // const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/tables/?tableName=${table_name}`)
+    const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/tables/all/`)
+    return res.data
+}
+
+// export const solve_org_campaign_table = async (org_id, campaign_id)

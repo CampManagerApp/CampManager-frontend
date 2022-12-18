@@ -12,20 +12,39 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { MessageContext } from "../../../../context/MessageContex";
+import { UserStatusContext } from "../../../../context/UserStatusContext";
 
 
 export default function CreateTable() {
     const navigate = useNavigate()
     const { t, i18n } = useTranslation('common');
-    const{create_table} = useContext(organisationContex)
+    const{create_campaign_table, get_campaign_counsellors} = useContext(organisationContex)
+    const { currentCamp, currentOrganisation } = useContext(UserStatusContext)
+    const { showErrorMessage } = useContext(MessageContext)
+
     const [tableName, setTableName] = useState('')
     const [xValues, setXValues] = useState('')
     const [yValues, setYValues] = useState('')
     const [values, setValuesName] = useState('')
-    const { showErrorMessage } = useContext(MessageContext)
+    
+    
 
     async function createTable(){
         // navigate('/camp/tables');
+        get_campaign_counsellors(currentOrganisation.id, currentCamp.id).then((counsellors) => {
+            const counsellors_name = counsellors.map((counsellor) => counsellor.fullName)
+            const tableForm = {
+                tableName: tableName,
+                days: xValues,
+                tasks: yValues,
+                counsellors: counsellors_name.join(';')
+            }
+
+            create_campaign_table(currentOrganisation.id, currentCamp.id, tableForm).then((table) => {
+                console.log(table)
+            })
+            
+        })
     }
 
 

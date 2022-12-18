@@ -48,7 +48,7 @@
 
 .item-list-participant {
     --bs-list-group-color: #212529;
-    --bs-list-group-bg: #DF6060;
+    /* --bs-list-group-bg: #DF6060; */
     --bs-list-group-border-color: rgb(0, 0, 0);
     --bs-list-group-border-width: 3px;
     --bs-list-group-border-radius: 0.375rem;
@@ -71,7 +71,8 @@
 
 .item-list-day {
     --bs-list-group-color: #212529;
-    --bs-list-group-bg: #5BE94C;
+    /* --bs-list-group-bg: #5BE94C; */
+    --bs-list-group-bg: #00836A!important;
     --bs-list-group-border-color: rgb(0, 0, 0);
     --bs-list-group-border-width: 3px;
     --bs-list-group-border-radius: 0.375rem;

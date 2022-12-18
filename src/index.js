@@ -62,6 +62,7 @@ async function configureApp() {
       console.log('Push action performed: ' + JSON.stringify(notification));
     }
   );
+
   FCM.setAutoInit({ enabled: true })
 }
 
