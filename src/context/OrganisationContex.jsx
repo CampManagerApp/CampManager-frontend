@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { createContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Organisations } from "../data/organisations";
-import { add_org_campaign_counsellor, add_org_campaign_participant, claim_org_member, create_org_campaign, create_org_campaign_table, delete_org_campaign, delete_org_member, delete_org_unclaimed_user, get_organisation_by_code, get_organisation_by_name, get_org_campaigns, get_org_campaign_counsellor, get_org_campaign_counsellors, get_org_campaign_participant, get_org_campaign_participants, get_org_campaign_tables, get_org_claimed_members, get_org_members, get_org_unclaimed_members, get_org_unclaimed_user_role, get_org_unclaimned_members, registry_org_member, update_org_campaign, update_org_member, update_org_unclaimed_user } from "../services/organisation/Organisation"
+import { add_org_campaign_counsellor, add_org_campaign_participant, claim_org_member, create_org_campaign, create_org_campaign_table, delete_org_campaign, delete_org_member, delete_org_unclaimed_user, get_organisation_by_code, get_organisation_by_name, get_org_campaigns, get_org_campaign_counsellor, get_org_campaign_counsellors, get_org_campaign_participant, get_org_campaign_participants, get_org_campaign_table, get_org_campaign_tables, get_org_claimed_members, get_org_members, get_org_unclaimed_members, get_org_unclaimed_user_role, get_org_unclaimned_members, registry_org_member, solve_org_campaign_table, update_org_campaign, update_org_member, update_org_unclaimed_user } from "../services/organisation/Organisation"
 import { MessageContext } from "./MessageContex";
 
 
@@ -324,6 +324,32 @@ export default function OrganisationProvider(props) {
         }
     }
 
+    async function solve_campaign_table(org_id, camp_id, table_name) {
+        try {
+            const data = await solve_org_campaign_table(org_id, camp_id, table_name)
+            return data
+        } catch (error) {
+            if (!error.response) {
+                showErrorMessage(t("ERRORS.CONEXION_ERROR.ERROR_MODAL_TITLE"), t("ERRORS.CONEXION_ERROR.ERROR_MODAL_BODY"))
+            } else if (error.response.status == 404) {
+                throw new { not_found: true }
+            }
+        }
+    }
+
+    async function get_campaign_table(org_id, camp_id, table_name) {
+        try {
+            const data = await get_org_campaign_table(org_id, camp_id, table_name)
+            return data
+        } catch (error) {
+            if (!error.response) {
+                showErrorMessage(t("ERRORS.CONEXION_ERROR.ERROR_MODAL_TITLE"), t("ERRORS.CONEXION_ERROR.ERROR_MODAL_BODY"))
+            } else if (error.response.status == 404) {
+                throw new { not_found: true }
+            }
+        }
+    }
+
     const operations = {
         get_org_unclaimed_users,
         get_org_by_code,
@@ -345,7 +371,9 @@ export default function OrganisationProvider(props) {
         get_campaign_participant,
         get_campaign_counsellor,
         get_campaign_tables,
-        create_campaign_table
+        create_campaign_table,
+        solve_campaign_table,
+        get_campaign_table
     }
 
     return (

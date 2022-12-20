@@ -1,21 +1,21 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import * as Icons from '../../design/icons'
-import { IoPersonOutline } from "react-icons/io5";
-import { BiTask } from "react-icons/bi";
+import { useTranslation } from "react-i18next";
 import { AiFillHome } from "react-icons/ai";
 import { FaCampground } from "react-icons/fa";
-import { CgOrganisation } from "react-icons/cg";
 import { CgArrowsExchangeAlt } from "react-icons/cg";
 import { IoText } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserStatusContext, USER_STATUS } from '../../context/UserStatusContext';
+import { Device } from "@capacitor/device";
+
+
+import * as Icons from '../../design/icons'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import './ApplicationNavbar.css'
-import { useTranslation } from "react-i18next";
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -24,10 +24,17 @@ import Col from 'react-bootstrap/Col';
 export default function ApplicationNavbar() {
     const { t, i18n } = useTranslation('common');
     const navigate = useNavigate()
-    const { update_state, is_unAuthenticated, is_superAdmin, is_user,set_language } = useContext(UserStatusContext)
+    const { update_state, is_unAuthenticated, is_superAdmin, is_user, set_language } = useContext(UserStatusContext)
     const [expanded, setExpanded] = useState(false);
     const [selectedOption, setSelectedOption] = useState('en');
-      
+
+    useEffect(() => {
+        // load languaje default option
+        Device.getLanguageCode().then((lang) => {
+            setSelectedOption(lang.value)
+        })
+    }, [])
+
     function handleOptionChange(event) {
         setSelectedOption(event.target.value);
         set_language(event.target.value)
@@ -56,7 +63,7 @@ export default function ApplicationNavbar() {
 
     function goto_organisation_page() {
         setExpanded(false)
-        navigate('organisation', {replace: true})
+        navigate('organisation', { replace: true })
     }
 
 

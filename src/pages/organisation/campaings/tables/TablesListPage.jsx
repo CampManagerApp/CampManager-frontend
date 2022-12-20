@@ -14,7 +14,7 @@ export default function TablesListPage({ items = [], template: Template, onClick
     const includeProfileImage = 'none';
 
     const [update, setUpdate] = useState(true)
-    const { currentCamp, currentOrganisation } = useContext(UserStatusContext)
+    const { currentCamp, currentOrganisation, currentTable, set_current_table } = useContext(UserStatusContext)
     const { get_campaign_tables } = useContext(organisationContex)
     const [item, setitem] = useState({});
     const { t, i18n } = useTranslation('common');
@@ -33,6 +33,8 @@ export default function TablesListPage({ items = [], template: Template, onClick
     function onClickTable(item) {
         //const itemSinID = { 'Participant Name':item.name, 'Parent Contact':item.contact, 'Notes':items.notes }
         //setitem(itemSinID)  
+        set_current_table(item)
+        navigate('/camp/tables/info')
     }
 
     function createTable() {

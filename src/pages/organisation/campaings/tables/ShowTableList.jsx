@@ -13,16 +13,16 @@ import { useTranslation } from "react-i18next";
 export default function ShowTableList({ items = [], template: Template, onClickItem = () => { } }) {
     const idVisible = 'hidden';
     const includeProfileImage = 'none';
-    const [update, setUpdate] = useState(true)
-    const { currentCamp, get_current_organisation, get_current_camp } = useContext(UserStatusContext)
-    const { get_campaign_tables } = useContext(organisationContex)
+    const navigate = useNavigate()
+
+    const { t, i18n } = useTranslation('common');
+    const { currentCamp, get_current_organisation, currentTable } = useContext(UserStatusContext)
+    const { get_campaign_table } = useContext(organisationContex)
     const [item, setitem] = useState({});
 
-    const [tables, setTables] = new useState()
-    const [modalShow, setModalShow] = useState(false);
-    const { set_current_counsellor } = useContext(UserStatusContext)
-    const navigate = useNavigate()
-    const { t, i18n } = useTranslation('common');
+    const [table, setTable] = useState([])
+    const [showMessage, setShowMessage] = useState(false)
+
 
     useEffect(() => {
         loadTables()
@@ -30,17 +30,38 @@ export default function ShowTableList({ items = [], template: Template, onClickI
 
 
     async function loadTables() {
-        const tablesList = await get_campaign_tables(get_current_organisation().id, currentCamp.id)
-        setTables(tablesList)
-        console.log(tablesList)
+        const loadedTable = await get_campaign_table(get_current_organisation().id, currentCamp.id, currentTable.name)
+        if (loadedTable.status === "CREATED") {
+            setShowMessage(true)
+        } else {
+            const formatedTable = parseResponse(loadedTable)
+            setTable(formatedTable)
+        }  
+    }
+
+    function parseResponse(response) {
+        const parsedResponse = Object.fromEntries(response.days.map((day) => [day, { name: day, tasks: [] }]))
+        Object.entries(response.grid).forEach(([key, participantsList]) => {
+            const [day, taskName] = key.split(':')
+            const participants = participantsList.map((participant) => {
+                return { name: participant }
+            })
+            const task = { description: taskName, participants: participants }
+            parsedResponse[day].tasks.push(task)
+        })
+        return Object.values(parsedResponse)
     }
 
     return (
         <div>
-            <ParticipantModal item={item} show={modalShow} onHide={() => setModalShow(false)} />
-            <ProfilePage profileName={currentCamp.name} profileNick={t('TABLES_LIST.TITLE')} backgroundImg={image.hiking} includeProfileImage={includeProfileImage} />
+            {/* <ParticipantModal item={item} show={modalShow} onHide={() => setModalShow(false)} /> */}
+            <ProfilePage profileName={currentCamp.campaignName} profileNick={t('TABLES_LIST.TITLE') + ' : ' + currentTable.name } backgroundImg={image.hiking} includeProfileImage={includeProfileImage} />
             <Container>
-                <ItemTableList table={tables}></ItemTableList>
+                {
+                    showMessage
+                        ? <p>{t('TABLES_LIST.TABLE_NOT_AVALIABLE')}</p>
+                        : <ItemTableList table={table}></ItemTableList> 
+                }
             </Container>
         </div>
     )

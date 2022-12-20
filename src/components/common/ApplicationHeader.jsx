@@ -1,13 +1,13 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { isPlatform } from '@ionic/react';
 import { useTranslation } from "react-i18next";
+
 import ApplicationNavbar from "./ApplicationNavbar";
 import './ApplicationHeader.css'
 import BackPage from "./BackPage";
-
 
 const DISABLED_LOCATIONS = [
     '/login',

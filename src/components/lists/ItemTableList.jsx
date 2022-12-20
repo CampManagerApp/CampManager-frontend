@@ -5,7 +5,10 @@ import ItemList from './ItemList';
 import ItemTableListParticipants from './ItemTableListParticipants';
 
 
-export default function ItemTableList({ table = {}, template: Template, max_height = '50vh', onClickItem = () => { } }) {
+export default function ItemTableList({ table = [], template: Template, max_height = '50vh', onClickItem = () => { } }) {
+    /*
+
+    Example format: 
     const days = 
         [
             {id:0, name: 'Dia1', tasks:[
@@ -17,30 +20,14 @@ export default function ItemTableList({ table = {}, template: Template, max_heig
                 {id:1, description:"huh", participants:[{name:'Juan'}, {name:'Pablo'}, {name:'Mario'}, {name:'Antonio'}]}
             ]}
         ]   
-        /*const days = 
-        [
-            {id:0, name: 'Dia1', tasks:[
-                {id:0, description:"sadge", participants:"Juan, Pablo, Mario, Antonio"},
-                {id:1, description:"bedge", participants:"Manolo, Tupac, Sergio, Duki"}
-            ]},
-            {id:1, name: 'Dia2', tasks:[
-                {id:0, description:"who", participants:"Juan, Pablo, Mario, Antonio"},
-                {id:1, description:"huh", participants:"Manolo, Tupac, Sergio, Duki"}
-            ]}
-        ]   
-        */
-    useEffect(() => {
-        console.log(Template)
-    }, [])
-
+    */
     return (
         <div className='scrollable-content'>
              <ListGroup bsPrefix="item-list" className='scrollable-content' style={{height: max_height}}>
                 {
-                    days.map((day, key) => {
+                    table.map((day, key) => {
                         return <div> <ListGroup.Item className='item-list-day' onClick={() => { onClickItem(day) }} key={key} >{day.name}
                         </ListGroup.Item>
-
                         <ListGroup >
                             {
                                 day.tasks.map((item, key) => {

@@ -1,18 +1,21 @@
 import './App.css';
+import { useEffect } from 'react';
+import { loggedRequest } from './config';
+import { useNavigate, Route, Routes, Navigate } from "react-router-dom";
+import { USER_STATUS } from './context/UserStatusContext';
+import { I18nextProvider } from "react-i18next";
+
+
 import SuperAdminPage from './pages/superadmin/SuperAdminPage';
 import LoginPage from './pages/authentication/LoginPage';
 import RegisterPage from './pages/authentication/RegisterPage';
-import ApplicationNavbar from './components/common/ApplicationNavbar';
 import CreateOrganisationPage from './pages/organisation/CreatreOrganisationPage';
 import ListOfOrganisationsPage from './pages/users/ListOfOrganisationsPage';
 import UpdateOrganisationPage from './pages/organisation/UpdateOrganisationPage';
 import ListOfOrgUsersPage from './pages/users/ListOfOrgUsersPage';
 import AddOrgUserPage from './pages/organisation/AddOrgUserPage';
 import UpdateOrgUserPage from './pages/organisation/UpdateOrgUserPage';
-import ErrorBoundary from './components/errors/ErrorBoundary';
-import { useNavigate, Route, Routes, Navigate } from "react-router-dom";
 import ApplicationContextProvider from './components/common/ApplicationContextProvider';
-import { USER_STATUS } from './context/UserStatusContext';
 import ApplicationHeader from './components/common/ApplicationHeader';
 import AppFooter from './components/common/footer/AppFooter';
 import AddNewUserOrganisation from './pages/users/choseOrganisation/AddNewUserOrganisationPage';
@@ -27,8 +30,6 @@ import CreateCampaign from './pages/organisation/campaings/admin/CreateCampaign'
 import CreateTable from './pages/organisation/campaings/tables/CreateTable';
 import CreateCampaignParticipants from './pages/organisation/campaings/admin/CreateCampaignParticipants';
 import CampCounsellorsList from './pages/camp/CampCounsellorsList';
-
-import {I18nextProvider} from "react-i18next";
 import i18next from "i18next";
 import CampParticipantInfo from './pages/camp/CampParticipantInfo';
 import CampCounsellorInfo from './pages/camp/CampCounsellorInfo';
@@ -40,10 +41,24 @@ import ShowTableList from './pages/organisation/campaings/tables/ShowTableList';
 
 function App() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // configure action to catch 403
+    const interceptor = loggedRequest.interceptors.response.use(function (config) {
+      return config;
+    }, function (error) {
+      // Do something with request error
+      if (error.response.status == 403) {
+        localStorage.removeItem("token")
+        navigate('/login')
+      }
+      return Promise.reject(error);
+    });
+  }, [])
+
   return (
     <div className="App">
       <I18nextProvider i18n={i18next}>
-      {/* <ErrorBoundary> */}
         <ApplicationContextProvider>
           <ApplicationHeader />
           <Routes>
@@ -74,11 +89,11 @@ function App() {
             <Route path="/camp" element={<CampPage />}></Route>
             <Route path="/camp/participants" element={<CampParticipantsPage />}></Route>
             <Route path="/camp/participants/list" element={<CampParticipantsList />}></Route>
-            <Route path="/camp/participants/list/participant" element={<CampParticipantInfo/>}></Route>
+            <Route path="/camp/participants/list/participant" element={<CampParticipantInfo />}></Route>
             <Route path="/camp/counsellors/list" element={<CampCounsellorsList />}></Route>
-            <Route path="/camp/counsellors/list/counsellor" element={<CampCounsellorInfo/>}></Route>
-            <Route path="/camp/participants/list/add" element={<CampParticipantsSelect/>}></Route>
-            <Route path="/camp/participants/list/addpart" element={<CampParticipantAdd/>}></Route>
+            <Route path="/camp/counsellors/list/counsellor" element={<CampCounsellorInfo />}></Route>
+            <Route path="/camp/participants/list/add" element={<CampParticipantsSelect />}></Route>
+            <Route path="/camp/participants/list/addpart" element={<CampParticipantAdd />}></Route>
             <Route path="/camp/tables" element={<TablesListPage />}></Route>
             <Route path="/camp/tables/info" element={<ShowTableList />}></Route>
             <Route path="/camp/tables/createtable" element={<CreateTable />}></Route>
@@ -86,7 +101,6 @@ function App() {
           </Routes>
           <AppFooter />
         </ApplicationContextProvider >
-      {/* </ErrorBoundary > */}
       </I18nextProvider>
     </div >
   );

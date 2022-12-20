@@ -133,7 +133,8 @@
         "NAME": "Name"
     },
     "TABLES_LIST":{
-        "TITLE": "Tables"
+        "TITLE": "Tables",
+        "TABLE_NOT_AVALIABLE": "The table is not available, please try again later."
     },
     "ADD_NEW_TABLE":{
         "TITLE":"Add new table",

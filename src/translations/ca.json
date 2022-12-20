@@ -129,7 +129,8 @@
         "NAME": "Nom"
     },
     "TABLES_LIST":{
-        "TITLE": "Taules"
+        "TITLE": "Taules",
+        "TABLE_NOT_AVALIABLE": "La taula no està disponible, torneu-ho a provar més tard."
     },
     "ADD_NEW_TABLE":{
         "TITLE":"Afegir una nova taula",

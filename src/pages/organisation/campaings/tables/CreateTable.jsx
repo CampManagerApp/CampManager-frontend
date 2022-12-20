@@ -18,7 +18,7 @@ import { UserStatusContext } from "../../../../context/UserStatusContext";
 export default function CreateTable() {
     const navigate = useNavigate()
     const { t, i18n } = useTranslation('common');
-    const{create_campaign_table, get_campaign_counsellors} = useContext(organisationContex)
+    const{create_campaign_table, get_campaign_counsellors, solve_campaign_table} = useContext(organisationContex)
     const { currentCamp, currentOrganisation } = useContext(UserStatusContext)
     const { showErrorMessage } = useContext(MessageContext)
 
@@ -27,7 +27,11 @@ export default function CreateTable() {
     const [yValues, setYValues] = useState('')
     const [values, setValuesName] = useState('')
     
-    
+    function solveTable(table_name) {
+        solve_campaign_table(currentOrganisation.id, currentCamp.id, table_name).then(() => {
+            navigate('/camp/tables/')
+        })
+    }
 
     async function createTable(){
         // navigate('/camp/tables');
@@ -41,9 +45,8 @@ export default function CreateTable() {
             }
 
             create_campaign_table(currentOrganisation.id, currentCamp.id, tableForm).then((table) => {
-                console.log(table)
-            })
-            
+                solveTable(tableName)
+            })   
         })
     }
 

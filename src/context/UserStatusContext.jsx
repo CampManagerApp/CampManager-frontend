@@ -21,6 +21,7 @@ export default function UserStatusProvider(props) {
     const [languageStatus, setLanguageStatus] = useState('en')
     const [currentParticipant, setCurrentParticipant] = useState({in_part:false})
     const [currentCounsellor, setCurrentCounsellor] = useState({in_part:false})
+    const [currentTable, setCurrentTable] = useState({})
     const [currentParticipantsAdd, setParticipantsAdd] = useState([])
 
 
@@ -104,6 +105,10 @@ export default function UserStatusProvider(props) {
         setParticipantsAdd(participantsAdd) 
     } 
 
+    const set_current_table = (table) => {
+        setCurrentTable(table)
+    } 
+
     const operations = {
         update_state,
         is_unAuthenticated,
@@ -126,7 +131,9 @@ export default function UserStatusProvider(props) {
         currentCounsellor,
         get_current_participantsAdd,
         set_current_participantsAdd,
-        currentParticipantsAdd,    
+        currentParticipantsAdd,
+        currentTable, 
+        set_current_table    
     }
 
     return (

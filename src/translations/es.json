@@ -132,7 +132,8 @@
         "NAME": "Nombre"
     },
     "TABLES_LIST":{
-        "TITLE": "Tablas"
+        "TITLE": "Tablas",
+        "TABLE_NOT_AVALIABLE": "La tabla no está disponible, vuelva a intentarlo más tarde."
     },
     "ADD_NEW_TABLE":{
         "TITLE":"Añadir una nueva tabla",

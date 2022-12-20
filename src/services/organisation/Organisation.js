@@ -199,4 +199,14 @@ export const get_org_campaign_tables = async (org_id, campaign_id) => {
     return res.data
 }
 
-// export const solve_org_campaign_table = async (org_id, campaign_id)
+export const solve_org_campaign_table = async (org_id, campaign_id, table_name) => {
+    const res = await loggedRequest.post(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/tables/solve/`, {
+        tableName: table_name
+    })
+    return res.data
+}
+
+export const get_org_campaign_table = async (org_id, campaign_id, table_name) => {
+    const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/tables/?tableName=${table_name}`)
+    return res.data
+}

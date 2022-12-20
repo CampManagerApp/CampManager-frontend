@@ -1,13 +1,8 @@
 import { FCM } from '@capacitor-community/fcm';
 import { BrowserRouter } from "react-router-dom";
-import { Device } from '@capacitor/device';
-
-import {
-  ActionPerformed,
-  PushNotificationSchema,
-  PushNotifications,
-  Token,
-} from '@capacitor/push-notifications';
+import { PushNotifications, } from '@capacitor/push-notifications';
+import { language_configuration } from './i18n';
+import { isPlatform } from '@ionic/react';
 
 
 import React from 'react';
@@ -20,12 +15,14 @@ import '@ionic/react/css/core.css';
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import { language_configuration } from './i18n';
-
 
 async function configureApp() {
   // configure applocation lenguage
   await language_configuration()
+
+  // disable notifications if the platform is different of android
+  if (!isPlatform('android'))
+    return
 
   // push notification configuration
   PushNotifications.requestPermissions().then(result => {
