@@ -5,8 +5,8 @@
 
     "LOGIN": {
         "TITLE": "Iniciar sesión",
-        "EMAIL_ADDRESS": "Correo electrónico",
-        "EMAIL_ADDRESS_PLACEHOLDER": "Introduce tu correo electrónico",
+        "EMAIL_ADDRESS": "Nombre de usuario",
+        "EMAIL_ADDRESS_PLACEHOLDER": "Introduce tu nombre de usuario",
         "PASSWORD": "Contraseña",
         "PASSWORD_PLACEHOLDER": "Introduce tu contraseña",
         "ERROR": "Correo electrónico o contraseña incorrectos",
@@ -123,8 +123,15 @@
         "UPDATE_BUTTON":"Actualizar",
         "CREATE_BUTTON":"Crear"
     },
+    
+    "MEMBERS_ADMIN_CRUD": {
+        "NAME_HEADER": "Nombre",
+        "ROLE_HEADER": "Role",
+        "CLAIMED_HEADER": "Reclamado"
+    },
     "PARTICIPANTS_SELECT":{
-        "TITLE": "Selecciona los participantes"
+        "TITLE": "Selecciona los participantes",
+        "CONTINUE": "Continuar"
     },
     "PARTICIPANTS_ADD":{
         "TITLE": "Añadir participante",

@@ -30,6 +30,7 @@ export default function ListOfOrganisations({ handle }) {
 
   function loadOrganisations() {
     const { username } = userInfo
+    console.log(`username:${username}`)
     get_organisations(username).then((organisations) => {
       setOrgList(organisations)
     })

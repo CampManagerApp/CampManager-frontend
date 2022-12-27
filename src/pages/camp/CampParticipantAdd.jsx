@@ -16,6 +16,7 @@ import ItemAddParticipant from "../../components/lists/ItemAddParticipant";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom"
 import { TemporalDataContext } from "../../context/TemporalDataContext";
+import './CampParticipantAdd.css'
 
 
 export default function CampParticipantAdd() {
@@ -44,9 +45,9 @@ export default function CampParticipantAdd() {
 
 
     return (
-        <div className="div-form1 scrollable-content">
+        <div className="div-form1 scrollable-content" style={{height:"80vh", display:"flex", flexDirection:"column"}}>
             <ProfilePage profileName={t('PARTICIPANTS_ADD.TITLE')} profileNick={participant.name} backgroundImg={image.hiking}  includeProfileImage={includeProfileImage}  />
-            <div className='div-form' style={{'paddingBottom': 50+'px'}}>
+            <div className='div-form'>
                 <ItemAddParticipant handleSubmit={handleSubmit}/>
             </div>    
         </div>

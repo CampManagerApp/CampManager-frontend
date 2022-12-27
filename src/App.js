@@ -50,7 +50,7 @@ function App() {
       // Do something with request error
       if (error.response.status == 403) {
         localStorage.removeItem("token")
-        navigate('/login')
+        navigate('/listoforganisations')
       }
       return Promise.reject(error);
     });

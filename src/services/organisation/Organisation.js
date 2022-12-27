@@ -129,8 +129,8 @@ export const create_org_campaign = async (org_id, campaign_name, start, end) => 
 
 export const add_org_campaign_counsellor = async(org_id, campaign_id, counsellor) => {
     const res = await loggedRequest.post(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/counsellor/`, {
-        fullName: counsellor.full_name,
-        name: counsellor.full_name, 
+        fullName: counsellor.fullName,
+        name: counsellor.fullName, 
         // empty params (provisional)
         emergencyPhone: "0",
         nonFoodAffection: "-"
@@ -157,6 +157,7 @@ export const update_org_campaign = async (org_id, campaign_name, end) => {
 
 export const get_org_campaign_counsellors = async (org_id, campaign_id) => {
     const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/counsellor/`)
+    console.log(res)
     return res.data
 }
 

@@ -14,6 +14,8 @@ const DISABLED_LOCATIONS = [
     '/listoforganisations',
     '/listoforganisations/',
     '/organisation',
+    '/superadmin',
+    '/superadmin/panel'
 ]
 
 export default function ApplicationHeader() {

@@ -44,6 +44,7 @@ export default function CampCounsellorsList({ items = [], template: Template, on
 
     async function loadCounsellors() {
         const counsellorsList = await get_campaign_counsellors(get_current_organisation().id, currentCamp.id)
+        
         setCounsellors(counsellorsList)
     }
 

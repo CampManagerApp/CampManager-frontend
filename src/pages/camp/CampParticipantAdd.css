@@ -1,7 +1,13 @@
 .div-form{
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     height: 100%;
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
+    margin-bottom: 0vh;
 }
+
+.div-form1{
+    display: flex;
+    flex-direction: column;
+} 

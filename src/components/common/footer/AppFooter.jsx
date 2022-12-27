@@ -15,6 +15,8 @@ const DISABLED_LOCATIONS = [
     '/listoforganisations',
     '/listoforganisations/',
     '/user/listoforganisations/add/',
+    '/superadmin',
+    '/superadmin/panel'
 ]
 
 export default function AppFooter() {
@@ -23,6 +25,7 @@ export default function AppFooter() {
     const [visible, setVisible] = useState(false)
 
     useEffect(() => {
+        console.log(!DISABLED_LOCATIONS.includes(location.pathname))
         setVisible(!DISABLED_LOCATIONS.includes(location.pathname))
     }, [location])
 
@@ -32,7 +35,7 @@ export default function AppFooter() {
                 <Navbar expand="lg">
                     <Container className="justify-content-center">
                         <Nav.Link onClick={() => navigate('/listoforganisations', { relative: false })} className='navlink-left'><CgOrganisation /></Nav.Link>
-                        <Nav.Link ><AiFillHome /></Nav.Link>
+                        <Nav.Link onClick={() => navigate('/organisation', { relative: false })} ><AiFillHome /></Nav.Link>
                         <Nav.Link className='navlink-right'><CgProfile /></Nav.Link>
                     </Container>
                 </Navbar>

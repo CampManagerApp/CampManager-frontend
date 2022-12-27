@@ -25,31 +25,3 @@ export async function language_configuration() {
         },
       });
   }
-  
-  
-  
-//   logDeviceInfo().then((value) => {
-//     i18next.init({
-//       interpolation: { escapeValue: false },  // React already does escaping
-//       lng: (value == 'en' | value == 'ca' | value == 'es') ? value : 'en',                              // language to use
-//       resources: {
-//         en: {
-//           common: common_en               // 'common' is our custom namespace
-//         },
-//         ca: {
-//           common: common_ca
-//         },
-//         es: {
-//           common: common_es
-//         },
-//       },
-//     });
-  
-//     const root = ReactDOM.createRoot(document.getElementById('root'));
-//     root.render(
-//       <BrowserRouter>
-//         <App />
-//       </BrowserRouter>
-//     );
-  
-//   })

@@ -60,7 +60,7 @@ export default function ShowTableList({ items = [], template: Template, onClickI
                 {
                     showMessage
                         ? <p>{t('TABLES_LIST.TABLE_NOT_AVALIABLE')}</p>
-                        : <ItemTableList table={table}></ItemTableList> 
+                        : <ItemTableList max_height="44vh" table={table}></ItemTableList> 
                 }
             </Container>
         </div>

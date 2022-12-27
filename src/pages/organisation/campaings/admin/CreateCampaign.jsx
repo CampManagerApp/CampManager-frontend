@@ -87,12 +87,12 @@ export default function CreateCampaign() {
         try {
             // check if must be add counsellors to the campaing
             if (campaign_data.counsellors.length != 0) {
-                // add counsellors
                 // transform the counsellor object
                 const counsellors = campaign_data.counsellors.map((counsellor) => {
-                    return { full_name: counsellor.label }
+                    return { fullName: counsellor.label }
                 })
-                const campaign = await add_campaign_counsellors(id, campaign_id, counsellors)
+                // add counsellors
+                await add_campaign_counsellors(id, campaign_id, counsellors)
             }
         } catch (error) {
             console.log(error)
@@ -104,7 +104,6 @@ export default function CreateCampaign() {
         }
 
         try {
-            console.log(campaign_data.participants)
             await add_campaign_participants(id, campaign_id, campaign_data.participants)
         } catch (error) {
             console.log(error)

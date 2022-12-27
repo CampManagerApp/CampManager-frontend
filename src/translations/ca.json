@@ -4,8 +4,8 @@
     },
     "LOGIN": {
         "TITLE": "Iniciar sessió",
-        "EMAIL_ADDRESS": "Correu electrònic",
-        "EMAIL_ADDRESS_PLACEHOLDER": "Introdueix el teu correu electrònic",
+        "EMAIL_ADDRESS": "nom d'usuari",
+        "EMAIL_ADDRESS_PLACEHOLDER": "Introdueix el teu nom d'usuari",
         "PASSWORD": "Contrasenya",
         "PASSWORD_PLACEHOLDER": "Introdueix la teva contrasenya",
         "ERROR": "Correu electrònic o contraseny incorrecta",
@@ -86,6 +86,12 @@
         "UPDATE_BUTTON": "Actualitzar",
         "CREATE_BUTTON": "Crear"
     },
+
+    "MEMBERS_ADMIN_CRUD": {
+        "NAME_HEADER": "Nom",
+        "ROLE_HEADER": "Rol",
+        "CLAIMED_HEADER": "Reclamado"
+    },
     "ADD_NEW_USR_ORG": {
         "ADD_ORG": "Afegir organització",
         "ORG_CODE_LABEL": "Codi d'organització",
@@ -121,7 +127,8 @@
         }
     },
     "PARTICIPANTS_SELECT":{
-        "TITLE": "Selecciona els participants"
+        "TITLE": "Selecciona els participants",
+        "CONTINUE": "Continuar"
     },
     "PARTICIPANTS_ADD":{
         "TITLE": "Afegir participant",

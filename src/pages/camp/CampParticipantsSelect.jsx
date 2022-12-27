@@ -18,6 +18,7 @@ export default function CampParticipantsSelect({ items = [], template: Template,
     const idVisible = 'hidden';
     const includeProfileImage = 'none';
     const { campaign_data, set_campaign_data } = useContext(TemporalDataContext)
+    
 
     const [update, setUpdate] = useState(true)
     const [item, setitem] = useState({});
@@ -72,6 +73,9 @@ export default function CampParticipantsSelect({ items = [], template: Template,
                 <ItemList items={campaign_data.participants} template={participantContent}></ItemList>
             </Container>
             
+            <Button onClick={()=> {navigate('/admin/createcampaign', {replace:true})}} style={{bottom:"10vh", position:"absolute"}}>
+                {t('PARTICIPANTS_SELECT.CONTINUE')}
+            </Button>
             <Button className="bt-add" onClick={onClickAdd}>
                 <Icons.AddUser />
             </Button>

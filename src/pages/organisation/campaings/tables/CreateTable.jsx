@@ -29,7 +29,7 @@ export default function CreateTable() {
     
     function solveTable(table_name) {
         solve_campaign_table(currentOrganisation.id, currentCamp.id, table_name).then(() => {
-            navigate('/camp/tables/')
+            navigate('/camp/tables/', {replace:true})
         })
     }
 
@@ -63,8 +63,8 @@ export default function CreateTable() {
                 <Form.Control type="text" value={xValues} onChange={(e) => setXValues(e.target.value)}/>
                 <Form.Label>{t('ADD_NEW_TABLE.Y_VALUE')}</Form.Label>
                 <Form.Control type="text" value={yValues} onChange={(e) => setYValues(e.target.value)}/>
-                <Form.Label>{t('ADD_NEW_TABLE.VALUES')}</Form.Label>
-                <Form.Control type="text" value={values} onChange={(e) => setValuesName(e.target.value)}/>
+                {/* <Form.Label>{t('ADD_NEW_TABLE.VALUES')}</Form.Label>
+                <Form.Control type="text" value={values} onChange={(e) => setValuesName(e.target.value)}/> */}
             </Form.Group>
             <Container>
                 <Row className="align-items-center">

@@ -4,8 +4,8 @@
     },
     "LOGIN": {
         "TITLE": "Login",
-        "EMAIL_ADDRESS": "Email address",
-        "EMAIL_ADDRESS_PLACEHOLDER": "Enter your email address",
+        "EMAIL_ADDRESS": "Username",
+        "EMAIL_ADDRESS_PLACEHOLDER": "Enter your username",
         "PASSWORD": "Password",
         "PASSWORD_PLACEHOLDER": "Enter your password",
         "ERROR": "Invalid email address or password",
@@ -125,7 +125,8 @@
         "CLAIMED_HEADER": "Claimed"
     },
     "PARTICIPANTS_SELECT":{
-        "TITLE": "Select participants"
+        "TITLE": "Select participants",
+        "CONTINUE": "Continue"
     },
     "PARTICIPANTS_ADD":{
         "TITLE": "Add participant",

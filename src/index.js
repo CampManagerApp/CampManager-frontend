@@ -20,6 +20,9 @@ async function configureApp() {
   // configure applocation lenguage
   await language_configuration()
 
+  // lock sreen orientation
+  window.screen.orientation.lock('portrait')
+
   // disable notifications if the platform is different of android
   if (!isPlatform('android'))
     return
@@ -45,21 +48,6 @@ async function configureApp() {
       console.log('Error on registration: ' + JSON.stringify(error));
     }
   );
-
-  // Show us the notification payload if the app is open on our device
-  PushNotifications.addListener('pushNotificationReceived',
-    (notification) => {
-      console.log('Push received: ' + JSON.stringify(notification));
-    }
-  );
-
-  // Method called when tapping on a notification
-  PushNotifications.addListener('pushNotificationActionPerformed',
-    (notification) => {
-      console.log('Push action performed: ' + JSON.stringify(notification));
-    }
-  );
-
   FCM.setAutoInit({ enabled: true })
 }
 

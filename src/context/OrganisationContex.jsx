@@ -168,10 +168,11 @@ export default function OrganisationProvider(props) {
 
     async function add_campaign_counsellors(org_id, campaing_id, counsellors) {
         try {
-            await Promise.all(counsellors.map(async (counsellor) => {
+            for (const counsellor of counsellors) {
                 await add_org_campaign_counsellor(org_id, campaing_id, counsellor)
-            }))
+            }
         } catch (error) {
+            console.log('erorr al añaddir')
             if (!error.response) {
                 showErrorMessage(t("ERRORS.CONEXION_ERROR.ERROR_MODAL_TITLE"), t("ERRORS.CONEXION_ERROR.ERROR_MODAL_BODY"))
             } else if (error.response.status == 404) {
@@ -210,11 +211,9 @@ export default function OrganisationProvider(props) {
 
     async function add_campaign_participants(org_id, camp_id, participants = []) {
         try {
-            await Promise.all(participants.map(async (participant) => {
-                console.log(participant)
+            for (const participant of participants) {
                 await add_org_campaign_participant(org_id, camp_id, participant)
-
-            }))
+            }
         } catch (error) {
             if (!error.response) {
                 showErrorMessage(t("ERRORS.CONEXION_ERROR.ERROR_MODAL_TITLE"), t("ERRORS.CONEXION_ERROR.ERROR_MODAL_BODY"))
