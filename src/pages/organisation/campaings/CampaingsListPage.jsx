@@ -1,22 +1,62 @@
 import React, { useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import { useState } from "react"
-import { Button, Container } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
+import { organisationContex } from "../../../context/OrganisationContex"
+import { UserStatusContext } from "../../../context/UserStatusContext"
+import { Button, Col, Container, Row } from "react-bootstrap"
+
+import * as image from "../../../design/images"
 import BannerImage from "../../../components/common/BannerImage"
 import TitlePage from "../../../components/common/TitlePage"
 import ItemList from "../../../components/lists/ItemList"
-import { organisationContex } from "../../../context/OrganisationContex"
-import { UserStatusContext } from "../../../context/UserStatusContext"
-import * as image from "../../../design/images";
 
-function CampaingContent({ item }) {
+
+function CampaingContent({ item, onUpdate }) {
+    return (
+        <CampaignsAdminElement item={item} onUpdate={onUpdate} />
+    )
+
+}
+
+
+function CampaignMemberElement({ item }) {
     return (
         <div className="d-flex justify-content-center">
             {item.campaignName}
         </div>
     )
+}
 
+function CampaignsAdminElement({ item, onUpdate }) {
+    const navigate = useNavigate()
+    const { delete_campaign } = useContext(organisationContex)
+    const { get_current_organisation } = useContext(UserStatusContext)
+
+    function deleteElement(e) {
+        // stop click propagation
+        e.preventDefault()
+        e.stopPropagation()
+
+        // delete campaign
+        const { id } = get_current_organisation()
+        delete_campaign(id, item.campaignName).then(() => {
+            onUpdate()
+        })
+    }
+
+    return (
+        <Row>
+            <Col>
+                {item.campaignName}
+            </Col>
+            <Col className="d-flex justify-content-end">
+                <button className="btn btn-danger" onClick={deleteElement} >
+                    <i className="bi bi-trash"></i>
+                </button>
+            </Col>
+        </Row>
+    )
 }
 
 export default function CampaingsListPage() {
@@ -51,12 +91,6 @@ export default function CampaingsListPage() {
         navigate('/admin/createcampaign')
     }
 
-    async function deleteCampaign() {
-        const { id } = get_current_organisation()
-        delete_campaign(id, "Test").then(() => {
-            loadCampaigns()
-        })
-    }
 
     async function updateCampaign() {
         const { id } = get_current_organisation()
@@ -65,14 +99,17 @@ export default function CampaingsListPage() {
         })
     }
 
+    function updateList() {
+        loadCampaigns()
+    }
+
     return (
         <React.Fragment>
             <BannerImage bannerImage={image.backgroundOrg} />
             <TitlePage>Campaigns</TitlePage>
             <Container>
                 <Button onClick={addCampaign}>+</Button>
-                <Button onClick={deleteCampaign} >-</Button>
-                <ItemList items={campaings} template={CampaingContent} onClickItem={CampaignClick} />
+                <ItemList items={campaings} template={CampaingContent} onClickItem={CampaignClick} onUpdate={loadCampaigns} />
             </Container>
         </React.Fragment>
     )
