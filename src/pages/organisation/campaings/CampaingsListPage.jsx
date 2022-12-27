@@ -83,11 +83,6 @@ export default function CampaingsListPage() {
     }
 
     async function addCampaign() {
-        //const { id } = get_current_organisation()
-        // const id = 2
-        // create_campaign(id, "Test", "10-7-2022 09:00:00", "24-7-2022 17:00:00").then(() => {
-        //     loadCampaigns()
-        // })
         navigate('/admin/createcampaign')
     }
 
@@ -97,10 +92,6 @@ export default function CampaingsListPage() {
         updateCampaign(id, "Test", "").then(() => {
             loadCampaigns()
         })
-    }
-
-    function updateList() {
-        loadCampaigns()
     }
 
     return (
