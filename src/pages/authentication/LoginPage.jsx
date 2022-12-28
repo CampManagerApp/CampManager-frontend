@@ -6,14 +6,18 @@ import { USER_STATUS, UserStatusContext } from "../../context/UserStatusContext"
 
 import LoginForm from "../../components/authentication/LoginForm"
 import './LoginPage.css'
+import Spinner from "../../components/common/spinner/Spinner";
 
 export default function LoginPage({ goto, next_user_status = USER_STATUS.USER }) {
     const navigate = useNavigate();
     const asyncError = useAsyncError()
-    const [ showError, setShowError ] = useState({ invalid_credentials: false })
     const { update_state, set_username } = useContext(UserStatusContext)
 
+    const [showError, setShowError] = useState({ invalid_credentials: false })
+    const [showSpinner, setShowSpinner] = useState(false)
+
     function handleSubmit(form) {
+        setShowSpinner(true)
         loginRequest(form).then(() => {
             update_state(next_user_status)
             set_username(form.username)
@@ -26,7 +30,10 @@ export default function LoginPage({ goto, next_user_status = USER_STATUS.USER })
 
     return (
         <div className="login-page-wrapper">
-            <LoginForm showInvalidMessage={showError.invalid_credentials} handleSubmit={handleSubmit} />
+            {showSpinner ?
+                <Spinner />
+                : <LoginForm showInvalidMessage={showError.invalid_credentials} handleSubmit={handleSubmit} />
+            }
         </div>
     )
 }

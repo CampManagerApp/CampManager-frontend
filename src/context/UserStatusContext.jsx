@@ -25,6 +25,7 @@ export default function UserStatusProvider(props) {
     const [currentCamp, setCurrentCamp] = useState({ in_camp: false })
     const [currentOrganisation, setCurrentOrganisation] = useState({ in_org: false })
     const [userInfo, setUserInfo] = useState({ username: '' })
+    const [isOrgAdmin, setisOrgAdmin] = useState(true)
     const [languageStatus, setLanguageStatus] = useState('en')
     const [currentParticipant, setCurrentParticipant] = useState({ in_part: false })
     const [currentCounsellor, setCurrentCounsellor] = useState({ in_part: false })
@@ -154,6 +155,7 @@ export default function UserStatusProvider(props) {
         is_unAuthenticated,
         is_superAdmin,
         is_user,
+        isOrgAdmin,
         get_current_organisation,
         set_current_organisation,
         set_username,

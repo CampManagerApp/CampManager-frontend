@@ -13,16 +13,18 @@ import ItemList from "../../../components/lists/ItemList"
 
 
 function CampaingContent({ item, onUpdate }) {
+    const { isOrgAdmin } = useContext(UserStatusContext)
     return (
-        <CampaignsAdminElement item={item} onUpdate={onUpdate} />
+        isOrgAdmin
+            ? <CampaignsAdminElement item={item} onUpdate={onUpdate} />
+            : <CampaignMemberElement item={item} />
     )
 
 }
 
-
 function CampaignMemberElement({ item }) {
     return (
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center align-items-center">
             {item.campaignName}
         </div>
     )
@@ -47,7 +49,7 @@ function CampaignsAdminElement({ item, onUpdate }) {
 
     return (
         <Row>
-            <Col>
+            <Col className="d-flex align-items-center">
                 {item.campaignName}
             </Col>
             <Col className="d-flex justify-content-end">
@@ -62,8 +64,7 @@ function CampaignsAdminElement({ item, onUpdate }) {
 export default function CampaingsListPage() {
     const [campaings, setCampaings] = useState([])
     const { get_campaings_list, create_campaign, delete_campaign, update_campaign } = useContext(organisationContex)
-    const { get_current_organisation } = useContext(UserStatusContext)
-    const { set_current_camp } = useContext(UserStatusContext)
+    const { set_current_camp, get_current_organisation, isOrgAdmin } = useContext(UserStatusContext)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -99,8 +100,12 @@ export default function CampaingsListPage() {
             <BannerImage bannerImage={image.backgroundOrg} />
             <TitlePage>Campaigns</TitlePage>
             <Container>
-                <Button onClick={addCampaign}>+</Button>
                 <ItemList items={campaings} template={CampaingContent} onClickItem={CampaignClick} onUpdate={loadCampaigns} />
+                {isOrgAdmin &&
+                    <Col className="d-flex justify-content-end mb-2">
+                        <Button onClick={addCampaign}>+</Button>
+                    </Col>
+                }
             </Container>
         </React.Fragment>
     )

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Button, Container } from "react-bootstrap";
+import { Button, Col, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ProfilePage from "../../components/common/ProfilePage";
 import ItemList from "../../components/lists/ItemList";
@@ -42,7 +42,9 @@ export default function OrganisationParticipantsList({ items = [], template: Tem
         <div>
             <ProfilePage profileName="Esplai Xino-Xano" profileNick="Members" backgroundImg={image.Miembro} includeProfileImage={includeProfileImage} />
             <Container>
-                <Button onClick={updateParticipants}>Update members</Button>
+                <Col className="d-flex justify-content-end mb-2">
+                    <Button onClick={updateParticipants}>Update members</Button>
+                </Col>
                 <ItemList items={participants}></ItemList>
             </Container>
         </div>
