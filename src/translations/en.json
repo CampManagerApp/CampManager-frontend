@@ -135,7 +135,8 @@
     },
     "TABLES_LIST":{
         "TITLE": "Tables",
-        "TABLE_NOT_AVALIABLE": "The table is not available, please try again later."
+        "TABLE_NOT_AVALIABLE": "The table is not available, please try again later.",
+        "DOWNLOAD": "Download"
     },
     "ADD_NEW_TABLE":{
         "TITLE":"Add new table",

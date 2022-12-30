@@ -137,7 +137,8 @@
     },
     "TABLES_LIST":{
         "TITLE": "Taules",
-        "TABLE_NOT_AVALIABLE": "La taula no està disponible, torneu-ho a provar més tard."
+        "TABLE_NOT_AVALIABLE": "La taula no està disponible, torneu-ho a provar més tard.",
+        "DOWNLOAD": "Descarregar"
     },
     "ADD_NEW_TABLE":{
         "TITLE":"Afegir una nova taula",
