@@ -1,21 +1,23 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Toast } from 'primereact/toast';
 import { Button, Col } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import ItemTableList from "../../../../components/lists/ItemTableList";
-import ProfilePage from "../../../../components/common/ProfilePage";
 import { organisationContex } from "../../../../context/OrganisationContex";
 import { UserStatusContext } from "../../../../context/UserStatusContext";
 import { useTranslation } from "react-i18next";
-import { writeTestFile } from "../../../../services/filesystem/filesystem";
+import { exportTableAsCSV } from "../../../../services/filesystem/filesystem";
+import { export_org_campaign_table } from "../../../../services/organisation/Organisation";
 
 import * as image from "../../../../design/images.js";
-
+import ItemTableList from "../../../../components/lists/ItemTableList";
+import ProfilePage from "../../../../components/common/ProfilePage";
 
 export default function ShowTableList({ items = [], template: Template, onClickItem = () => { } }) {
   const idVisible = 'hidden';
   const includeProfileImage = 'none';
   const navigate = useNavigate()
+  const toast = useRef(null)
 
   const { t, i18n } = useTranslation('common');
   const { currentCamp, get_current_organisation, currentTable } = useContext(UserStatusContext)
@@ -55,14 +57,27 @@ export default function ShowTableList({ items = [], template: Template, onClickI
   }
 
 
-  function downloadTable() {
-    writeTestFile()
+  async function downloadTable() {
+    try {
+      // download csv from backend
+      const table_content_csv = await export_org_campaign_table(
+        get_current_organisation().id,
+        currentCamp.id,
+        currentTable.name
+      )
+      // store csv
+      exportTableAsCSV(get_current_organisation().name, currentTable.name, table_content_csv)
+      toast.current.show({severity: 'success', summary: 'Exported', detail: 'Table exported'});
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
     <div>
       {/* <ParticipantModal item={item} show={modalShow} onHide={() => setModalShow(false)} /> */}
       <ProfilePage profileName={currentCamp.campaignName} profileNick={t('TABLES_LIST.TITLE') + ' : ' + currentTable.name} backgroundImg={image.hiking} includeProfileImage={includeProfileImage} />
+      <Toast ref={toast} />
       <Container>
         <Col className="d-flex justify-content-end">
           <Button onClick={downloadTable} >{t('TABLES_LIST.DOWNLOAD')}</Button>

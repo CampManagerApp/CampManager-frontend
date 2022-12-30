@@ -211,3 +211,8 @@ export const get_org_campaign_table = async (org_id, campaign_id, table_name) =>
     const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/tables/?tableName=${table_name}`)
     return res.data
 }
+
+export const export_org_campaign_table = async (org_id, campaign_id, table_name) => {
+    const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/tables/export/?tableName=${table_name}`)
+    return res.data
+}

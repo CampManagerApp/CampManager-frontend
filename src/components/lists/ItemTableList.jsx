@@ -32,13 +32,13 @@ export default function ItemTableList({ table = [], template: Template, max_heig
                             {
                                 day.tasks.map((item, key) => {
                                     if (Template === undefined) {
-                                            return <div>
-                                            <ListGroup.Item className='item-list-activity' onClick={() => { onClickItem(item) }} key={key} >{item.description}
+                                            return <div key={key}>
+                                            <ListGroup.Item className='item-list-activity' onClick={() => { onClickItem(item) }} >{item.description}
                                             </ListGroup.Item>
                                             <ListGroup>
                                                 {
                                                     item.participants.map((item2, key) => {
-                                                        return <ListGroup.Item  className='item-list-participant' onClick={() => { onClickItem(item2) }} key={key} >{item2.name}
+                                                        return <ListGroup.Item className='item-list-participant' onClick={() => { onClickItem(item2) }} key={key} >{item2.name}
                                                         </ListGroup.Item>
                                                     })
                                                 }
