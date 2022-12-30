@@ -2,8 +2,8 @@ import OrganisationPageForm from "../../components/organisation/OrganisationPage
 
 export default function OrganisationPage() {
     return (
-        <div>
+        <>
             <OrganisationPageForm />
-        </div>
+        </>
     )
 }

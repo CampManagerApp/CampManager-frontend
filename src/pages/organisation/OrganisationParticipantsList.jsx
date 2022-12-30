@@ -39,14 +39,15 @@ export default function OrganisationParticipantsList({ items = [], template: Tem
 
 
     return (
-        <div>
+        <>
             <ProfilePage profileName="Esplai Xino-Xano" profileNick="Members" backgroundImg={image.Miembro} includeProfileImage={includeProfileImage} />
-            <Container>
-                <Col className="d-flex justify-content-end mb-2">
+            <Container className="flex-item flex-container">
+                <ItemList  max_height="70%" items={participants}></ItemList>
+
+                <Col className="d-flex justify-content-end align-items-end mb-4">
                     <Button onClick={updateParticipants}>Update members</Button>
                 </Col>
-                <ItemList items={participants}></ItemList>
             </Container>
-        </div>
+        </>
     )
 }

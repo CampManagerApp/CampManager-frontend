@@ -26,14 +26,12 @@ const MessageContextProvider = (props) => {
 
     return (
         <MessageContext.Provider value={{ showConfirmationModal, showErrorMessage }}>
-            <div>
                 <ConfirmationModal onConfirmation={confirmationState.onConfirmation} show={confirmationState.show} onHide={hideConfirmationModal} />
                 <ErrorModal show={errorMessageState.show}
                     error_title={errorMessageState.error_title}
                     error_message={errorMessageState.error_message}
                     onHide={hideErrorModal} />
                 {props.children}
-            </div>
         </MessageContext.Provider>
     )
 

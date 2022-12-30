@@ -127,7 +127,7 @@ export default function CreateCampaign() {
             : <div className="div-all scrollable-content" style={{ height: "80vh" }}>
                 <BannerImage bannerImage={image.backgroundOrg} />
                 <TitlePage>{t('ADD_NEW_CAMPAIGN.TITLE')}</TitlePage>
-                <Container>
+                <Container className="mb-4">
                     <Form.Group controlId="name">
                         <Form.Label>{t('ADD_NEW_CAMPAIGN.CAMPAIGN_NAME')}:</Form.Label>
                         {" "}

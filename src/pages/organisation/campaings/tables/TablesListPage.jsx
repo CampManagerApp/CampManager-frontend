@@ -87,14 +87,14 @@ export default function TablesListPage({ items = [], template: Template, onClick
     }
 
     return (
-        <div>
+        <>
             <ProfilePage profileName={currentCamp.campaignName} profileNick={t('TABLES_LIST.TITLE')} backgroundImg={image.hiking} includeProfileImage={includeProfileImage} />
-            <Container>
-                <Col className="d-flex justify-content-end">
+            <Container className="flex-item flex-container">
+                <ItemList max_height="60%" items={tables} onClickItem={onClickTable} template={TableContent}></ItemList>
+                <Col className="d-flex justify-content-end align-items-end mb-4">
                     <Button onClick={createTable} >+</Button>
                 </Col>
-                <ItemList items={tables} onClickItem={onClickTable} template={TableContent}></ItemList>
             </Container>
-        </div>
+        </>
     )
 }

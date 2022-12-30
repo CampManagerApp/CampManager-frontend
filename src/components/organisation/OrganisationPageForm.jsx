@@ -7,6 +7,14 @@ import './OrganisationPageForm.css'
 import { useContext } from "react";
 import { UserStatusContext } from "../../context/UserStatusContext";
 
+
+const pageStyle = {
+    display: "flex",
+    flexFlow: "column",
+    height: "100%"
+}
+
+
 /* Para que tenga 0 padding la lista px-0 py-0*/
 export default function OrganistationPageForm() {
     const { t, i18n } = useTranslation('common');
@@ -22,13 +30,13 @@ export default function OrganistationPageForm() {
         navigate('/organisation/members/list');
     }
     return (
-        <div className="div-all scrollable-content" style={{height:'100vh'}}>
+        // <div className="div-all scrollable-content" style={{height:'100vh'}}>
+        <div className="div-all scrollable-content">
             <div>
                 <ProfilePage profileName={currentOrganisation.name} profileImg={image.hikingProf} profileNick="Nick de ejemplo" backgroundImg={image.backgroundOrg} idVisible={idVisible} />
             </div>
-            <div className="list">
-                <Col className="list-group">
-
+            {/* <div className="list"> */}
+                <Col className="list-group" style={{height:"100%"}}>
                     <Row className="list-group-item justify-content-between align-items-center px-0 py-0 " onClick={goto_campaings_list}>
                         <div className="list-image" >
                             <p className="overlay-text">{t('ORGANISATION_PAGE.CAMPAIGNS')}</p>
@@ -41,14 +49,14 @@ export default function OrganistationPageForm() {
                             <img src={image.Members} className="image-list" />
                         </div>
                     </Row>
-                    <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 " onClick={()=>{}}>
+                    <Row className="list-group-item justify-content-between align-items-center  px-0 py-0 " onClick={() => { }}>
                         <div className="list-image">
                             <p className="overlay-text">{t('ORGANISATION_PAGE.SOCIAL_PAGE')}</p>
                             <img src={image.SocialPage} className="image-list" />
                         </div>
                     </Row>
                 </Col>
-            </div>
+            {/* </div> */}
         </div>
     )
 }

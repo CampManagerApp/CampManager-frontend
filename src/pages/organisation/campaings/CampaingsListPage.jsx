@@ -99,10 +99,10 @@ export default function CampaingsListPage() {
         <React.Fragment>
             <BannerImage bannerImage={image.backgroundOrg} />
             <TitlePage>Campaigns</TitlePage>
-            <Container>
-                <ItemList items={campaings} template={CampaingContent} onClickItem={CampaignClick} onUpdate={loadCampaigns} />
+            <Container className="flex-item flex-container">
+                <ItemList max_height="80%" items={campaings} template={CampaingContent} onClickItem={CampaignClick} onUpdate={loadCampaigns} />
                 {isOrgAdmin &&
-                    <Col className="d-flex justify-content-end mb-2">
+                    <Col className="d-flex justify-content-end align-items-end mb-4">
                         <Button onClick={addCampaign}>+</Button>
                     </Col>
                 }

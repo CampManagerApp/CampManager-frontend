@@ -61,45 +61,47 @@ function App() {
       <I18nextProvider i18n={i18next}>
         <ApplicationContextProvider>
           <ApplicationHeader />
-          <Routes>
-            <Route path="/superadmin" element={<LoginPage next_user_status={USER_STATUS.SUPERADMIN} goto={() => { navigate('/superadmin/panel') }} />} />
-            <Route path="/login" element={<LoginPage goto={() => { navigate('/listoforganisations') }} />} />
-            <Route path="/superadmin/panel" element={<SuperAdminPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/superadmin/organisation/create" element={<CreateOrganisationPage />} />
-            <Route path="/superadmin/organisation/update" element={<UpdateOrganisationPage />} >
-              <Route path=":organisationId" element={<UpdateOrganisationPage />} />
-            </Route>
-            <Route path="/admin/organisationusers" element={<ListOfOrgUsersPage />} />
-            <Route path="/admin/organisationusers/add" element={<AddOrgUserPage />} />
-            <Route path="/admin/organisationusers/update" element={<UpdateOrgUserPage />} >
-              <Route path=":userId" element={<UpdateOrgUserPage />} />
-            </Route>
-            {/* user organisations list */}
-            <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
-            <Route path="/user/listoforganisations/add" element={<AddNewUserOrganisation />} ></Route>
-            <Route path="*" element={<Navigate to="/login" />} />
-            <Route path="/organisation" element={<OrganisationPage />}>
-              <Route path=":organisationId" element={<OrganisationPage />} />
-            </Route>
-            <Route path="/organisation/members/list" element={<OrganisationParticipantsList />}></Route>
-            <Route path="/organisation/campaings" element={<CampaingsListPage />} />
-            <Route path="/admin/createcampaign" element={<CreateCampaign />} />
-            <Route path="/admin/createcampaign/participants" element={<CreateCampaignParticipants />} />
-            <Route path="/camp" element={<CampPage />}></Route>
-            <Route path="/camp/participants" element={<CampParticipantsPage />}></Route>
-            <Route path="/camp/participants/list" element={<CampParticipantsList />}></Route>
-            <Route path="/camp/participants/list/participant" element={<CampParticipantInfo />}></Route>
-            <Route path="/camp/counsellors/list" element={<CampCounsellorsList />}></Route>
-            <Route path="/camp/counsellors/list/counsellor" element={<CampCounsellorInfo />}></Route>
-            <Route path="/camp/participants/list/add" element={<CampParticipantsSelect />}></Route>
-            <Route path="/camp/participants/list/addpart" element={<CampParticipantAdd />}></Route>
-            <Route path="/camp/tables" element={<TablesListPage />}></Route>
-            <Route path="/camp/tables/info" element={<ShowTableList />}></Route>
-            <Route path="/camp/tables/createtable" element={<CreateTable />}></Route>
-            <Route path="/profile" element={<ProfileUserPage />}></Route>
-          </Routes>
-          <AppFooter />
+          <div className='content'>
+            <Routes>
+              <Route path="/superadmin" element={<LoginPage next_user_status={USER_STATUS.SUPERADMIN} goto={() => { navigate('/superadmin/panel') }} />} />
+              <Route path="/login" element={<LoginPage goto={() => { navigate('/listoforganisations') }} />} />
+              <Route path="/superadmin/panel" element={<SuperAdminPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/superadmin/organisation/create" element={<CreateOrganisationPage />} />
+              <Route path="/superadmin/organisation/update" element={<UpdateOrganisationPage />} >
+                <Route path=":organisationId" element={<UpdateOrganisationPage />} />
+              </Route>
+              <Route path="/admin/organisationusers" element={<ListOfOrgUsersPage />} />
+              <Route path="/admin/organisationusers/add" element={<AddOrgUserPage />} />
+              <Route path="/admin/organisationusers/update" element={<UpdateOrgUserPage />} >
+                <Route path=":userId" element={<UpdateOrgUserPage />} />
+              </Route>
+              {/* user organisations list */}
+              <Route path="/listoforganisations" element={<ListOfOrganisationsPage />} />
+              <Route path="/user/listoforganisations/add" element={<AddNewUserOrganisation />} ></Route>
+              <Route path="*" element={<Navigate to="/login" />} />
+              <Route path="/organisation" element={<OrganisationPage />}>
+                <Route path=":organisationId" element={<OrganisationPage />} />
+              </Route>
+              <Route path="/organisation/members/list" element={<OrganisationParticipantsList />}></Route>
+              <Route path="/organisation/campaings" element={<CampaingsListPage />} />
+              <Route path="/admin/createcampaign" element={<CreateCampaign />} />
+              <Route path="/admin/createcampaign/participants" element={<CreateCampaignParticipants />} />
+              <Route path="/camp" element={<CampPage />}></Route>
+              <Route path="/camp/participants" element={<CampParticipantsPage />}></Route>
+              <Route path="/camp/participants/list" element={<CampParticipantsList />}></Route>
+              <Route path="/camp/participants/list/participant" element={<CampParticipantInfo />}></Route>
+              <Route path="/camp/counsellors/list" element={<CampCounsellorsList />}></Route>
+              <Route path="/camp/counsellors/list/counsellor" element={<CampCounsellorInfo />}></Route>
+              <Route path="/camp/participants/list/add" element={<CampParticipantsSelect />}></Route>
+              <Route path="/camp/participants/list/addpart" element={<CampParticipantAdd />}></Route>
+              <Route path="/camp/tables" element={<TablesListPage />}></Route>
+              <Route path="/camp/tables/info" element={<ShowTableList />}></Route>
+              <Route path="/camp/tables/createtable" element={<CreateTable />}></Route>
+              <Route path="/profile" element={<ProfileUserPage />}></Route>
+            </Routes>
+            <AppFooter />
+          </div>
         </ApplicationContextProvider >
       </I18nextProvider>
     </div >

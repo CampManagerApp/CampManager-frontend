@@ -2,7 +2,8 @@
     width: 100%;
     background-color: #356021!important;
     vertical-align: middle;
-    position: absolute;
+    /* position: absolute; */
+    position: fixed;
     left:0;
     bottom:0;
     right:0;
@@ -12,4 +13,8 @@
 }
 .navlink-right{
     margin-left: 60px;
+}
+
+.hiddenFooter {
+    height: 6vh;
 }
