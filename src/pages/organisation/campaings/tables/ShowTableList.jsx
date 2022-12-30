@@ -66,10 +66,11 @@ export default function ShowTableList({ items = [], template: Template, onClickI
         currentTable.name
       )
       // store csv
-      exportTableAsCSV(get_current_organisation().name, currentTable.name, table_content_csv)
+      await exportTableAsCSV(get_current_organisation().name, currentTable.name, table_content_csv)
       toast.current.show({severity: 'success', summary: 'Exported', detail: 'Table exported'});
     } catch (err) {
       console.log(err)
+      toast.current.show({severity: 'error', summary: 'Error', detail: 'Error to export the table'});
     }
   }
 

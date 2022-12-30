@@ -24,6 +24,6 @@ export const exportTableAsCSV = async (organisationName, tableName, tableContent
       recursive: true
     })
   } catch (error) {
-      throw { error_write: true }
+    throw { error_write: true }
   }
 }
