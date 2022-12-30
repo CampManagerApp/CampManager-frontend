@@ -1,12 +1,50 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Container } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import ProfilePage from "../../../../components/common/ProfilePage";
-import ItemList from "../../../../components/lists/ItemList";
 import { organisationContex } from "../../../../context/OrganisationContex";
 import { UserStatusContext } from "../../../../context/UserStatusContext";
+
 import * as image from "../../../../design/images.js";
+import ProfilePage from "../../../../components/common/ProfilePage";
+import ItemList from "../../../../components/lists/ItemList";
+
+
+function TableContent({ item, onUpdate }) {
+    const { isOrgAdmin } = useContext(UserStatusContext)
+    return (
+        isOrgAdmin
+            ? <TableAdminContent item={item} onUpdate={onUpdate} />
+            : <TableMemberContent item={item} />
+    )
+
+}
+
+function TableAdminContent({ item }) {
+    return (
+        <Row>
+            <Col className="d-flex align-items-center">
+                {item.name}
+            </Col>
+            <Col className="d-flex justify-content-end">
+                <button className="btn btn-danger" onClick={() => { }} >
+                    <i className="bi bi-trash"></i>
+                </button>
+            </Col>
+        </Row>
+    )
+}
+
+
+function TableMemberContent({ item }) {
+    return (
+        <div className="d-flex justify-content-center">
+            {item.name}
+        </div>
+    )
+
+}
+
 
 export default function TablesListPage({ items = [], template: Template, onClickItem = () => { } }) {
     const navigate = useNavigate()
@@ -20,15 +58,6 @@ export default function TablesListPage({ items = [], template: Template, onClick
     const { t, i18n } = useTranslation('common');
 
     const [tables, setTables] = new useState()
-
-    function tableContent({ item }) {
-        return (
-            <div className="d-flex justify-content-center">
-                {item.name}
-            </div>
-        )
-
-    }
 
     function onClickTable(item) {
         //const itemSinID = { 'Participant Name':item.name, 'Parent Contact':item.contact, 'Notes':items.notes }
@@ -61,8 +90,10 @@ export default function TablesListPage({ items = [], template: Template, onClick
         <div>
             <ProfilePage profileName={currentCamp.campaignName} profileNick={t('TABLES_LIST.TITLE')} backgroundImg={image.hiking} includeProfileImage={includeProfileImage} />
             <Container>
-                <Button onClick={createTable} >+</Button>
-                <ItemList items={tables} onClickItem={onClickTable} template={tableContent}></ItemList>
+                <Col className="d-flex justify-content-end">
+                    <Button onClick={createTable} >+</Button>
+                </Col>
+                <ItemList items={tables} onClickItem={onClickTable} template={TableContent}></ItemList>
             </Container>
         </div>
     )
