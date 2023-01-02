@@ -83,6 +83,7 @@
         "PARTICIPANTS":"Participantes",
         "CANCEL_BUTTON":"Cancelar",
         "CREATE_BUTTON":"Crear",
+        "UPDATE_BUTTON":"Actualizar",
         "PARTICIPANTS_BUTTON":"Select",
         "ADD_NEW_PARTICIPANT_TITLE":"Información del participante",
         "PARTICIPANT_NAME":"Nombre del participante",

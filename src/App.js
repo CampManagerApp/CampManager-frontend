@@ -27,6 +27,7 @@ import CampParticipantsList from './pages/camp/CampParticipantsList';
 import OrganisationParticipantsList from './pages/organisation/OrganisationParticipantsList';
 import CampaingsListPage from './pages/organisation/campaings/CampaingsListPage';
 import CreateCampaign from './pages/organisation/campaings/admin/CreateCampaign';
+import UpdateCampaign from './pages/organisation/campaings/admin/UpdateCampaign';
 import CreateTable from './pages/organisation/campaings/tables/CreateTable';
 import CreateCampaignParticipants from './pages/organisation/campaings/admin/CreateCampaignParticipants';
 import CampCounsellorsList from './pages/camp/CampCounsellorsList';
@@ -86,6 +87,7 @@ function App() {
               <Route path="/organisation/members/list" element={<OrganisationParticipantsList />}></Route>
               <Route path="/organisation/campaings" element={<CampaingsListPage />} />
               <Route path="/admin/createcampaign" element={<CreateCampaign />} />
+              <Route path="/admin/updatecampaign" element={<UpdateCampaign />} />
               <Route path="/admin/createcampaign/participants" element={<CreateCampaignParticipants />} />
               <Route path="/camp" element={<CampPage />}></Route>
               <Route path="/camp/participants" element={<CampParticipantsPage />}></Route>
