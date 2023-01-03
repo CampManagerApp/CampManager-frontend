@@ -13,6 +13,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { MessageContext } from "../../../../context/MessageContex";
 import { UserStatusContext } from "../../../../context/UserStatusContext";
+import * as Icons from '../../../../design/icons.js';
 
 
 export default function CreateTable() {
@@ -21,8 +22,21 @@ export default function CreateTable() {
     const{create_campaign_table, get_campaign_counsellors, solve_campaign_table} = useContext(organisationContex)
     const { currentCamp, currentOrganisation } = useContext(UserStatusContext)
     const { showErrorMessage } = useContext(MessageContext)
-
     const [tableName, setTableName] = useState('')
+
+    function navigateToCounsellors(){
+        navigate('/camp/tables/createtable/counsellors')
+    }
+    function navigateToDays(){
+        navigate('/camp/tables/createtable/days')
+    }
+    function navigateToTasks(){
+        navigate('/camp/tables/createtable/tasks')
+    }
+    function navigateToBack(){
+        navigate(-1)
+    }
+    //CHANGE THIS CODE AFTER IMPLEMENTATION
     const [xValues, setXValues] = useState('')
     const [yValues, setYValues] = useState('')
     const [values, setValuesName] = useState('')
@@ -49,27 +63,41 @@ export default function CreateTable() {
             })   
         })
     }
-
+    //CHANGE THIS CODE AFTER IMPLEMENTATION
 
     return (
     <React.Fragment>        
         <BannerImage bannerImage={image.backgroundOrg} />
         <TitlePage>{t('ADD_NEW_TABLE.TITLE')}</TitlePage>
         <Container>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group controlId="formBasicEmail">
                 <Form.Label>{t('ADD_NEW_TABLE.TABLE_NAME')}</Form.Label>
                 <Form.Control type="text" value={tableName} onChange={(e) => setTableName(e.target.value)}/>
-                <Form.Label>{t('ADD_NEW_TABLE.X_VALUE')}</Form.Label>
+                <br/>
+                <Row>
+                    <Col><Form.Label>{t('ADD_NEW_TABLE.COUNSELLORS')}</Form.Label></Col>
+                    <Col className="text-end"><Button variant="primary" size="sm" onClick={navigateToCounsellors}><Icons.AddUser/></Button></Col>
+                </Row>
+                <br/>
+                <Row>
+                    <Col><Form.Label>{t('ADD_NEW_TABLE.DAYS')}</Form.Label></Col>
+                    <Col className="text-end"><Button variant="primary" size="sm" onClick={navigateToDays}><Icons.AddUser/></Button></Col>
+                </Row>
+                <br/>
+                <Row>
+                    <Col><Form.Label>{t('ADD_NEW_TABLE.TASKS')}</Form.Label></Col>
+                    <Col className="text-end"><Button variant="primary" size="sm" onClick={navigateToTasks}><Icons.AddUser/></Button></Col>
+                </Row>
+                <br/>
+                {/* <Form.Label>{t('ADD_NEW_TABLE.X_VALUE')}</Form.Label>
                 <Form.Control type="text" value={xValues} onChange={(e) => setXValues(e.target.value)}/>
                 <Form.Label>{t('ADD_NEW_TABLE.Y_VALUE')}</Form.Label>
-                <Form.Control type="text" value={yValues} onChange={(e) => setYValues(e.target.value)}/>
-                {/* <Form.Label>{t('ADD_NEW_TABLE.VALUES')}</Form.Label>
-                <Form.Control type="text" value={values} onChange={(e) => setValuesName(e.target.value)}/> */}
+                <Form.Control type="text" value={yValues} onChange={(e) => setYValues(e.target.value)}/> */}
             </Form.Group>
             <Container>
                 <Row className="align-items-center">
                     <Col className="d-flex justify-content-center">
-                        <Button variant="primary">{t('ADD_NEW_TABLE.CANCEL_BUTTON')}</Button>
+                        <Button variant="primary" onClick={navigateToBack}>{t('ADD_NEW_TABLE.CANCEL_BUTTON')}</Button>
                     </Col>
                     <Col className="d-flex justify-content-center">
                         <Button variant="success" onClick={createTable}>{t('ADD_NEW_TABLE.CREATE_BUTTON')}</Button>

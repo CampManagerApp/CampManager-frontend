@@ -149,10 +149,18 @@
     "ADD_NEW_TABLE":{
         "TITLE":"Añadir una nueva tabla",
         "TABLE_NAME":"Nombre de la tabla",
+        "COUNSELLORS":"Monitores",
+        "DAYS":"Dias",
+        "TASKS":"Tareas",
+        "ADD_COUNSELLORS":"Añadir monitores a la tabla",
+        "ADD_DAYS":"Añadir dias a la tabla",
+        "ADD_TASKS":"Añadir tareas a la tabla",
         "X_VALUE":"Valores de X",
         "Y_VALUE":"Valores de Y",
         "VALUES":"Valores",
         "CANCEL_BUTTON":"Cancelar",
-        "CREATE_BUTTON":"Crear"
+        "CREATE_BUTTON":"Crear",
+        "ACCEPT_BUTTTON":"Aceptar",
+        "WRITE_DAYS":"Escribe los dias"
     }
  }

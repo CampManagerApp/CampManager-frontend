@@ -59,7 +59,7 @@ export default function EditCampaign() {
         navigate('/admin/editcampaign/participants/list/add');
     }
     function cancelButton() {
-        navigate('/organisation/campaings')
+        navigate(-1)
     }
 
     function loadMembers() {
@@ -161,7 +161,7 @@ export default function EditCampaign() {
                         <Col>
                             {/* <p>Counsellors:</p> */}
                             <><Form.Label className="formLabel">{t('ADD_NEW_CAMPAIGN.COUNSELLORS')}:</Form.Label></>
-                            <MultiSelect showClear={true} defaultValue={['Mariona Villaró']} maxSelectedLabels={1} value={campaign_data.counsellors} options={members} onShow={loadMembers} onChange={(e) => setCounsellors(e.value)} />
+                            <MultiSelect showClear={true} defaultValue={campaign_data.counsellors} maxSelectedLabels={1} value={campaign_data.counsellors} options={members} onShow={loadMembers} onChange={(e) => setCounsellors(e.value)} />
                             {/* <p>Participants:</p> */}
                             <br />
                             <br />

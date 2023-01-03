@@ -29,6 +29,9 @@ import CampaingsListPage from './pages/organisation/campaings/CampaingsListPage'
 import CreateCampaign from './pages/organisation/campaings/admin/CreateCampaign';
 import EditCampaign from './pages/organisation/campaings/admin/EditCampaign';
 import CreateTable from './pages/organisation/campaings/tables/CreateTable';
+import CreateTableCounsellors from './pages/organisation/campaings/tables/CrateTableCounsellors';
+import CreateTableDays from './pages/organisation/campaings/tables/CrateTableDays';
+import CreateTableTasks from './pages/organisation/campaings/tables/CrateTableTasks';
 import CreateCampaignParticipants from './pages/organisation/campaings/admin/CreateCampaignParticipants';
 import CampCounsellorsList from './pages/camp/CampCounsellorsList';
 import i18next from "i18next";
@@ -104,6 +107,9 @@ function App() {
               <Route path="/camp/tables" element={<TablesListPage />}></Route>
               <Route path="/camp/tables/info" element={<ShowTableList />}></Route>
               <Route path="/camp/tables/createtable" element={<CreateTable />}></Route>
+              <Route path="/camp/tables/createtable/counsellors" element={<CreateTableCounsellors />}></Route>
+              <Route path="/camp/tables/createtable/days" element={<CreateTableDays />}></Route>
+              <Route path="/camp/tables/createtable/tasks" element={<CreateTableTasks />}></Route>
               <Route path="/profile" element={<ProfileUserPage />}></Route>
             </Routes>
             <AppFooter />
