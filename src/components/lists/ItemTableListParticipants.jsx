@@ -18,8 +18,6 @@ export default function ItemTableListParticipants({ table = {}, template: Templa
         ]   
         
     useEffect(() => {
-        console.log(table)
-        console.log(table.participants)
     }, [])
 
     return (

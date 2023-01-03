@@ -31,7 +31,7 @@ function CampaignMemberElement({ item }) {
 function CampaignsAdminElement({ item, onUpdate }) {
     const navigate = useNavigate()
     const { delete_campaign } = useContext(organisationContex)
-    const { get_current_organisation } = useContext(UserStatusContext)
+    const { get_current_organisation, set_current_camp,set_current_participant,set_current_organisation } = useContext(UserStatusContext)
 
     function deleteElement(e) {
         // stop click propagation
@@ -47,9 +47,8 @@ function CampaignsAdminElement({ item, onUpdate }) {
     function editElement(e) {
         e.preventDefault()
         e.stopPropagation()
-        const { id } = get_current_organisation()
-        navigate(`/admin/updatecampaign'/${id}`, { replace: true })
-        // navigate('/admin/updatecampaign')
+        set_current_camp(item)
+        navigate('/admin/editcampaign')
     }
 
     return (

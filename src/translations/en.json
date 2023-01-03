@@ -72,6 +72,7 @@
     },
     "ADD_NEW_CAMPAIGN": {
         "TITLE": "Create campaign",
+        "EDIT_TITLE":"Edit campaign",
         "CAMPAIGN_NAME":"Campaing name",
         "CAMPAIGN_START_DATE":"Campaign start date",
         "CAMPAIGN_END_DATE":"Campaign end date",
@@ -126,7 +127,8 @@
         "CLAIMED_HEADER": "Claimed"
     },
     "PARTICIPANTS_SELECT":{
-        "TITLE": "Select participants",
+        "TITLE": "Select the participants",
+        "EDIT_TITLE":"Edit the participants",
         "CONTINUE": "Continue"
     },
     "PARTICIPANTS_ADD":{

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -20,16 +20,22 @@ import { MessageContext } from "../../../../context/MessageContex";
 import { TemporalDataContext } from "../../../../context/TemporalDataContext";
 import Spinner from "../../../../components/common/spinner/Spinner";
 
-export default function UpdateCampaign() {
+export default function EditCampaign() {
     const navigate = useNavigate()
     const { t } = useTranslation('common');
     const { get_claimed_members, create_campaign, add_campaign_counsellors, add_campaign_participants } = useContext(organisationContex)
-    const { get_current_organisation } = useContext(UserStatusContext)
+    const { get_campaign_counsellors } = useContext(organisationContex)
+    const { get_current_camp,get_current_organisation,currentCamp } = useContext(UserStatusContext)
     const { showErrorMessage } = useContext(MessageContext)
     const { campaign_data, set_campaign_data, reset_campaign_data } = useContext(TemporalDataContext)
-
+    const [getCounsellors] = new useState()
     const [members, setMembers] = useState([])
     const [creating, setCreating] = useState(false)
+    const { campaignName,startDate,endDate } = get_current_camp()
+    const [startDay, startMonth, startYear] = startDate.split('/');
+    const startDateCalendar = `${startYear}-${startMonth}-${startDay}`;
+    const [endDay, endMonth, endYear] = endDate.split('/');
+    const endDateCalendar = `${endYear}-${endMonth}-${endDay}`;
 
     function setName(name) {
         set_campaign_data({ ...campaign_data, ['name']: name })
@@ -50,7 +56,7 @@ export default function UpdateCampaign() {
 
 
     function navigateToParticipants() {
-        navigate('/camp/participants/list/add');
+        navigate('/admin/editcampaign/participants/list/add');
     }
     function cancelButton() {
         navigate('/organisation/campaings')
@@ -64,6 +70,16 @@ export default function UpdateCampaign() {
             })
             setMembers(members_options)
         })
+    }
+    useEffect(() => {
+        loadCounsellors()
+    }, [])
+    console.log("lazo",campaign_data.counsellors)
+
+    async function loadCounsellors() {
+        const counsellorsList = await get_campaign_counsellors(get_current_organisation().id, currentCamp.id)
+        console.log("jordi",counsellorsList)
+        getCounsellors(counsellorsList)
     }
 
     async function createCampaing() {
@@ -122,22 +138,22 @@ export default function UpdateCampaign() {
             <Spinner />
             : <div className="div-all scrollable-content" style={{ height: "80vh" }}>
                 <BannerImage bannerImage={image.backgroundOrg} />
-                <TitlePage>{t('ADD_NEW_CAMPAIGN.TITLE')}</TitlePage>
+                <TitlePage>{t('ADD_NEW_CAMPAIGN.EDIT_TITLE')}</TitlePage>
                 <Container className="mb-4">
                     <Form.Group controlId="name">
                         <Form.Label>{t('ADD_NEW_CAMPAIGN.CAMPAIGN_NAME')}:</Form.Label>
                         {" "}
-                        <Form.Control type="text" aria-describedby="passwordHelpBlock" value={campaign_data.name} onChange={(e) => setName(e.target.value)} />
+                        <Form.Control type="text" aria-describedby="passwordHelpBlock" value={campaignName} onChange={(e) => setName(e.target.value)} />
                     </Form.Group>
                     <br />
                     <Row>
                         <Col>
                             <><Form.Label className="formLabel">{t('ADD_NEW_CAMPAIGN.CAMPAIGN_START_DATE')}:</Form.Label></>
-                            <Calendar dateFormat="dd/mm/yy" value={campaign_data.start} onChange={(e) => setStartDate(e.value)} showIcon={true} touchUI={true}></Calendar>
+                            <Calendar dateFormat="dd/mm/yy" value={new Date(startDateCalendar)} onChange={(e) => setStartDate(e.value)} showIcon={true} touchUI={true}></Calendar>
                         </Col>
                         <Col>
                             <><Form.Label className="formLabel">{t('ADD_NEW_CAMPAIGN.CAMPAIGN_END_DATE')}:</Form.Label></>
-                            <Calendar dateFormat="dd/mm/yy" value={campaign_data.end} onChange={(e) => setEndDate(e.value)} showIcon={true} touchUI={true}></Calendar>
+                            <Calendar dateFormat="dd/mm/yy" value={new Date(endDateCalendar)} onChange={(e) => setEndDate(e.value)} showIcon={true} touchUI={true}></Calendar>
                         </Col>
                     </Row>
                     <br />
@@ -145,7 +161,7 @@ export default function UpdateCampaign() {
                         <Col>
                             {/* <p>Counsellors:</p> */}
                             <><Form.Label className="formLabel">{t('ADD_NEW_CAMPAIGN.COUNSELLORS')}:</Form.Label></>
-                            <MultiSelect showClear={true} maxSelectedLabels={1} value={campaign_data.counsellors} options={members} onShow={loadMembers} onChange={(e) => setCounsellors(e.value)} />
+                            <MultiSelect showClear={true} defaultValue={['Mariona Villaró']} maxSelectedLabels={1} value={campaign_data.counsellors} options={members} onShow={loadMembers} onChange={(e) => setCounsellors(e.value)} />
                             {/* <p>Participants:</p> */}
                             <br />
                             <br />

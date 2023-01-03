@@ -33,7 +33,6 @@ export default function CampCounsellorsList({ items = [], template: Template, on
         const itemSinID = { 'Counsellor Name':item.name, 'Parent Contact':item.contact, 'Notes':items.notes }
         set_current_counsellor(item)
         setitem(itemSinID)  
-        console.log(item)
         navigate('/camp/counsellors/list/counsellor');
     }
 
@@ -44,7 +43,6 @@ export default function CampCounsellorsList({ items = [], template: Template, on
 
     async function loadCounsellors() {
         const counsellorsList = await get_campaign_counsellors(get_current_organisation().id, currentCamp.id)
-        
         setCounsellors(counsellorsList)
     }
 

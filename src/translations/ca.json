@@ -109,6 +109,7 @@
     },
     "ADD_NEW_CAMPAIGN": {
         "TITLE": "Crear una campanya",
+        "EDIT_TITLE":"Editar campanya",
         "CAMPAIGN_NAME":"Nom de la campanya",
         "CAMPAIGN_START_DATE":"Data d'inici de la campanya",
         "CAMPAIGN_END_DATE":"data final de la campanya",
@@ -129,6 +130,7 @@
     },
     "PARTICIPANTS_SELECT":{
         "TITLE": "Selecciona els participants",
+        "EDIT_TITLE":"Edita els participants",
         "CONTINUE": "Continuar"
     },
     "PARTICIPANTS_ADD":{
