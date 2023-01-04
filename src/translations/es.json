@@ -161,6 +161,10 @@
         "CANCEL_BUTTON":"Cancelar",
         "CREATE_BUTTON":"Crear",
         "ACCEPT_BUTTTON":"Aceptar",
-        "WRITE_DAYS":"Escribe los dias"
+        "WRITE_DAYS":"Escribe los dias",
+        "ADD_ONE_TASK":"Añadir una tarea",
+        "NAME_TASK":"Nombre de la tarea",
+        "MINIMUM":"Mínimo",
+        "MAXIMUM":"Máximo"
     }
  }

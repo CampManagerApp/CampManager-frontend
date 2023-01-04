@@ -16,25 +16,40 @@ import { UserStatusContext } from "../../../../context/UserStatusContext";
 import * as Icons from '../../../../design/icons.js';
 import { ListGroup } from 'react-bootstrap';
 
-function MyModal(props) {
-    return (
-      <Modal {...props}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal Title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Modal body</Modal.Body>
+function ModalTaskTables(show, handleClose, handleSubmit, nameTask, setNameTask, minimum, setMinimum, maximum, setMaximum) {
+	const { t } = useTranslation('common');
+	return (
+	<Modal show={show} centered>
+		<Modal.Header><Modal.Title>{t('ADD_NEW_TABLE.ADD_ONE_TASK')}</Modal.Title></Modal.Header>
+        <Modal.Body>
+			<Form>
+				<Form.Group>
+				<Form.Label>{t('ADD_NEW_TABLE.NAME_TASK')}</Form.Label>
+				<Form.Control type="text" value={nameTask} onChange={(e) => setNameTask(e.target.value)}/>
+            	</Form.Group>
+				<br/>
+            	<Form.Group>
+				<Row>
+					<Col><Form.Label>{t('ADD_NEW_TABLE.MINIMUM')}</Form.Label>
+						<Form.Control type="number" min={0} max={100} value={minimum} inputMode="numeric" onChange={(e) => setMinimum(e.target.value)}/>
+					</Col>
+					<Col><Form.Label>{t('ADD_NEW_TABLE.MAXIMUM')}</Form.Label>
+						<Form.Control type="number" min={0} max={100} value={maximum} inputMode="numeric" onChange={(e) => setMaximum(e.target.value)}/>
+					</Col>
+			  	</Row>
+            	</Form.Group>
+          	</Form>
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={props.onHide}>
-            Close
-          </Button>
-          <Button variant="primary">Save Changes</Button>
+          <Button variant="primary" onClick={handleClose}>{t('ADD_NEW_TABLE.CANCEL_BUTTON')}</Button>
+          <Button variant="success" onClick={handleSubmit}>{t('ADD_NEW_TABLE.ACCEPT_BUTTTON')}</Button>
         </Modal.Footer>
       </Modal>
     );
   }
 export default function CreateTableTasks() {
+	const { t, i18n } = useTranslation('common');
     const navigate = useNavigate()
-    const { t, i18n } = useTranslation('common');
     const{create_campaign_table, get_campaign_counsellors, solve_campaign_table} = useContext(organisationContex)
     const { currentCamp, currentOrganisation } = useContext(UserStatusContext)
     const { showErrorMessage } = useContext(MessageContext)
@@ -42,23 +57,27 @@ export default function CreateTableTasks() {
     function navigateToBack(){
         navigate(-1)
     }
-  const [text, setText] = useState('');
+  const [show, setShow] = useState(false);
+  const [nameTask, setNameTask] = useState('');
+  const [minimum, setMinimum] = useState('');
+  const [maximum, setMaximum] = useState('');
   const [items, setItems] = useState([]);
-
-  function handleChange(event) {
-    setText(event.target.value);
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    setItems([...items, text]);
-    setText('');
-  }
   function handleDelete(index) {
     const newItems = [...items];
     newItems.splice(index, 1);
     setItems(newItems);
   }
+  const handleClose = () => {
+    setShow(false)
+  };
+  const handleShow = () => setShow(true);
+  const handleSubmit = () => {
+  setItems([...items, { nameTask, minimum, maximum }]);
+  setNameTask('');
+  setMinimum('');
+  setMaximum('');
+  handleClose();
+}
     return (
     <React.Fragment>        
         <BannerImage bannerImage={image.backgroundOrg} />
@@ -67,15 +86,16 @@ export default function CreateTableTasks() {
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="formText">
                     <Row >
-                        <Col className="d-flex justify-content-center"><Button variant="primary" onClick={() => setModalShow(true)}><Icons.AddUser/></Button></Col>
-                        <MyModal show={modalShow} onHide={() => setModalShow(false)} />
+                        <Col className="d-flex justify-content-center"><Button variant="primary" onClick={handleShow}><Icons.AddUser/></Button>
+                        {ModalTaskTables(show, handleClose, handleSubmit, nameTask, setNameTask, minimum, setMinimum, maximum, setMaximum)}
+                        </Col>
                     </Row>
                 </Form.Group>
             </Form>
             <br/>
             <ListGroup>{items.map((item, index) => (
                 <Row>
-                    <Col className="col-10"><ListGroup.Item className="text-truncate" key={index}>{item}</ListGroup.Item></Col>
+                    <Col className="col-10"><ListGroup.Item className="text-truncate" key={index}>{item.nameTask},{item.minimum},{item.maximum}</ListGroup.Item></Col>
                     <Col className="col-2"><Button variant="danger" onClick={() => handleDelete(index)}><i className="bi bi-trash"></i></Button></Col>
                 </Row>))}
             </ListGroup>

@@ -158,7 +158,11 @@
         "CANCEL_BUTTON":"Cancel·lar",
         "CREATE_BUTTON":"Crear",
         "ACCEPT_BUTTTON":"Acceptar",
-        "WRITE_DAYS":"Escriu els dies:"
-    }
+        "WRITE_DAYS":"Escriu els dies:",
+        "ADD_ONE_TASK":"Afegir una tasca",
+        "NAME_TASK":"Nom de la tasca",
+        "MINIMUM":"Mínim",
+        "MAXIMUM":"Màxim"
+        }
     
 }
