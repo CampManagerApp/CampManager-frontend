@@ -5,7 +5,6 @@ import { useState } from "react"
 import { organisationContex } from "../../../context/OrganisationContex"
 import { UserStatusContext } from "../../../context/UserStatusContext"
 import { Button, Col, Container, Row } from "react-bootstrap"
-
 import * as image from "../../../design/images"
 import BannerImage from "../../../components/common/BannerImage"
 import TitlePage from "../../../components/common/TitlePage"
@@ -19,7 +18,6 @@ function CampaingContent({ item, onUpdate }) {
             ? <CampaignsAdminElement item={item} onUpdate={onUpdate} />
             : <CampaignMemberElement item={item} />
     )
-
 }
 
 function CampaignMemberElement({ item }) {
@@ -33,7 +31,7 @@ function CampaignMemberElement({ item }) {
 function CampaignsAdminElement({ item, onUpdate }) {
     const navigate = useNavigate()
     const { delete_campaign } = useContext(organisationContex)
-    const { get_current_organisation } = useContext(UserStatusContext)
+    const { get_current_organisation, set_current_camp,set_current_participant,set_current_organisation } = useContext(UserStatusContext)
 
     function deleteElement(e) {
         // stop click propagation
@@ -46,6 +44,12 @@ function CampaignsAdminElement({ item, onUpdate }) {
             onUpdate()
         })
     }
+    function editElement(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        set_current_camp(item)
+        navigate('/admin/editcampaign')
+    }
 
     return (
         <Row>
@@ -53,9 +57,8 @@ function CampaignsAdminElement({ item, onUpdate }) {
                 {item.campaignName}
             </Col>
             <Col className="d-flex justify-content-end">
-                <button className="btn btn-danger" onClick={deleteElement} >
-                    <i className="bi bi-trash"></i>
-                </button>
+                <Button variant="primary" onClick={editElement}><i className="bi bi-pen"></i></Button>
+                <Button variant="danger" className="mx-1" onClick={deleteElement}><i className="bi bi-trash"></i></Button>
             </Col>
         </Row>
     )

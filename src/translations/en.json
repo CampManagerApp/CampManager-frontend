@@ -72,6 +72,7 @@
     },
     "ADD_NEW_CAMPAIGN": {
         "TITLE": "Create campaign",
+        "EDIT_TITLE":"Edit campaign",
         "CAMPAIGN_NAME":"Campaing name",
         "CAMPAIGN_START_DATE":"Campaign start date",
         "CAMPAIGN_END_DATE":"Campaign end date",
@@ -79,6 +80,7 @@
         "PARTICIPANTS":"Participants",
         "CANCEL_BUTTON":"Cancel",
         "CREATE_BUTTON":"Create",
+        "UPDATE_BUTTON":"Update",
         "PARTICIPANTS_BUTTON":"Select",
         "ADD_NEW_PARTICIPANT_TITLE":"Participant information",
         "PARTICIPANT_NAME":"Parent name",
@@ -125,7 +127,8 @@
         "CLAIMED_HEADER": "Claimed"
     },
     "PARTICIPANTS_SELECT":{
-        "TITLE": "Select participants",
+        "TITLE": "Select the participants",
+        "EDIT_TITLE":"Edit the participants",
         "CONTINUE": "Continue"
     },
     "PARTICIPANTS_ADD":{
@@ -141,10 +144,22 @@
     "ADD_NEW_TABLE":{
         "TITLE":"Add new table",
         "TABLE_NAME":"Table name",
+        "COUNSELLORS":"Counsellors",
+        "DAYS":"Days",
+        "TASKS":"Tasks",
+        "ADD_COUNSELLORS":"Add counsellors to the table",
+        "ADD_DAYS":"Add days to the table",
+        "ADD_TASKS":"Add tasks to the table",
         "X_VALUE":"X values",
         "Y_VALUE":"Y values",
         "VALUES":"Values",
         "CANCEL_BUTTON":"Cancel",
-        "CREATE_BUTTON":"Create"
+        "CREATE_BUTTON":"Create",
+        "ACCEPT_BUTTTON":"Accept",
+        "WRITE_DAYS":"Write the days:",
+        "ADD_ONE_TASK":"Add one task",
+        "NAME_TASK":"Name of the task",
+        "MINIMUM":"Minimum",
+        "MAXIMUM":"Maximum"
     }
 }

@@ -76,6 +76,7 @@
     },
     "ADD_NEW_CAMPAIGN": {
         "TITLE": "Crear una campaña",
+        "EDIT_TITLE":"Editar campaña",
         "CAMPAIGN_NAME":"Nombre de la campaña",
         "CAMPAIGN_START_DATE":"Fecha inicio de la campaña",
         "CAMPAIGN_END_DATE":"Fecha final de la campaña",
@@ -83,6 +84,7 @@
         "PARTICIPANTS":"Participantes",
         "CANCEL_BUTTON":"Cancelar",
         "CREATE_BUTTON":"Crear",
+        "UPDATE_BUTTON":"Actualizar",
         "PARTICIPANTS_BUTTON":"Select",
         "ADD_NEW_PARTICIPANT_TITLE":"Información del participante",
         "PARTICIPANT_NAME":"Nombre del participante",
@@ -131,6 +133,7 @@
     },
     "PARTICIPANTS_SELECT":{
         "TITLE": "Selecciona los participantes",
+        "EDIT_TITLE":"Edita los participantes",
         "CONTINUE": "Continuar"
     },
     "PARTICIPANTS_ADD":{
@@ -146,10 +149,22 @@
     "ADD_NEW_TABLE":{
         "TITLE":"Añadir una nueva tabla",
         "TABLE_NAME":"Nombre de la tabla",
+        "COUNSELLORS":"Monitores",
+        "DAYS":"Dias",
+        "TASKS":"Tareas",
+        "ADD_COUNSELLORS":"Añadir monitores a la tabla",
+        "ADD_DAYS":"Añadir dias a la tabla",
+        "ADD_TASKS":"Añadir tareas a la tabla",
         "X_VALUE":"Valores de X",
         "Y_VALUE":"Valores de Y",
         "VALUES":"Valores",
         "CANCEL_BUTTON":"Cancelar",
-        "CREATE_BUTTON":"Crear"
+        "CREATE_BUTTON":"Crear",
+        "ACCEPT_BUTTTON":"Aceptar",
+        "WRITE_DAYS":"Escribe los dias",
+        "ADD_ONE_TASK":"Añadir una tarea",
+        "NAME_TASK":"Nombre de la tarea",
+        "MINIMUM":"Mínimo",
+        "MAXIMUM":"Máximo"
     }
  }

@@ -109,6 +109,7 @@
     },
     "ADD_NEW_CAMPAIGN": {
         "TITLE": "Crear una campanya",
+        "EDIT_TITLE":"Editar campanya",
         "CAMPAIGN_NAME":"Nom de la campanya",
         "CAMPAIGN_START_DATE":"Data d'inici de la campanya",
         "CAMPAIGN_END_DATE":"data final de la campanya",
@@ -116,6 +117,7 @@
         "PARTICIPANTS":"Participants",
         "CANCEL_BUTTON":"Cancel·lar",
         "CREATE_BUTTON":"Crear",
+        "UPDATE_BUTTON":"Actualitzar",
         "PARTICIPANTS_BUTTON":"Seleccionar",
         "ADD_NEW_PARTICIPANT_TITLE":"Informació del participant",
         "PARTICIPANT_NAME":"Nom del participant",
@@ -128,6 +130,7 @@
     },
     "PARTICIPANTS_SELECT":{
         "TITLE": "Selecciona els participants",
+        "EDIT_TITLE":"Edita els participants",
         "CONTINUE": "Continuar"
     },
     "PARTICIPANTS_ADD":{
@@ -143,11 +146,23 @@
     "ADD_NEW_TABLE":{
         "TITLE":"Afegir una nova taula",
         "TABLE_NAME":"Nom de la taula",
+        "COUNSELLORS":"Monitors",
+        "DAYS":"Dies",
+        "TASKS":"Tasques",
+        "ADD_COUNSELLORS":"Afegir monitors a la taula",
+        "ADD_DAYS":"Afegir dies a la taula",
+        "ADD_TASKS":"Afegir tasques a la taula",
         "X_VALUE":"Valor de X",
         "Y_VALUE":"Valor de Y",
         "VALUES":"Valors",
         "CANCEL_BUTTON":"Cancel·lar",
-        "CREATE_BUTTON":"Crear"
-    }
+        "CREATE_BUTTON":"Crear",
+        "ACCEPT_BUTTTON":"Acceptar",
+        "WRITE_DAYS":"Escriu els dies:",
+        "ADD_ONE_TASK":"Afegir una tasca",
+        "NAME_TASK":"Nom de la tasca",
+        "MINIMUM":"Mínim",
+        "MAXIMUM":"Màxim"
+        }
     
 }

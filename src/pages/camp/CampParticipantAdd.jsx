@@ -31,9 +31,6 @@ export default function CampParticipantAdd() {
 
     useEffect(()=> {
         if (update) {
-            //const participants = {email:t('PARTICIPANTS_ADD.EMAIL'), name:t('PARTICIPANTS_ADD.NAME') }
-            //console.log(participants)       
-            //setItems(participants) 
         }
         setUpdate(false)
     }, [update])

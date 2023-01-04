@@ -6,7 +6,6 @@ import { toCapitalLetter } from "../../utils"
 export default function ItemInfoCounsellor(props) {
 
     useEffect(() => {
-        console.log(props.counsellor)
     })
 
 
