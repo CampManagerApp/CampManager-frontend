@@ -9,6 +9,7 @@ import * as image from "../../../design/images"
 import BannerImage from "../../../components/common/BannerImage"
 import TitlePage from "../../../components/common/TitlePage"
 import ItemList from "../../../components/lists/ItemList"
+import { MessageContext } from "../../../context/MessageContex"
 
 
 function CampaingContent({ item, onUpdate }) {
@@ -31,7 +32,8 @@ function CampaignMemberElement({ item }) {
 function CampaignsAdminElement({ item, onUpdate }) {
     const navigate = useNavigate()
     const { delete_campaign } = useContext(organisationContex)
-    const { get_current_organisation, set_current_camp,set_current_participant,set_current_organisation } = useContext(UserStatusContext)
+    const { get_current_organisation, set_current_camp, set_current_participant, set_current_organisation } = useContext(UserStatusContext)
+    const { showConfirmationModal } = useContext(MessageContext)
 
     function deleteElement(e) {
         // stop click propagation
@@ -40,8 +42,10 @@ function CampaignsAdminElement({ item, onUpdate }) {
 
         // delete campaign
         const { id } = get_current_organisation()
-        delete_campaign(id, item.campaignName).then(() => {
-            onUpdate()
+        showConfirmationModal(() => {
+            delete_campaign(id, item.campaignName).then(() => {
+                onUpdate()
+            })
         })
     }
     function editElement(e) {

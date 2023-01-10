@@ -24,7 +24,7 @@ export default function EditCampParticipantsSelect({ items = [], template: Templ
     const [update, setUpdate] = useState(true)
     const [item, setitem] = useState({});
     const { t, i18n } = useTranslation('common');
-    
+
     const [participants, setParticipants] = new useState()
 
     const [modalShow, setModalShow] = useState(false);
@@ -41,7 +41,7 @@ export default function EditCampParticipantsSelect({ items = [], template: Templ
                     </Row>
                     <Row className="row-del" style={{ width: 20 + '%' }}>
                         <button type="button" className="btn btn-danger button-delete bt-del" onClick={() => {
-                                showConfirmationModal(() => {delete_item(participants.indexOf(item))})
+                            showConfirmationModal(() => { delete_item(participants.indexOf(item)) })
                         }}><span className="d-none d-lg-inline d-print-flex">Delete</span><i className="bi bi-trash"></i></button>
                     </Row>
                 </Row>
@@ -68,25 +68,25 @@ export default function EditCampParticipantsSelect({ items = [], template: Templ
         }
         setUpdate(false)
     }, [update])
-    
-    function delete_item(id)  {
+
+    function delete_item(id) {
         setParticipants(participants.filter(participant => participants.indexOf(participant) !== id))
         set_current_participantsAdd(participants.filter(participant => participants.indexOf(participant) !== id))
     }
 
     return (
         <div>
-            <ProfilePage profileName={t('PARTICIPANTS_SELECT.EDIT_TITLE')}  backgroundImg={image.hiking}  includeProfileImage={includeProfileImage}  /> 
+            <ProfilePage profileName={t('PARTICIPANTS_SELECT.EDIT_TITLE')} backgroundImg={image.hiking} includeProfileImage={includeProfileImage} />
             <Container>
                 <ItemList items={participants} template={participantContent}></ItemList>
+                <Button onClick={() => { navigate('/admin/editcampaign', { replace: true }) }} style={{ bottom: "10vh", position: "absolute" }}>
+                    {t('PARTICIPANTS_SELECT.CONTINUE')}
+                </Button>
+                <Button className="bt-add" onClick={onClickAdd}>
+                    <Icons.AddUser />
+                </Button>
             </Container>
-            
-            <Button onClick={()=> {navigate('/admin/editcampaign', {replace:true})}} style={{bottom:"10vh", position:"absolute"}}>
-                {t('PARTICIPANTS_SELECT.CONTINUE')}
-            </Button>
-            <Button className="bt-add" onClick={onClickAdd}>
-                <Icons.AddUser />
-            </Button>
+
         </div>
     )
 }

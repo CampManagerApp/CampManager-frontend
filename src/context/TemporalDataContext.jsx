@@ -8,7 +8,7 @@ export default function TemporalDataProvider(props) {
     const [campaign_data, set_campaign_data] = useState({ name: '', start: '', end: '', counsellors: [], participants: [] })
 
     function reset_campaign_data() {
-        set_campaign_data({ name: '', start: new Date(), end: new Date(), counsellors: [], participants: [] })
+        set_campaign_data({ name: '', start: '', end: '', counsellors: [], participants: [] })
     }
 
     const temporalData = {

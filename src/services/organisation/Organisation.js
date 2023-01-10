@@ -147,9 +147,11 @@ export const delete_org_campaign = async (org_id, campaign_name) => {
     return res.data
 }
 
-export const update_org_campaign = async (org_id, campaign_name, end) => {
+export const update_org_campaign = async (org_id, campaign_name, new_campaign_name, start ,end) => {
     const res = await loggedRequest.put(`${API_URL}/organisation/${org_id}/campaign/`, {
         campaign_name: campaign_name,
+        new_campaign_name: new_campaign_name,
+        start: start,
         end: end
     })
     return res.data
@@ -186,6 +188,15 @@ export const get_org_campaign_participant = async (org_id, campaign_id, full_nam
 
 export const get_org_campaign_counsellor = async (org_id, campaign_id, full_name) => {
     const res = await loggedRequest.get(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/counsellor/info/?name=${full_name}`)
+    return res.data
+}
+
+export const delete_org_campaign_counsellor = async (org_id, campaign_id, full_name) => {
+    const res = await loggedRequest.delete(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/counsellor`, {
+        data: {
+            fullName: full_name
+        }
+    })
     return res.data
 }
 
