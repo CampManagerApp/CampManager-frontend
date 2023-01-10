@@ -97,12 +97,11 @@ export default function EditCampaign() {
             ? campaign_data.participants 
             : await get_campaign_participants(get_current_organisation().id, currentCamp.id)
         )
-        console.log(campaign_data.updated)
         // store the current values in temporal data
         set_campaign_data({ 
             name: campaignName, 
-            start: startDateCalendar, 
-            end: endDateCalendar, 
+            start: new Date(startDateCalendar), 
+            end: new Date(endDateCalendar), 
             counsellors: counsellorsOptions,
             participants: participantsList
         })
