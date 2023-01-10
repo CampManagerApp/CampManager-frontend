@@ -24,11 +24,11 @@ export default function OrganisationInfoPage() {
     }
 
     return (
-        <div>
+        <>
             <h1 className="d-flex justify-content-center display-1" style={{ textAlign: "center", marginBottom: "5%" }}> {t('SELECT_ORGANISATION.TITLE')}</h1>
-            <Container className="scrollable-content" style={{ height: "60vh" }}> 
+            <Container className="scrollable-content" style={{ height: "100%" }}> 
                 <ListOfOrganisations handle={handle} />
             </Container>
-        </div>
+        </>
     )
 }

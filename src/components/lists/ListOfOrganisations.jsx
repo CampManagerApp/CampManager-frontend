@@ -87,7 +87,7 @@ export default function ListOfOrganisations({ handle }) {
   }
 
   return (
-    <div className='list-group-page-wrapper' style={{height: '100%'}}>
+    <div className='list-group-page-wrapper d-flex flex-column' style={{height: '100%'}}>
       <div className="list-group list-group-light scrollable-content" style={{height: '65%'}}>
         {orgList.map((org, key) => {
           return (
@@ -98,17 +98,15 @@ export default function ListOfOrganisations({ handle }) {
         }
       </div>
       <br></br>
-      <Container>
-        <Row>
-          <div>
-            <button type="button" className="btn btn-primary m-3" onClick={() => {
+      <Container className='d-flex flex-row align-items-end' style={{height:'100%'}}>
+        <div className='align-self-end'>
+            {/* <button type="button" className="btn btn-primary m-3" onClick={() => {
 
-            }}>{t('SELECT_ORGANISATION.EXTERNAL_USER')}</button>
+            }}>{t('SELECT_ORGANISATION.EXTERNAL_USER')}</button> */}
             <button type="button" className="btn btn-primary" onClick={() => {
               navigate('/user/listoforganisations/add/')
             }}>{t('SELECT_ORGANISATION.ADD_ORGANISATION_BUTTON')}</button>
-          </div>
-        </Row>
+        </div>
       </Container>
     </div>
   );
