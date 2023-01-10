@@ -3,20 +3,22 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { organisationContex } from '../../../../context/OrganisationContex'
+import { Checkbox } from 'primereact/checkbox';
+import { MultiSelect } from 'primereact/multiselect';
+
+import * as image from "../../../../design/images";
 import BannerImage from "../../../../components/common/BannerImage"
 import TitlePage from "../../../../components/common/TitlePage";
-import * as image from "../../../../design/images";
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { Checkbox } from 'primereact/checkbox';
-import { MultiSelect } from 'primereact/multiselect';
+
 
 export default function CreateTableCounsellors() {
     const navigate = useNavigate()
-    const { t, i18n } = useTranslation('common');
+    const { t } = useTranslation('common');
     function navigateToBack(){
         navigate(-1)
     }
