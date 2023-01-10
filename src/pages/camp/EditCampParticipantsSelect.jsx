@@ -7,7 +7,7 @@ import { organisationContex } from "../../context/OrganisationContex";
 import { UserStatusContext } from "../../context/UserStatusContext";
 import * as image from "../../design/images.js";
 import * as Icons from '../../design/icons.js';
-import { Button, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 import './CampParticipantsSelect.css'
 import { MessageContext } from "../../context/MessageContex";
@@ -25,10 +25,6 @@ export default function EditCampParticipantsSelect({ items = [], template: Templ
     const [item, setitem] = useState({});
     const { t, i18n } = useTranslation('common');
 
-    const [participants, setParticipants] = new useState()
-
-    const [modalShow, setModalShow] = useState(false);
-    const { currentParticipants, set_current_participantsAdd, currentParticipantsAdd } = useContext(UserStatusContext)
     const navigate = useNavigate()
     const { showConfirmationModal } = useContext(MessageContext)
 
@@ -36,14 +32,14 @@ export default function EditCampParticipantsSelect({ items = [], template: Templ
         return (
             <div >
                 <Row>
-                    <Row className="d-flex justify-content-center row-texto" style={{ width: 80 + '%' }}>
+                    <Col className="d-flex justify-content-center row-texto align-items-center" style={{ width: 80 + '%' }}>
                         <p>{item.name}</p>
-                    </Row>
-                    <Row className="row-del" style={{ width: 20 + '%' }}>
+                    </Col>
+                    <Col className="row-del" style={{ width: 20 + '%' }}>
                         <button type="button" className="btn btn-danger button-delete bt-del" onClick={() => {
-                            showConfirmationModal(() => { delete_item(participants.indexOf(item)) })
+                            showConfirmationModal(() => { delete_item(item) })
                         }}><span className="d-none d-lg-inline d-print-flex">Delete</span><i className="bi bi-trash"></i></button>
-                    </Row>
+                    </Col>
                 </Row>
             </div>
 
@@ -53,32 +49,17 @@ export default function EditCampParticipantsSelect({ items = [], template: Templ
     function onClickAdd(item) {
         navigate('/camp/participants/list/addpart');
     }
-    async function loadParticipants() {
-        const participants = await get_campaign_participants(get_current_organisation().id, currentCamp.id)
-        const participantsList = participants.map((participant) => {
-            return { name: participant.fullName }
-        })
-        setParticipants(participantsList)
-    }
 
-    useEffect(() => {
-        if (update) {
-            setParticipants(currentParticipantsAdd)
-            loadParticipants()
-        }
-        setUpdate(false)
-    }, [update])
-
-    function delete_item(id) {
-        setParticipants(participants.filter(participant => participants.indexOf(participant) !== id))
-        set_current_participantsAdd(participants.filter(participant => participants.indexOf(participant) !== id))
+    function delete_item(item) {
+        const restParticipants = campaign_data.participants.filter(participant => participant.fullName != item.fullName)
+        set_campaign_data({ ...campaign_data, ['participants']: restParticipants })
     }
 
     return (
         <div>
             <ProfilePage profileName={t('PARTICIPANTS_SELECT.EDIT_TITLE')} backgroundImg={image.hiking} includeProfileImage={includeProfileImage} />
             <Container>
-                <ItemList items={participants} template={participantContent}></ItemList>
+                <ItemList items={campaign_data.participants} template={participantContent}></ItemList>
                 <Button onClick={() => { navigate('/admin/editcampaign', { replace: true }) }} style={{ bottom: "10vh", position: "absolute" }}>
                     {t('PARTICIPANTS_SELECT.CONTINUE')}
                 </Button>

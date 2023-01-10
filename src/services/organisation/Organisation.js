@@ -200,6 +200,15 @@ export const delete_org_campaign_counsellor = async (org_id, campaign_id, full_n
     return res.data
 }
 
+export const delete_org_campaign_participant = async (org_id, campaign_id, full_name) => {
+    const res = await loggedRequest.delete(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/participant/`, {
+        data: {
+            fullName: full_name
+        }
+    })
+    return res.data
+}
+
 export const create_org_campaign_table = async (org_id, campaign_id, table_form) => {
     const res = await loggedRequest.post(`${API_URL}/organisation/${org_id}/campaign/${campaign_id}/tables/`, table_form)
     return res.data

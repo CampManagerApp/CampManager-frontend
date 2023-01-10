@@ -34,6 +34,7 @@ export default function CampParticipantAdd() {
         }
         setUpdate(false)
     }, [update])
+
     function handleSubmit(form) {
         const participants = [...campaign_data.participants, form]
         set_campaign_data({...campaign_data, ['participants']: participants})

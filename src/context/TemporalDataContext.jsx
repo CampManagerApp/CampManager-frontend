@@ -5,10 +5,15 @@ export const TemporalDataContext = createContext()
 
 export default function TemporalDataProvider(props) {
 
-    const [campaign_data, set_campaign_data] = useState({ name: '', start: '', end: '', counsellors: [], participants: [] })
+    const [campaign_data, setCampaignData] = useState({ name: '', start: '', end: '', counsellors: [], participants: [] })
 
     function reset_campaign_data() {
-        set_campaign_data({ name: '', start: '', end: '', counsellors: [], participants: [] })
+        setCampaignData({ name: '', start: '', end: '', counsellors: [], participants: [], updated:false })
+    }
+
+    function set_campaign_data(campaingDataUpdate, update=true) {
+        const data = {...campaingDataUpdate, updated: update}
+        setCampaignData(data)
     }
 
     const temporalData = {

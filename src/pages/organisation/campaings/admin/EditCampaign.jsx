@@ -25,7 +25,7 @@ import { add_org_campaign_counsellor, delete_org_campaign_counsellor } from "../
 export default function EditCampaign() {
     const navigate = useNavigate()
     const { t } = useTranslation('common');
-    const { get_claimed_members, add_campaign_counsellors, delete_campaign_counsellors, add_campaign_participants } = useContext(organisationContex)
+    const { get_claimed_members, add_campaign_counsellors, delete_campaign_counsellors, get_campaign_participants, add_campaign_participants, delete_campaign_participants } = useContext(organisationContex)
     const { get_campaign_counsellors, update_campaign} = useContext(organisationContex)
     const { currentCamp, get_current_organisation } = useContext(UserStatusContext)
     const { showErrorMessage } = useContext(MessageContext)
@@ -52,10 +52,16 @@ export default function EditCampaign() {
         set_campaign_data({ ...campaign_data, ['counsellors']: counsellors })
     }
 
+    function setParticipants(counsellors) {
+        set_campaign_data({ ...campaign_data, ['participants']: counsellors })
+    }
+
     function navigateToParticipants() {
         navigate('/admin/editcampaign/participants/list/add');
     }
     function cancelButton() {
+        reset_campaign_data()
+        console.log(campaign_data)
         navigate(-1)
     }
 
@@ -86,12 +92,19 @@ export default function EditCampaign() {
         const counsellorsOptions = counsellorsList.map((counsellor) => {
             return { fullName: counsellor.fullName }
         })
+        // load participantsList
+        const participantsList = (campaign_data.updated
+            ? campaign_data.participants 
+            : await get_campaign_participants(get_current_organisation().id, currentCamp.id)
+        )
+        console.log(campaign_data.updated)
         // store the current values in temporal data
         set_campaign_data({ 
             name: campaignName, 
             start: startDateCalendar, 
             end: endDateCalendar, 
-            counsellors: counsellorsOptions 
+            counsellors: counsellorsOptions,
+            participants: participantsList
         })
     }
 
@@ -105,6 +118,7 @@ export default function EditCampaign() {
         try {
             await update_campaign(id, campaignName, newCampaignName, start, end)
             updateCounsellors(campaign_data.counsellors)
+            updateParticipants(campaign_data.participants)
             reset_campaign_data()
             navigate('/organisation/campaings', { replace: true })
         } catch (error) {
@@ -133,6 +147,33 @@ export default function EditCampaign() {
         // update campaing counsellors list 
         await delete_campaign_counsellors(id, campaignId, counsellorsToDelete)
         await add_campaign_counsellors(id, campaignId, counsellorsToAdd)  
+    }
+
+    async function updateParticipants(newParticipants) {
+        const { id } = get_current_organisation()
+        const { id: campaignId } = currentCamp
+        const currentParticipants = await get_campaign_participants(id, campaignId)
+        console.log(newParticipants)
+        // processs newCounsellors in function of the state
+        if (newParticipants === null && currentParticipants.length == 0) {
+            return
+        } else if(newParticipants === null){
+            newParticipants = []
+        }
+        // get the list of counsellors to delete
+        const participantsToDelete = currentParticipants.filter((participant) => {
+            return !newParticipants.some(newParticipant => newParticipant.fullName == participant.fullName)
+        })
+        // get the list of counsellors to add
+        const participantsToAdd = newParticipants.filter((newParticipant) => {
+            return !currentParticipants.some(currentParticipant => currentParticipant.fullName == newParticipant.fullName)
+        })    
+
+        console.log('To delete')
+        console.log(participantsToDelete)
+        // update campaing counsellors list 
+        await delete_campaign_participants(id, campaignId, participantsToDelete)
+        await add_campaign_participants(id, campaignId, participantsToAdd)  
     }
 
     return (
