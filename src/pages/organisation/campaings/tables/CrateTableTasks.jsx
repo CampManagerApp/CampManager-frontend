@@ -3,18 +3,19 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { organisationContex } from '../../../../context/OrganisationContex'
+import { ListGroup } from 'react-bootstrap'
+import {Button,Modal} from "react-bootstrap";
+import { MessageContext } from "../../../../context/MessageContex";
+import { UserStatusContext } from "../../../../context/UserStatusContext";
+
+import * as image from "../../../../design/images";
+import * as Icons from '../../../../design/icons.js';
 import BannerImage from "../../../../components/common/BannerImage"
 import TitlePage from "../../../../components/common/TitlePage";
-import * as image from "../../../../design/images";
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {Button,Modal} from "react-bootstrap";
-import { MessageContext } from "../../../../context/MessageContex";
-import { UserStatusContext } from "../../../../context/UserStatusContext";
-import * as Icons from '../../../../design/icons.js';
-import { ListGroup } from 'react-bootstrap';
 
 function ModalTaskTables(show, handleClose, handleSubmit, nameTask, setNameTask, minimum, setMinimum, maximum, setMaximum) {
 	const { t } = useTranslation('common');
