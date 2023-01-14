@@ -106,23 +106,18 @@ export default function CampaingsListPage() {
         <React.Fragment>
             <BannerImage bannerImage={image.backgroundOrg} />
             <TitlePage>Campaigns</TitlePage>
-            <Container >
+            <Container className="flex-container" >
                 <ItemList max_height="40vh" items={campaings} template={CampaingContent} onClickItem={CampaignClick} onUpdate={loadCampaigns} />
             </Container>
             {isOrgAdmin &&
-                <Container>
-                    <Col className="d-flex justify-content-end mb-4">
-                        <Button onClick={addCampaign}>+</Button>
-                    </Col>
+                <Container className="flex-item flex-container justify-content-end align-items-end">
+                    <Row>
+                        <Col className="flex-item  mb-4">
+                            <Button className="" onClick={addCampaign}>+</Button>
+                        </Col>
+                    </Row>
                 </Container>
             }
-            {/* {isOrgAdmin &&
-                <Container className="flex-item flex-container">
-                    <Col className="d-flex justify-content-end align-items-end mb-4">
-                        <Button onClick={addCampaign}>+</Button>
-                    </Col>
-                </Container>
-            } */}
         </React.Fragment>
     )
 }
