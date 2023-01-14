@@ -86,25 +86,25 @@ export default function CreateTable() {
     //CHANGE THIS CODE AFTER IMPLEMENTATION
 
     return (
-        <React.Fragment>
+        <>
             <BannerImage bannerImage={image.backgroundOrg} />
             <TitlePage>{t('ADD_NEW_TABLE.TITLE')}</TitlePage>
-            <Container>
+            <Container className="flex-item flex-container" style={{ height: '100%' }}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>{t('ADD_NEW_TABLE.TABLE_NAME')}</Form.Label>
                     <Form.Control type="text" value={table_data.name} onChange={(e) => saveTableName(e.target.value)} />
                     <br />
-                    <Row>
+                    <Row className="mb-4">
                         <Col><Form.Label>{t('ADD_NEW_TABLE.COUNSELLORS')}</Form.Label></Col>
                         <Col className="text-end"><Button variant="primary" size="sm" onClick={navigateToCounsellors}><Icons.AddUser /></Button></Col>
                     </Row>
                     <br />
-                    <Row>
+                    <Row className="mb-4">
                         <Col><Form.Label>{t('ADD_NEW_TABLE.DAYS')}</Form.Label></Col>
                         <Col className="text-end"><Button variant="primary" size="sm" onClick={navigateToDays}><Icons.AddUser /></Button></Col>
                     </Row>
                     <br />
-                    <Row>
+                    <Row className="mb-4">
                         <Col><Form.Label>{t('ADD_NEW_TABLE.TASKS')}</Form.Label></Col>
                         <Col className="text-end"><Button variant="primary" size="sm" onClick={navigateToTasks}><Icons.AddUser /></Button></Col>
                     </Row>
@@ -114,17 +114,17 @@ export default function CreateTable() {
                 <Form.Label>{t('ADD_NEW_TABLE.Y_VALUE')}</Form.Label>
                 <Form.Control type="text" value={yValues} onChange={(e) => setYValues(e.target.value)}/> */}
                 </Form.Group>
-                <Container>
-                    <Row className="align-items-center">
-                        <Col className="d-flex justify-content-center">
-                            <Button variant="primary" onClick={navigateToBack}>{t('ADD_NEW_TABLE.CANCEL_BUTTON')}</Button>
-                        </Col>
-                        <Col className="d-flex justify-content-center">
-                            <Button variant="success" onClick={createTable}>{t('ADD_NEW_TABLE.CREATE_BUTTON')}</Button>
-                        </Col>
-                    </Row>
-                </Container>
             </Container>
-        </React.Fragment>
+            <Container>
+                <Row className="justify-content-center align-items-end mb-4">
+                    <Col className="d-flex justify-content-center">
+                        <Button variant="primary" onClick={navigateToBack}>{t('ADD_NEW_TABLE.CANCEL_BUTTON')}</Button>
+                    </Col>
+                    <Col className="d-flex justify-content-center">
+                        <Button variant="success" onClick={createTable}>{t('ADD_NEW_TABLE.CREATE_BUTTON')}</Button>
+                    </Col>
+                </Row>
+            </Container>
+        </>
     )
 }

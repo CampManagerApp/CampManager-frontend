@@ -98,15 +98,13 @@ export default function ListOfOrganisations({ handle }) {
         }
       </div>
       <br></br>
-      <Container className='d-flex flex-row align-items-end' style={{height:'100%'}}>
-        <div className='align-self-end'>
+      <Container className='d-flex align-items-end justify-content-center ' style={{height:'100%'}}>
             {/* <button type="button" className="btn btn-primary m-3" onClick={() => {
 
             }}>{t('SELECT_ORGANISATION.EXTERNAL_USER')}</button> */}
             <button type="button" className="btn btn-primary" onClick={() => {
               navigate('/user/listoforganisations/add/')
             }}>{t('SELECT_ORGANISATION.ADD_ORGANISATION_BUTTON')}</button>
-        </div>
       </Container>
     </div>
   );

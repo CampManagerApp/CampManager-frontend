@@ -54,10 +54,14 @@
     "BACK_BUTTON": "Enrere",
 
     "ERRORS": {
+        "ERROR_WORD": "Error",
         "ERROR_01": "Alguna cosa ha anat malament, torna a intentar-ho després",
         "CONEXION_ERROR": {
             "ERROR_MODAL_TITLE": "Error de connexió",
             "ERROR_MODAL_BODY": "No ha estat possible connectar amb el servidor"
+        },
+        "CRUD_CAMPAIGN": {
+            "BAD_END_DATE": "La data de fi ha de ser posterior a la dinici."
         }
     },
 

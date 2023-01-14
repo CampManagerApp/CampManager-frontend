@@ -48,10 +48,14 @@
     "BACK_BUTTON": "Back",
 
     "ERRORS": {
+        "ERROR_WORD": "Error",
         "ERROR_01": "Something went wrong, try again later",
         "CONEXION_ERROR": {
             "ERROR_MODAL_TITLE": "Connexion error",
             "ERROR_MODAL_BODY": "Can't connect with the server"
+        },
+        "CRUD_CAMPAIGN": {
+            "BAD_END_DATE": "The end data is before to the start data."
         }
     },
 

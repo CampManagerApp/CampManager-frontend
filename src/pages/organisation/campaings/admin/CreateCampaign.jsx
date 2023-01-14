@@ -5,6 +5,10 @@ import { useContext } from "react";
 import { MultiSelect } from 'primereact/multiselect';
 import { Calendar } from 'primereact/calendar';
 import { organisationContex } from '../../../../context/OrganisationContex'
+import { UserStatusContext } from "../../../../context/UserStatusContext";
+import { toBackendFormat } from "../../../../utils";
+import { MessageContext } from "../../../../context/MessageContex";
+import { TemporalDataContext } from "../../../../context/TemporalDataContext";
 
 
 import BannerImage from "../../../../components/common/BannerImage"
@@ -16,15 +20,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-// import CreateCampaignParticipants from "./CreateCampaignParticipants";
-import { UserStatusContext } from "../../../../context/UserStatusContext";
-import { toBackendFormat } from "../../../../utils";
-import { MessageContext } from "../../../../context/MessageContex";
-import { TemporalDataContext } from "../../../../context/TemporalDataContext";
 import Spinner from "../../../../components/common/spinner/Spinner";
-
-
-
 
 export default function CreateCampaign() {
     const navigate = useNavigate()
@@ -70,6 +66,21 @@ export default function CreateCampaign() {
         })
     }
 
+    function validateData() {
+        const startDate = new Date(campaign_data.start)
+        const endDate = new Date(campaign_data.end)
+        return endDate > startDate
+    }
+
+
+    function handleCreate() {
+        if(validateData()) {
+            createCampaing()
+            return
+        }
+        showErrorMessage(t('ERRORS.ERROR_WORD'), t('ERRORS.CRUD_CAMPAIGN.BAD_END_DATE'))
+    }
+
     async function createCampaing() {
         const { id } = get_current_organisation()
         const start = toBackendFormat(campaign_data.start)
@@ -87,7 +98,6 @@ export default function CreateCampaign() {
             }
             return
         }
-
         try {
             // check if must be add counsellors to the campaing
             if (campaign_data.counsellors.length != 0) {
@@ -164,7 +174,7 @@ export default function CreateCampaign() {
                                 <Button variant="primary">{t('ADD_NEW_CAMPAIGN.CANCEL_BUTTON')}</Button>
                             </Col>
                             <Col className="d-flex justify-content-center">
-                                <Button variant="success" onClick={createCampaing}>{t('ADD_NEW_CAMPAIGN.CREATE_BUTTON')}</Button>
+                                <Button variant="success" onClick={handleCreate}>{t('ADD_NEW_CAMPAIGN.CREATE_BUTTON')}</Button>
                             </Col>
                         </Row>
                     </Container>
