@@ -21,12 +21,17 @@ export default function TemporalDataProvider(props) {
         setTableData(tableData)
     }
 
+    function reset_table_data() {
+        setTableData({ name: '', counsellors: [], xValues: [], tasks: [] })
+    }
+
     const temporalData = {
         campaign_data,
         set_campaign_data,
         reset_campaign_data,
         table_data,
         set_table_data,
+        reset_table_data
     }
 
     return (

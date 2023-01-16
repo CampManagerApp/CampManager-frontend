@@ -26,7 +26,7 @@ export default function CreateTableCounsellors() {
     const { currentCamp, get_current_organisation } = useContext(UserStatusContext)
     const { table_data, set_table_data } = useContext(TemporalDataContext)
 
-    // const counsellors = ['Joel', 'Lazo', 'Mariona', 'Rafel', 'Alejandro', 'Phoenix', 'Juan Antonio Garcia de Leon', 'Pepe Diego', 'Dallas Review', 'Potato'];
+
     const [counsellors, setCounsellors] = useState([])
     const [checkedCounsellors, setCheckedCounsellors] = useState([]);
 
@@ -85,7 +85,9 @@ export default function CreateTableCounsellors() {
                 </Container>
                 <br />
                 <br />
-                <Row className="align-items-center">
+            </Container>
+            <Container className="flex-item flex-container justify-content-end align-center-end mb-4">
+                <Row>
                     <Col className="d-flex justify-content-center">
                         <Button variant="primary" onClick={handleCancel}>{t('ADD_NEW_TABLE.CANCEL_BUTTON')}</Button>
                     </Col>

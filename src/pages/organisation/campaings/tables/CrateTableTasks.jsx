@@ -18,6 +18,36 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { TemporalDataContext } from "../../../../context/TemporalDataContext";
 
+function ItemElement({ item }) {
+    return (
+        <ListGroup.Item className="text-truncate">
+            {/* {item.name},{item.minimum},{item.maximum} */}
+            <Row>
+                <Col className="d-flex justify-content-center align-items-center">{item.name}</Col>
+                <Col>
+                    <Row className="border">
+                        <Col className="border-right">
+                            Min
+                        </Col>
+                        <Col>
+                            {item.minimum}
+                        </Col>
+                    </Row>
+
+                    <Row className="border">
+                        <Col className="border-right">
+                            Max
+                        </Col>
+                        <Col>
+                            {item.maximum}
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        </ListGroup.Item>
+    )
+}
+
 function ModalTaskTables(task, show, handleClose, handleSubmit, setNameTask, setMinimum, setMaximum) {
     const { t } = useTranslation('common');
     return (
@@ -81,6 +111,7 @@ export default function CreateTableTasks() {
         const newItems = [...items];
         newItems.splice(index, 1);
         setItems(newItems);
+        set_table_data({ ...table_data, ['tasks']: newItems })
     }
     const handleClose = () => {
         setShow(false)
@@ -120,23 +151,26 @@ export default function CreateTableTasks() {
                     </Form.Group>
                 </Form>
                 <br />
-                <ListGroup>{table_data.tasks.map((item, index) => (
-                    <Row>
-                        <Col className="col-10"><ListGroup.Item className="text-truncate" key={index}>{item.name},{item.minimum},{item.maximum}</ListGroup.Item></Col>
-                        <Col className="col-2"><Button variant="danger" onClick={() => handleDelete(index)}><i className="bi bi-trash"></i></Button></Col>
-                    </Row>))}
-                </ListGroup>
+                <div className='scrollable-content' style={{ height: '30vh' }}>
+                    <ListGroup>{table_data.tasks.map((item, index) => (
+                        <Row key={index}>
+                            {/* <Col className="col-10"><ListGroup.Item className="text-truncate" key={index}>{item.name},{item.minimum},{item.maximum}</ListGroup.Item></Col> */}
+                            <Col className="col-10"><ItemElement item={item} /></Col>
+                            <Col className="col-2"><Button variant="danger" onClick={() => handleDelete(index)}><i className="bi bi-trash"></i></Button></Col>
+                        </Row>))}
+                    </ListGroup>
+                </div>
                 <br />
-                <Container>
-                    <Row className="align-items-center">
-                        <Col className="d-flex justify-content-center">
-                            <Button variant="primary" onClick={handleCancel}>{t('ADD_NEW_TABLE.CANCEL_BUTTON')}</Button>
-                        </Col>
-                        <Col className="d-flex justify-content-center">
-                            <Button variant="success" onClick={handleAccept}>{t('ADD_NEW_TABLE.ACCEPT_BUTTTON')}</Button>
-                        </Col>
-                    </Row>
-                </Container>
+            </Container>
+            <Container className="flex-item flex-container justify-content-end align-center-end mb-4">
+                <Row>
+                    <Col className="d-flex justify-content-center">
+                        <Button variant="primary" onClick={handleCancel}>{t('ADD_NEW_TABLE.CANCEL_BUTTON')}</Button>
+                    </Col>
+                    <Col className="d-flex justify-content-center">
+                        <Button variant="success" onClick={handleAccept}>{t('ADD_NEW_TABLE.ACCEPT_BUTTTON')}</Button>
+                    </Col>
+                </Row>
             </Container>
         </React.Fragment>
     )

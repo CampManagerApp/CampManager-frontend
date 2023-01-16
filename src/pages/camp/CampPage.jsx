@@ -26,7 +26,7 @@ export default function CampPage(){
         navigate('/camp/tables/');
     }
     return(
-        <div className="div-page scrollable-content" style={{height: "80vh"}}>
+        <div className="div-page scrollable-content" >
             <div>
                 <ProfilePage profileName={currentCamp.campaignName} profileNick={currentCamp.startDate + " - " + currentCamp.endDate} backgroundImg={image.backgroundOrgList}  includeProfileImage={includeProfileImage} /> 
             </div>

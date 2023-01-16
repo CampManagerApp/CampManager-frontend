@@ -33,9 +33,11 @@ export default function CreateTableDays() {
 
     function handleAppend(event) {
         event.preventDefault();
-        const xValues = [...table_data.xValues, text]
-        set_table_data({ ...table_data, ['xValues']: xValues })
-        setText('');
+        if (text.length > 0) {
+            const xValues = [...table_data.xValues, text]
+            set_table_data({ ...table_data, ['xValues']: xValues })
+            setText('');
+        }
     }
 
     function handleDelete(index) {
@@ -69,16 +71,18 @@ export default function CreateTableDays() {
                     </Form.Group>
                 </Form>
                 <br />
-                <ListGroup className=" d-flex scrollable-content" style={{height:'70%'}}>{table_data.xValues.map((item, index) => (
-                    <Row key={index}>
-                        <Col className="col-10"><ListGroup.Item className="text-truncate">{item}</ListGroup.Item></Col>
-                        <Col className="col-2"><Button variant="danger" onClick={() => handleDelete(index)}><i className="bi bi-trash"></i></Button></Col>
-                    </Row>))}
-                </ListGroup>
+                <div className='scrollable-content' style={{ height:'30vh'}}>
+                    <ListGroup className=" d-flex scrollable-content" style={{ height: '70%' }}>{table_data.xValues.map((item, index) => (
+                        <Row key={index}>
+                            <Col className="col-10"><ListGroup.Item className="text-truncate">{item}</ListGroup.Item></Col>
+                            <Col className="col-2"><Button variant="danger" onClick={() => handleDelete(index)}><i className="bi bi-trash"></i></Button></Col>
+                        </Row>))}
+                    </ListGroup>
+                </div>
                 <br />
             </Container>
-            <Container>
-                <Row className="align-items-center mb-4">
+            <Container className="flex-item flex-container justify-content-end align-center-end mb-4">
+                <Row>
                     <Col className="d-flex justify-content-center">
                         <Button variant="primary" onClick={handleCancel}>{t('ADD_NEW_TABLE.CANCEL_BUTTON')}</Button>
                     </Col>

@@ -45,7 +45,7 @@ function ListOfOrgUsers() {
                 const member_organisations = member.organisations
                 // check if the member is claimed (implies organisations object undefined)
                 if (member_organisations === null) {
-                    const role = member.is_admin ? 'admin' : 'cousellor'
+                    const role = member.is_admin ? 'admin' : 'counsellor'
                     return { name: name, role: role, status: 'false', claimed: false }
                 } else {
                     // filtering by organisation name to get the current organisation
@@ -54,7 +54,7 @@ function ListOfOrgUsers() {
                     })[0]
                     // extra member info
                     const id = org_status.id
-                    const role = org_status.is_admin ? 'admin' : 'cousellor'
+                    const role = org_status.is_admin ? 'admin' : 'counsellor'
                     const status = 'true'
                     const username = member.username
                     return { id: id, name: name, role: role, status: status, claimed: true, username: username }

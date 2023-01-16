@@ -73,9 +73,10 @@ export default function CreateCampaign() {
     }
 
 
-    function handleCreate() {
+    async function handleCreate() {
         if(validateData()) {
-            createCampaing()
+            await createCampaing()
+            reset_campaign_data()
             return
         }
         showErrorMessage(t('ERRORS.ERROR_WORD'), t('ERRORS.CRUD_CAMPAIGN.BAD_END_DATE'))
