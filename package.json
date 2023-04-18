@@ -2,6 +2,7 @@
   "name": "campmanager-frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://campmanagerapp.github.io/CampManager-frontend",
   "dependencies": {
     "@capacitor-community/fcm": "^3.0.2",
     "@capacitor/android": "4.4.0",
@@ -37,6 +38,8 @@
   },
   "scripts": {
     "start": "WATCHPACK_POLLING=true react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -60,6 +63,7 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "^4.4.0"
+    "@capacitor/cli": "^4.4.0",
+    "gh-pages": "^5.0.0"
   }
 }
