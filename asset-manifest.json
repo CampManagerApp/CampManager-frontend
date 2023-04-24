@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CampManager-frontend/static/css/main.3b30fbed.css",
-    "main.js": "/CampManager-frontend/static/js/main.71e5e2d4.js",
+    "main.js": "/CampManager-frontend/static/js/main.59fe2915.js",
     "static/js/617.c7323d9e.chunk.js": "/CampManager-frontend/static/js/617.c7323d9e.chunk.js",
     "static/js/315.8cc59882.chunk.js": "/CampManager-frontend/static/js/315.8cc59882.chunk.js",
     "static/js/738.ae183087.chunk.js": "/CampManager-frontend/static/js/738.ae183087.chunk.js",
@@ -39,7 +39,7 @@
     "static/media/UserProfile.jpg": "/CampManager-frontend/static/media/UserProfile.1b9d17702d2f9ff24a63.jpg",
     "index.html": "/CampManager-frontend/index.html",
     "main.3b30fbed.css.map": "/CampManager-frontend/static/css/main.3b30fbed.css.map",
-    "main.71e5e2d4.js.map": "/CampManager-frontend/static/js/main.71e5e2d4.js.map",
+    "main.59fe2915.js.map": "/CampManager-frontend/static/js/main.59fe2915.js.map",
     "617.c7323d9e.chunk.js.map": "/CampManager-frontend/static/js/617.c7323d9e.chunk.js.map",
     "315.8cc59882.chunk.js.map": "/CampManager-frontend/static/js/315.8cc59882.chunk.js.map",
     "738.ae183087.chunk.js.map": "/CampManager-frontend/static/js/738.ae183087.chunk.js.map",
@@ -54,6 +54,6 @@
   },
   "entrypoints": [
     "static/css/main.3b30fbed.css",
-    "static/js/main.71e5e2d4.js"
+    "static/js/main.59fe2915.js"
   ]
 }
